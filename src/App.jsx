@@ -9,8 +9,7 @@ import {
   Plus,
   Trash2,
   Plane,
-  House,
-  AlertTriangle,
+  Home,
   ExternalLink,
   Train,
   Coffee,
@@ -36,7 +35,7 @@ const TRIP_INFO = {
   notes: [
     "Day 4 is the main bucket list day.",
     "Day 7 is a flex / weather buffer day.",
-    "Final night hotel booked near Zurich Airport (Holiday Inn Express Zurich Airport).",
+    "Final night is booked near Zurich Airport at Holiday Inn Express Zurich Airport.",
   ],
 };
 
@@ -361,24 +360,31 @@ const DEFAULT_ITINERARY = [
   {
     id: "d8",
     date: "Sat 29 Aug 2026",
-    base: "Grindelwald",
+    base: "Zurich Airport",
     title: "Travel to Zurich Airport Hotel",
-    location: "Grindelwald → Zurich Airport",
+    location: "Grindelwald → Zurich Airport / Rümlang",
     tags: ["travel", "hotel"],
     mapLocation: "Holiday Inn Express Zurich Airport, Hofwisenstrasse 30, 8153 Rümlang, Switzerland",
     items: [
       {
         time: "Morning",
-        title: "Check out",
+        title: "Check out of Grindelwald stay",
         location: "GrindelwaldHome Alpenglück",
-        notes: "Check out of accommodation by 09:00.",
-        tags: ["checkout"],
+        notes: "Check out of the apartment by 09:00.",
+        tags: ["checkout", "travel"],
       },
       {
-        time: "Review",
-        title: "Stay near Zurich Airport",
-        location: "Holiday Inn Express Zurich Airport",
-        notes: "Overnight stay at Holiday Inn Express Zurich Airport. Address: Hofwisenstrasse 30, 8153 Rümlang, Switzerland. Check‑in from 3:00 PM. Check‑out 11:00 AM.",
+        time: "PM",
+        title: "Travel to airport hotel",
+        location: "Grindelwald → Rümlang / Zurich Airport",
+        notes: "Travel toward Zurich and check in to the Holiday Inn Express Zurich Airport.",
+        tags: ["train", "hotel", "airport"],
+      },
+      {
+        time: "Check-in",
+        title: "Holiday Inn Express Zurich Airport",
+        location: "Hofwisenstrasse 30, 8153 Rümlang, ZH, Switzerland",
+        notes: "Final night stay. Check-in starts at 3:00 PM and check-out is by 11:00 AM the next day.",
         tags: ["hotel", "airport"],
       },
     ],
@@ -393,11 +399,11 @@ const DEFAULT_ITINERARY = [
     mapLocation: "Zurich Airport, Switzerland",
     items: [
       {
-        time: "Early Morning",
-        title: "Travel to Zurich Airport",
-        location: "Grindelwald → Zurich Airport",
-        notes: "Allow around 3 hours by train plus airport buffer.",
-        tags: ["train", "travel"],
+        time: "Morning",
+        title: "Check out and head to airport",
+        location: "Holiday Inn Express Zurich Airport → Zurich Airport",
+        notes: "Check out by 11:00 AM, though you will likely leave earlier for the flight.",
+        tags: ["hotel", "airport", "travel"],
       },
       {
         time: "Flight",
@@ -416,10 +422,11 @@ const DEFAULT_BUDGET = {
   expenses: [
     { id: "e1", category: "Flights", label: "Dublin ↔ Zurich", amount: 0 },
     { id: "e2", category: "Accommodation", label: "GrindelwaldHome Alpenglück", amount: 0 },
-    { id: "e3", category: "Transport", label: "Swiss trains / lifts / gondolas", amount: 0 },
-    { id: "e4", category: "Food", label: "Meals / coffee / snacks", amount: 0 },
-    { id: "e5", category: "Activities", label: "Jungfraujoch / extras", amount: 0 },
-    { id: "e6", category: "Misc", label: "Souvenirs / buffer", amount: 0 },
+    { id: "e3", category: "Accommodation", label: "Holiday Inn Express Zurich Airport", amount: 0 },
+    { id: "e4", category: "Transport", label: "Swiss trains / lifts / gondolas", amount: 0 },
+    { id: "e5", category: "Food", label: "Meals / coffee / snacks", amount: 0 },
+    { id: "e6", category: "Activities", label: "Jungfraujoch / extras", amount: 0 },
+    { id: "e7", category: "Misc", label: "Souvenirs / buffer", amount: 0 },
   ],
 };
 
@@ -542,7 +549,7 @@ function TextInput(props) {
 
 function getTagColor(tag) {
   const value = String(tag || "").toLowerCase();
-  if (["bucket list", "warning", "review", "checkout"].includes(value)) return "rose";
+  if (["bucket list", "warning", "review", "checkout", "hotel", "airport"].includes(value)) return "rose";
   if (["mountains", "hike", "scenic", "viewpoint", "waterfalls", "lake"].includes(value)) return "green";
   if (["food", "coffee", "family", "relax", "easy"].includes(value)) return "amber";
   return "blue";
@@ -558,7 +565,7 @@ export default function SwitzerlandTravelAppReal() {
   const [ready, setReady] = useState(false);
   const [query, setQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
-  const [expandedDays, setExpandedDays] = useState(() => new Set(["d1", "d4"]));
+  const [expandedDays, setExpandedDays] = useState(() => new Set(["d1", "d4", "d8"]));
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -675,12 +682,12 @@ export default function SwitzerlandTravelAppReal() {
 
               <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
                 <InfoPanel
-                  icon={<House size={18} />}
-                  title="Accommodation"
+                  icon={<Home size={18} />}
+                  title="Main stay"
                   body={TRIP_INFO.accommodation}
                   lines={[TRIP_INFO.address, `Host: ${TRIP_INFO.host}`]}
                   href={mapHref(TRIP_INFO.address)}
-                  linkLabel="Open accommodation map"
+                  linkLabel="Open Grindelwald stay map"
                 />
                 <InfoPanel
                   icon={<Plane size={18} />}
@@ -701,7 +708,7 @@ export default function SwitzerlandTravelAppReal() {
 
         <Card style={{ padding: 16, borderColor: "#86efac", background: "rgba(240,253,244,0.96)" }}>
           <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-            <House size={20} color="#15803d" style={{ marginTop: 2 }} />
+            <Home size={20} color="#15803d" style={{ marginTop: 2 }} />
             <div>
               <div style={{ fontWeight: 800, color: "#166534" }}>Stay plan confirmed</div>
               <div style={{ color: "#166534", marginTop: 4, fontSize: 14 }}>
@@ -749,11 +756,9 @@ export default function SwitzerlandTravelAppReal() {
                       style={{
                         padding: 16,
                         borderRadius: 22,
-                        borderColor: day.highlight ? "#fbbf24" : day.warning ? "#fda4af" : "#dbeafe",
+                        borderColor: day.highlight ? "#fbbf24" : "#dbeafe",
                         background: day.highlight
                           ? "linear-gradient(180deg, rgba(255,251,235,0.98), rgba(255,255,255,0.95))"
-                          : day.warning
-                          ? "linear-gradient(180deg, rgba(255,241,242,0.98), rgba(255,255,255,0.95))"
                           : "rgba(255,255,255,0.95)",
                       }}
                     >
@@ -775,7 +780,7 @@ export default function SwitzerlandTravelAppReal() {
                                 <CalendarDays size={18} />
                                 {day.date}
                               </div>
-                              <SmallBadge color={day.highlight ? "amber" : day.warning ? "rose" : "blue"}>{day.title}</SmallBadge>
+                              <SmallBadge color={day.highlight ? "amber" : "blue"}>{day.title}</SmallBadge>
                               <SmallBadge color="slate">
                                 <MapPin size={12} /> {day.base}
                               </SmallBadge>
@@ -914,7 +919,7 @@ export default function SwitzerlandTravelAppReal() {
             </Card>
 
             <Card style={{ padding: 18 }}>
-              <SectionTitle icon={<House size={18} />} title="Main stay in Grindelwald" />
+              <SectionTitle icon={<Home size={18} />} title="Main stay in Grindelwald" />
               <DetailLine label="Name" value={ACCOMMODATION.name} />
               <DetailLine label="Type" value={ACCOMMODATION.type} />
               <DetailLine label="Host" value={ACCOMMODATION.host} />
@@ -946,7 +951,7 @@ export default function SwitzerlandTravelAppReal() {
             </Card>
 
             <Card style={{ padding: 18 }}>
-              <SectionTitle icon={<House size={18} />} title="Final night near Zurich Airport" />
+              <SectionTitle icon={<Home size={18} />} title="Final night near Zurich Airport" />
               <DetailLine label="Name" value={FINAL_HOTEL.name} />
               <DetailLine label="Type" value={FINAL_HOTEL.type} />
               <DetailLine label="Host" value={FINAL_HOTEL.host} />
