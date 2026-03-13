@@ -922,9 +922,23 @@ export default function SwitzerlandTravelAppReal() {
 
   const suggestedFoodLocation = DAY_FOOD_LOCATIONS[lastViewedDayId] || "Grindelwald";
 
+  const parseGoogleMapsUrl = (url) => {
+    if (!url.trim()) return;
+    if (url.includes("maps.app.goo.gl")) {
+      setNewVenue((v) => ({ ...v, _mapsHint: "short" }));
+      return;
+    }
+    const match = url.match(/\/maps\/place\/([^/@?]+)/);
+    if (match) {
+      const name = decodeURIComponent(match[1]).replace(/\+/g, " ").split(",")[0].trim();
+      setNewVenue((v) => ({ ...v, name, _mapsHint: "" }));
+    }
+  };
+
   const addVenue = () => {
     if (!newVenue.name.trim()) return;
-    setVenues((prev) => [...prev, { ...newVenue, id: `v_${Math.random().toString(16).slice(2)}`, name: newVenue.name.trim() }]);
+    const { _mapsUrl, _mapsHint, ...venueData } = newVenue;
+    setVenues((prev) => [...prev, { ...venueData, id: `v_${Math.random().toString(16).slice(2)}`, name: venueData.name.trim() }]);
     setNewVenue({ name: "", type: "restaurant", location: venueFilter === "all" ? "Grindelwald" : venueFilter, notes: "" });
     setShowAddVenue(false);
   };
@@ -1728,6 +1742,20 @@ export default function SwitzerlandTravelAppReal() {
               ) : (
                 <div style={{ display: "grid", gap: 10 }}>
                   <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 2 }}>Add a venue</div>
+                  <TextInput
+                    placeholder="Paste a Google Maps URL to auto-fill name (optional)"
+                    value={newVenue._mapsUrl || ""}
+                    onChange={(e) => {
+                      const url = e.target.value;
+                      setNewVenue((v) => ({ ...v, _mapsUrl: url, _mapsHint: "" }));
+                      parseGoogleMapsUrl(url);
+                    }}
+                  />
+                  {newVenue._mapsHint === "short" && (
+                    <div style={{ fontSize: 12, color: "#b45309", marginTop: -6 }}>
+                      Short links can't be parsed — paste the full URL from your browser's address bar instead.
+                    </div>
+                  )}
                   <TextInput
                     placeholder="Venue name"
                     value={newVenue.name}
