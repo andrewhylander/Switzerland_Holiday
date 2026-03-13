@@ -839,11 +839,11 @@ export default function SwitzerlandTravelAppReal() {
                           >
                             <div style={{ display: "grid", gap: 10, marginTop: 14 }}>
                               {day.image && (
-                                <div style={{ borderRadius: 14, overflow: "hidden", height: 200, background: "#e2e8f0" }}>
+                                <div style={{ borderRadius: 14, overflow: "hidden", background: "#e2e8f0", maxHeight: 320 }}>
                                   <img
                                     src={day.image}
                                     alt={day.title}
-                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                                    style={{ width: "100%", height: "auto", display: "block" }}
                                     onError={(e) => { e.target.style.display = "none"; }}
                                   />
                                 </div>
