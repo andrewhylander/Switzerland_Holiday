@@ -13,6 +13,10 @@ import {
   ExternalLink,
   Train,
   Coffee,
+  Package,
+  CheckSquare,
+  Square,
+  Timer,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -23,6 +27,7 @@ const CHF = new Intl.NumberFormat("de-CH", {
 
 const STORAGE_KEYS = {
   budget: "swiss-trip-budget-v2",
+  packing: "swiss-trip-packing-v1",
 };
 
 const TRIP_INFO = {
@@ -439,6 +444,78 @@ const DEFAULT_BUDGET = {
   ],
 };
 
+const DEFAULT_PACKING_CATEGORIES = [
+  { id: "cat_docs",        label: "Documents" },
+  { id: "cat_clothing",    label: "Clothing & Footwear" },
+  { id: "cat_kids",        label: "Kids" },
+  { id: "cat_electronics", label: "Electronics" },
+  { id: "cat_toiletries",  label: "Toiletries & Health" },
+  { id: "cat_hiking",      label: "Hiking & Outdoors" },
+  { id: "cat_misc",        label: "Misc" },
+];
+
+const DEFAULT_PACKING_ITEMS = [
+  // Documents
+  { id: "p_d1", categoryId: "cat_docs", text: "Passports (all family)", checked: false },
+  { id: "p_d2", categoryId: "cat_docs", text: "Flight booking refs (YMKW98 / 2TLA5F)", checked: false },
+  { id: "p_d3", categoryId: "cat_docs", text: "Travel insurance documents", checked: false },
+  { id: "p_d4", categoryId: "cat_docs", text: "Accommodation confirmations (printed/offline)", checked: false },
+  { id: "p_d5", categoryId: "cat_docs", text: "European Health Insurance Cards (EHIC)", checked: false },
+  { id: "p_d6", categoryId: "cat_docs", text: "Emergency contact list", checked: false },
+  // Clothing & Footwear
+  { id: "p_c1",  categoryId: "cat_clothing", text: "Hiking boots (broken in)", checked: false },
+  { id: "p_c2",  categoryId: "cat_clothing", text: "Rain jacket / waterproof layer", checked: false },
+  { id: "p_c3",  categoryId: "cat_clothing", text: "Warm fleece / mid layer", checked: false },
+  { id: "p_c4",  categoryId: "cat_clothing", text: "T-shirts (5+)", checked: false },
+  { id: "p_c5",  categoryId: "cat_clothing", text: "Shorts / trousers", checked: false },
+  { id: "p_c6",  categoryId: "cat_clothing", text: "Waterproof trousers", checked: false },
+  { id: "p_c7",  categoryId: "cat_clothing", text: "Warm hat & gloves (for Jungfraujoch)", checked: false },
+  { id: "p_c8",  categoryId: "cat_clothing", text: "Comfortable walking shoes", checked: false },
+  { id: "p_c9",  categoryId: "cat_clothing", text: "Swimwear", checked: false },
+  { id: "p_c10", categoryId: "cat_clothing", text: "Underwear & socks (7 days)", checked: false },
+  // Kids
+  { id: "p_k1", categoryId: "cat_kids", text: "Kids' hiking boots / sturdy shoes", checked: false },
+  { id: "p_k2", categoryId: "cat_kids", text: "Child medication (Calpol, antihistamine)", checked: false },
+  { id: "p_k3", categoryId: "cat_kids", text: "Snacks for travel / hikes", checked: false },
+  { id: "p_k4", categoryId: "cat_kids", text: "Books / school activity packs", checked: false },
+  { id: "p_k5", categoryId: "cat_kids", text: "Small backpack for kids", checked: false },
+  { id: "p_k6", categoryId: "cat_kids", text: "Favourite comfort toy / teddy", checked: false },
+  { id: "p_k7", categoryId: "cat_kids", text: "Travel sickness remedies", checked: false },
+  { id: "p_k8", categoryId: "cat_kids", text: "Reusable water bottles for kids", checked: false },
+  // Electronics
+  { id: "p_e1", categoryId: "cat_electronics", text: "Mobile phones + cases", checked: false },
+  { id: "p_e2", categoryId: "cat_electronics", text: "Phone chargers (x2)", checked: false },
+  { id: "p_e3", categoryId: "cat_electronics", text: "Swiss Type J adapter plugs", checked: false },
+  { id: "p_e4", categoryId: "cat_electronics", text: "Portable power bank", checked: false },
+  { id: "p_e5", categoryId: "cat_electronics", text: "Camera + memory cards", checked: false },
+  { id: "p_e6", categoryId: "cat_electronics", text: "Camera battery + charger", checked: false },
+  { id: "p_e7", categoryId: "cat_electronics", text: "Headphones / earbuds", checked: false },
+  { id: "p_e8", categoryId: "cat_electronics", text: "Tablet or e-reader", checked: false },
+  // Toiletries & Health
+  { id: "p_t1", categoryId: "cat_toiletries", text: "High SPF sunscreen (Swiss UV is intense)", checked: false },
+  { id: "p_t2", categoryId: "cat_toiletries", text: "Lip balm with SPF", checked: false },
+  { id: "p_t3", categoryId: "cat_toiletries", text: "First aid kit (plasters, antiseptic, ibuprofen)", checked: false },
+  { id: "p_t4", categoryId: "cat_toiletries", text: "Insect repellent", checked: false },
+  { id: "p_t5", categoryId: "cat_toiletries", text: "Toothbrushes & toothpaste", checked: false },
+  { id: "p_t6", categoryId: "cat_toiletries", text: "Shampoo / conditioner", checked: false },
+  { id: "p_t7", categoryId: "cat_toiletries", text: "Deodorant", checked: false },
+  { id: "p_t8", categoryId: "cat_toiletries", text: "Hand sanitiser", checked: false },
+  { id: "p_t9", categoryId: "cat_toiletries", text: "Altitude headache tablets", checked: false },
+  // Hiking & Outdoors
+  { id: "p_h1", categoryId: "cat_hiking", text: "Adult backpacks (day pack 20–30L)", checked: false },
+  { id: "p_h2", categoryId: "cat_hiking", text: "Sunglasses (UV400) for all family", checked: false },
+  { id: "p_h3", categoryId: "cat_hiking", text: "Reusable water bottles (adults)", checked: false },
+  { id: "p_h4", categoryId: "cat_hiking", text: "Hiking poles (optional)", checked: false },
+  { id: "p_h5", categoryId: "cat_hiking", text: "Lightweight picnic blanket", checked: false },
+  { id: "p_h6", categoryId: "cat_hiking", text: "Snacks / trail mix / energy bars", checked: false },
+  { id: "p_h7", categoryId: "cat_hiking", text: "Swiss railway app downloaded offline", checked: false },
+  // Misc
+  { id: "p_m1", categoryId: "cat_misc", text: "Travel cash (CHF)", checked: false },
+  { id: "p_m2", categoryId: "cat_misc", text: "Small padlock for bags", checked: false },
+  { id: "p_m3", categoryId: "cat_misc", text: "Reusable shopping bags", checked: false },
+  { id: "p_m4", categoryId: "cat_misc", text: "Travel umbrella", checked: false },
+];
+
 function sumAmounts(lines) {
   return lines.reduce((acc, l) => acc + (Number(l.amount) || 0), 0);
 }
@@ -468,6 +545,11 @@ function Chip({ active, children, onClick, tone = "default" }) {
       border: active ? "#c2410c" : "#fdba74",
       background: active ? "#c2410c" : "#fff7ed",
       color: active ? "white" : "#9a3412",
+    },
+    green: {
+      border: active ? "#15803d" : "#86efac",
+      background: active ? "#15803d" : "#f0fdf4",
+      color: active ? "white" : "#14532d",
     },
   };
 
@@ -575,6 +657,12 @@ export default function SwitzerlandTravelAppReal() {
   const [query, setQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
   const [expandedDays, setExpandedDays] = useState(() => new Set(["d1", "d4", "d8"]));
+  const [packingItems, setPackingItems] = useState(DEFAULT_PACKING_ITEMS);
+  const [packingReady, setPackingReady] = useState(false);
+  const [expandedCategories, setExpandedCategories] = useState(
+    () => new Set(DEFAULT_PACKING_CATEGORIES.map((c) => c.id))
+  );
+  const [newItemText, setNewItemText] = useState({});
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -585,6 +673,16 @@ export default function SwitzerlandTravelAppReal() {
     if (!ready || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.budget, JSON.stringify(budget));
   }, [budget, ready]);
+
+  useEffect(() => {
+    setPackingItems(readLocalStorage(STORAGE_KEYS.packing, DEFAULT_PACKING_ITEMS));
+    setPackingReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!packingReady || typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEYS.packing, JSON.stringify(packingItems));
+  }, [packingItems, packingReady]);
 
   const allTags = useMemo(() => {
     const dayTags = DEFAULT_ITINERARY.flatMap((d) => d.tags || []);
@@ -621,6 +719,17 @@ export default function SwitzerlandTravelAppReal() {
     return { income, expenses, remaining: income - expenses };
   }, [budget]);
 
+  const packingProgress = useMemo(() => {
+    const total = packingItems.length;
+    const packed = packingItems.filter((i) => i.checked).length;
+    return { total, packed, pct: total === 0 ? 0 : Math.round((packed / total) * 100) };
+  }, [packingItems]);
+
+  const daysUntilTrip = useMemo(() => {
+    const diff = Math.ceil((new Date("2026-08-22") - new Date()) / 86400000);
+    return Math.max(0, diff);
+  }, []);
+
   const toggleDay = (id) => {
     setExpandedDays((prev) => {
       const next = new Set(prev);
@@ -649,6 +758,40 @@ export default function SwitzerlandTravelAppReal() {
 
   const removeBudgetLine = (kind, id) => {
     setBudget((b) => ({ ...b, [kind]: b[kind].filter((l) => l.id !== id) }));
+  };
+
+  const togglePackingItem = (id) => {
+    setPackingItems((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, checked: !item.checked } : item))
+    );
+  };
+
+  const addPackingItem = (categoryId) => {
+    const text = (newItemText[categoryId] || "").trim();
+    if (!text) return;
+    setPackingItems((prev) => [
+      ...prev,
+      {
+        id: `packing_${Math.random().toString(16).slice(2)}`,
+        categoryId,
+        text,
+        checked: false,
+      },
+    ]);
+    setNewItemText((prev) => ({ ...prev, [categoryId]: "" }));
+  };
+
+  const removePackingItem = (id) => {
+    setPackingItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const toggleCategory = (id) => {
+    setExpandedCategories((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
   };
 
   return (
@@ -731,6 +874,10 @@ export default function SwitzerlandTravelAppReal() {
           <Chip active={activeTab === "itinerary"} onClick={() => setActiveTab("itinerary")}>Itinerary</Chip>
           <Chip active={activeTab === "travel"} onClick={() => setActiveTab("travel")} tone="warm">Flights & stay</Chip>
           <Chip active={activeTab === "budget"} onClick={() => setActiveTab("budget")}>Budget</Chip>
+          <Chip active={activeTab === "packing"} onClick={() => setActiveTab("packing")} tone="green">
+            <Package size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
+            Packing
+          </Chip>
         </div>
 
         {activeTab === "itinerary" && (
@@ -1063,6 +1210,170 @@ export default function SwitzerlandTravelAppReal() {
               />
             </div>
           </Card>
+        )}
+
+        {activeTab === "packing" && (
+          <div style={{ display: "grid", gap: 16 }}>
+
+            {/* Countdown card */}
+            <Card style={{ padding: 20, borderColor: "#fde68a", background: "linear-gradient(135deg, rgba(255,251,235,0.98), rgba(255,255,255,0.95))" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                <Timer size={32} color="#d97706" />
+                <div>
+                  <div style={{ fontSize: 30, fontWeight: 900, color: "#92400e", lineHeight: 1.1 }}>
+                    {daysUntilTrip} day{daysUntilTrip !== 1 ? "s" : ""} to go!
+                  </div>
+                  <div style={{ color: "#b45309", fontSize: 14, marginTop: 4 }}>
+                    Switzerland family holiday · departs 22 Aug 2026
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            {/* Progress card */}
+            <Card style={{ padding: 20 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <Package size={18} color="#2563eb" />
+                <div style={{ fontSize: 18, fontWeight: 800 }}>Packing list</div>
+                <SmallBadge color={packingProgress.pct === 100 ? "green" : "blue"}>
+                  {packingProgress.packed} / {packingProgress.total} packed
+                </SmallBadge>
+              </div>
+              <div style={{ background: "#e2e8f0", borderRadius: 999, height: 10, overflow: "hidden" }}>
+                <div
+                  style={{
+                    width: `${packingProgress.pct}%`,
+                    height: "100%",
+                    background: packingProgress.pct === 100 ? "#22c55e" : "#2563eb",
+                    borderRadius: 999,
+                    transition: "width 0.4s ease",
+                  }}
+                />
+              </div>
+              <div style={{ textAlign: "right", fontSize: 12, color: "#64748b", marginTop: 6 }}>
+                {packingProgress.pct}% complete
+              </div>
+            </Card>
+
+            {/* Category sections */}
+            {DEFAULT_PACKING_CATEGORIES.map((cat) => {
+              const catItems = packingItems.filter((i) => i.categoryId === cat.id);
+              const catPacked = catItems.filter((i) => i.checked).length;
+              const isOpen = expandedCategories.has(cat.id);
+              const inputVal = newItemText[cat.id] || "";
+
+              return (
+                <Card key={cat.id} style={{ padding: 16, borderRadius: 22 }}>
+                  <button
+                    onClick={() => toggleCategory(cat.id)}
+                    style={{ width: "100%", background: "transparent", border: 0, padding: 0, cursor: "pointer", textAlign: "left" }}
+                  >
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                        <Package size={18} color="#2563eb" />
+                        <span style={{ fontWeight: 800, fontSize: 16 }}>{cat.label}</span>
+                        <SmallBadge color={catPacked === catItems.length && catItems.length > 0 ? "green" : "slate"}>
+                          {catPacked}/{catItems.length}
+                        </SmallBadge>
+                      </div>
+                      <div style={{ color: "#64748b" }}>
+                        {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                      </div>
+                    </div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        style={{ overflow: "hidden" }}
+                      >
+                        <div style={{ display: "grid", gap: 6, marginTop: 14 }}>
+                          {catItems.map((item) => (
+                            <div
+                              key={item.id}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: 10,
+                                padding: "10px 12px",
+                                borderRadius: 14,
+                                border: "1px solid #e2e8f0",
+                                background: item.checked ? "rgba(240,253,244,0.9)" : "rgba(248,250,252,0.8)",
+                                transition: "background 0.2s",
+                              }}
+                            >
+                              <button
+                                onClick={() => togglePackingItem(item.id)}
+                                style={{ background: "transparent", border: 0, cursor: "pointer", padding: 0, flexShrink: 0, display: "flex" }}
+                                aria-label={item.checked ? "Unpack item" : "Pack item"}
+                              >
+                                {item.checked
+                                  ? <CheckSquare size={20} color="#22c55e" />
+                                  : <Square size={20} color="#94a3b8" />
+                                }
+                              </button>
+                              <span
+                                style={{
+                                  flex: 1,
+                                  fontSize: 14,
+                                  color: item.checked ? "#94a3b8" : "#0f172a",
+                                  textDecoration: item.checked ? "line-through" : "none",
+                                  transition: "all 0.2s",
+                                }}
+                              >
+                                {item.text}
+                              </span>
+                              <button
+                                onClick={() => removePackingItem(item.id)}
+                                style={{ background: "transparent", border: 0, cursor: "pointer", padding: 4, color: "#cbd5e1", flexShrink: 0, display: "flex" }}
+                                aria-label="Remove item"
+                              >
+                                <Trash2 size={14} />
+                              </button>
+                            </div>
+                          ))}
+
+                          {/* Add custom item row */}
+                          <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                            <TextInput
+                              value={inputVal}
+                              onChange={(e) => setNewItemText((prev) => ({ ...prev, [cat.id]: e.target.value }))}
+                              onKeyDown={(e) => { if (e.key === "Enter") addPackingItem(cat.id); }}
+                              placeholder={`Add item to ${cat.label}…`}
+                              style={{ borderRadius: 14, padding: "10px 12px", fontSize: 13 }}
+                            />
+                            <button
+                              onClick={() => addPackingItem(cat.id)}
+                              style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 6,
+                                border: "1px solid #bfdbfe",
+                                background: "#eff6ff",
+                                color: "#1d4ed8",
+                                borderRadius: 14,
+                                padding: "10px 14px",
+                                cursor: "pointer",
+                                fontWeight: 700,
+                                fontSize: 13,
+                                flexShrink: 0,
+                              }}
+                            >
+                              <Plus size={14} /> Add
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </Card>
+              );
+            })}
+          </div>
         )}
       </div>
     </div>
