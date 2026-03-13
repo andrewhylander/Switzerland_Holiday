@@ -17,6 +17,7 @@ import {
   CheckSquare,
   Square,
   Timer,
+  Cloud,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -516,6 +517,44 @@ const DEFAULT_PACKING_ITEMS = [
   { id: "p_m4", categoryId: "cat_misc", text: "Travel umbrella", checked: false },
 ];
 
+const WEATHER_LOCATIONS = [
+  { id: "grindelwald",  label: "Grindelwald",  lat: 46.6242, lon: 8.0411, elevation: "1,034m" },
+  { id: "interlaken",   label: "Interlaken",   lat: 46.6863, lon: 7.8632, elevation: "568m"   },
+  { id: "jungfraujoch", label: "Jungfraujoch", lat: 46.5472, lon: 7.9851, elevation: "3,454m" },
+  { id: "zurich",       label: "Zurich",        lat: 47.3769, lon: 8.5417, elevation: "408m"   },
+];
+
+function wmoDescription(code) {
+  if (code === 0) return { icon: "☀️",  label: "Clear sky" };
+  if (code <= 3)  return { icon: "⛅",  label: "Partly cloudy" };
+  if (code <= 48) return { icon: "🌫️", label: "Foggy" };
+  if (code <= 67) return { icon: "🌧️", label: "Rain" };
+  if (code <= 77) return { icon: "❄️",  label: "Snow" };
+  if (code <= 82) return { icon: "🌦️", label: "Showers" };
+  if (code <= 86) return { icon: "🌨️", label: "Snow showers" };
+  return          { icon: "⛈️",  label: "Thunderstorm" };
+}
+
+function groupHourlyByDay(hourly) {
+  const days = {};
+  hourly.time.forEach((timeStr, i) => {
+    const [date, time] = timeStr.split("T");
+    const hour = parseInt(time);
+    let period = null;
+    if (hour === 9)       period = "morning";
+    else if (hour === 14) period = "afternoon";
+    else if (hour === 20) period = "evening";
+    if (!period) return;
+    if (!days[date]) days[date] = {};
+    days[date][period] = {
+      temp:   Math.round(hourly.temperature_2m[i]),
+      code:   hourly.weather_code[i],
+      precip: hourly.precipitation_probability[i] ?? 0,
+    };
+  });
+  return days;
+}
+
 function sumAmounts(lines) {
   return lines.reduce((acc, l) => acc + (Number(l.amount) || 0), 0);
 }
@@ -550,6 +589,11 @@ function Chip({ active, children, onClick, tone = "default" }) {
       border: active ? "#15803d" : "#86efac",
       background: active ? "#15803d" : "#f0fdf4",
       color: active ? "white" : "#14532d",
+    },
+    sky: {
+      border: active ? "#0284c7" : "#7dd3fc",
+      background: active ? "#0284c7" : "#f0f9ff",
+      color: active ? "white" : "#0c4a6e",
     },
   };
 
@@ -663,6 +707,10 @@ export default function SwitzerlandTravelAppReal() {
     () => new Set(DEFAULT_PACKING_CATEGORIES.map((c) => c.id))
   );
   const [newItemText, setNewItemText] = useState({});
+  const [weatherLocation, setWeatherLocation] = useState("grindelwald");
+  const [weatherData, setWeatherData]         = useState(null);
+  const [weatherLoading, setWeatherLoading]   = useState(false);
+  const [weatherError, setWeatherError]       = useState(null);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -683,6 +731,23 @@ export default function SwitzerlandTravelAppReal() {
     if (!packingReady || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.packing, JSON.stringify(packingItems));
   }, [packingItems, packingReady]);
+
+  useEffect(() => {
+    if (activeTab !== "weather") return;
+    const loc = WEATHER_LOCATIONS.find((l) => l.id === weatherLocation);
+    setWeatherLoading(true);
+    setWeatherError(null);
+    setWeatherData(null);
+    fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}` +
+      `&hourly=temperature_2m,precipitation_probability,weather_code` +
+      `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max` +
+      `&timezone=Europe/Zurich&forecast_days=7`
+    )
+      .then((r) => r.json())
+      .then((data) => { setWeatherData(data); setWeatherLoading(false); })
+      .catch(() => { setWeatherError("Could not load forecast. Check your connection."); setWeatherLoading(false); });
+  }, [activeTab, weatherLocation]);
 
   const allTags = useMemo(() => {
     const dayTags = DEFAULT_ITINERARY.flatMap((d) => d.tags || []);
@@ -877,6 +942,10 @@ export default function SwitzerlandTravelAppReal() {
           <Chip active={activeTab === "packing"} onClick={() => setActiveTab("packing")} tone="green">
             <Package size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
             Packing
+          </Chip>
+          <Chip active={activeTab === "weather"} onClick={() => setActiveTab("weather")} tone="sky">
+            <Cloud size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
+            Weather
           </Chip>
         </div>
 
@@ -1373,6 +1442,122 @@ export default function SwitzerlandTravelAppReal() {
                 </Card>
               );
             })}
+          </div>
+        )}
+
+        {activeTab === "weather" && (
+          <div style={{ display: "grid", gap: 16 }}>
+
+            {/* Location selector */}
+            <Card style={{ padding: 16 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <Cloud size={18} color="#0284c7" />
+                <span style={{ fontWeight: 800, fontSize: 16 }}>7-day forecast</span>
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {WEATHER_LOCATIONS.map((loc) => (
+                  <Chip
+                    key={loc.id}
+                    active={weatherLocation === loc.id}
+                    onClick={() => setWeatherLocation(loc.id)}
+                    tone="sky"
+                  >
+                    {loc.label}
+                    <span style={{ fontSize: 11, opacity: 0.75, marginLeft: 5 }}>{loc.elevation}</span>
+                  </Chip>
+                ))}
+              </div>
+            </Card>
+
+            {/* Loading */}
+            {weatherLoading && (
+              <Card style={{ padding: 24, textAlign: "center", color: "#64748b" }}>
+                <div style={{ fontSize: 28, marginBottom: 8 }}>🌤️</div>
+                <div style={{ fontWeight: 600 }}>Loading forecast…</div>
+              </Card>
+            )}
+
+            {/* Error */}
+            {weatherError && (
+              <Card style={{ padding: 20, borderColor: "#fca5a5", background: "rgba(254,242,242,0.9)" }}>
+                <div style={{ color: "#b91c1c", fontWeight: 700 }}>⚠️ {weatherError}</div>
+              </Card>
+            )}
+
+            {/* Forecast cards */}
+            {weatherData && !weatherLoading && (
+              <div style={{ display: "grid", gap: 10 }}>
+                {(() => {
+                  const hourlyByDay = groupHourlyByDay(weatherData.hourly);
+                  return weatherData.daily.time.map((dateStr, i) => {
+                    const date = new Date(dateStr + "T12:00:00");
+                    const isToday = i === 0;
+                    const dayName = isToday ? "Today" : date.toLocaleDateString("en-IE", { weekday: "short" });
+                    const dateLabel = date.toLocaleDateString("en-IE", { day: "numeric", month: "short" });
+                    const tempMax = Math.round(weatherData.daily.temperature_2m_max[i]);
+                    const tempMin = Math.round(weatherData.daily.temperature_2m_min[i]);
+                    const periods = hourlyByDay[dateStr] || {};
+                    const periodDefs = [
+                      { key: "morning",   label: "Morning" },
+                      { key: "afternoon", label: "Afternoon" },
+                      { key: "evening",   label: "Evening" },
+                    ];
+
+                    return (
+                      <Card
+                        key={dateStr}
+                        style={{
+                          padding: "14px 18px",
+                          borderRadius: 18,
+                          borderColor: isToday ? "#7dd3fc" : "#dbeafe",
+                          background: isToday
+                            ? "linear-gradient(135deg, rgba(224,242,254,0.95), rgba(255,255,255,0.92))"
+                            : "rgba(255,255,255,0.85)",
+                        }}
+                      >
+                        {/* Header row: day + date + min/max */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
+                          <div>
+                            <span style={{ fontWeight: 800, fontSize: 15, color: isToday ? "#0284c7" : "#0f172a" }}>{dayName}</span>
+                            <span style={{ fontSize: 13, color: "#64748b", marginLeft: 8 }}>{dateLabel}</span>
+                          </div>
+                          <div style={{ fontSize: 13, color: "#475569" }}>
+                            <span style={{ fontWeight: 700, color: "#0f172a" }}>{tempMax}°</span>
+                            <span style={{ color: "#94a3b8", marginLeft: 4 }}>{tempMin}°</span>
+                          </div>
+                        </div>
+
+                        {/* Period columns */}
+                        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                          {periodDefs.map(({ key, label }) => {
+                            const p = periods[key];
+                            if (!p) return <div key={key} />;
+                            const wmo = wmoDescription(p.code);
+                            return (
+                              <div
+                                key={key}
+                                style={{
+                                  background: "rgba(248,250,252,0.7)",
+                                  borderRadius: 12,
+                                  padding: "10px 8px",
+                                  textAlign: "center",
+                                  border: "1px solid rgba(226,232,240,0.8)",
+                                }}
+                              >
+                                <div style={{ fontSize: 11, fontWeight: 700, color: "#64748b", marginBottom: 6, textTransform: "uppercase", letterSpacing: "0.04em" }}>{label}</div>
+                                <div style={{ fontSize: 22, lineHeight: 1, marginBottom: 4 }}>{wmo.icon}</div>
+                                <div style={{ fontSize: 15, fontWeight: 800, color: "#0f172a" }}>{p.temp}°</div>
+                                <div style={{ fontSize: 12, color: p.precip > 50 ? "#2563eb" : "#94a3b8", fontWeight: p.precip > 50 ? 700 : 400, marginTop: 3 }}>💧{p.precip}%</div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </Card>
+                    );
+                  });
+                })()}
+              </div>
+            )}
           </div>
         )}
       </div>
