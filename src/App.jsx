@@ -91,6 +91,7 @@ const DEFAULT_ITINERARY = [
     location: "Zurich → Interlaken Ost → Grindelwald",
     tags: ["travel", "scenic", "easy"],
     mapLocation: "Zurich Airport, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/5003_-_Grindelwald_-_View_from_Oberer_Moosgaden.JPG",
     items: [
       {
         time: "PM",
@@ -123,6 +124,7 @@ const DEFAULT_ITINERARY = [
     location: "Grindelwald / First / Bort",
     tags: ["adventure", "mountains", "cable car", "scenic", "hike"],
     mapLocation: "Firstbahn, Grindelwald, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/00_3403_Grindelwald-First_(Schweiz).jpg",
     items: [
       {
         time: "AM",
@@ -162,6 +164,7 @@ const DEFAULT_ITINERARY = [
     location: "Lauterbrunnen",
     tags: ["waterfalls", "village", "easy", "scenic", "relax"],
     mapLocation: "Lauterbrunnen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lauterbrunnen_-_Switzerland.JPG",
     items: [
       {
         time: "AM",
@@ -202,6 +205,7 @@ const DEFAULT_ITINERARY = [
     tags: ["bucket list", "high altitude", "mountains", "viewpoint"],
     highlight: true,
     mapLocation: "Jungfraujoch, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/e/ea/Jungfraubahn_-_Top_of_Europe_-_3.454m_Jungfraujoch.JPG",
     items: [
       {
         time: "AM",
@@ -241,6 +245,7 @@ const DEFAULT_ITINERARY = [
     location: "Wengen",
     tags: ["village", "easy", "scenic", "relax"],
     mapLocation: "Wengen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/70/Wengen,_3823,_Switzerland_-_panoramio_-_Michal_Gorski.jpg",
     items: [
       {
         time: "AM",
@@ -280,6 +285,7 @@ const DEFAULT_ITINERARY = [
     location: "Interlaken Ost",
     tags: ["lake", "relax", "scenic", "village"],
     mapLocation: "Interlaken Ost, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Interlaken01.JPG",
     items: [
       {
         time: "AM",
@@ -326,6 +332,7 @@ const DEFAULT_ITINERARY = [
     location: "Flexible",
     tags: ["relax", "adventure", "buffer"],
     mapLocation: "Grindelwald, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
     items: [
       {
         time: "Option 1",
@@ -365,6 +372,7 @@ const DEFAULT_ITINERARY = [
     location: "Grindelwald → Zurich Airport / Rümlang",
     tags: ["travel", "hotel"],
     mapLocation: "Holiday Inn Express Zurich Airport, Hofwisenstrasse 30, 8153 Rümlang, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Zurich_Hauptbahnhof_by_night.JPG",
     items: [
       {
         time: "Morning",
@@ -397,6 +405,7 @@ const DEFAULT_ITINERARY = [
     location: "Zurich → Dublin",
     tags: ["travel"],
     mapLocation: "Zurich Airport, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/83/Aerial_View_of_Zurich_Airport_18.02.2009_12-32-36.JPG",
     items: [
       {
         time: "Morning",
@@ -829,6 +838,16 @@ export default function SwitzerlandTravelAppReal() {
                             style={{ overflow: "hidden" }}
                           >
                             <div style={{ display: "grid", gap: 10, marginTop: 14 }}>
+                              {day.image && (
+                                <div style={{ borderRadius: 14, overflow: "hidden", height: 200, background: "#e2e8f0" }}>
+                                  <img
+                                    src={day.image}
+                                    alt={day.title}
+                                    style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                                    onError={(e) => { e.target.style.display = "none"; }}
+                                  />
+                                </div>
+                              )}
                               {day.items.map((item, idx) => (
                                 <div
                                   key={`${day.id}_${idx}`}
