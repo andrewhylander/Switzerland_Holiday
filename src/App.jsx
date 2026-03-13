@@ -18,6 +18,7 @@ import {
   Square,
   Timer,
   Cloud,
+  Utensils,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -29,6 +30,7 @@ const CHF = new Intl.NumberFormat("de-CH", {
 const STORAGE_KEYS = {
   budget: "swiss-trip-budget-v2",
   packing: "swiss-trip-packing-v1",
+  venues: "swiss-trip-venues-v1",
 };
 
 const TRIP_INFO = {
@@ -555,6 +557,40 @@ function groupHourlyByDay(hourly) {
   return days;
 }
 
+const DAY_FOOD_LOCATIONS = {
+  d1: "Grindelwald",
+  d2: "Grindelwald",
+  d3: "Lauterbrunnen",
+  d4: "Grindelwald",
+  d5: "Wengen",
+  d6: "Interlaken",
+  d7: "Grindelwald",
+  d8: "Zurich",
+  d9: "Zurich",
+};
+
+const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Wengen", "Interlaken", "Zurich"];
+
+const VENUE_TYPES = {
+  restaurant: { icon: "🍽️", label: "Restaurant" },
+  cafe:       { icon: "☕", label: "Café" },
+  bakery:     { icon: "🥐", label: "Bakery" },
+  bar:        { icon: "🍺", label: "Bar & Drinks" },
+};
+
+const DEFAULT_VENUES = [
+  { id: "v1",  name: "Restaurant Grindelwaldblick", type: "restaurant", location: "Grindelwald",    notes: "Traditional Swiss food with mountain views. Great for dinner." },
+  { id: "v2",  name: "Café Bar 3692",               type: "cafe",       location: "Grindelwald",    notes: "Relaxed café in the village. Good coffee and snacks." },
+  { id: "v3",  name: "Bäckerei Fuchs",              type: "bakery",     location: "Grindelwald",    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
+  { id: "v4",  name: "Restaurant Silberhorn",        type: "restaurant", location: "Lauterbrunnen", notes: "Classic Swiss restaurant in the village centre." },
+  { id: "v5",  name: "Café Staubach",               type: "cafe",       location: "Lauterbrunnen", notes: "Cosy café near the Staubbach waterfall." },
+  { id: "v6",  name: "Restaurant Bernerhof",         type: "restaurant", location: "Wengen",        notes: "Good views and traditional food. Car-free village — enjoy the quiet." },
+  { id: "v7",  name: "Café Schuh",                  type: "cafe",       location: "Interlaken",    notes: "Iconic Interlaken patisserie & café since 1818. Must visit." },
+  { id: "v8",  name: "Restaurant Laterne",           type: "restaurant", location: "Interlaken",    notes: "Traditional Swiss restaurant, central location." },
+  { id: "v9",  name: "Café Sprüngli",               type: "cafe",       location: "Zurich",        notes: "Famous Swiss café on Paradeplatz — classic Zurich stop." },
+  { id: "v10", name: "Zeughauskeller",              type: "restaurant", location: "Zurich",        notes: "Historic beer hall restaurant in the old armoury. Great atmosphere." },
+];
+
 function sumAmounts(lines) {
   return lines.reduce((acc, l) => acc + (Number(l.amount) || 0), 0);
 }
@@ -594,6 +630,11 @@ function Chip({ active, children, onClick, tone = "default" }) {
       border: active ? "#0284c7" : "#7dd3fc",
       background: active ? "#0284c7" : "#f0f9ff",
       color: active ? "white" : "#0c4a6e",
+    },
+    amber: {
+      border: active ? "#b45309" : "#fcd34d",
+      background: active ? "#b45309" : "#fffbeb",
+      color: active ? "white" : "#78350f",
     },
   };
 
@@ -711,6 +752,12 @@ export default function SwitzerlandTravelAppReal() {
   const [weatherData, setWeatherData]         = useState(null);
   const [weatherLoading, setWeatherLoading]   = useState(false);
   const [weatherError, setWeatherError]       = useState(null);
+  const [venues, setVenues]                   = useState(DEFAULT_VENUES);
+  const [venuesReady, setVenuesReady]         = useState(false);
+  const [venueFilter, setVenueFilter]         = useState("Grindelwald");
+  const [lastViewedDayId, setLastViewedDayId] = useState("d1");
+  const [showAddVenue, setShowAddVenue]       = useState(false);
+  const [newVenue, setNewVenue]               = useState({ name: "", type: "restaurant", location: "Grindelwald", notes: "" });
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -731,6 +778,16 @@ export default function SwitzerlandTravelAppReal() {
     if (!packingReady || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.packing, JSON.stringify(packingItems));
   }, [packingItems, packingReady]);
+
+  useEffect(() => {
+    setVenues(readLocalStorage(STORAGE_KEYS.venues, DEFAULT_VENUES));
+    setVenuesReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!venuesReady || typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEYS.venues, JSON.stringify(venues));
+  }, [venues, venuesReady]);
 
   useEffect(() => {
     if (activeTab !== "weather") return;
@@ -798,8 +855,12 @@ export default function SwitzerlandTravelAppReal() {
   const toggleDay = (id) => {
     setExpandedDays((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+        setLastViewedDayId(id);
+      }
       return next;
     });
   };
@@ -858,6 +919,17 @@ export default function SwitzerlandTravelAppReal() {
       return next;
     });
   };
+
+  const suggestedFoodLocation = DAY_FOOD_LOCATIONS[lastViewedDayId] || "Grindelwald";
+
+  const addVenue = () => {
+    if (!newVenue.name.trim()) return;
+    setVenues((prev) => [...prev, { ...newVenue, id: `v_${Math.random().toString(16).slice(2)}`, name: newVenue.name.trim() }]);
+    setNewVenue({ name: "", type: "restaurant", location: venueFilter === "all" ? "Grindelwald" : venueFilter, notes: "" });
+    setShowAddVenue(false);
+  };
+
+  const removeVenue = (id) => setVenues((prev) => prev.filter((v) => v.id !== id));
 
   return (
     <div
@@ -946,6 +1018,10 @@ export default function SwitzerlandTravelAppReal() {
           <Chip active={activeTab === "weather"} onClick={() => setActiveTab("weather")} tone="sky">
             <Cloud size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
             Weather
+          </Chip>
+          <Chip active={activeTab === "food"} onClick={() => { setVenueFilter(suggestedFoodLocation); setActiveTab("food"); }} tone="amber">
+            <Utensils size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
+            Food & Coffee
           </Chip>
         </div>
 
@@ -1558,6 +1634,161 @@ export default function SwitzerlandTravelAppReal() {
                 })()}
               </div>
             )}
+          </div>
+        )}
+
+        {activeTab === "food" && (
+          <div style={{ display: "grid", gap: 16 }}>
+
+            {/* Smart location context banner */}
+            <Card style={{ padding: 16 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+                <Utensils size={18} color="#b45309" />
+                <span style={{ fontWeight: 800, fontSize: 16 }}>Food & Coffee</span>
+                <span style={{ fontSize: 13, color: "#92400e", background: "#fef3c7", borderRadius: 999, padding: "2px 10px", fontWeight: 600 }}>
+                  Near {venueFilter === "all" ? "all locations" : venueFilter}
+                </span>
+              </div>
+              <div style={{ fontSize: 13, color: "#64748b", marginBottom: 12 }}>
+                Suggested based on your last viewed day ·{" "}
+                <button
+                  onClick={() => setVenueFilter(suggestedFoodLocation)}
+                  style={{ background: "none", border: "none", color: "#b45309", fontWeight: 700, cursor: "pointer", padding: 0, fontSize: 13 }}
+                >
+                  Switch to {suggestedFoodLocation}
+                </button>
+              </div>
+              {/* Location filter chips */}
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <Chip active={venueFilter === "all"} onClick={() => setVenueFilter("all")} tone="amber">All</Chip>
+                {FOOD_LOCATIONS.map((loc) => (
+                  <Chip key={loc} active={venueFilter === loc} onClick={() => setVenueFilter(loc)} tone="amber">{loc}</Chip>
+                ))}
+              </div>
+            </Card>
+
+            {/* Venue cards */}
+            <div style={{ display: "grid", gap: 10 }}>
+              {venues.filter((v) => venueFilter === "all" || v.location === venueFilter).map((venue) => {
+                const vt = VENUE_TYPES[venue.type] || VENUE_TYPES.restaurant;
+                return (
+                  <Card key={venue.id} style={{ padding: "14px 16px", borderRadius: 18 }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+                      <div style={{ fontSize: 26, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{vt.icon}</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginBottom: 4 }}>
+                          <span style={{ fontWeight: 800, fontSize: 15 }}>{venue.name}</span>
+                          <SmallBadge color="amber">{vt.label}</SmallBadge>
+                          {venueFilter === "all" && <SmallBadge color="slate">{venue.location}</SmallBadge>}
+                        </div>
+                        {venue.notes && (
+                          <div style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>{venue.notes}</div>
+                        )}
+                      </div>
+                      <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
+                        <a
+                          href={mapHref(`${venue.name} ${venue.location} Switzerland`)}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{ display: "inline-flex", alignItems: "center", gap: 4, fontSize: 12, fontWeight: 700, color: "#1d4ed8", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "6px 10px", textDecoration: "none" }}
+                        >
+                          <MapPin size={12} /> Map
+                        </a>
+                        <button
+                          onClick={() => removeVenue(venue.id)}
+                          style={{ display: "inline-flex", alignItems: "center", background: "transparent", border: "1px solid #e2e8f0", borderRadius: 10, padding: "6px 8px", cursor: "pointer", color: "#94a3b8" }}
+                          aria-label="Remove venue"
+                        >
+                          <Trash2 size={12} />
+                        </button>
+                      </div>
+                    </div>
+                  </Card>
+                );
+              })}
+
+              {venues.filter((v) => venueFilter === "all" || v.location === venueFilter).length === 0 && (
+                <Card style={{ padding: 24, textAlign: "center", color: "#64748b" }}>
+                  <div style={{ fontSize: 28, marginBottom: 8 }}>🍽️</div>
+                  <div style={{ fontWeight: 600 }}>No venues yet for {venueFilter}</div>
+                  <div style={{ fontSize: 13, marginTop: 4 }}>Add your first one below!</div>
+                </Card>
+              )}
+            </div>
+
+            {/* Add venue section */}
+            <Card style={{ padding: 16, borderRadius: 22 }}>
+              {!showAddVenue ? (
+                <button
+                  onClick={() => { setShowAddVenue(true); setNewVenue((v) => ({ ...v, location: venueFilter === "all" ? "Grindelwald" : venueFilter })); }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fffbeb", border: "1px solid #fcd34d", color: "#78350f", borderRadius: 14, padding: "10px 16px", cursor: "pointer", fontWeight: 700, fontSize: 14 }}
+                >
+                  <Plus size={15} /> Add venue
+                </button>
+              ) : (
+                <div style={{ display: "grid", gap: 10 }}>
+                  <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 2 }}>Add a venue</div>
+                  <TextInput
+                    placeholder="Venue name"
+                    value={newVenue.name}
+                    onChange={(e) => setNewVenue((v) => ({ ...v, name: e.target.value }))}
+                    onKeyDown={(e) => { if (e.key === "Enter") addVenue(); }}
+                  />
+                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                    <select
+                      value={newVenue.type}
+                      onChange={(e) => setNewVenue((v) => ({ ...v, type: e.target.value }))}
+                      style={{ borderRadius: 12, border: "1px solid #e2e8f0", padding: "10px 12px", fontSize: 14, background: "white" }}
+                    >
+                      {Object.entries(VENUE_TYPES).map(([key, { label }]) => (
+                        <option key={key} value={key}>{label}</option>
+                      ))}
+                    </select>
+                    <select
+                      value={newVenue.location}
+                      onChange={(e) => setNewVenue((v) => ({ ...v, location: e.target.value }))}
+                      style={{ borderRadius: 12, border: "1px solid #e2e8f0", padding: "10px 12px", fontSize: 14, background: "white" }}
+                    >
+                      {FOOD_LOCATIONS.map((loc) => (
+                        <option key={loc} value={loc}>{loc}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <TextInput
+                    placeholder="Notes (optional)"
+                    value={newVenue.notes}
+                    onChange={(e) => setNewVenue((v) => ({ ...v, notes: e.target.value }))}
+                  />
+                  <div style={{ display: "flex", gap: 8 }}>
+                    <button
+                      onClick={addVenue}
+                      style={{ flex: 1, background: "#b45309", color: "white", border: "none", borderRadius: 12, padding: "10px 0", fontWeight: 700, fontSize: 14, cursor: "pointer" }}
+                    >
+                      Add
+                    </button>
+                    <button
+                      onClick={() => setShowAddVenue(false)}
+                      style={{ background: "#f1f5f9", color: "#475569", border: "1px solid #e2e8f0", borderRadius: 12, padding: "10px 16px", fontWeight: 600, fontSize: 14, cursor: "pointer" }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              )}
+            </Card>
+
+            {/* Find more on maps */}
+            <div style={{ textAlign: "center", paddingBottom: 8 }}>
+              <a
+                href={mapHref(`restaurants cafes ${venueFilter === "all" ? "Grindelwald" : venueFilter} Switzerland`)}
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 700, color: "#b45309", textDecoration: "none" }}
+              >
+                <ExternalLink size={13} /> Find more venues on Google Maps
+              </a>
+            </div>
+
           </div>
         )}
       </div>
