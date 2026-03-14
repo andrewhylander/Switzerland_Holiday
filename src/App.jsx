@@ -1373,8 +1373,8 @@ export default function SwitzerlandTravelAppReal() {
                                 {day.date}
                               </div>
                               <SmallBadge color={day.highlight ? "amber" : "blue"}>{day.title}</SmallBadge>
-                              <SmallBadge color="slate">
-                                <MapPin size={12} /> {day.base}
+                              <SmallBadge color="green">
+                                🏠 Base: {day.base}
                               </SmallBadge>
                             </div>
                             <div style={{ color: "#475569", fontSize: 14 }}>{day.location}</div>
