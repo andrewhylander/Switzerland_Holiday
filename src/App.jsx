@@ -621,7 +621,7 @@ const DEFAULT_VENUES = [
 
 const MAP_PLACES = [
   // 🏠 STAY
-  { id: "mp0",  cat: "stay",       emoji: "🏠", name: "Alpenglück Chalet (Airbnb)",        location: "Grindelwald",          lat: 46.6242, lng: 8.0411,  mission: "Home base for the adventure",                notes: "GrindelwaldHome Alpenglück — your base for the whole trip. Stunning Eiger views." },
+  { id: "mp0",  cat: "stay",       emoji: "🏠", name: "Alpenglück Chalet (Airbnb)",        location: "Grindelwald",          lat: 46.6253, lng: 8.0383,  mission: "Home base for the adventure",                notes: "GrindelwaldHome Alpenglück — your base for the whole trip. Stunning Eiger views." },
   // ☕ CAFÉS
   { id: "mp1",  cat: "cafe",       emoji: "☕", name: "Barry's",                            location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Try a chocolate dessert",                    notes: "Great desserts and hot chocolate. Central location." },
   { id: "mp2",  cat: "cafe",       emoji: "☕", name: "Bergrestaurant First",               location: "Grindelwald First",    lat: 46.6587, lng: 8.0506,  mission: "Drink hot chocolate above the clouds",       notes: "Huge terrace and incredible mountain views." },
@@ -638,7 +638,7 @@ const MAP_PLACES = [
   { id: "mp11", cat: "waterfall",  emoji: "🚟", name: "Giessbach Falls",                   location: "Brienz",               lat: 46.7178, lng: 7.9844,  mission: "Ride the oldest funicular to a waterfall",   notes: "Stunning falls above Lake Brienz. Historic funicular up to the viewpoint." },
   { id: "mp12", cat: "waterfall",  emoji: "🔍", name: "Reichenbach Falls",                 location: "Meiringen",            lat: 46.7238, lng: 8.1811,  mission: "Find the Sherlock Holmes waterfall",         notes: "Famous Sherlock Holmes location. Cable car up, dramatic views." },
   // 🚉 TRAIN STATIONS & GONDOLAS
-  { id: "mp24", cat: "station",    emoji: "🚉", name: "Grindelwald Terminal",              location: "Grindelwald",          lat: 46.6242, lng: 8.0411,  mission: "Catch the Eiger Express gondola here",       notes: "Main station in Grindelwald. Eiger Express gondola to Männlichen departs here." },
+  { id: "mp24", cat: "station",    emoji: "🚉", name: "Grindelwald Terminal",              location: "Grindelwald",          lat: 46.6237, lng: 8.0393,  mission: "Catch the Eiger Express gondola here",       notes: "Main station in Grindelwald. Eiger Express gondola to Männlichen departs here." },
   { id: "mp25", cat: "station",    emoji: "🚞", name: "Kleine Scheidegg Station",          location: "Kleine Scheidegg",     lat: 46.5854, lng: 7.9603,  mission: "Change here for the Jungfraujoch train",     notes: "Change point for the Jungfraubahn to Jungfraujoch. Great views from the platform." },
   { id: "mp26", cat: "station",    emoji: "🚂", name: "Lauterbrunnen Station",             location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9094,  mission: "Gateway to Mürren and Wengen",               notes: "Hub for Bernese Oberland. Trains to Wengen, cable car to Grütschalp for Mürren." },
   { id: "mp27", cat: "station",    emoji: "🚞", name: "Wengen Station",                    location: "Wengen",               lat: 46.6066, lng: 7.9204,  mission: "Arrive in a car-free mountain village",      notes: "Car-free village. Rack railway from Lauterbrunnen. Connect to Kleine Scheidegg." },
