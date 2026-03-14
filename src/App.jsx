@@ -886,7 +886,10 @@ export default function SwitzerlandTravelAppReal() {
   useEffect(() => {
     const saved = (() => { try { return JSON.parse(window.localStorage.getItem(STORAGE_KEYS.quest)); } catch { return null; } })();
     if (saved && saved.items) {
-      setQuestItems(saved.items);
+      // Merge in any new default items not yet in the saved list
+      const savedIds = new Set(saved.items.map((q) => q.id));
+      const merged = [...saved.items, ...DEFAULT_QUEST_ITEMS.filter((q) => !savedIds.has(q.id))];
+      setQuestItems(merged);
       if (saved.kidNames) setKidNames(saved.kidNames);
     }
     setQuestReady(true);
@@ -1063,10 +1066,26 @@ export default function SwitzerlandTravelAppReal() {
         setQuestPopId(id);
         setQuestPopMsg(item.cheer || "⭐ Wunderbar! 🇨🇭");
         setTimeout(() => setQuestPopId(null), 3600);
-        if (item.sound === "moo" && typeof speechSynthesis !== "undefined") {
-          const u = new SpeechSynthesisUtterance("Moooo");
-          u.pitch = 0.4; u.rate = 0.55;
-          speechSynthesis.speak(u);
+        if (item.sound === "moo") {
+          try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = "sawtooth";
+            const t = ctx.currentTime;
+            osc.frequency.setValueAtTime(155, t);
+            osc.frequency.linearRampToValueAtTime(125, t + 0.35);
+            osc.frequency.linearRampToValueAtTime(145, t + 0.75);
+            osc.frequency.linearRampToValueAtTime(105, t + 1.3);
+            gain.gain.setValueAtTime(0, t);
+            gain.gain.linearRampToValueAtTime(0.28, t + 0.05);
+            gain.gain.linearRampToValueAtTime(0.22, t + 0.9);
+            gain.gain.linearRampToValueAtTime(0, t + 1.4);
+            osc.start(t);
+            osc.stop(t + 1.4);
+          } catch (_) {}
         }
       }
       return prev.map((q) =>
@@ -2219,7 +2238,17 @@ export default function SwitzerlandTravelAppReal() {
 
               {/* Playgrounds */}
               <Card style={{ padding: 18 }}>
-                <div style={{ fontWeight: 800, fontSize: 16, color: "#4c1d95", marginBottom: 14 }}>🛝 Playgrounds near Grindelwald</div>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14, flexWrap: "wrap", gap: 8 }}>
+                  <div style={{ fontWeight: 800, fontSize: 16, color: "#4c1d95" }}>🛝 Playgrounds near Grindelwald</div>
+                  <a
+                    href="https://www.google.com/maps/search/playground+near+me"
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 12px", borderRadius: 999, background: "#7c3aed", color: "white", textDecoration: "none", fontWeight: 700, fontSize: 12 }}
+                  >
+                    <MapPin size={12} /> Playground near me
+                  </a>
+                </div>
                 <div style={{ display: "grid", gap: 12 }}>
                   {[
                     { name: "Männlichen Cow Playground", desc: "Iconic alpine playground with a cow slide! 🐄 At Männlichen summit after the gondola.", map: "Männlichen Cow Playground Switzerland" },
