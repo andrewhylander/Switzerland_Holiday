@@ -899,6 +899,7 @@ export default function SwitzerlandTravelAppReal() {
   const [mapGeoLocating, setMapGeoLocating]   = useState(false);
   const [mapUserCoords, setMapUserCoords]     = useState(null);
   const [mapViewMode, setMapViewMode]         = useState("list");
+  const [mapFullscreen, setMapFullscreen]     = useState(false);
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -1010,7 +1011,7 @@ export default function SwitzerlandTravelAppReal() {
       marker.addTo(map);
       leafletMarkersRef.current.push(marker);
     });
-  }, [activeTab, mapViewMode, mapCategory]);
+  }, [activeTab, mapViewMode, mapCategory, mapFullscreen]);
 
   useEffect(() => {
     if (activeTab !== "weather") return;
@@ -2417,6 +2418,15 @@ export default function SwitzerlandTravelAppReal() {
                       {mode === "list" ? "☰ List" : "🗺️ Map"}
                     </button>
                   ))}
+                  {mapViewMode === "map" && (
+                    <button onClick={() => setMapFullscreen((f) => !f)} style={{
+                      background: "rgba(255,255,255,0.2)", color: "white",
+                      border: "none", borderRadius: 10, padding: "7px 12px",
+                      fontWeight: 700, fontSize: 15, cursor: "pointer",
+                    }}>
+                      {mapFullscreen ? "✕" : "⛶"}
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -2479,10 +2489,25 @@ export default function SwitzerlandTravelAppReal() {
 
               {/* Leaflet map */}
               {mapViewMode === "map" && (
-                <div
-                  ref={leafletContainerRef}
-                  style={{ height: 420, borderRadius: 16, overflow: "hidden", border: "1.5px solid #e2e8f0", zIndex: 0 }}
-                />
+                <div style={mapFullscreen ? {
+                  position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
+                  zIndex: 9998, background: "white",
+                } : {}}>
+                  {mapFullscreen && (
+                    <button onClick={() => setMapFullscreen(false)} style={{
+                      position: "absolute", top: 12, right: 12, zIndex: 9999,
+                      background: "white", border: "none", borderRadius: 10,
+                      padding: "8px 14px", fontWeight: 800, fontSize: 15,
+                      cursor: "pointer", boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+                    }}>✕ Close</button>
+                  )}
+                  <div
+                    ref={leafletContainerRef}
+                    style={mapFullscreen
+                      ? { width: "100%", height: "100%", zIndex: 0 }
+                      : { height: 420, borderRadius: 16, overflow: "hidden", border: "1.5px solid #e2e8f0", zIndex: 0 }}
+                  />
+                </div>
               )}
 
               {/* Place cards (list mode only) */}
