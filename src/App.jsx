@@ -1,4 +1,6 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import {
   CalendarDays,
   MapPin,
@@ -896,6 +898,10 @@ export default function SwitzerlandTravelAppReal() {
   const [mapCategory, setMapCategory]         = useState("all");
   const [mapGeoLocating, setMapGeoLocating]   = useState(false);
   const [mapUserCoords, setMapUserCoords]     = useState(null);
+  const [mapViewMode, setMapViewMode]         = useState("list");
+  const leafletContainerRef                   = useRef(null);
+  const leafletInstanceRef                    = useRef(null);
+  const leafletMarkersRef                     = useRef([]);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -953,6 +959,58 @@ export default function SwitzerlandTravelAppReal() {
     if (!questReady || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.quest, JSON.stringify({ items: questItems, kidNames }));
   }, [questItems, kidNames, questReady]);
+
+  useEffect(() => {
+    if (activeTab !== "map" || mapViewMode !== "map") return;
+    const container = leafletContainerRef.current;
+    if (!container) return;
+
+    const CAT_ACCENT = {
+      stay: "#c2410c", cafe: "#b45309", adventure: "#c0152a",
+      waterfall: "#0284c7", playground: "#7c3aed", station: "#475569",
+    };
+
+    if (!leafletInstanceRef.current) {
+      const map = L.map(container, { center: [46.6242, 8.0411], zoom: 11 });
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 18,
+      }).addTo(map);
+      leafletInstanceRef.current = map;
+    } else {
+      setTimeout(() => leafletInstanceRef.current.invalidateSize(), 50);
+    }
+
+    const map = leafletInstanceRef.current;
+    leafletMarkersRef.current.forEach((m) => m.remove());
+    leafletMarkersRef.current = [];
+
+    const filtered = MAP_PLACES.filter((p) => mapCategory === "all" || p.cat === mapCategory);
+    filtered.forEach((place) => {
+      const accent = CAT_ACCENT[place.cat] || "#475569";
+      const icon = L.divIcon({
+        html: `<div style="font-size:20px;background:white;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:2.5px solid ${accent};box-shadow:0 2px 8px rgba(0,0,0,0.25);">${place.emoji}</div>`,
+        className: "",
+        iconSize: [34, 34],
+        iconAnchor: [17, 17],
+        popupAnchor: [0, -20],
+      });
+      const marker = L.marker([place.lat, place.lng], { icon });
+      marker.bindPopup(`
+        <div style="font-family:'Helvetica Neue',sans-serif;min-width:170px;padding:2px 0;">
+          <div style="font-weight:800;font-size:14px;margin-bottom:3px;">${place.emoji} ${place.name}</div>
+          <div style="color:#6b7280;font-size:12px;margin-bottom:5px;">📍 ${place.location}</div>
+          <div style="color:${accent};font-weight:700;font-size:12px;margin-bottom:8px;">🎯 ${place.mission}</div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}" target="_blank"
+            style="background:${accent};color:white;padding:5px 12px;border-radius:8px;text-decoration:none;font-weight:700;font-size:12px;display:inline-block;">
+            Directions →
+          </a>
+        </div>
+      `);
+      marker.addTo(map);
+      leafletMarkersRef.current.push(marker);
+    });
+  }, [activeTab, mapViewMode, mapCategory]);
 
   useEffect(() => {
     if (activeTab !== "weather") return;
@@ -2342,9 +2400,23 @@ export default function SwitzerlandTravelAppReal() {
           return (
             <div style={{ display: "grid", gap: 16 }}>
               {/* Header */}
-              <div style={{ background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)", borderRadius: 18, padding: "20px 20px 16px", color: "white" }}>
-                <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 4 }}>🗺️ Swiss Adventure Map</div>
-                <div style={{ fontSize: 13, opacity: 0.88 }}>Find places, get directions, discover missions</div>
+              <div style={{ background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)", borderRadius: 18, padding: "20px 20px 16px", color: "white", display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 10 }}>
+                <div>
+                  <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 4 }}>🗺️ Swiss Adventure Map</div>
+                  <div style={{ fontSize: 13, opacity: 0.88 }}>Find places, get directions, discover missions</div>
+                </div>
+                <div style={{ display: "flex", gap: 6 }}>
+                  {["list", "map"].map((mode) => (
+                    <button key={mode} onClick={() => setMapViewMode(mode)} style={{
+                      background: mapViewMode === mode ? "white" : "rgba(255,255,255,0.2)",
+                      color: mapViewMode === mode ? "#0369a1" : "white",
+                      border: "none", borderRadius: 10, padding: "7px 14px",
+                      fontWeight: 700, fontSize: 13, cursor: "pointer",
+                    }}>
+                      {mode === "list" ? "☰ List" : "🗺️ Map"}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Category filters + Near Me */}
@@ -2404,8 +2476,16 @@ export default function SwitzerlandTravelAppReal() {
                 )}
               </Card>
 
-              {/* Place cards */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 12 }}>
+              {/* Leaflet map */}
+              {mapViewMode === "map" && (
+                <div
+                  ref={leafletContainerRef}
+                  style={{ height: 420, borderRadius: 16, overflow: "hidden", border: "1.5px solid #e2e8f0", zIndex: 0 }}
+                />
+              )}
+
+              {/* Place cards (list mode only) */}
+              {mapViewMode === "list" && <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 12 }}>
                 {filtered.map((place) => {
                   const meta = CAT_META[place.cat] || CAT_META.all;
                   const dist = mapUserCoords
@@ -2470,9 +2550,9 @@ export default function SwitzerlandTravelAppReal() {
                     </div>
                   );
                 })}
-              </div>
+              </div>}
 
-              {filtered.length === 0 && (
+              {mapViewMode === "list" && filtered.length === 0 && (
                 <div style={{ textAlign: "center", color: "#94a3b8", padding: 40, fontSize: 15 }}>No places in this category yet.</div>
               )}
             </div>
