@@ -592,12 +592,20 @@ const MEAL_TYPES = [
 ];
 
 const DEFAULT_VENUES = [
-  // Grindelwald
-  { id: "v1",  name: "Barry's Restaurant, Bar & Lounge", type: "restaurant", location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "drinks"], notes: "Landmark Hotel Eiger restaurant. Swiss fondue, tomahawk steak, own-brand gin. Legendary bar since the 1960s. Breakfast buffet from 7am." },
+  // Grindelwald — Dinner & Evening
+  { id: "v1",  name: "Barry's Restaurant, Bar & Lounge", type: "restaurant", location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "drinks"], notes: "Landmark Hotel Eiger restaurant. Swiss fondue, tomahawk steak, own-brand gin. Legendary bar since the 1960s. Ask for the chocolate fondue dessert. Breakfast buffet from 7am." },
+  { id: "v21", name: "Avocado Bar",                      type: "bar",        location: "Grindelwald",    meals: ["dinner", "drinks"],                       notes: "Grindelwald's liveliest evening spot. Craft cocktails, juicy burgers, loaded fries. Great terrace on Dorfstrasse. Popular with families and après-ski crowd alike. Busy in summer — worth arriving early." },
+  { id: "v22", name: "Restaurant Hotel Spinne",          type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Well-loved Grindelwald classic on Dorfstrasse. Excellent cheese and chocolate fondue, raclette, and rösti. Ask for chocolate fondue with strawberries — a real treat for the kids. Good wine list." },
+  { id: "v23", name: "Restaurant Schmitte",              type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Cosy chalet-style restaurant at Hotel Schmitte. Reliable Swiss classics — schnitzel, rösti, bratwurst. Central location, family-friendly, reasonably priced for Grindelwald." },
+  { id: "v24", name: "Restaurant Grindelwaldblick",      type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Panoramic terrace with direct Eiger views. Traditional Swiss menu with seasonal specials. One of the best photo backdrops for a meal in the village. Book ahead for terrace tables." },
+  // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
   { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
+  // Grindelwald — Mountain Restaurants
   { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
   { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views." },
+  { id: "v25", name: "Berggasthaus Männlichen",          type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right beside the Männlichen gondola station. Huge south-facing terrace with panoramic Grindelwald valley views. Great spot for lunch before or after the Royal Walk. Rösti, soup, and kids' plates." },
+  { id: "v26", name: "Restaurant Kleine Scheidegg",      type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Iconic mountain lunch stop with the Eiger north face right in front of you. Rösti and soup are the locals' choice. Unmissable photo backdrop — rack railway on one side, Eiger on the other." },
   // Lauterbrunnen
   { id: "v4",  name: "Airtime Café",                     type: "cafe",       location: "Lauterbrunnen", meals: ["breakfast", "coffee", "lunch"],            notes: "Terrace overlooking Staubbach Falls. Famous for cinnamon rolls — perfect refuel after hiking." },
   { id: "v5",  name: "Restaurant Oberland",              type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Village favourite. Cosy chalet ambience, fondue, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner." },
@@ -608,7 +616,7 @@ const DEFAULT_VENUES = [
   { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
   { id: "v16", name: "Café Restaurant Waldschlucht",     type: "cafe",       location: "Wengen",        meals: ["breakfast", "coffee", "lunch"],            notes: "Warm and welcoming. Known for flavourful soups and cosy ambiance. Great after a hike." },
   // Interlaken
-  { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Iconic Interlaken patisserie & café since 1818. Mountain views, exquisite pastries, Swiss dishes. A must-visit." },
+  { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Iconic Interlaken patisserie & café since 1818. Famous for chocolate fondue with strawberries — arguably the best in the region. Mountain views from the terrace. A special treat for the kids." },
   { id: "v17", name: "Velo Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Trendy local favourite. Italian espresso, homemade granola with local yogurt, popular vegan options." },
   { id: "v18", name: "Bäckerei Steininger",              type: "bakery",     location: "Interlaken",    meals: ["breakfast", "coffee"],                    notes: "Fresh-baked daily. Excellent quiche and pastries. Short walk from central Interlaken." },
   { id: "v8",  name: "Restaurant Taverne",               type: "restaurant", location: "Interlaken",    meals: ["lunch", "dinner"],                        notes: "Authentic Swiss fondue and traditional cuisine in a classic Bernese Oberland setting." },
@@ -651,6 +659,15 @@ const MAP_PLACES = [
   { id: "mp16", cat: "adventure",  emoji: "🏘️", name: "Mürren Village",                   location: "Mürren",               lat: 46.5592, lng: 7.8928,  mission: "Visit a car-free Swiss mountain village",    notes: "Magical traffic-free village. Stunning Eiger views. Reach by cable car + train." },
   { id: "mp17", cat: "adventure",  emoji: "🧊", name: "Aletsch Glacier Viewpoint",         location: "Jungfraujoch",         lat: 46.5376, lng: 8.0215,  mission: "See the longest glacier in the Alps",        notes: "23km long glacier visible from Jungfraujoch. Breathtaking scale." },
   { id: "mp18", cat: "adventure",  emoji: "🎬", name: "Schilthorn (Piz Gloria)",           location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the revolving James Bond restaurant", notes: "Famous 007 filming location. Revolving restaurant with 360° views." },
+  // 🍽️ RESTAURANTS & DINNER
+  { id: "mp31", cat: "restaurant", emoji: "🍹", name: "Avocado Bar",                          location: "Grindelwald",          lat: 46.6238, lng: 8.0409,  mission: "Order a cocktail after a big mountain day",  notes: "Grindelwald's top evening spot. Craft cocktails, burgers, loaded fries. Great Dorfstrasse terrace. Arrive early — it fills up fast in summer." },
+  { id: "mp32", cat: "restaurant", emoji: "🍫", name: "Restaurant Hotel Spinne",              location: "Grindelwald",          lat: 46.6248, lng: 8.0418,  mission: "Get chocolate fondue with strawberries 🍓",  notes: "Best chocolate fondue in Grindelwald. Ask for the fondue dessert with strawberries — kids absolutely love it. Also great cheese fondue and raclette." },
+  { id: "mp33", cat: "restaurant", emoji: "🍕", name: "Restaurant Schmitte",                  location: "Grindelwald",          lat: 46.6243, lng: 8.0420,  mission: "Cosy chalet dinner in the village",          notes: "Reliable Swiss classics — schnitzel, rösti, bratwurst. Central, family-friendly, and good value for Grindelwald." },
+  { id: "mp34", cat: "restaurant", emoji: "🏔️", name: "Restaurant Grindelwaldblick",          location: "Grindelwald",          lat: 46.6252, lng: 8.0424,  mission: "Eat dinner with an Eiger view",              notes: "Panoramic terrace with direct Eiger views. One of the best photo backdrops for dinner in the village. Book terrace tables ahead." },
+  { id: "mp35", cat: "restaurant", emoji: "🍓", name: "Grand Café Schuh",                     location: "Interlaken",           lat: 46.6863, lng: 7.8629,  mission: "Try the legendary chocolate fondue 🍫",      notes: "Iconic patisserie since 1818 on Interlaken's Höheweg. Famous for chocolate fondue with strawberries. Mountain terrace views. A must for the kids." },
+  { id: "mp36", cat: "restaurant", emoji: "🏔️", name: "Berggasthaus Männlichen",              location: "Männlichen",           lat: 46.6233, lng: 8.0047,  mission: "Lunch at the top with 360° valley views",   notes: "South-facing terrace right beside the gondola station. Panoramic Grindelwald valley views. Rösti, soup, kids' plates. Perfect lunch stop." },
+  { id: "mp37", cat: "restaurant", emoji: "🍽️", name: "Restaurant Kleine Scheidegg",          location: "Kleine Scheidegg",     lat: 46.5856, lng: 7.9606,  mission: "Lunch with the Eiger north face in front",   notes: "Most iconic mountain lunch backdrop in Switzerland. Eiger directly in front, rack railway behind. Order rösti and soup. Book ahead in peak season." },
+  { id: "mp38", cat: "restaurant", emoji: "🎿", name: "Piz Gloria Revolving Restaurant",      location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the James Bond revolving restaurant", notes: "007 filming location. Full 360° rotation every hour. Breakfast and lunch served. Book ahead — tables fill fast in August. Stunning views of 200+ peaks." },
   // 🛝 PLAYGROUNDS
   { id: "mp19", cat: "playground", emoji: "🛝", name: "Männlichen Cow Playground",         location: "Männlichen",           lat: 46.6231, lng: 8.0044,  mission: "Ride the famous cow slide!",                 notes: "Iconic alpine playground right beside the cable car station. The cow slide is legendary." },
   { id: "mp20", cat: "playground", emoji: "🛝", name: "Allmendhubel Flower Park",          location: "Mürren",               lat: 46.5631, lng: 7.8978,  mission: "Play with mountain views all around",        notes: "Water features and themed play above Mürren. Gorgeous mountain backdrop." },
@@ -962,6 +979,7 @@ export default function SwitzerlandTravelAppReal() {
     const CAT_ACCENT = {
       stay: "#c2410c", cafe: "#b45309", adventure: "#c0152a",
       waterfall: "#0284c7", playground: "#7c3aed", station: "#475569",
+      restaurant: "#16a34a",
     };
 
     if (!leafletInstanceRef.current) {
@@ -2378,6 +2396,7 @@ export default function SwitzerlandTravelAppReal() {
             all:        { label: "All",        emoji: "",    accent: "#475569", bg: "#f8fafc",  border: "#e2e8f0" },
             stay:       { label: "Stay",       emoji: "🏠",  accent: "#c2410c", bg: "#fff7ed",  border: "#fdba74" },
             cafe:       { label: "Cafés",      emoji: "☕",  accent: "#b45309", bg: "#fffbeb",  border: "#fcd34d" },
+            restaurant: { label: "Restaurants",emoji: "🍽️",  accent: "#16a34a", bg: "#f0fdf4",  border: "#86efac" },
             adventure:  { label: "Adventure",  emoji: "🧗",  accent: "#c0152a", bg: "#fff1f2",  border: "#fca5a5" },
             waterfall:  { label: "Waterfalls", emoji: "💦",  accent: "#0284c7", bg: "#f0f9ff",  border: "#7dd3fc" },
             playground: { label: "Playgrounds",emoji: "🛝",  accent: "#7c3aed", bg: "#f5f3ff",  border: "#c4b5fd" },
