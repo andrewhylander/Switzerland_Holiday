@@ -1068,80 +1068,8 @@ export default function SwitzerlandTravelAppReal() {
         setTimeout(() => setQuestPopId(null), 3600);
         if (item.sound === "moo") {
           try {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const t = ctx.currentTime;
-            const dur = 2.4;
-
-            const master = ctx.createGain();
-            master.connect(ctx.destination);
-            master.gain.setValueAtTime(0, t);
-            master.gain.linearRampToValueAtTime(0.5, t + 0.2);
-            master.gain.setValueAtTime(0.45, t + 1.6);
-            master.gain.linearRampToValueAtTime(0, t + dur);
-
-            // Sawtooth source — rich harmonics for vocal tract to shape
-            const osc = ctx.createOscillator();
-            osc.type = "sawtooth";
-            // Pitch: low → rises → holds → falls (classic moo contour)
-            osc.frequency.setValueAtTime(95, t);
-            osc.frequency.linearRampToValueAtTime(138, t + 0.5);
-            osc.frequency.setValueAtTime(135, t + 0.9);
-            osc.frequency.linearRampToValueAtTime(118, t + 1.5);
-            osc.frequency.linearRampToValueAtTime(85, t + dur);
-
-            // Vibrato kicks in mid-moo
-            const lfo = ctx.createOscillator();
-            const lfoAmt = ctx.createGain();
-            lfo.frequency.value = 5.2;
-            lfoAmt.gain.setValueAtTime(0, t);
-            lfoAmt.gain.linearRampToValueAtTime(0, t + 0.4);
-            lfoAmt.gain.linearRampToValueAtTime(6, t + 0.8);
-            lfoAmt.gain.linearRampToValueAtTime(4, t + 2.0);
-            lfo.connect(lfoAmt); lfoAmt.connect(osc.frequency);
-            lfo.start(t); lfo.stop(t + dur);
-
-            // Nasal low-pass: closed lips at start/end ("mmm"), opens for "oo"
-            const nasal = ctx.createBiquadFilter();
-            nasal.type = "lowpass";
-            nasal.frequency.setValueAtTime(280, t);
-            nasal.frequency.linearRampToValueAtTime(1200, t + 0.3);
-            nasal.frequency.setValueAtTime(1100, t + 1.4);
-            nasal.frequency.linearRampToValueAtTime(280, t + dur);
-            nasal.Q.value = 1;
-
-            // Formant 1 — "oo" vowel body (~320 Hz)
-            const f1 = ctx.createBiquadFilter();
-            f1.type = "bandpass"; f1.Q.value = 5;
-            f1.frequency.setValueAtTime(250, t);
-            f1.frequency.linearRampToValueAtTime(370, t + 0.5);
-            f1.frequency.setValueAtTime(355, t + 1.2);
-            f1.frequency.linearRampToValueAtTime(270, t + dur);
-
-            // Formant 2 — upper resonance (~820 Hz) for presence
-            const f2 = ctx.createBiquadFilter();
-            f2.type = "bandpass"; f2.Q.value = 4;
-            f2.frequency.setValueAtTime(700, t);
-            f2.frequency.linearRampToValueAtTime(880, t + 0.5);
-            f2.frequency.linearRampToValueAtTime(740, t + dur);
-
-            const f1g = ctx.createGain(); f1g.gain.value = 0.7;
-            const f2g = ctx.createGain(); f2g.gain.value = 0.3;
-
-            osc.connect(nasal);
-            nasal.connect(f1); f1.connect(f1g); f1g.connect(master);
-            nasal.connect(f2); f2.connect(f2g); f2g.connect(master);
-
-            // Sub sine for chest rumble
-            const sub = ctx.createOscillator();
-            const subG = ctx.createGain(); subG.gain.value = 0.25;
-            sub.type = "sine";
-            sub.frequency.setValueAtTime(48, t);
-            sub.frequency.linearRampToValueAtTime(69, t + 0.5);
-            sub.frequency.linearRampToValueAtTime(42, t + dur);
-            sub.connect(subG); subG.connect(master);
-            sub.start(t); sub.stop(t + dur);
-
-            osc.start(t); osc.stop(t + dur);
+            const audio = new Audio("/CowMoo.mp3");
+            audio.play();
           } catch (_) {}
         }
       }
