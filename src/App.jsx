@@ -571,6 +571,14 @@ const DAY_FOOD_LOCATIONS = {
 
 const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Wengen", "Interlaken", "Zurich"];
 
+const FOOD_LOCATION_COORDS = {
+  Grindelwald:   { lat: 46.6242, lon: 8.0411 },
+  Lauterbrunnen: { lat: 46.5958, lon: 7.9082 },
+  Wengen:        { lat: 46.6085, lon: 7.9211 },
+  Interlaken:    { lat: 46.6863, lon: 7.8632 },
+  Zurich:        { lat: 47.3769, lon: 8.5417 },
+};
+
 const VENUE_TYPES = {
   restaurant: { icon: "🍽️", label: "Restaurant" },
   cafe:       { icon: "☕", label: "Café" },
@@ -578,17 +586,40 @@ const VENUE_TYPES = {
   bar:        { icon: "🍺", label: "Bar & Drinks" },
 };
 
+const MEAL_TYPES = [
+  { id: "breakfast", icon: "🌅", label: "Breakfast" },
+  { id: "coffee",    icon: "☕", label: "Coffee" },
+  { id: "lunch",     icon: "🥗", label: "Lunch" },
+  { id: "dinner",    icon: "🌙", label: "Dinner" },
+  { id: "drinks",    icon: "🍺", label: "Drinks" },
+];
+
 const DEFAULT_VENUES = [
-  { id: "v1",  name: "Restaurant Grindelwaldblick", type: "restaurant", location: "Grindelwald",    notes: "Traditional Swiss food with mountain views. Great for dinner." },
-  { id: "v2",  name: "Café Bar 3692",               type: "cafe",       location: "Grindelwald",    notes: "Relaxed café in the village. Good coffee and snacks." },
-  { id: "v3",  name: "Bäckerei Fuchs",              type: "bakery",     location: "Grindelwald",    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
-  { id: "v4",  name: "Restaurant Silberhorn",        type: "restaurant", location: "Lauterbrunnen", notes: "Classic Swiss restaurant in the village centre." },
-  { id: "v5",  name: "Café Staubach",               type: "cafe",       location: "Lauterbrunnen", notes: "Cosy café near the Staubbach waterfall." },
-  { id: "v6",  name: "Restaurant Bernerhof",         type: "restaurant", location: "Wengen",        notes: "Good views and traditional food. Car-free village — enjoy the quiet." },
-  { id: "v7",  name: "Café Schuh",                  type: "cafe",       location: "Interlaken",    notes: "Iconic Interlaken patisserie & café since 1818. Must visit." },
-  { id: "v8",  name: "Restaurant Laterne",           type: "restaurant", location: "Interlaken",    notes: "Traditional Swiss restaurant, central location." },
-  { id: "v9",  name: "Café Sprüngli",               type: "cafe",       location: "Zurich",        notes: "Famous Swiss café on Paradeplatz — classic Zurich stop." },
-  { id: "v10", name: "Zeughauskeller",              type: "restaurant", location: "Zurich",        notes: "Historic beer hall restaurant in the old armoury. Great atmosphere." },
+  // Grindelwald
+  { id: "v1",  name: "Barry's Restaurant, Bar & Lounge", type: "restaurant", location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "drinks"], notes: "Landmark Hotel Eiger restaurant. Swiss fondue, tomahawk steak, own-brand gin. Legendary bar since the 1960s. Breakfast buffet from 7am." },
+  { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
+  { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
+  { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
+  { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views." },
+  // Lauterbrunnen
+  { id: "v4",  name: "Airtime Café",                     type: "cafe",       location: "Lauterbrunnen", meals: ["breakfast", "coffee", "lunch"],            notes: "Terrace overlooking Staubbach Falls. Famous for cinnamon rolls — perfect refuel after hiking." },
+  { id: "v5",  name: "Restaurant Oberland",              type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Village favourite. Cosy chalet ambience, fondue, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner." },
+  { id: "v13", name: "Restaurant Steinbock",             type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Near the train station with a summer garden. 20 pizza varieties plus Swiss classics." },
+  { id: "v14", name: "Restaurant Weidstübli",            type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Inside the campground near the falls. Very affordable, generous portions, excellent fondue." },
+  // Wengen
+  { id: "v6",  name: "Restaurant Eiger",                 type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Right outside Wengen train station. Rösti, raclette, tomato soup with gin. Highly rated." },
+  { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
+  { id: "v16", name: "Café Restaurant Waldschlucht",     type: "cafe",       location: "Wengen",        meals: ["breakfast", "coffee", "lunch"],            notes: "Warm and welcoming. Known for flavourful soups and cosy ambiance. Great after a hike." },
+  // Interlaken
+  { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Iconic Interlaken patisserie & café since 1818. Mountain views, exquisite pastries, Swiss dishes. A must-visit." },
+  { id: "v17", name: "Velo Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Trendy local favourite. Italian espresso, homemade granola with local yogurt, popular vegan options." },
+  { id: "v18", name: "Bäckerei Steininger",              type: "bakery",     location: "Interlaken",    meals: ["breakfast", "coffee"],                    notes: "Fresh-baked daily. Excellent quiche and pastries. Short walk from central Interlaken." },
+  { id: "v8",  name: "Restaurant Taverne",               type: "restaurant", location: "Interlaken",    meals: ["lunch", "dinner"],                        notes: "Authentic Swiss fondue and traditional cuisine in a classic Bernese Oberland setting." },
+  // Zurich
+  { id: "v9",  name: "Café Sprüngli",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee", "lunch"],            notes: "On Paradeplatz since 1836. World-famous for Luxemburgerli macarons and Swiss chocolate. Essential Zurich stop." },
+  { id: "v10", name: "Zeughauskeller",                   type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner", "drinks"],              notes: "Historic beer hall in a 15th-century armoury on Bahnhofstrasse. Rösti, Wiener Schnitzel, giant beers." },
+  { id: "v19", name: "Kronenhalle",                      type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner"],                        notes: "Legendary brasserie open since 1924. Walls hung with original Miró and Chagall. Signature Zürcher Geschnetzeltes." },
+  { id: "v20", name: "Boréal Coffee",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee"],                    notes: "Specialty ethically-sourced coffee and pastries. Popular with locals — two Zurich locations." },
 ];
 
 function sumAmounts(lines) {
@@ -597,6 +628,16 @@ function sumAmounts(lines) {
 
 function uniq(arr) {
   return Array.from(new Set(arr));
+}
+
+function nearestFoodLocation(lat, lon) {
+  return Object.entries(FOOD_LOCATION_COORDS).reduce((best, [loc, c]) => {
+    const dLat = (c.lat - lat) * Math.PI / 180;
+    const dLon = (c.lon - lon) * Math.PI / 180;
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat * Math.PI / 180) * Math.cos(c.lat * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+    const d = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return d < best.d ? { loc, d } : best;
+  }, { loc: "Grindelwald", d: Infinity }).loc;
 }
 
 function readLocalStorage(key, fallback) {
@@ -612,8 +653,8 @@ function readLocalStorage(key, fallback) {
 function Chip({ active, children, onClick, tone = "default" }) {
   const tones = {
     default: {
-      border: active ? "#1d4ed8" : "#bfdbfe",
-      background: active ? "#1d4ed8" : "#eff6ff",
+      border: active ? "#c0152a" : "#bfdbfe",
+      background: active ? "#c0152a" : "#eff6ff",
       color: active ? "white" : "#1e3a8a",
     },
     warm: {
@@ -757,7 +798,9 @@ export default function SwitzerlandTravelAppReal() {
   const [venueFilter, setVenueFilter]         = useState("Grindelwald");
   const [lastViewedDayId, setLastViewedDayId] = useState("d1");
   const [showAddVenue, setShowAddVenue]       = useState(false);
-  const [newVenue, setNewVenue]               = useState({ name: "", type: "restaurant", location: "Grindelwald", notes: "" });
+  const [newVenue, setNewVenue]               = useState({ name: "", type: "restaurant", location: "Grindelwald", meals: [], notes: "" });
+  const [mealFilter, setMealFilter]           = useState(null);
+  const [geoLocating, setGeoLocating]         = useState(false);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -780,7 +823,14 @@ export default function SwitzerlandTravelAppReal() {
   }, [packingItems, packingReady]);
 
   useEffect(() => {
-    setVenues(readLocalStorage(STORAGE_KEYS.venues, DEFAULT_VENUES));
+    const stored = readLocalStorage(STORAGE_KEYS.venues, DEFAULT_VENUES);
+    // Backfill meals array for any venue that's missing it (migration from old format)
+    const migrated = stored.map((v) => {
+      if (v.meals) return v;
+      const def = DEFAULT_VENUES.find((d) => d.id === v.id);
+      return { ...v, meals: def ? def.meals : [] };
+    });
+    setVenues(migrated);
     setVenuesReady(true);
   }, []);
 
@@ -922,6 +972,8 @@ export default function SwitzerlandTravelAppReal() {
 
   const suggestedFoodLocation = DAY_FOOD_LOCATIONS[lastViewedDayId] || "Grindelwald";
 
+  const daysUntil = Math.ceil((new Date("2026-08-22") - new Date(new Date().toDateString())) / 86400000);
+
   const parseGoogleMapsUrl = (url) => {
     if (!url.trim()) return;
     if (url.includes("maps.app.goo.gl")) {
@@ -939,7 +991,7 @@ export default function SwitzerlandTravelAppReal() {
     if (!newVenue.name.trim()) return;
     const { _mapsUrl, _mapsHint, ...venueData } = newVenue;
     setVenues((prev) => [...prev, { ...venueData, id: `v_${Math.random().toString(16).slice(2)}`, name: venueData.name.trim() }]);
-    setNewVenue({ name: "", type: "restaurant", location: venueFilter === "all" ? "Grindelwald" : venueFilter, notes: "" });
+    setNewVenue({ name: "", type: "restaurant", location: venueFilter === "all" ? "Grindelwald" : venueFilter, meals: [], notes: "" });
     setShowAddVenue(false);
   };
 
@@ -952,13 +1004,30 @@ export default function SwitzerlandTravelAppReal() {
         background:
           "linear-gradient(180deg, #dbeafe 0%, #eff6ff 18%, #f8fafc 36%, #ecfeff 68%, #fefce8 100%)",
         color: "#0f172a",
-        fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif",
+        fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
         padding: 16,
       }}
     >
       <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gap: 20 }}>
+        {daysUntil > 0 ? (
+          <div style={{ background: "linear-gradient(135deg, #c0152a 0%, #9b0f20 100%)", borderRadius: 22, padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", color: "white" }}>
+            <div>
+              <div style={{ fontSize: 13, opacity: 0.75, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Departure</div>
+              <div style={{ fontSize: 13, opacity: 0.75, marginTop: 2 }}>22 Aug · Zurich via London</div>
+            </div>
+            <div style={{ textAlign: "right" }}>
+              <div style={{ fontSize: 42, fontWeight: 900, lineHeight: 1 }}>{daysUntil}</div>
+              <div style={{ fontSize: 13, opacity: 0.75, fontWeight: 600 }}>days to go</div>
+            </div>
+          </div>
+        ) : daysUntil === 0 ? (
+          <div style={{ background: "linear-gradient(135deg, #c0152a 0%, #9b0f20 100%)", borderRadius: 22, padding: "20px 24px", color: "white", textAlign: "center", fontWeight: 800, fontSize: 20 }}>
+            Today's the day! Have an amazing trip!
+          </div>
+        ) : null}
+
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }}>
-          <Card style={{ padding: 22, overflow: "hidden", position: "relative" }}>
+          <Card style={{ padding: 22, overflow: "hidden", position: "relative", borderLeft: "5px solid #c0152a" }}>
             <div
               style={{
                 position: "absolute",
@@ -971,7 +1040,7 @@ export default function SwitzerlandTravelAppReal() {
             <div style={{ position: "relative", display: "grid", gap: 14 }}>
               <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "flex-start" }}>
                 <div>
-                  <h1 style={{ margin: 0, fontSize: 34, lineHeight: 1.05 }}>{TRIP_INFO.title}</h1>
+                  <h1 style={{ margin: 0, fontSize: 34, lineHeight: 1.05 }}>✚ {TRIP_INFO.title}</h1>
                   <p style={{ marginTop: 8, color: "#475569", fontSize: 15 }}>
                     {TRIP_INFO.dates} · Base in {TRIP_INFO.base}
                   </p>
@@ -1245,6 +1314,11 @@ export default function SwitzerlandTravelAppReal() {
 
             <Card style={{ padding: 18 }}>
               <SectionTitle icon={<Home size={18} />} title="Main stay in Grindelwald" />
+              <img
+                src="/Accommodation.jpg"
+                alt="GrindelwaldHome Alpenglück"
+                style={{ width: "100%", borderRadius: 10, marginBottom: 14, objectFit: "cover", maxHeight: 220 }}
+              />
               <DetailLine label="Name" value={ACCOMMODATION.name} />
               <DetailLine label="Type" value={ACCOMMODATION.type} />
               <DetailLine label="Host" value={ACCOMMODATION.host} />
@@ -1673,17 +1747,41 @@ export default function SwitzerlandTravelAppReal() {
                 </button>
               </div>
               {/* Location filter chips */}
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                 <Chip active={venueFilter === "all"} onClick={() => setVenueFilter("all")} tone="amber">All</Chip>
                 {FOOD_LOCATIONS.map((loc) => (
                   <Chip key={loc} active={venueFilter === loc} onClick={() => setVenueFilter(loc)} tone="amber">{loc}</Chip>
                 ))}
+                <button
+                  onClick={() => {
+                    if (!navigator.geolocation) return;
+                    setGeoLocating(true);
+                    navigator.geolocation.getCurrentPosition(
+                      (pos) => { setVenueFilter(nearestFoodLocation(pos.coords.latitude, pos.coords.longitude)); setGeoLocating(false); },
+                      () => setGeoLocating(false),
+                      { timeout: 8000 }
+                    );
+                  }}
+                  style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 12, background: "white", border: "1px solid #e2e8f0", borderRadius: 999, padding: "5px 12px", cursor: "pointer", fontWeight: 600, color: "#475569" }}
+                >
+                  <MapPin size={12} /> {geoLocating ? "Locating…" : "Near me"}
+                </button>
               </div>
             </Card>
 
+            {/* Meal type filter */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Chip active={mealFilter === null} onClick={() => setMealFilter(null)} tone="amber">All meals</Chip>
+              {MEAL_TYPES.map((m) => (
+                <Chip key={m.id} active={mealFilter === m.id} onClick={() => setMealFilter(mealFilter === m.id ? null : m.id)} tone="amber">
+                  {m.icon} {m.label}
+                </Chip>
+              ))}
+            </div>
+
             {/* Venue cards */}
             <div style={{ display: "grid", gap: 10 }}>
-              {venues.filter((v) => venueFilter === "all" || v.location === venueFilter).map((venue) => {
+              {venues.filter((v) => (venueFilter === "all" || v.location === venueFilter) && (mealFilter === null || (v.meals || []).includes(mealFilter))).map((venue) => {
                 const vt = VENUE_TYPES[venue.type] || VENUE_TYPES.restaurant;
                 return (
                   <Card key={venue.id} style={{ padding: "14px 16px", borderRadius: 18 }}>
@@ -1695,6 +1793,18 @@ export default function SwitzerlandTravelAppReal() {
                           <SmallBadge color="amber">{vt.label}</SmallBadge>
                           {venueFilter === "all" && <SmallBadge color="slate">{venue.location}</SmallBadge>}
                         </div>
+                        {(venue.meals || []).length > 0 && (
+                          <div style={{ display: "flex", gap: 4, flexWrap: "wrap", marginBottom: 4 }}>
+                            {(venue.meals || []).map((m) => {
+                              const mt = MEAL_TYPES.find((x) => x.id === m);
+                              return mt ? (
+                                <span key={m} style={{ fontSize: 11, background: mealFilter === m ? "#b45309" : "#fef3c7", color: mealFilter === m ? "white" : "#78350f", borderRadius: 999, padding: "2px 8px", fontWeight: 600 }}>
+                                  {mt.icon} {mt.label}
+                                </span>
+                              ) : null;
+                            })}
+                          </div>
+                        )}
                         {venue.notes && (
                           <div style={{ fontSize: 13, color: "#64748b", lineHeight: 1.5 }}>{venue.notes}</div>
                         )}
@@ -1721,7 +1831,7 @@ export default function SwitzerlandTravelAppReal() {
                 );
               })}
 
-              {venues.filter((v) => venueFilter === "all" || v.location === venueFilter).length === 0 && (
+              {venues.filter((v) => (venueFilter === "all" || v.location === venueFilter) && (mealFilter === null || (v.meals || []).includes(mealFilter))).length === 0 && (
                 <Card style={{ padding: 24, textAlign: "center", color: "#64748b" }}>
                   <div style={{ fontSize: 28, marginBottom: 8 }}>🍽️</div>
                   <div style={{ fontWeight: 600 }}>No venues yet for {venueFilter}</div>
@@ -1781,6 +1891,24 @@ export default function SwitzerlandTravelAppReal() {
                         <option key={loc} value={loc}>{loc}</option>
                       ))}
                     </select>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 12, fontWeight: 600, color: "#64748b", marginBottom: 6 }}>Good for</div>
+                    <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                      {MEAL_TYPES.map((m) => {
+                        const active = (newVenue.meals || []).includes(m.id);
+                        return (
+                          <button
+                            key={m.id}
+                            type="button"
+                            onClick={() => setNewVenue((v) => ({ ...v, meals: active ? v.meals.filter((x) => x !== m.id) : [...(v.meals || []), m.id] }))}
+                            style={{ fontSize: 12, background: active ? "#b45309" : "#fef3c7", color: active ? "white" : "#78350f", border: `1px solid ${active ? "#b45309" : "#fcd34d"}`, borderRadius: 999, padding: "4px 10px", fontWeight: 600, cursor: "pointer" }}
+                          >
+                            {m.icon} {m.label}
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                   <TextInput
                     placeholder="Notes (optional)"
