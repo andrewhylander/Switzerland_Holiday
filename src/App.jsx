@@ -886,9 +886,12 @@ export default function SwitzerlandTravelAppReal() {
   useEffect(() => {
     const saved = (() => { try { return JSON.parse(window.localStorage.getItem(STORAGE_KEYS.quest)); } catch { return null; } })();
     if (saved && saved.items) {
-      // Merge in any new default items not yet in the saved list
-      const savedIds = new Set(saved.items.map((q) => q.id));
-      const merged = [...saved.items, ...DEFAULT_QUEST_ITEMS.filter((q) => !savedIds.has(q.id))];
+      // Backfill new fields (e.g. sound) onto existing items, and append any brand-new items
+      const defaultMap = Object.fromEntries(DEFAULT_QUEST_ITEMS.map((q) => [q.id, q]));
+      const merged = [
+        ...saved.items.map((q) => defaultMap[q.id] ? { ...defaultMap[q.id], checked: q.checked } : q),
+        ...DEFAULT_QUEST_ITEMS.filter((q) => !saved.items.find((s) => s.id === q.id)),
+      ];
       setQuestItems(merged);
       if (saved.kidNames) setKidNames(saved.kidNames);
     }
