@@ -566,11 +566,12 @@ const DAY_FOOD_LOCATIONS = {
   d9: "Zurich",
 };
 
-const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Wengen", "Interlaken", "Zurich"];
+const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Gimmelwald", "Wengen", "Interlaken", "Zurich"];
 
 const FOOD_LOCATION_COORDS = {
   Grindelwald:   { lat: 46.6242, lon: 8.0411 },
   Lauterbrunnen: { lat: 46.5958, lon: 7.9082 },
+  Gimmelwald:    { lat: 46.5625, lon: 7.8920 },
   Wengen:        { lat: 46.6085, lon: 7.9211 },
   Interlaken:    { lat: 46.6863, lon: 7.8632 },
   Zurich:        { lat: 47.3769, lon: 8.5417 },
@@ -598,19 +599,25 @@ const DEFAULT_VENUES = [
   { id: "v22", name: "Restaurant Hotel Spinne",          type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Well-loved Grindelwald classic on Dorfstrasse. Excellent cheese and chocolate fondue, raclette, and rösti. Ask for chocolate fondue with strawberries — a real treat for the kids. Good wine list." },
   { id: "v23", name: "Restaurant Schmitte",              type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Cosy chalet-style restaurant at Hotel Schmitte. Reliable Swiss classics — schnitzel, rösti, bratwurst. Central location, family-friendly, reasonably priced for Grindelwald." },
   { id: "v24", name: "Restaurant Grindelwaldblick",      type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Panoramic terrace with direct Eiger views. Traditional Swiss menu with seasonal specials. One of the best photo backdrops for a meal in the village. Book ahead for terrace tables." },
+  { id: "v27", name: "Ristorante Pizzeria Da Salvi",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Friendly Italian restaurant in the heart of Grindelwald. Authentic wood-fired pizza, pasta and comfort dishes. Great family option on a tired evening — kids love the pizza. Dorfstrasse 189." },
+  { id: "v28", name: "Central Hotel Wolter Restaurant",  type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic Swiss restaurant near the train station. Famous for rösti, fondue and traditional alpine dishes. Great dessert menu. Reliable, central and reasonably priced. Dorfstrasse 93." },
   // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
   { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
+  { id: "v29", name: "C & M Café Bar Restaurant",        type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Popular café in the centre of Grindelwald. Beautiful cakes, pastries and excellent hot chocolate. Cosy alpine atmosphere. Perfect stop after exploring the village. Rating 4.6 ⭐" },
   // Grindelwald — Mountain Restaurants
   { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
-  { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views." },
-  { id: "v25", name: "Berggasthaus Männlichen",          type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right beside the Männlichen gondola station. Huge south-facing terrace with panoramic Grindelwald valley views. Great spot for lunch before or after the Royal Walk. Rösti, soup, and kids' plates." },
+  { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views. Huge terrace with glacier views. Next to the Cliff Walk." },
+  { id: "v25", name: "Berghaus Männlichen",              type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Right beside the Männlichen gondola station with one of the best terraces in the Jungfrau region. Views of Eiger, Mönch and Jungfrau. Great spot for lunch before the Royal Walk. Rösti, soup, kids' plates. Rating 4.5 ⭐" },
   { id: "v26", name: "Restaurant Kleine Scheidegg",      type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Iconic mountain lunch stop with the Eiger north face right in front of you. Rösti and soup are the locals' choice. Unmissable photo backdrop — rack railway on one side, Eiger on the other." },
+  { id: "v30", name: "Bergrestaurant Pfingstegg",        type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  notes: "Mountain restaurant above Grindelwald beside the Pfingstegg alpine coaster. Fantastic valley views from the terrace. Great snack and lunch stop — worth combining with the toboggan run. Rating 4.4 ⭐" },
   // Lauterbrunnen
   { id: "v4",  name: "Airtime Café",                     type: "cafe",       location: "Lauterbrunnen", meals: ["breakfast", "coffee", "lunch"],            notes: "Terrace overlooking Staubbach Falls. Famous for cinnamon rolls — perfect refuel after hiking." },
-  { id: "v5",  name: "Restaurant Oberland",              type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Village favourite. Cosy chalet ambience, fondue, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner." },
+  { id: "v5",  name: "Hotel Oberland Restaurant",        type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Well-known restaurant in Lauterbrunnen famous for Swiss fondue and its terrace overlooking the waterfall valley. Cosy chalet ambience, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner. Rating 4.5 ⭐" },
   { id: "v13", name: "Restaurant Steinbock",             type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Near the train station with a summer garden. 20 pizza varieties plus Swiss classics." },
   { id: "v14", name: "Restaurant Weidstübli",            type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Inside the campground near the falls. Very affordable, generous portions, excellent fondue." },
+  // Gimmelwald
+  { id: "v31", name: "Mountain Hostel Restaurant",       type: "cafe",       location: "Gimmelwald",    meals: ["coffee", "lunch"],                        notes: "Relaxed mountain café in the magical car-free village of Gimmelwald with breathtaking views across the Lauterbrunnen valley. Simple pizzas, snacks and drinks. Reach via cable car from Stechelberg. Rating 4.6 ⭐" },
   // Wengen
   { id: "v6",  name: "Restaurant Eiger",                 type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Right outside Wengen train station. Rösti, raclette, tomato soup with gin. Highly rated." },
   { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
@@ -620,6 +627,7 @@ const DEFAULT_VENUES = [
   { id: "v17", name: "Velo Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Trendy local favourite. Italian espresso, homemade granola with local yogurt, popular vegan options." },
   { id: "v18", name: "Bäckerei Steininger",              type: "bakery",     location: "Interlaken",    meals: ["breakfast", "coffee"],                    notes: "Fresh-baked daily. Excellent quiche and pastries. Short walk from central Interlaken." },
   { id: "v8",  name: "Restaurant Taverne",               type: "restaurant", location: "Interlaken",    meals: ["lunch", "dinner"],                        notes: "Authentic Swiss fondue and traditional cuisine in a classic Bernese Oberland setting." },
+  { id: "v32", name: "Bebbis Restaurant",               type: "restaurant", location: "Interlaken",    meals: ["lunch", "dinner"],                        notes: "Large lively restaurant on Interlaken's Höheweg. Huge menu — burgers, fondue, Swiss classics. Central location beside the Höhematte park. Good for groups and families. Rating 4.3 ⭐" },
   // Zurich
   { id: "v9",  name: "Café Sprüngli",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee", "lunch"],            notes: "On Paradeplatz since 1836. World-famous for Luxemburgerli macarons and Swiss chocolate. Essential Zurich stop." },
   { id: "v10", name: "Zeughauskeller",                   type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner", "drinks"],              notes: "Historic beer hall in a 15th-century armoury on Bahnhofstrasse. Rösti, Wiener Schnitzel, giant beers." },
@@ -631,8 +639,8 @@ const MAP_PLACES = [
   // 🏠 STAY
   { id: "mp0",  cat: "stay",       emoji: "🏠", name: "Alpenglück Chalet (Airbnb)",        location: "Grindelwald",          lat: 46.6253, lng: 8.0383,  mission: "Home base for the adventure",                notes: "GrindelwaldHome Alpenglück — your base for the whole trip. Stunning Eiger views." },
   // ☕ CAFÉS
-  { id: "mp1",  cat: "cafe",       emoji: "☕", name: "Barry's",                            location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Try a chocolate dessert",                    notes: "Great desserts and hot chocolate. Central location." },
-  { id: "mp2",  cat: "cafe",       emoji: "☕", name: "Bergrestaurant First",               location: "Grindelwald First",    lat: 46.6587, lng: 8.0506,  mission: "Drink hot chocolate above the clouds",       notes: "Huge terrace and incredible mountain views." },
+  { id: "mp1",  cat: "cafe",       emoji: "☕", name: "Barry's",                            location: "Grindelwald",          lat: 46.6249, lng: 8.0417,  mission: "Try a chocolate dessert",                    notes: "Great desserts and hot chocolate. Central location." },
+  { id: "mp2",  cat: "cafe",       emoji: "☕", name: "Bergrestaurant First",               location: "Grindelwald First",    lat: 46.6589, lng: 8.0542,  mission: "Drink hot chocolate above the clouds",       notes: "Huge terrace and incredible mountain views." },
   { id: "mp3",  cat: "cafe",       emoji: "☕", name: "Bort Restaurant",                    location: "Bort",                 lat: 46.6487, lng: 8.0471,  mission: "Play at the mountain playground café",       notes: "Great stop on the way down from First. Playground for kids." },
   { id: "mp4",  cat: "cafe",       emoji: "🍦", name: "Airtime Café",                       location: "Lauterbrunnen",        lat: 46.5931, lng: 7.9093,  mission: "Eat ice cream in a waterfall village",       notes: "Perfect stop after Staubbach Falls." },
   { id: "mp5",  cat: "cafe",       emoji: "🍰", name: "Restaurant Kleine Scheidegg",        location: "Kleine Scheidegg",     lat: 46.5854, lng: 7.9603,  mission: "Eat cake beside the Eiger",                  notes: "Amazing views of the Eiger north face." },
@@ -667,7 +675,13 @@ const MAP_PLACES = [
   { id: "mp35", cat: "restaurant", emoji: "🍓", name: "Grand Café Schuh",                     location: "Interlaken",           lat: 46.6863, lng: 7.8629,  mission: "Try the legendary chocolate fondue 🍫",      notes: "Iconic patisserie since 1818 on Interlaken's Höheweg. Famous for chocolate fondue with strawberries. Mountain terrace views. A must for the kids." },
   { id: "mp36", cat: "restaurant", emoji: "🍽️", name: "Berggasthaus Männlichen",              location: "Männlichen",           lat: 46.6233, lng: 8.0047,  mission: "Lunch at the top with 360° valley views",   notes: "South-facing terrace right beside the gondola station. Panoramic Grindelwald valley views. Rösti, soup, kids' plates. Perfect lunch stop." },
   { id: "mp37", cat: "restaurant", emoji: "🍽️", name: "Restaurant Kleine Scheidegg",          location: "Kleine Scheidegg",     lat: 46.5856, lng: 7.9606,  mission: "Lunch with the Eiger north face in front",   notes: "Most iconic mountain lunch backdrop in Switzerland. Eiger directly in front, rack railway behind. Order rösti and soup. Book ahead in peak season." },
-  { id: "mp38", cat: "restaurant", emoji: "🎿", name: "Piz Gloria Revolving Restaurant",      location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the James Bond revolving restaurant", notes: "007 filming location. Full 360° rotation every hour. Breakfast and lunch served. Book ahead — tables fill fast in August. Stunning views of 200+ peaks." },
+  { id: "mp39", cat: "cafe",       emoji: "🍰", name: "C & M Café Bar Restaurant",           location: "Grindelwald",          lat: 46.6247, lng: 8.0414,  mission: "Eat cake with an Eiger backdrop",            notes: "Popular village café famous for beautiful cakes, pastries and hot chocolate. Cosy alpine atmosphere. Rating 4.6 ⭐" },
+  { id: "mp40", cat: "restaurant", emoji: "🍕", name: "Ristorante Pizzeria Da Salvi",         location: "Grindelwald",          lat: 46.6242, lng: 8.0410,  mission: "Get a proper Italian pizza in the Alps",     notes: "Friendly Italian restaurant in the heart of Grindelwald. Authentic pizza, pasta and comfort food. Perfect family dinner option. Rating 4.4 ⭐" },
+  { id: "mp41", cat: "restaurant", emoji: "🍳", name: "Central Hotel Wolter Restaurant",      location: "Grindelwald",          lat: 46.6240, lng: 8.0420,  mission: "Try the classic Swiss rösti here",           notes: "Traditional Swiss restaurant near the train station. Famous for rösti, fondue and alpine classics. Great dessert menu. Rating 4.3 ⭐" },
+  { id: "mp42", cat: "cafe",       emoji: "🏡", name: "Mountain Hostel Restaurant",           location: "Gimmelwald",           lat: 46.5625, lng: 7.8920,  mission: "Eat with a cliffside view in Gimmelwald",    notes: "Relaxed café in the magical car-free village of Gimmelwald. Breathtaking Lauterbrunnen valley views. Simple pizzas and snacks. Reach via cable car from Stechelberg. Rating 4.6 ⭐" },
+  { id: "mp43", cat: "restaurant", emoji: "🎢", name: "Bergrestaurant Pfingstegg",            location: "Pfingstegg",           lat: 46.6279, lng: 8.0527,  mission: "Combine lunch with the alpine coaster",      notes: "Mountain restaurant above Grindelwald beside the Pfingstegg alpine coaster. Fantastic valley views. Great snack stop — combine with the toboggan run. Rating 4.4 ⭐" },
+  { id: "mp44", cat: "restaurant", emoji: "🍔", name: "Bebbis Restaurant",                    location: "Interlaken",           lat: 46.6863, lng: 7.8586,  mission: "Burgers and fondue in central Interlaken",   notes: "Large lively restaurant on the Höheweg. Huge menu — burgers, fondue, Swiss classics. Great for groups. Right beside the Höhematte park. Rating 4.3 ⭐" },
+  { id: "mp38", cat: "restaurant", emoji: "🔫", name: "Piz Gloria Revolving Restaurant",      location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the James Bond revolving restaurant", notes: "007 filming location. Full 360° rotation every hour. Breakfast and lunch served. Book ahead — tables fill fast in August. Stunning views of 200+ peaks." },
   // 🛝 PLAYGROUNDS
   { id: "mp19", cat: "playground", emoji: "🛝", name: "Männlichen Cow Playground",         location: "Männlichen",           lat: 46.6231, lng: 8.0044,  mission: "Ride the famous cow slide!",                 notes: "Iconic alpine playground right beside the cable car station. The cow slide is legendary." },
   { id: "mp20", cat: "playground", emoji: "🛝", name: "Allmendhubel Flower Park",          location: "Mürren",               lat: 46.5631, lng: 7.8978,  mission: "Play with mountain views all around",        notes: "Water features and themed play above Mürren. Gorgeous mountain backdrop." },
@@ -843,37 +857,51 @@ function mapHref(location) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
 }
 
+const QUEST_SECTIONS = [
+  { id: "food",      label: "🍽️ Swiss Food Missions",   color: "#b45309", bg: "#fffbeb", border: "#fcd34d" },
+  { id: "transport", label: "🚠 Epic Transport",          color: "#0369a1", bg: "#f0f9ff", border: "#7dd3fc" },
+  { id: "mountain",  label: "🏔️ Mountain Adventures",    color: "#c0152a", bg: "#fff1f2", border: "#fca5a5" },
+  { id: "nature",    label: "🌿 Nature Spotting",         color: "#15803d", bg: "#f0fdf4", border: "#86efac" },
+  { id: "village",   label: "🎪 Village Fun",             color: "#7c3aed", bg: "#f5f3ff", border: "#c4b5fd" },
+];
+
 const DEFAULT_QUEST_ITEMS = [
-  { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",             checked: { k1: false, k2: false } },
-  { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                checked: { k1: false, k2: false } },
-  { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",           checked: { k1: false, k2: false } },
-  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",            checked: { k1: false, k2: false }, sound: "moo" },
-  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                   checked: { k1: false, k2: false } },
-  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",        checked: { k1: false, k2: false } },
-  { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",           checked: { k1: false, k2: false } },
-  { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",           checked: { k1: false, k2: false } },
-  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",    checked: { k1: false, k2: false } },
-  { id: "q10", emoji: "🍰", text: "Eat cake with a mountain view",                          cheer: "Best view AND best cake! 🍰 Fantastisch!",       checked: { k1: false, k2: false } },
-  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",      checked: { k1: false, k2: false } },
-  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                 checked: { k1: false, k2: false } },
-  { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",            checked: { k1: false, k2: false } },
-  { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",  checked: { k1: false, k2: false } },
-  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",           checked: { k1: false, k2: false } },
-  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",          checked: { k1: false, k2: false } },
-  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",               checked: { k1: false, k2: false } },
-  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",   checked: { k1: false, k2: false } },
-  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",       checked: { k1: false, k2: false } },
-  { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                 checked: { k1: false, k2: false } },
-  { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",               checked: { k1: false, k2: false } },
-  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",   checked: { k1: false, k2: false } },
-  { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",    checked: { k1: false, k2: false } },
-  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",       checked: { k1: false, k2: false } },
-  { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",             checked: { k1: false, k2: false }, sound: "moo" },
-  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",   checked: { k1: false, k2: false } },
-  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",  checked: { k1: false, k2: false } },
-  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false } },
-  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false } },
-  { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!", checked: { k1: false, k2: false } },
+  // 🍽️ Swiss Food Missions
+  { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",              checked: { k1: false, k2: false }, section: "food" },
+  { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                 checked: { k1: false, k2: false }, section: "food" },
+  { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",            checked: { k1: false, k2: false }, section: "food" },
+  { id: "q10", emoji: "🍰", text: "Eat cake with a mountain view",                          cheer: "Best view AND best cake! 🍰 Fantastisch!",        checked: { k1: false, k2: false }, section: "food" },
+  { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",             checked: { k1: false, k2: false }, section: "food" },
+  { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",     checked: { k1: false, k2: false }, section: "food" },
+  { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",       checked: { k1: false, k2: false }, section: "food" },
+  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food" },
+  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food" },
+  // 🚠 Epic Transport
+  { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",            checked: { k1: false, k2: false }, section: "transport" },
+  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",     checked: { k1: false, k2: false }, section: "transport" },
+  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                  checked: { k1: false, k2: false }, section: "transport" },
+  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",        checked: { k1: false, k2: false }, section: "transport" },
+  { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",              checked: { k1: false, k2: false }, section: "transport", sound: "moo" },
+  // 🏔️ Mountain Adventures
+  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                    checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",         checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",            checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",       checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",            checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",    checked: { k1: false, k2: false }, section: "mountain" },
+  // 🌿 Nature Spotting
+  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",             checked: { k1: false, k2: false }, section: "nature", sound: "moo" },
+  { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",   checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",        checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                  checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",    checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",    checked: { k1: false, k2: false }, section: "nature" },
+  // 🎪 Village Fun
+  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",           checked: { k1: false, k2: false }, section: "village" },
+  { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                checked: { k1: false, k2: false }, section: "village" },
+  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",   checked: { k1: false, k2: false }, section: "village" },
+  { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!", checked: { k1: false, k2: false }, section: "village" },
 ];
 
 export default function SwitzerlandTravelAppReal() {
@@ -2270,9 +2298,22 @@ export default function SwitzerlandTravelAppReal() {
                 )}
               </AnimatePresence>
 
-              {/* Quest cards grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 12 }}>
-                {questItems.map((q) => {
+              {/* Quest cards — grouped by section */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                {QUEST_SECTIONS.map((sec) => {
+                  const sectionItems = questItems.filter((q) => (q.section || "village") === sec.id);
+                  if (sectionItems.length === 0) return null;
+                  const doneSec = sectionItems.filter((q) => q.checked[kidKey]).length;
+                  return (
+                    <div key={sec.id}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+                        <div style={{ background: sec.bg, border: `1.5px solid ${sec.border}`, borderRadius: 20, padding: "4px 14px", fontSize: 13, fontWeight: 800, color: sec.color }}>
+                          {sec.label}
+                        </div>
+                        <div style={{ fontSize: 12, color: "#94a3b8", fontWeight: 600 }}>{doneSec}/{sectionItems.length}</div>
+                      </div>
+                      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 12 }}>
+                {sectionItems.map((q) => {
                   const done = q.checked[kidKey];
                   const isPopping = questPopId === q.id;
                   return (
@@ -2331,6 +2372,10 @@ export default function SwitzerlandTravelAppReal() {
                           alignItems: "center", justifyContent: "center", lineHeight: 1,
                         }}
                       >✕</button>
+                    </div>
+                  );
+                })}
+                      </div>
                     </div>
                   );
                 })}
