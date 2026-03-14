@@ -624,6 +624,54 @@ const DEFAULT_VENUES = [
   { id: "v20", name: "Boréal Coffee",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee"],                    notes: "Specialty ethically-sourced coffee and pastries. Popular with locals — two Zurich locations." },
 ];
 
+const MAP_PLACES = [
+  // 🏠 STAY
+  { id: "mp0",  cat: "stay",       emoji: "🏠", name: "Alpenglück Chalet (Airbnb)",        location: "Grindelwald",          lat: 46.6242, lng: 8.0411,  mission: "Home base for the adventure",                notes: "GrindelwaldHome Alpenglück — your base for the whole trip. Stunning Eiger views." },
+  // ☕ CAFÉS
+  { id: "mp1",  cat: "cafe",       emoji: "☕", name: "Barry's",                            location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Try a chocolate dessert",                    notes: "Great desserts and hot chocolate. Central location." },
+  { id: "mp2",  cat: "cafe",       emoji: "☕", name: "Bergrestaurant First",               location: "Grindelwald First",    lat: 46.6587, lng: 8.0506,  mission: "Drink hot chocolate above the clouds",       notes: "Huge terrace and incredible mountain views." },
+  { id: "mp3",  cat: "cafe",       emoji: "☕", name: "Bort Restaurant",                    location: "Bort",                 lat: 46.6487, lng: 8.0471,  mission: "Play at the mountain playground café",       notes: "Great stop on the way down from First. Playground for kids." },
+  { id: "mp4",  cat: "cafe",       emoji: "🍦", name: "Airtime Café",                       location: "Lauterbrunnen",        lat: 46.5931, lng: 7.9093,  mission: "Eat ice cream in a waterfall village",       notes: "Perfect stop after Staubbach Falls." },
+  { id: "mp5",  cat: "cafe",       emoji: "🍰", name: "Restaurant Kleine Scheidegg",        location: "Kleine Scheidegg",     lat: 46.5854, lng: 7.9603,  mission: "Eat cake beside the Eiger",                  notes: "Amazing views of the Eiger north face." },
+  { id: "mp6",  cat: "cafe",       emoji: "🍰", name: "Hotel Bellevue Terrace",             location: "Wengen",               lat: 46.6066, lng: 7.9204,  mission: "Eat cake with the Jungfrau behind you",      notes: "One of the best terrace views in Switzerland." },
+  { id: "mp7",  cat: "cafe",       emoji: "☕", name: "Aare Café",                          location: "Interlaken",           lat: 46.6863, lng: 7.8632,  mission: "Drink coffee beside a mountain river",       notes: "Relaxed stop near the Aare river walk." },
+  { id: "mp8",  cat: "cafe",       emoji: "🥐", name: "Cafe 3692",                          location: "Grindelwald",          lat: 46.6235, lng: 8.0410,  mission: "Eat pancakes in a Swiss café",               notes: "Great brunch and pastries." },
+  { id: "mp30", cat: "cafe",       emoji: "☕", name: "Eiger Bean",                         location: "Grindelwald",          lat: 46.6240, lng: 8.0412,  mission: "Best coffee with an Eiger view",             notes: "Speciality coffee shop in Grindelwald. Great stop before hitting the mountains." },
+  // 💦 WATERFALLS
+  { id: "mp9",  cat: "waterfall",  emoji: "💦", name: "Staubbach Falls",                   location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9094,  mission: "Stand under a 300m free-falling waterfall",  notes: "One of Europe's highest free-falling waterfalls. Walk right up to it — free entry." },
+  { id: "mp10", cat: "waterfall",  emoji: "🌊", name: "Trümmelbach Falls",                 location: "Lauterbrunnen Valley", lat: 46.5717, lng: 7.9114,  mission: "Go inside a waterfall inside a mountain",    notes: "10 glacier waterfalls inside the rock. Lifts inside the mountain. Kids love it." },
+  { id: "mp11", cat: "waterfall",  emoji: "🚟", name: "Giessbach Falls",                   location: "Brienz",               lat: 46.7178, lng: 7.9844,  mission: "Ride the oldest funicular to a waterfall",   notes: "Stunning falls above Lake Brienz. Historic funicular up to the viewpoint." },
+  { id: "mp12", cat: "waterfall",  emoji: "🔍", name: "Reichenbach Falls",                 location: "Meiringen",            lat: 46.7238, lng: 8.1811,  mission: "Find the Sherlock Holmes waterfall",         notes: "Famous Sherlock Holmes location. Cable car up, dramatic views." },
+  // 🚉 TRAIN STATIONS & GONDOLAS
+  { id: "mp24", cat: "station",    emoji: "🚉", name: "Grindelwald Terminal",              location: "Grindelwald",          lat: 46.6242, lng: 8.0411,  mission: "Catch the Eiger Express gondola here",       notes: "Main station in Grindelwald. Eiger Express gondola to Männlichen departs here." },
+  { id: "mp25", cat: "station",    emoji: "🚞", name: "Kleine Scheidegg Station",          location: "Kleine Scheidegg",     lat: 46.5854, lng: 7.9603,  mission: "Change here for the Jungfraujoch train",     notes: "Change point for the Jungfraubahn to Jungfraujoch. Great views from the platform." },
+  { id: "mp26", cat: "station",    emoji: "🚂", name: "Lauterbrunnen Station",             location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9094,  mission: "Gateway to Mürren and Wengen",               notes: "Hub for Bernese Oberland. Trains to Wengen, cable car to Grütschalp for Mürren." },
+  { id: "mp27", cat: "station",    emoji: "🚞", name: "Wengen Station",                    location: "Wengen",               lat: 46.6066, lng: 7.9204,  mission: "Arrive in a car-free mountain village",      notes: "Car-free village. Rack railway from Lauterbrunnen. Connect to Kleine Scheidegg." },
+  { id: "mp28", cat: "station",    emoji: "🚡", name: "Männlichen Gondola (Grindelwald)",  location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Ride the world's longest gondola (~19 mins)", notes: "Grindelwald Terminal → Männlichen. Cow Playground is right at the top." },
+  { id: "mp29", cat: "station",    emoji: "🚠", name: "Mürren Cable Car (Grütschalp)",    location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9055,  mission: "Float up to the cliff village of Mürren",    notes: "Cable car from Lauterbrunnen to Grütschalp, then the little train to Mürren." },
+  // 🧗 ADVENTURE
+  { id: "mp13", cat: "adventure",  emoji: "❄️", name: "Jungfraujoch",                      location: "Jungfraujoch",         lat: 46.5473, lng: 7.9854,  mission: "Stand at the Top of Europe (3,454m)",        notes: "Highest railway station in Europe. Snow year-round. Sphinx Observatory." },
+  { id: "mp14", cat: "adventure",  emoji: "👑", name: "Männlichen Royal Walk",             location: "Männlichen",           lat: 46.6231, lng: 8.0044,  mission: "Walk to the crown viewpoint (20 mins)",      notes: "Easy flat walk from the gondola station to the panoramic crown viewpoint." },
+  { id: "mp15", cat: "adventure",  emoji: "🦅", name: "Grindelwald First Cliff Walk",      location: "Grindelwald First",    lat: 46.6587, lng: 8.0506,  mission: "Walk on a cliff-edge platform above the Alps", notes: "Thrilling suspended walkway with sheer drop views. Kids 6+ suitable." },
+  { id: "mp16", cat: "adventure",  emoji: "🏘️", name: "Mürren Village",                   location: "Mürren",               lat: 46.5592, lng: 7.8928,  mission: "Visit a car-free Swiss mountain village",    notes: "Magical traffic-free village. Stunning Eiger views. Reach by cable car + train." },
+  { id: "mp17", cat: "adventure",  emoji: "🧊", name: "Aletsch Glacier Viewpoint",         location: "Jungfraujoch",         lat: 46.5376, lng: 8.0215,  mission: "See the longest glacier in the Alps",        notes: "23km long glacier visible from Jungfraujoch. Breathtaking scale." },
+  { id: "mp18", cat: "adventure",  emoji: "🎬", name: "Schilthorn (Piz Gloria)",           location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the revolving James Bond restaurant", notes: "Famous 007 filming location. Revolving restaurant with 360° views." },
+  // 🛝 PLAYGROUNDS
+  { id: "mp19", cat: "playground", emoji: "🐄", name: "Männlichen Cow Playground",         location: "Männlichen",           lat: 46.6231, lng: 8.0044,  mission: "Ride the famous cow slide!",                 notes: "Iconic alpine playground right beside the cable car station. The cow slide is legendary." },
+  { id: "mp20", cat: "playground", emoji: "🌸", name: "Allmendhubel Flower Park",          location: "Mürren",               lat: 46.5631, lng: 7.8978,  mission: "Play with mountain views all around",        notes: "Water features and themed play above Mürren. Gorgeous mountain backdrop." },
+  { id: "mp21", cat: "playground", emoji: "🏔️", name: "Bort Alpine Playground",            location: "Grindelwald First",    lat: 46.6487, lng: 8.0471,  mission: "Play at a playground halfway up a mountain", notes: "Adventure playground on the Grindelwald First gondola line. Stop here on the way down." },
+  { id: "mp22", cat: "playground", emoji: "🏡", name: "Winteregg Playground",              location: "Mürren trail",         lat: 46.5731, lng: 7.9012,  mission: "Picnic stop with a play area",               notes: "Scenic rest-stop playground on the Mürren trail. Great views." },
+  { id: "mp23", cat: "playground", emoji: "🏘️", name: "Grindelwald Village Playground",    location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Have a quick play in the village",           notes: "Easy local park right in Grindelwald town. Perfect for a quick break." },
+];
+
+function haversineDist(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.sin(dLon / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
 function sumAmounts(lines) {
   return lines.reduce((acc, l) => acc + (Number(l.amount) || 0), 0);
 }
@@ -845,6 +893,9 @@ export default function SwitzerlandTravelAppReal() {
   const [kidNames, setKidNames]               = useState(["Alfie", "Chloe"]);
   const [editingKid, setEditingKid]           = useState(null);
   const [expandedNotes, setExpandedNotes]     = useState(new Set());
+  const [mapCategory, setMapCategory]         = useState("all");
+  const [mapGeoLocating, setMapGeoLocating]   = useState(false);
+  const [mapUserCoords, setMapUserCoords]     = useState(null);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -1206,6 +1257,9 @@ export default function SwitzerlandTravelAppReal() {
           </Chip>
           <Chip active={activeTab === "quest"} onClick={() => setActiveTab("quest")} tone="purple">
             🗺️ Adventure
+          </Chip>
+          <Chip active={activeTab === "map"} onClick={() => setActiveTab("map")} tone="sky">
+            🗺️ Map
           </Chip>
         </div>
 
@@ -2262,6 +2316,165 @@ export default function SwitzerlandTravelAppReal() {
                   ))}
                 </div>
               </Card>
+            </div>
+          );
+        })()}
+
+        {activeTab === "map" && (() => {
+          const CAT_META = {
+            all:        { label: "All",        emoji: "",    accent: "#475569", bg: "#f8fafc",  border: "#e2e8f0" },
+            stay:       { label: "Stay",       emoji: "🏠",  accent: "#c2410c", bg: "#fff7ed",  border: "#fdba74" },
+            cafe:       { label: "Cafés",      emoji: "☕",  accent: "#b45309", bg: "#fffbeb",  border: "#fcd34d" },
+            adventure:  { label: "Adventure",  emoji: "🧗",  accent: "#c0152a", bg: "#fff1f2",  border: "#fca5a5" },
+            waterfall:  { label: "Waterfalls", emoji: "💦",  accent: "#0284c7", bg: "#f0f9ff",  border: "#7dd3fc" },
+            playground: { label: "Playgrounds",emoji: "🛝",  accent: "#7c3aed", bg: "#f5f3ff",  border: "#c4b5fd" },
+            station:    { label: "Stations",   emoji: "🚉",  accent: "#475569", bg: "#f8fafc",  border: "#cbd5e1" },
+          };
+
+          const filtered = MAP_PLACES
+            .filter((p) => mapCategory === "all" || p.cat === mapCategory)
+            .sort((a, b) => {
+              if (!mapUserCoords) return 0;
+              return haversineDist(mapUserCoords.lat, mapUserCoords.lng, a.lat, a.lng)
+                   - haversineDist(mapUserCoords.lat, mapUserCoords.lng, b.lat, b.lng);
+            });
+
+          return (
+            <div style={{ display: "grid", gap: 16 }}>
+              {/* Header */}
+              <div style={{ background: "linear-gradient(135deg, #0284c7 0%, #0369a1 100%)", borderRadius: 18, padding: "20px 20px 16px", color: "white" }}>
+                <div style={{ fontSize: 22, fontWeight: 900, marginBottom: 4 }}>🗺️ Swiss Adventure Map</div>
+                <div style={{ fontSize: 13, opacity: 0.88 }}>Find places, get directions, discover missions</div>
+              </div>
+
+              {/* Category filters + Near Me */}
+              <Card style={{ padding: 14 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
+                  {Object.entries(CAT_META).map(([key, meta]) => (
+                    <button
+                      key={key}
+                      onClick={() => setMapCategory(key)}
+                      style={{
+                        border: `1.5px solid ${mapCategory === key ? meta.accent : "#e2e8f0"}`,
+                        background: mapCategory === key ? meta.accent : "white",
+                        color: mapCategory === key ? "white" : "#374151",
+                        borderRadius: 999, padding: "6px 12px", fontSize: 13,
+                        cursor: "pointer", fontWeight: 600,
+                        display: "inline-flex", alignItems: "center", gap: 4,
+                      }}
+                    >
+                      {meta.emoji && <span>{meta.emoji}</span>} {meta.label}
+                      {key !== "all" && (
+                        <span style={{ fontSize: 11, opacity: 0.75, marginLeft: 2 }}>
+                          ({MAP_PLACES.filter((p) => p.cat === key).length})
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => {
+                    if (!navigator.geolocation) return;
+                    setMapGeoLocating(true);
+                    navigator.geolocation.getCurrentPosition(
+                      (pos) => { setMapUserCoords({ lat: pos.coords.latitude, lng: pos.coords.longitude }); setMapGeoLocating(false); },
+                      () => setMapGeoLocating(false),
+                      { timeout: 8000 }
+                    );
+                  }}
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: 6,
+                    background: mapUserCoords ? "#0284c7" : "white",
+                    color: mapUserCoords ? "white" : "#374151",
+                    border: `1.5px solid ${mapUserCoords ? "#0284c7" : "#e2e8f0"}`,
+                    borderRadius: 999, padding: "7px 14px", fontSize: 13,
+                    cursor: "pointer", fontWeight: 700,
+                  }}
+                >
+                  <MapPin size={13} />
+                  {mapGeoLocating ? "Locating…" : mapUserCoords ? "Sorted by distance ✓" : "Near Me — sort by distance"}
+                </button>
+                {mapUserCoords && (
+                  <button
+                    onClick={() => setMapUserCoords(null)}
+                    style={{ marginLeft: 8, background: "none", border: "none", color: "#6b7280", fontSize: 12, cursor: "pointer", fontWeight: 600 }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </Card>
+
+              {/* Place cards */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 12 }}>
+                {filtered.map((place) => {
+                  const meta = CAT_META[place.cat] || CAT_META.all;
+                  const dist = mapUserCoords
+                    ? haversineDist(mapUserCoords.lat, mapUserCoords.lng, place.lat, place.lng)
+                    : null;
+                  return (
+                    <div
+                      key={place.id}
+                      style={{
+                        background: meta.bg, border: `1.5px solid ${meta.border}`,
+                        borderRadius: 16, padding: 14,
+                        display: "flex", flexDirection: "column", gap: 6,
+                        position: "relative",
+                      }}
+                    >
+                      {/* Category badge */}
+                      <div style={{
+                        position: "absolute", top: 10, right: 10,
+                        background: meta.accent, color: "white",
+                        borderRadius: 999, padding: "2px 8px", fontSize: 11, fontWeight: 700,
+                        display: "flex", alignItems: "center", gap: 3,
+                      }}>
+                        {meta.emoji} {meta.label}
+                      </div>
+
+                      {/* Main emoji */}
+                      <div style={{ fontSize: 36, marginBottom: 2 }}>{place.emoji}</div>
+
+                      {/* Name */}
+                      <div style={{ fontWeight: 800, fontSize: 14, color: "#0f172a", paddingRight: 52, lineHeight: 1.3 }}>{place.name}</div>
+
+                      {/* Location */}
+                      <div style={{ fontSize: 12, color: "#6b7280", display: "flex", alignItems: "center", gap: 3 }}>
+                        <MapPin size={11} /> {place.location}
+                        {dist !== null && (
+                          <span style={{ marginLeft: 4, background: "#e0f2fe", color: "#0284c7", borderRadius: 999, padding: "1px 6px", fontWeight: 700, fontSize: 11 }}>
+                            {dist < 1 ? `${Math.round(dist * 1000)}m` : `${dist.toFixed(1)}km`}
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Mission */}
+                      <div style={{ fontSize: 12, color: meta.accent, fontWeight: 700 }}>🎯 {place.mission}</div>
+
+                      {/* Notes */}
+                      <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.4, flexGrow: 1 }}>{place.notes}</div>
+
+                      {/* Directions button */}
+                      <a
+                        href={`https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          marginTop: 4, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 5,
+                          background: meta.accent, color: "white",
+                          borderRadius: 10, padding: "8px 12px",
+                          textDecoration: "none", fontWeight: 700, fontSize: 12,
+                        }}
+                      >
+                        <MapPin size={12} /> Directions
+                      </a>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {filtered.length === 0 && (
+                <div style={{ textAlign: "center", color: "#94a3b8", padding: 40, fontSize: 15 }}>No places in this category yet.</div>
+              )}
             </div>
           );
         })()}
