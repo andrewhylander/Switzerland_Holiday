@@ -1069,22 +1069,68 @@ export default function SwitzerlandTravelAppReal() {
         if (item.sound === "moo") {
           try {
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.type = "sawtooth";
             const t = ctx.currentTime;
-            osc.frequency.setValueAtTime(155, t);
-            osc.frequency.linearRampToValueAtTime(125, t + 0.35);
-            osc.frequency.linearRampToValueAtTime(145, t + 0.75);
-            osc.frequency.linearRampToValueAtTime(105, t + 1.3);
-            gain.gain.setValueAtTime(0, t);
-            gain.gain.linearRampToValueAtTime(0.28, t + 0.05);
-            gain.gain.linearRampToValueAtTime(0.22, t + 0.9);
-            gain.gain.linearRampToValueAtTime(0, t + 1.4);
-            osc.start(t);
-            osc.stop(t + 1.4);
+            const dur = 2.0;
+
+            // Low-pass filter for warmth — removes harsh high frequencies
+            const filter = ctx.createBiquadFilter();
+            filter.type = "lowpass";
+            filter.frequency.value = 700;
+            filter.Q.value = 0.8;
+
+            // Master volume envelope
+            const master = ctx.createGain();
+            filter.connect(master);
+            master.connect(ctx.destination);
+            master.gain.setValueAtTime(0, t);
+            master.gain.linearRampToValueAtTime(0.45, t + 0.18);
+            master.gain.setValueAtTime(0.40, t + 1.3);
+            master.gain.linearRampToValueAtTime(0, t + dur);
+
+            // Fundamental sawtooth — the main "moo" body (~115 Hz)
+            const fund = ctx.createOscillator();
+            fund.type = "sawtooth";
+            fund.frequency.setValueAtTime(108, t);
+            fund.frequency.linearRampToValueAtTime(148, t + 0.45);
+            fund.frequency.linearRampToValueAtTime(130, t + 1.0);
+            fund.frequency.linearRampToValueAtTime(98, t + dur);
+            fund.connect(filter);
+            fund.start(t); fund.stop(t + dur);
+
+            // Sub sine for chest depth (~55 Hz)
+            const sub = ctx.createOscillator();
+            const subGain = ctx.createGain();
+            subGain.gain.value = 0.35;
+            sub.type = "sine";
+            sub.frequency.setValueAtTime(54, t);
+            sub.frequency.linearRampToValueAtTime(74, t + 0.45);
+            sub.frequency.linearRampToValueAtTime(65, t + 1.0);
+            sub.frequency.linearRampToValueAtTime(49, t + dur);
+            sub.connect(subGain); subGain.connect(master);
+            sub.start(t); sub.stop(t + dur);
+
+            // Vibrato LFO to make it wobble naturally
+            const lfo = ctx.createOscillator();
+            const lfoGain = ctx.createGain();
+            lfo.frequency.value = 5.5;
+            lfoGain.gain.setValueAtTime(0, t);
+            lfoGain.gain.linearRampToValueAtTime(4, t + 0.5);
+            lfo.connect(lfoGain);
+            lfoGain.connect(fund.frequency);
+            lfoGain.connect(sub.frequency);
+            lfo.start(t); lfo.stop(t + dur);
+
+            // Second harmonic for texture (~230 Hz)
+            const harm = ctx.createOscillator();
+            const harmGain = ctx.createGain();
+            harmGain.gain.value = 0.12;
+            harm.type = "sine";
+            harm.frequency.setValueAtTime(216, t);
+            harm.frequency.linearRampToValueAtTime(296, t + 0.45);
+            harm.frequency.linearRampToValueAtTime(260, t + 1.0);
+            harm.frequency.linearRampToValueAtTime(196, t + dur);
+            harm.connect(harmGain); harmGain.connect(filter);
+            harm.start(t); harm.stop(t + dur);
           } catch (_) {}
         }
       }
