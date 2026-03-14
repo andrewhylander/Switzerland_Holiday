@@ -19,6 +19,7 @@ import {
   Timer,
   Cloud,
   Utensils,
+  Star,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -31,6 +32,7 @@ const STORAGE_KEYS = {
   budget: "swiss-trip-budget-v2",
   packing: "swiss-trip-packing-v1",
   venues: "swiss-trip-venues-v1",
+  quest: "swiss-trip-quest-v1",
 };
 
 const TRIP_INFO = {
@@ -677,6 +679,11 @@ function Chip({ active, children, onClick, tone = "default" }) {
       background: active ? "#b45309" : "#fffbeb",
       color: active ? "white" : "#78350f",
     },
+    purple: {
+      border: active ? "#7c3aed" : "#c4b5fd",
+      background: active ? "#7c3aed" : "#f5f3ff",
+      color: active ? "white" : "#4c1d95",
+    },
   };
 
   const style = tones[tone] || tones.default;
@@ -776,6 +783,33 @@ function mapHref(location) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location)}`;
 }
 
+const DEFAULT_QUEST_ITEMS = [
+  { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",             checked: { k1: false, k2: false } },
+  { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                checked: { k1: false, k2: false } },
+  { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",           checked: { k1: false, k2: false } },
+  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",            checked: { k1: false, k2: false } },
+  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                   checked: { k1: false, k2: false } },
+  { id: "q6",  emoji: "❄️", text: "Touch snow on a glacier",                                cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",        checked: { k1: false, k2: false } },
+  { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",           checked: { k1: false, k2: false } },
+  { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",           checked: { k1: false, k2: false } },
+  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",    checked: { k1: false, k2: false } },
+  { id: "q10", emoji: "🍰", text: "Eat cake with a mountain view",                          cheer: "Best view AND best cake! 🍰 Fantastisch!",       checked: { k1: false, k2: false } },
+  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",      checked: { k1: false, k2: false } },
+  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                 checked: { k1: false, k2: false } },
+  { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",            checked: { k1: false, k2: false } },
+  { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",  checked: { k1: false, k2: false } },
+  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",           checked: { k1: false, k2: false } },
+  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",          checked: { k1: false, k2: false } },
+  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",               checked: { k1: false, k2: false } },
+  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",   checked: { k1: false, k2: false } },
+  { id: "q19", emoji: "🌸", text: "Find an edelweiss flower",                               cheer: "Edelweiss! 🌸 The flower of Switzerland!",       checked: { k1: false, k2: false } },
+  { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                 checked: { k1: false, k2: false } },
+  { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",               checked: { k1: false, k2: false } },
+  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",   checked: { k1: false, k2: false } },
+  { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",    checked: { k1: false, k2: false } },
+  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",       checked: { k1: false, k2: false } },
+];
+
 export default function SwitzerlandTravelAppReal() {
   const [activeTab, setActiveTab] = useState("itinerary");
   const [budget, setBudget] = useState(DEFAULT_BUDGET);
@@ -801,6 +835,14 @@ export default function SwitzerlandTravelAppReal() {
   const [newVenue, setNewVenue]               = useState({ name: "", type: "restaurant", location: "Grindelwald", meals: [], notes: "" });
   const [mealFilter, setMealFilter]           = useState(null);
   const [geoLocating, setGeoLocating]         = useState(false);
+  const [questItems, setQuestItems]           = useState(DEFAULT_QUEST_ITEMS);
+  const [questReady, setQuestReady]           = useState(false);
+  const [newQuestText, setNewQuestText]       = useState("");
+  const [questPopId, setQuestPopId]           = useState(null);
+  const [questPopMsg, setQuestPopMsg]         = useState("");
+  const [activeKid, setActiveKid]             = useState("k1");
+  const [kidNames, setKidNames]               = useState(["Alfie", "Chloe"]);
+  const [editingKid, setEditingKid]           = useState(null);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -838,6 +880,20 @@ export default function SwitzerlandTravelAppReal() {
     if (!venuesReady || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.venues, JSON.stringify(venues));
   }, [venues, venuesReady]);
+
+  useEffect(() => {
+    const saved = (() => { try { return JSON.parse(window.localStorage.getItem(STORAGE_KEYS.quest)); } catch { return null; } })();
+    if (saved && saved.items) {
+      setQuestItems(saved.items);
+      if (saved.kidNames) setKidNames(saved.kidNames);
+    }
+    setQuestReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!questReady || typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEYS.quest, JSON.stringify({ items: questItems, kidNames }));
+  }, [questItems, kidNames, questReady]);
 
   useEffect(() => {
     if (activeTab !== "weather") return;
@@ -997,6 +1053,34 @@ export default function SwitzerlandTravelAppReal() {
 
   const removeVenue = (id) => setVenues((prev) => prev.filter((v) => v.id !== id));
 
+  const toggleQuestItem = (id) => {
+    setQuestItems((prev) => {
+      const item = prev.find((q) => q.id === id);
+      const wasChecked = item.checked[activeKid];
+      if (!wasChecked) {
+        setQuestPopId(id);
+        setQuestPopMsg(item.cheer || "⭐ Wunderbar! 🇨🇭");
+        setTimeout(() => setQuestPopId(null), 3600);
+      }
+      return prev.map((q) =>
+        q.id === id ? { ...q, checked: { ...q.checked, [activeKid]: !q.checked[activeKid] } } : q
+      );
+    });
+  };
+
+  const addQuestItem = () => {
+    const text = newQuestText.trim();
+    if (!text) return;
+    setQuestItems((prev) => [...prev, {
+      id: `q_${Math.random().toString(16).slice(2)}`,
+      emoji: "⭐", text, cheer: "⭐ Wunderbar! 🇨🇭",
+      checked: { k1: false, k2: false },
+    }]);
+    setNewQuestText("");
+  };
+
+  const removeQuestItem = (id) => setQuestItems((prev) => prev.filter((q) => q.id !== id));
+
   return (
     <div
       style={{
@@ -1105,6 +1189,9 @@ export default function SwitzerlandTravelAppReal() {
           <Chip active={activeTab === "food"} onClick={() => { setVenueFilter(suggestedFoodLocation); setActiveTab("food"); }} tone="amber">
             <Utensils size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
             Food & Coffee
+          </Chip>
+          <Chip active={activeTab === "quest"} onClick={() => setActiveTab("quest")} tone="purple">
+            🗺️ Adventure
           </Chip>
         </div>
 
@@ -1947,6 +2034,194 @@ export default function SwitzerlandTravelAppReal() {
 
           </div>
         )}
+
+        {activeTab === "quest" && (() => {
+          const kidKey = activeKid;
+          const kidName = kidNames[activeKid === "k1" ? 0 : 1];
+          const kidDoneCount = questItems.filter((q) => q.checked[kidKey]).length;
+          const kidAllDone = kidDoneCount === questItems.length && questItems.length > 0;
+          const starsFilled = Math.round((kidDoneCount / questItems.length) * 10) || 0;
+
+          return (
+            <div style={{ display: "grid", gap: 16 }}>
+              {/* Kid switcher + progress */}
+              <Card style={{ padding: 20, background: "linear-gradient(135deg, #f5f3ff, #ede9fe)", borderColor: "#c4b5fd" }}>
+                {/* Kid toggle */}
+                <div style={{ display: "flex", gap: 10, marginBottom: 18 }}>
+                  {["k1", "k2"].map((k, i) => (
+                    <div key={k} style={{ flex: 1, position: "relative" }}>
+                      {editingKid === k ? (
+                        <input
+                          autoFocus
+                          value={kidNames[i]}
+                          onChange={(e) => setKidNames((prev) => { const n = [...prev]; n[i] = e.target.value; return n; })}
+                          onBlur={() => setEditingKid(null)}
+                          onKeyDown={(e) => { if (e.key === "Enter") setEditingKid(null); }}
+                          style={{ width: "100%", borderRadius: 12, border: "2px solid #7c3aed", padding: "10px 12px", fontSize: 15, fontWeight: 700, background: "white", boxSizing: "border-box" }}
+                        />
+                      ) : (
+                        <button
+                          onClick={() => setActiveKid(k)}
+                          style={{
+                            width: "100%", borderRadius: 12, padding: "10px 14px", fontSize: 15, fontWeight: 700, cursor: "pointer",
+                            border: activeKid === k ? "2px solid #7c3aed" : "2px solid #e2e8f0",
+                            background: activeKid === k ? "#7c3aed" : "white",
+                            color: activeKid === k ? "white" : "#4c1d95",
+                            display: "flex", alignItems: "center", justifyContent: "space-between",
+                          }}
+                        >
+                          <span>🧒 {kidNames[i]}</span>
+                          <span
+                            onClick={(e) => { e.stopPropagation(); setEditingKid(k); }}
+                            style={{ fontSize: 12, opacity: 0.7, cursor: "pointer", padding: "2px 6px", borderRadius: 6, background: activeKid === k ? "rgba(255,255,255,0.2)" : "#f1f5f9" }}
+                          >✎</span>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Progress */}
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#4c1d95", marginBottom: 6 }}>
+                  {kidName}'s adventures: {kidDoneCount} of {questItems.length} complete
+                </div>
+                <div style={{ background: "#ddd6fe", borderRadius: 999, height: 10, overflow: "hidden", marginBottom: 10 }}>
+                  <div style={{ height: "100%", borderRadius: 999, background: "linear-gradient(90deg, #7c3aed, #a78bfa)", width: `${(kidDoneCount / questItems.length) * 100}%`, transition: "width 0.4s ease" }} />
+                </div>
+                <div style={{ display: "flex", gap: 4 }}>
+                  {Array.from({ length: 10 }).map((_, i) => (
+                    <Star key={i} size={16} fill={i < starsFilled ? "#7c3aed" : "none"} color={i < starsFilled ? "#7c3aed" : "#c4b5fd"} />
+                  ))}
+                </div>
+              </Card>
+
+              {/* Celebration */}
+              <AnimatePresence>
+                {kidAllDone && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    style={{ background: "linear-gradient(135deg, #7c3aed, #4c1d95)", borderRadius: 22, padding: "22px 24px", color: "white", textAlign: "center" }}
+                  >
+                    <div style={{ fontSize: 36, marginBottom: 8 }}>🎉🏆🇨🇭</div>
+                    <div style={{ fontSize: 20, fontWeight: 900 }}>Adventure complete, {kidName}!</div>
+                    <div style={{ fontSize: 14, opacity: 0.85, marginTop: 6 }}>Every Switzerland challenge done — you're a Swiss legend!</div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Quest cards grid */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))", gap: 12 }}>
+                {questItems.map((q) => {
+                  const done = q.checked[kidKey];
+                  const isPopping = questPopId === q.id;
+                  return (
+                    <div key={q.id} style={{ position: "relative" }}>
+                      <motion.div
+                        animate={isPopping ? { scale: [1, 1.18, 0.95, 1] } : { scale: 1 }}
+                        transition={{ duration: 0.4 }}
+                        whileTap={{ scale: 0.94 }}
+                        onClick={() => toggleQuestItem(q.id)}
+                        style={{
+                          background: done ? "rgba(34,197,94,0.1)" : "white",
+                          border: `2px solid ${done ? "#22c55e" : "#c4b5fd"}`,
+                          borderRadius: 18, padding: "16px 12px 14px",
+                          cursor: "pointer", textAlign: "center",
+                          display: "flex", flexDirection: "column", alignItems: "center", gap: 8,
+                          transition: "background 0.25s, border-color 0.25s",
+                          minHeight: 130, position: "relative", userSelect: "none",
+                        }}
+                      >
+                        {done && (
+                          <span style={{ position: "absolute", top: 8, right: 10, fontSize: 16 }}>✅</span>
+                        )}
+                        <div style={{ fontSize: 42, lineHeight: 1 }}>{q.emoji}</div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: done ? "#15803d" : "#4c1d95", lineHeight: 1.3 }}>{q.text}</div>
+                      </motion.div>
+
+                      {/* Floating cheer */}
+                      <AnimatePresence>
+                        {isPopping && (
+                          <motion.div
+                            initial={{ opacity: 1, y: 0 }}
+                            animate={{ opacity: 0, y: -44 }}
+                            exit={{}}
+                            transition={{ duration: 3.6 }}
+                            style={{
+                              position: "absolute", top: 10, left: "50%", transform: "translateX(-50%)",
+                              whiteSpace: "nowrap", fontSize: 13, fontWeight: 800,
+                              color: "#4c1d95", background: "white", borderRadius: 20,
+                              padding: "4px 10px", boxShadow: "0 2px 8px rgba(124,58,237,0.25)",
+                              pointerEvents: "none", zIndex: 10,
+                            }}
+                          >
+                            {questPopMsg}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+
+                      {/* Delete button */}
+                      <button
+                        onClick={(e) => { e.stopPropagation(); removeQuestItem(q.id); }}
+                        style={{
+                          position: "absolute", top: -6, left: -6, width: 22, height: 22,
+                          borderRadius: "50%", border: "1px solid #e2e8f0", background: "white",
+                          color: "#94a3b8", fontSize: 11, cursor: "pointer", display: "flex",
+                          alignItems: "center", justifyContent: "center", lineHeight: 1,
+                        }}
+                      >✕</button>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Add custom challenge */}
+              <Card style={{ padding: 16 }}>
+                <div style={{ fontWeight: 700, fontSize: 14, color: "#4c1d95", marginBottom: 10 }}>Add your own challenge</div>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <input
+                    placeholder="e.g. Find a marmot 🦦"
+                    value={newQuestText}
+                    onChange={(e) => setNewQuestText(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === "Enter") addQuestItem(); }}
+                    style={{ flex: 1, borderRadius: 12, border: "1px solid #c4b5fd", padding: "10px 12px", fontSize: 14, background: "#faf5ff" }}
+                  />
+                  <button
+                    onClick={addQuestItem}
+                    style={{ background: "#7c3aed", color: "white", border: "none", borderRadius: 12, padding: "10px 16px", fontWeight: 700, fontSize: 14, cursor: "pointer" }}
+                  >＋ Add</button>
+                </div>
+              </Card>
+
+              {/* Playgrounds */}
+              <Card style={{ padding: 18 }}>
+                <div style={{ fontWeight: 800, fontSize: 16, color: "#4c1d95", marginBottom: 14 }}>🛝 Playgrounds near Grindelwald</div>
+                <div style={{ display: "grid", gap: 12 }}>
+                  {[
+                    { name: "Mänlichen Cow Playground", desc: "Has a cow slide! 🐄 Find it at Mänlichen summit after the gondola.", map: "Mänlichen Cow Playground Switzerland" },
+                    { name: "Almendhubel Playground & Picnic Spot", desc: "Great picnic spot with mountain views and a play area above Mürren.", map: "Almendhubel Playground Mürren Switzerland" },
+                  ].map((pg) => (
+                    <div key={pg.name} style={{ background: "#f5f3ff", borderRadius: 14, padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 14, color: "#4c1d95" }}>{pg.name}</div>
+                        <div style={{ fontSize: 13, color: "#6b7280", marginTop: 4 }}>{pg.desc}</div>
+                      </div>
+                      <a
+                        href={mapHref(pg.map)}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{ flexShrink: 0, display: "inline-flex", alignItems: "center", gap: 5, padding: "7px 12px", borderRadius: 999, background: "#ede9fe", color: "#7c3aed", textDecoration: "none", border: "1px solid #c4b5fd", fontWeight: 700, fontSize: 12 }}
+                      >
+                        <MapPin size={12} /> Map
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          );
+        })()}
       </div>
     </div>
   );
