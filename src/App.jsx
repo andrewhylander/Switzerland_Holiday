@@ -682,6 +682,11 @@ const MAP_PLACES = [
   { id: "mp43", cat: "restaurant", emoji: "🎢", name: "Bergrestaurant Pfingstegg",            location: "Pfingstegg",           lat: 46.6279, lng: 8.0527,  mission: "Combine lunch with the alpine coaster",      notes: "Mountain restaurant above Grindelwald beside the Pfingstegg alpine coaster. Fantastic valley views. Great snack stop — combine with the toboggan run. Rating 4.4 ⭐" },
   { id: "mp44", cat: "restaurant", emoji: "🍔", name: "Bebbis Restaurant",                    location: "Interlaken",           lat: 46.6863, lng: 7.8586,  mission: "Burgers and fondue in central Interlaken",   notes: "Large lively restaurant on the Höheweg. Huge menu — burgers, fondue, Swiss classics. Great for groups. Right beside the Höhematte park. Rating 4.3 ⭐" },
   { id: "mp38", cat: "restaurant", emoji: "🔫", name: "Piz Gloria Revolving Restaurant",      location: "Schilthorn",           lat: 46.5582, lng: 7.8342,  mission: "Eat in the James Bond revolving restaurant", notes: "007 filming location. Full 360° rotation every hour. Breakfast and lunch served. Book ahead — tables fill fast in August. Stunning views of 200+ peaks." },
+  // 🌧️ RAINY DAY ACTIVITIES
+  { id: "mp45", cat: "rainy", emoji: "🏊", name: "Sportzentrum Grindelwald",              location: "Grindelwald",          lat: 46.6242, lng: 8.0425,  mission: "Indoor swimming and slides on a rainy day",  notes: "Large indoor sports centre with swimming pools, waterslides, climbing wall and seasonal ice rink. Perfect wet weather backup. Rating 4.5 ⭐" },
+
+  { id: "mp47", cat: "rainy", emoji: "🍫", name: "Funky Chocolate Club",                  location: "Interlaken",           lat: 46.6863, lng: 7.8632,  mission: "Make your own Swiss chocolate bar 🍫",       notes: "Interactive chocolate workshop in Interlaken. Make and decorate your own Swiss chocolate bar. Kids absolutely love it — book ahead. Rating 4.8 ⭐" },
+  { id: "mp48", cat: "rainy", emoji: "🧗", name: "Indoor Seilpark Grindelwald",           location: "Grindelwald",          lat: 46.6245, lng: 8.0427,  mission: "Indoor rope course and climbing challenges",  notes: "Indoor adventure park with rope courses, balance bridges and climbing obstacles. Great for burning off energy on a wet day. Rating 4.4 ⭐" },
   // 🛝 PLAYGROUNDS
   { id: "mp19", cat: "playground", emoji: "🛝", name: "Männlichen Cow Playground",         location: "Männlichen",           lat: 46.6231, lng: 8.0044,  mission: "Ride the famous cow slide!",                 notes: "Iconic alpine playground right beside the cable car station. The cow slide is legendary." },
   { id: "mp20", cat: "playground", emoji: "🛝", name: "Allmendhubel Flower Park",          location: "Mürren",               lat: 46.5631, lng: 7.8978,  mission: "Play with mountain views all around",        notes: "Water features and themed play above Mürren. Gorgeous mountain backdrop." },
@@ -1012,7 +1017,7 @@ export default function SwitzerlandTravelAppReal() {
     const CAT_ACCENT = {
       stay: "#c2410c", cafe: "#b45309", adventure: "#c0152a",
       waterfall: "#0284c7", playground: "#7c3aed", station: "#475569",
-      restaurant: "#16a34a",
+      restaurant: "#16a34a", rainy: "#0891b2",
     };
 
     if (!leafletInstanceRef.current) {
@@ -2447,6 +2452,7 @@ export default function SwitzerlandTravelAppReal() {
             stay:       { label: "Stay",       emoji: "🏠",  accent: "#c2410c", bg: "#fff7ed",  border: "#fdba74" },
             cafe:       { label: "Cafés",      emoji: "☕",  accent: "#b45309", bg: "#fffbeb",  border: "#fcd34d" },
             restaurant: { label: "Restaurants",emoji: "🍽️",  accent: "#16a34a", bg: "#f0fdf4",  border: "#86efac" },
+            rainy:      { label: "Rainy Day",  emoji: "🌧️",  accent: "#0891b2", bg: "#ecfeff",  border: "#67e8f9" },
             adventure:  { label: "Adventure",  emoji: "🧗",  accent: "#c0152a", bg: "#fff1f2",  border: "#fca5a5" },
             waterfall:  { label: "Waterfalls", emoji: "💦",  accent: "#0284c7", bg: "#f0f9ff",  border: "#7dd3fc" },
             playground: { label: "Playgrounds",emoji: "🛝",  accent: "#7c3aed", bg: "#f5f3ff",  border: "#c4b5fd" },
