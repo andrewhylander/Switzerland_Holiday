@@ -1300,7 +1300,8 @@ export default function SwitzerlandTravelAppReal() {
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Chip active={activeTab === "itinerary"} onClick={() => setActiveTab("itinerary")}>Itinerary</Chip>
           <Chip active={activeTab === "travel"} onClick={() => setActiveTab("travel")} tone="warm">Flights & stay</Chip>
-          <Chip active={activeTab === "budget"} onClick={() => setActiveTab("budget")}>Budget</Chip>
+          {/* Budget tab hidden — uncomment to restore: */}
+          {/* <Chip active={activeTab === "budget"} onClick={() => setActiveTab("budget")}>Budget</Chip> */}
           <Chip active={activeTab === "packing"} onClick={() => setActiveTab("packing")} tone="green">
             <Package size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
             Packing
