@@ -355,8 +355,8 @@ const DEFAULT_ITINERARY = [
         time: "Option 2",
         title: "Männlichen",
         location: "Männlichen",
-        notes: "Cable car and easy family-friendly walks with panoramic views.",
-        tags: ["buffer", "mountains", "viewpoint"],
+        notes: "Take the Grindelwald Terminal gondola (~19 min, big windows, leaves near the Eiger Express). The Cow Playground is right beside the cable car station at the top — the kids will love the cow slide! Then walk 20 min up the Royal Walk trail to the crown viewpoint for panoramic Eiger, Mönch & Jungfrau views. Easy family day.",
+        tags: ["buffer", "mountains", "viewpoint", "family", "fun"],
       },
       {
         time: "Option 3",
@@ -787,7 +787,7 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",             checked: { k1: false, k2: false } },
   { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                checked: { k1: false, k2: false } },
   { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",           checked: { k1: false, k2: false } },
-  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",            checked: { k1: false, k2: false } },
+  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",            checked: { k1: false, k2: false }, sound: "moo" },
   { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                   checked: { k1: false, k2: false } },
   { id: "q6",  emoji: "❄️", text: "Touch snow on a glacier",                                cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",        checked: { k1: false, k2: false } },
   { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",           checked: { k1: false, k2: false } },
@@ -808,6 +808,7 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",   checked: { k1: false, k2: false } },
   { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",    checked: { k1: false, k2: false } },
   { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",       checked: { k1: false, k2: false } },
+  { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",             checked: { k1: false, k2: false }, sound: "moo" },
 ];
 
 export default function SwitzerlandTravelAppReal() {
@@ -843,6 +844,7 @@ export default function SwitzerlandTravelAppReal() {
   const [activeKid, setActiveKid]             = useState("k1");
   const [kidNames, setKidNames]               = useState(["Alfie", "Chloe"]);
   const [editingKid, setEditingKid]           = useState(null);
+  const [expandedNotes, setExpandedNotes]     = useState(new Set());
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -1061,6 +1063,11 @@ export default function SwitzerlandTravelAppReal() {
         setQuestPopId(id);
         setQuestPopMsg(item.cheer || "⭐ Wunderbar! 🇨🇭");
         setTimeout(() => setQuestPopId(null), 3600);
+        if (item.sound === "moo" && typeof speechSynthesis !== "undefined") {
+          const u = new SpeechSynthesisUtterance("Moooo");
+          u.pitch = 0.4; u.rate = 0.55;
+          speechSynthesis.speak(u);
+        }
       }
       return prev.map((q) =>
         q.id === id ? { ...q, checked: { ...q.checked, [activeKid]: !q.checked[activeKid] } } : q
@@ -1353,7 +1360,22 @@ export default function SwitzerlandTravelAppReal() {
                                       <ExternalLink size={13} /> Open map
                                     </a>
                                   </div>
-                                  <div style={{ fontSize: 14, lineHeight: 1.5 }}>{item.notes}</div>
+                                  {item.notes && (() => {
+                                    const noteKey = `${day.id}_${idx}`;
+                                    const open = expandedNotes.has(noteKey);
+                                    return (
+                                      <div
+                                        onClick={(e) => { e.stopPropagation(); setExpandedNotes((prev) => { const s = new Set(prev); open ? s.delete(noteKey) : s.add(noteKey); return s; }); }}
+                                        style={{ cursor: "pointer", userSelect: "none" }}
+                                      >
+                                        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#6b7280", fontWeight: 600 }}>
+                                          <span style={{ fontSize: 11, transition: "transform 0.2s", display: "inline-block", transform: open ? "rotate(90deg)" : "rotate(0deg)" }}>▶</span>
+                                          {open ? "Hide notes" : "Show notes"}
+                                        </div>
+                                        {open && <div style={{ fontSize: 14, lineHeight: 1.6, marginTop: 6, color: "#374151" }}>{item.notes}</div>}
+                                      </div>
+                                    );
+                                  })()}
                                   <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                                     {(item.tags || []).map((t) => (
                                       <SmallBadge key={t} color={getTagColor(t)}>{t}</SmallBadge>
@@ -2145,15 +2167,16 @@ export default function SwitzerlandTravelAppReal() {
                         {isPopping && (
                           <motion.div
                             initial={{ opacity: 1, y: 0 }}
-                            animate={{ opacity: 0, y: -44 }}
+                            animate={{ opacity: 0, y: -60 }}
                             exit={{}}
                             transition={{ duration: 3.6 }}
                             style={{
-                              position: "absolute", top: 10, left: "50%", transform: "translateX(-50%)",
-                              whiteSpace: "nowrap", fontSize: 13, fontWeight: 800,
+                              position: "fixed", top: "30%", left: 24, right: 24,
+                              whiteSpace: "normal", textAlign: "center",
+                              fontSize: 16, fontWeight: 800,
                               color: "#4c1d95", background: "white", borderRadius: 20,
-                              padding: "4px 10px", boxShadow: "0 2px 8px rgba(124,58,237,0.25)",
-                              pointerEvents: "none", zIndex: 10,
+                              padding: "8px 16px", boxShadow: "0 4px 20px rgba(124,58,237,0.35)",
+                              pointerEvents: "none", zIndex: 9999,
                             }}
                           >
                             {questPopMsg}
@@ -2199,8 +2222,11 @@ export default function SwitzerlandTravelAppReal() {
                 <div style={{ fontWeight: 800, fontSize: 16, color: "#4c1d95", marginBottom: 14 }}>🛝 Playgrounds near Grindelwald</div>
                 <div style={{ display: "grid", gap: 12 }}>
                   {[
-                    { name: "Mänlichen Cow Playground", desc: "Has a cow slide! 🐄 Find it at Mänlichen summit after the gondola.", map: "Mänlichen Cow Playground Switzerland" },
-                    { name: "Almendhubel Playground & Picnic Spot", desc: "Great picnic spot with mountain views and a play area above Mürren.", map: "Almendhubel Playground Mürren Switzerland" },
+                    { name: "Männlichen Cow Playground", desc: "Iconic alpine playground with a cow slide! 🐄 At Männlichen summit after the gondola.", map: "Männlichen Cow Playground Switzerland" },
+                    { name: "Allmendhubel Flower Park", desc: "Water features and themed play above Mürren. 💧 Gorgeous mountain backdrop.", map: "Allmendhubel Flower Park Mürren Switzerland" },
+                    { name: "Bort Alpine Playground", desc: "Adventure playground at Bort on the Grindelwald First gondola line. Stop here on the way down!", map: "Bort Alpine Playground Grindelwald First Switzerland" },
+                    { name: "Winteregg Playground", desc: "Scenic stop playground on the Mürren trail. Great rest spot with views. 🏔️", map: "Winteregg playground Mürren Switzerland" },
+                    { name: "Grindelwald Village Playground", desc: "Easy local park right in Grindelwald town. Perfect for a quick play break. 🛝", map: "Grindelwald Village Playground Switzerland" },
                   ].map((pg) => (
                     <div key={pg.name} style={{ background: "#f5f3ff", borderRadius: 14, padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
                       <div>
