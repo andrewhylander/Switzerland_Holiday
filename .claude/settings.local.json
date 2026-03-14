@@ -5,7 +5,11 @@
       "WebFetch(domain:commons.wikimedia.org)",
       "Bash(python3 -c \":*)",
       "mcp__Claude_Preview__preview_start",
-      "Bash(\"/c/Program Files/nodejs/npm.cmd\" install)"
+      "Bash(\"/c/Program Files/nodejs/npm.cmd\" install)",
+      "WebFetch(domain:www.airbnb.co.uk)",
+      "WebFetch(domain:www.vacationhome.rent)",
+      "WebFetch(domain:www.alohavillas.io)",
+      "WebFetch(domain:www.grindelwaldhome.ch)"
     ]
   }
 }
