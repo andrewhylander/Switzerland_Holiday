@@ -183,17 +183,10 @@ const DEFAULT_ITINERARY = [
       },
       {
         time: "PM",
-        title: "Gondola down & PostBus to Pfingstegg",
+        title: "Pfingstegg — toboggan, flying fox & playground",
         location: "First → Grindelwald Terminal → Pfingstegg",
-        notes: "• Gondola back down to Grindelwald Terminal: ~20 min\n• PostBus or cable car up to Pfingstegg: ~20 min\n• Pfingstegg is a summer activity centre with toboggan runs and flying fox",
-        tags: ["cable car", "transport"],
-      },
-      {
-        time: "PM",
-        title: "Pfingstegg toboggan + playground",
-        location: "Pfingstegg",
-        notes: "🛝 Summer toboggan run (perfect for ages 5 & 8 — much more fun-focused than the Trottibike)\n✈️ Flying fox / zip line experience (depending on height/age restrictions)\n🎪 Playground\n\nPerfect way to let the kids have fun and burn energy after travel.",
-        tags: ["family", "fun", "playground"],
+        notes: "• Gondola back down to Grindelwald Terminal: ~20 min\n• PostBus or cable car up to Pfingstegg: ~20 min\n\n🛝 Summer toboggan run (perfect for ages 5 & 8 — much more fun-focused than the Trottibike)\n✈️ Flying fox / zip line experience (depending on height/age restrictions)\n🎪 Playground\n\nPerfect way to let the kids have fun and burn energy after travel.",
+        tags: ["cable car", "family", "fun", "playground"],
       },
       {
         time: "EVE",
@@ -1703,11 +1696,6 @@ export default function SwitzerlandTravelAppReal() {
                               </SmallBadge>
                             </div>
                             <div style={{ color: "#475569", fontSize: 14 }}>{day.location}</div>
-                            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                              {(day.tags || []).map((t) => (
-                                <SmallBadge key={t} color={getTagColor(t)}>{t}</SmallBadge>
-                              ))}
-                            </div>
                           </div>
                           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
                             <a
@@ -1815,11 +1803,6 @@ export default function SwitzerlandTravelAppReal() {
                                       </div>
                                     );
                                   })()}
-                                  <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                                    {(item.tags || []).map((t) => (
-                                      <SmallBadge key={t} color={getTagColor(t)}>{t}</SmallBadge>
-                                    ))}
-                                  </div>
                                 </div>
                               ))}
                             </div>
