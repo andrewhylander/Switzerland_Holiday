@@ -2110,24 +2110,12 @@ export default function SwitzerlandTravelAppReal() {
                     background: "linear-gradient(180deg, #eff6ff, #ffffff)",
                   }}
                 >
-                  <div style={{ fontSize: 12, color: "#64748b" }}>Totals ({budgetCurrency})</div>
+                  <div style={{ fontSize: 12, color: "#64748b" }}>Total Expenses ({budgetCurrency})</div>
                   <div style={{ display: "grid", gap: 8, marginTop: 10, fontSize: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Income</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.income) : GBP.format(totals.income * CHF_TO_GBP)}</span></div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Expenses</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.expenses) : GBP.format(totals.expenses * CHF_TO_GBP)}</span></div>
-                    <div style={{ height: 1, background: "#dbeafe", margin: "2px 0" }} />
-                    <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800 }}><span>Remaining</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.remaining) : GBP.format(totals.remaining * CHF_TO_GBP)}</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800 }}><span>Total</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.expenses) : GBP.format(totals.expenses * CHF_TO_GBP)}</span></div>
                   </div>
                 </div>
               </div>
-
-              <BudgetEditor
-                title="Income"
-                lines={budget.income}
-                onAdd={() => addBudgetLine("income")}
-                onRemove={(id) => removeBudgetLine("income", id)}
-                onChange={(id, patch) => updateBudgetLine("income", id, patch)}
-                currency={budgetCurrency}
-              />
 
               <BudgetEditor
                 title="Expenses"
