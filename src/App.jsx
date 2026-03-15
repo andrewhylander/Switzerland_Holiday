@@ -899,37 +899,119 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food" },
   // 🚠 Epic Transport
   { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",            checked: { k1: false, k2: false }, section: "transport" },
-  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",     checked: { k1: false, k2: false }, section: "transport" },
+  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",     checked: { k1: false, k2: false }, section: "transport", sound: "train" },
   { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                  checked: { k1: false, k2: false }, section: "transport" },
   { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",        checked: { k1: false, k2: false }, section: "transport" },
   { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",              checked: { k1: false, k2: false }, section: "transport", sound: "moo" },
   // 🏔️ Mountain Adventures
-  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                    checked: { k1: false, k2: false }, section: "mountain" },
-  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",         checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                    checked: { k1: false, k2: false }, section: "mountain", sound: "splash" },
+  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",         checked: { k1: false, k2: false }, section: "mountain", sound: "sparkle" },
   { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",            checked: { k1: false, k2: false }, section: "mountain" },
-  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",       checked: { k1: false, k2: false }, section: "mountain" },
-  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",            checked: { k1: false, k2: false }, section: "mountain" },
-  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",    checked: { k1: false, k2: false }, section: "mountain" },
+  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",       checked: { k1: false, k2: false }, section: "mountain", sound: "fanfare" },
+  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",            checked: { k1: false, k2: false }, section: "mountain", sound: "fanfare" },
+  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",    checked: { k1: false, k2: false }, section: "mountain", sound: "splash" },
   // 🌿 Nature Spotting
   { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",             checked: { k1: false, k2: false }, section: "nature", sound: "moo" },
   { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",   checked: { k1: false, k2: false }, section: "nature" },
-  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                checked: { k1: false, k2: false }, section: "nature" },
-  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",        checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                checked: { k1: false, k2: false }, section: "nature", sound: "sparkle" },
+  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",        checked: { k1: false, k2: false }, section: "nature", sound: "sparkle" },
   { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                  checked: { k1: false, k2: false }, section: "nature" },
   { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",    checked: { k1: false, k2: false }, section: "nature" },
   { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",    checked: { k1: false, k2: false }, section: "nature" },
   // 🎪 Village Fun
-  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",           checked: { k1: false, k2: false }, section: "village" },
+  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",           checked: { k1: false, k2: false }, section: "village", sound: "yodel" },
   { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                checked: { k1: false, k2: false }, section: "village" },
-  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",   checked: { k1: false, k2: false }, section: "village" },
+  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",   checked: { k1: false, k2: false }, section: "village", sound: "bell" },
   { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!", checked: { k1: false, k2: false }, section: "village" },
   // 📸 Photo Missions
-  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",    checked: { k1: false, k2: false }, section: "photo" },
-  { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",     checked: { k1: false, k2: false }, section: "photo" },
-  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",   checked: { k1: false, k2: false }, section: "photo" },
-  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",   checked: { k1: false, k2: false }, section: "photo" },
-  { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",  checked: { k1: false, k2: false }, section: "photo" },
+  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",    checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
+  { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",     checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
+  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",   checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
+  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",   checked: { k1: false, k2: false }, section: "photo", sound: "train" },
+  { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",  checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
 ];
+
+function playSound(name) {
+  if (name === "moo") {
+    try { new Audio("/CowMoo.mp3").play(); } catch (_) {}
+    return;
+  }
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    const ctx = new AC();
+    const t = ctx.currentTime;
+    if (name === "bell") {
+      // Cowbell — metallic two-tone square wave
+      [[420, 0.4, 0.8], [560, 0.2, 0.5]].forEach(([freq, vol, dur]) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "square"; o.frequency.value = freq;
+        g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + dur);
+      });
+    } else if (name === "train") {
+      // Two-tone train whistle
+      [880, 1174].forEach((freq) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine"; o.frequency.value = freq;
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.2, t + 0.05);
+        g.gain.setValueAtTime(0.2, t + 0.3); g.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
+        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.65);
+      });
+    } else if (name === "fanfare") {
+      // 4-note ascending fanfare (C E G C)
+      [523, 659, 784, 1047].forEach((freq, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "square"; o.frequency.value = freq;
+        const s = t + i * 0.13;
+        g.gain.setValueAtTime(0.15, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.28);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.3);
+      });
+    } else if (name === "sparkle") {
+      // Twinkling high sine notes
+      [1319, 1568, 1760, 2093, 2349].forEach((freq, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine"; o.frequency.value = freq;
+        const s = t + i * 0.07;
+        g.gain.setValueAtTime(0.12, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.22);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.25);
+      });
+    } else if (name === "splash") {
+      // Filtered white noise burst (water splash)
+      const len = Math.floor(ctx.sampleRate * 0.45);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.18));
+      const src = ctx.createBufferSource(); src.buffer = buf;
+      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 900;
+      const g = ctx.createGain(); g.gain.value = 0.5;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.45);
+    } else if (name === "camera") {
+      // Shutter click — high noise burst + low thunk
+      const len = Math.floor(ctx.sampleRate * 0.07);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+      const src = ctx.createBufferSource(); src.buffer = buf;
+      const filt = ctx.createBiquadFilter(); filt.type = "highpass"; filt.frequency.value = 2000;
+      const g = ctx.createGain(); g.gain.value = 0.6;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.07);
+      const o = ctx.createOscillator(), g2 = ctx.createGain();
+      o.frequency.value = 180; g2.gain.setValueAtTime(0.25, t + 0.02); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
+      o.connect(g2); g2.connect(ctx.destination); o.start(t + 0.02); o.stop(t + 0.15);
+    } else if (name === "yodel") {
+      // Pitch-sweeping yodel approximation
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.type = "sine";
+      o.frequency.setValueAtTime(300, t); o.frequency.exponentialRampToValueAtTime(620, t + 0.15);
+      o.frequency.exponentialRampToValueAtTime(250, t + 0.3); o.frequency.exponentialRampToValueAtTime(540, t + 0.45);
+      o.frequency.exponentialRampToValueAtTime(210, t + 0.62);
+      g.gain.setValueAtTime(0.3, t); g.gain.setValueAtTime(0.3, t + 0.58); g.gain.exponentialRampToValueAtTime(0.001, t + 0.7);
+      o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.72);
+    }
+    setTimeout(() => ctx.close(), 2000);
+  } catch (_) {}
+}
 
 export default function SwitzerlandTravelAppReal() {
   const [activeTab, setActiveTab] = useState("itinerary");
@@ -1258,12 +1340,7 @@ export default function SwitzerlandTravelAppReal() {
         setQuestPopId(id);
         setQuestPopMsg(item.cheer || "⭐ Wunderbar! 🇨🇭");
         setTimeout(() => setQuestPopId(null), 3600);
-        if (item.sound === "moo") {
-          try {
-            const audio = new Audio("/CowMoo.mp3");
-            audio.play();
-          } catch (_) {}
-        }
+        if (item.sound) playSound(item.sound);
       }
       return prev.map((q) =>
         q.id === id ? { ...q, checked: { ...q.checked, [activeKid]: !q.checked[activeKid] } } : q
