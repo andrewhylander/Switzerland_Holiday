@@ -3109,15 +3109,10 @@ export default function SwitzerlandTravelAppReal() {
       </div>
 
       {activeTab === "learning" && (
-        <div style={{ display: "grid", gap: 14 }}>
-          {/* Header */}
-          <Card style={{ padding: "16px 18px" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-              <span style={{ fontSize: 24 }}>📚</span>
-              <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Pre-Trip Learning</h2>
-            </div>
-            <p style={{ margin: "4px 0 12px", color: "#64748b", fontSize: 13 }}>Learn about Switzerland before you arrive! Facts, language, culture, and fun trivia for the whole family.</p>
-            {/* Category filter chips */}
+        <div style={{ display: "grid", gap: 12 }}>
+          {/* Header — gradient banner matching Map/Quest tabs */}
+          <div style={{ background: "linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)", borderRadius: 18, padding: "16px 18px", color: "white" }}>
+            <div style={{ fontWeight: 900, fontSize: 20, marginBottom: 10 }}>📚 Pre-Trip Learning</div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {LEARNING_SECTIONS.map(sec => (
                 <button
@@ -3126,9 +3121,9 @@ export default function SwitzerlandTravelAppReal() {
                   style={{
                     padding: "6px 12px",
                     borderRadius: 999,
-                    border: learningSection === sec.id ? `2px solid ${sec.color}` : "1px solid #e2e8f0",
-                    background: learningSection === sec.id ? `${sec.color}15` : "white",
-                    color: learningSection === sec.id ? sec.color : "#64748b",
+                    border: "none",
+                    background: learningSection === sec.id ? "white" : "rgba(255,255,255,0.2)",
+                    color: learningSection === sec.id ? "#5b21b6" : "white",
                     fontWeight: learningSection === sec.id ? 700 : 500,
                     cursor: "pointer",
                     fontSize: 13,
@@ -3141,7 +3136,7 @@ export default function SwitzerlandTravelAppReal() {
                 </button>
               ))}
             </div>
-          </Card>
+          </div>
 
           {/* Learning content cards */}
           {learningSection === "language" ? (
