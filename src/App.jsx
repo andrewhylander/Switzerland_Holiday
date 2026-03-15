@@ -202,7 +202,7 @@ const DEFAULT_ITINERARY = [
     date: "Mon 24 Aug 2026",
     base: "Grindelwald",
     title: "Schilthorn (Piz Gloria) + Mürren + Gimmelwald",
-    location: "Mürren → Schilthorn → Gimmelwald",
+    location: "Grindelwald → Mürren → Schilthorn → Gimmelwald → Grindelwald",
     tags: ["bond", "mountains", "cable car", "village", "hike", "family", "lunch"],
     highlight: true,
     mapLocation: "Schilthorn, Switzerland",
