@@ -131,14 +131,14 @@ const DEFAULT_ITINERARY = [
         time: "PM",
         title: "Arrive in Switzerland",
         location: "Zurich Airport",
-        notes: "Land at Zurich Airport at 16:15.\n• Zurich Airport → Bern: ~1h 10min\n• Bern → Interlaken Ost: ~50 min\n• Alternative: direct IC from Zurich HB → Interlaken Ost ~2h (simpler, one change)\n• Total from airport: ~2h 30min",
+        notes: "Land at Zurich Airport at 16:15. Take the train from Zurich Airport (ZRH) to Bern (~1h 10min), then Bern → Interlaken Ost (~50 min). Alternatively direct IC to Interlaken Ost from Zurich HB (~2h). Total journey from airport ~2h 30min.",
         tags: ["travel", "flight"],
       },
       {
         time: "EVE",
         title: "Travel to Grindelwald & check in",
         location: "Interlaken Ost → Grindelwald",
-        notes: "• Interlaken Ost → Grindelwald: BOB train, ~35 min, no changes\n• Runs every 30 min — scenic rack railway through the valley\n• Arrive Grindelwald Bahnhof, then walk to the apartment",
+        notes: "From Interlaken Ost, take the BOB train to Grindelwald (~35 min, runs every 30 min). No changes needed. Scenic rack railway through the valley. Arrive Grindelwald Bahnhof.",
         tags: ["train", "check-in"],
       },
       {
@@ -208,54 +208,25 @@ const DEFAULT_ITINERARY = [
     id: "d3",
     date: "Mon 24 Aug 2026",
     base: "Grindelwald",
-    title: "Schilthorn (Piz Gloria) + Mürren + Gimmelwald",
-    location: "Grindelwald → Mürren → Schilthorn → Gimmelwald → Grindelwald",
-    tags: ["bond", "mountains", "cable car", "village", "hike", "family", "lunch"],
-    highlight: true,
-    mapLocation: "Schilthorn, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Schilthorn.jpg/800px-Schilthorn.jpg",
+    title: "Männlichen & Cow Playground",
+    location: "Männlichen",
+    tags: ["mountains", "viewpoint", "family", "fun", "scenic"],
+    mapLocation: "Männlichen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
     items: [
       {
-        time: "🚨 Before this day",
-        title: "BOOK Piz Gloria lunch",
-        location: "schilthorn.ch",
-        notes: "🍽️ CRITICAL: Reserve a table at Piz Gloria (the rotating restaurant) for 10:00am or 10:30am\n• Book at schilthorn.ch or call ahead\n• Summer fills up 3–4 weeks in advance\n• Bond fans: this is THE location from the James Bond film \"On Her Majesty's Secret Service\"\n• Booking ref needed for confirmation",
-        tags: ["booking", "important"],
-      },
-      {
         time: "AM",
-        title: "Early start: travel to Mürren",
-        location: "Grindelwald → Lauterbrunnen → Grütschalp → Mürren",
-        notes: "⏰ Leave at 8:00am sharp\n• Grindelwald station → Lauterbrunnen: BOB train, ~25 min\n• Lauterbrunnen → Grütschalp: cable car, ~5 min\n• Grütschalp → Mürren: WAB mountain railway, ~20 min\n• Total: ~80 minutes\n• Arrive Mürren: 9:20am — perfect timing for 10:00am Piz Gloria reservation",
-        tags: ["train", "cable car", "travel"],
+        title: "Grindelwald Terminal → Männlichen",
+        location: "Grindelwald Terminal → Männlichen",
+        notes: "Walk from apartment to Grindelwald Terminal station (~10 min). Gondola departs regularly. Grindelwald Terminal → Männlichen ~19 min. World's longest gondola. Book tickets in advance on the Jungfrau railways website.",
+        tags: ["cable car", "mountains"],
       },
       {
-        time: "MID ⭐",
-        title: "Piz Gloria: James Bond lunch in the rotating restaurant",
-        location: "Schilthorn / Piz Gloria",
-        notes: "🔫 Bond World Experience:\n• Mürren → Schilthorn: cable car via Birg, ~20 min\n• Sit-down lunch in the revolving restaurant (360° views, rotating floor)\n• Eiger, Mönch & Jungfrau views from 2,970m\n• After lunch: walk through Bond 007 Museum (separate paid entry, ~CHF 15–20/person, ~45 min)\n• Total time at Schilthorn: ~2.5 hours\n• Back down to Mürren: cable car, ~20 min\n• Arrive Mürren: ~1:00pm",
-        tags: ["lunch", "bond", "viewpoint", "scenic"],
-      },
-      {
-        time: "PM",
-        title: "Mürren village + Allmendhubel (optional if energy allows)",
-        location: "Mürren & Allmendhubel",
-        notes: "Quick exploration of car-free Mürren village — classic Swiss chalets, gardens, tourist shops.\n\n🎪 OPTIONAL: Short funicular up to Allmendhubel (best playground in Jungfrau region, themed flower park, water features). Only if kids still have energy — skip if tired after Schilthorn.",
-        tags: ["village", "optional", "playground"],
-      },
-      {
-        time: "PM",
-        title: "Loop hike or cable car: Mürren → Gimmelwald",
-        location: "Mürren → Gimmelwald",
-        notes: "Option A: Hike down (~3km, ~1 hour, mostly downhill) through alpine meadows — best hiking in the region\nOption B: Cable car down (easier on tired legs after big day)\n\nGimmelwald highlights:\n• 🛒 World's first honesty shop (pay what you think it's worth)\n• 🥛 Self-service farm fridges: fresh milk, cheese, eggs\n• 🐄 Farm animals around the village\n• 🍺 Top-rated Swiss dark beer at the local bar",
-        tags: ["hike", "village", "family"],
-      },
-      {
-        time: "EVE",
-        title: "Return to Grindelwald",
-        location: "Gimmelwald → Stechelberg → Lauterbrunnen → Grindelwald",
-        notes: "• Gimmelwald → Stechelberg: cable car, ~5 min\n• Stechelberg → Lauterbrunnen: PostBus, ~15 min\n• Lauterbrunnen → Grindelwald: BOB train, ~25 min\n• Total return: ~45 min\n• Arrive Grindelwald: ~6:30pm\n• Early dinner and early night — big day tomorrow!",
-        tags: ["return", "train"],
+        time: "MID",
+        title: "Männlichen summit + Cow Playground + Royal Walk",
+        location: "Männlichen",
+        notes: "Walk up the short but steep path to the summit for the best panoramic views of Eiger, Mönch & Jungfrau.\n\n🐄 Cow Playground — right beside the cable car station. Giant cow slide, wooden bowling lane, huge views — the kids' favourite.\n\nRoyal Walk: easy flat 20-min ridge walk to the iconic crown viewpoint — one of the best panoramas in the Bernese Oberland.\n\nBonus: follow the cow-themed trail downhill for a second playground at the bottom.",
+        tags: ["family", "viewpoint", "hike", "scenic", "playground"],
       },
     ],
   },
@@ -274,7 +245,7 @@ const DEFAULT_ITINERARY = [
         time: "AM",
         title: "Eiger Express",
         location: "Grindelwald Terminal",
-        notes: "• Grindelwald Terminal → Eigergletscher: Eiger Express gondola, ~28 min\n• Eigergletscher → Jungfraujoch: Jungfraubahn rack railway, ~35 min\n• Total each way: ~65 min\n• First departure from Grindelwald Terminal: ~7:30am\n• Book well in advance at jungfrau.ch — sells out fast",
+        notes: "From Grindelwald, take the Wengernalpbahn (WAB) rack railway to Kleine Scheidegg (~35 min), then change to the Jungfraubahn rack railway to Jungfraujoch (~35 min). Total ~70 min each way. Book Jungfraujoch tickets well in advance — very popular. First trains from Grindelwald around 7:30am.",
         tags: ["bucket list", "cable car"],
       },
       {
@@ -344,46 +315,32 @@ const DEFAULT_ITINERARY = [
     id: "d6",
     date: "Thu 27 Aug 2026",
     base: "Grindelwald",
-    title: "Lake Brienz & Giessbach Falls",
-    location: "Brienz / Giessbach / Lake Brienz",
-    tags: ["lake", "waterfall", "scenic", "relax", "family", "village"],
-    mapLocation: "Giessbach, Brienz, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg/600px-Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg",
+    title: "Lauterbrunnen Valley by Bike",
+    location: "Lauterbrunnen",
+    tags: ["waterfalls", "village", "easy", "scenic", "cycling", "family"],
+    mapLocation: "Lauterbrunnen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lauterbrunnen_-_Switzerland.JPG",
     items: [
       {
         time: "AM",
-        title: "Train to Brienz + boat to Giessbach",
-        location: "Grindelwald → Interlaken Ost → Brienz",
-        notes: "• Grindelwald → Interlaken Ost: BOB + BLS, ~55 min\n• Interlaken Ost → Brienz: scenic lake train, ~20 min\n• Brienz pier: hop on the lake boat to Giessbach (~15 min cruise on Lake Brienz)\n• Or take the nostalgic funicular up from the Giessbach boat pier directly to the hotel",
-        tags: ["train", "boat", "travel", "scenic"],
+        title: "Travel to Lauterbrunnen",
+        location: "Grindelwald → Lauterbrunnen",
+        notes: "Train from Grindelwald → Zweilütschinen (~10 min), then change to BOB train → Lauterbrunnen (~15 min). Total ~25 min, runs every 30 min. Bike hire shops near the station (Swiss Bike Hire, Imboden Bike) — no booking needed but get there early (~9am).",
+        tags: ["train", "travel"],
       },
       {
         time: "MID",
-        title: "Giessbach Falls + Grand Hotel terrace",
-        location: "Giessbach, Lake Brienz",
-        notes: "The Giessbach Falls cascade down the mountainside into Lake Brienz — one of the most dramatic settings in the region.\n\n🌟 Best recommendation: take the short hike uphill to walk BEHIND the falls — a unique experience that friends and family always mention as a trip highlight.\n\nPedestrian bridge over the falls for great photos.\n\nGrand Hotel Giessbach: even without staying overnight, the panoramic restaurant terraces overlooking the falls and lake are fantastic for lunch. Classic Swiss decor inside is worth a look.\n\nFun fact: if you eat at the hotel, you can drink water piped directly from the waterfall.",
-        tags: ["waterfall", "scenic", "food", "family"],
+        title: "Lauterbrunnen Valley bike ride",
+        location: "Lauterbrunnen → Stechelberg",
+        notes: "Hire bikes in Lauterbrunnen village (Imboden Bike, near station). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Walk or cycle all the way to the back for the full experience.\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — completely rain-proof, CHF 14/adult).",
+        tags: ["cycling", "family", "scenic", "waterfalls"],
       },
       {
-        time: "PM",
-        title: "Village of Brienz",
-        location: "Brienz",
-        notes: "Return by boat to Brienz and explore:\n• Beautiful lakefront promenade — great for a lazy afternoon stroll\n• Some of the most traditional Swiss architecture in the region\n• Swiss Wood Carving Museum (Holzschnitzerei) — hand-paint your own carved wooden cow 🐄\n• Outdoor museum of historic Swiss buildings and artisan crafts\n• Local brewery for a cold drink with a lakeside view\n• Optional: swim in the lake (clean and gorgeous in August)",
-        tags: ["village", "family", "relax", "scenic"],
-      },
-      {
-        time: "🌅 Optional Evening",
-        title: "Harder Kulm sunset — Interlaken",
-        location: "Interlaken",
-        notes: "One of the only mountain destinations open late in the evening — making the return through Interlaken Ost a perfect excuse to stop:\n• Funicular from just outside Interlaken Ost station, ~10 min ride\n• Watch the golden hour glow hit the Eiger, Mönch & Jungfrau\n• Reflections on both Lakes Thun and Brienz spread out below\n• Stay for dinner or just drinks at the summit restaurant\n• Last funicular down around 9–10pm in summer",
-        tags: ["viewpoint", "sunset", "optional", "scenic"],
-      },
-      {
-        time: "Option B",
-        title: "Interlaken town day (swap if preferred)",
-        location: "Interlaken",
-        notes: "If you'd prefer a gentler day closer to base:\n• Grindelwald → Interlaken Ost: ~55 min, every 30 min\n• Aare river walk, Höhematte park, ice cream on the Höheweg\n• Souvenir shopping — best selection in the region\n• Still combines perfectly with the Harder Kulm evening",
-        tags: ["relax", "family", "park", "optional"],
+        time: "EVE",
+        title: "Return bikes & head back to Grindelwald",
+        location: "Lauterbrunnen → Grindelwald",
+        notes: "Return bikes, grab ice cream at Airtime Café, then train back: Lauterbrunnen → Zweilütschinen → Grindelwald (~25 min).",
+        tags: ["train", "return", "food"],
       },
     ],
   },
@@ -500,6 +457,82 @@ const DEFAULT_ITINERARY = [
       },
     ],
   },
+];
+
+const LEARNING_SECTIONS = [
+  { id: "facts", label: "Swiss Facts", emoji: "🇨🇭", color: "#dc2626" },
+  { id: "language", label: "Learn Words", emoji: "🗣️", color: "#2563eb" },
+  { id: "culture", label: "Culture & Traditions", emoji: "🎭", color: "#9333ea" },
+  { id: "landmarks", label: "Mountains & Landmarks", emoji: "⛰️", color: "#ea580c" },
+  { id: "fun", label: "Fun Facts for Kids", emoji: "🎉", color: "#16a34a" },
+];
+
+const DEFAULT_LEARNING_ITEMS = [
+  // 🇨🇭 Swiss Facts
+  { id: "lf1", section: "facts", icon: "🏔️", title: "The Alps Cover 60% of Switzerland", description: "Switzerland has three mountain ranges: the Alps, the Jura, and the Mittelland. The Alps are the most famous and cover about 60% of the country!" },
+  { id: "lf2", section: "facts", icon: "🚂", title: "The Jungfrau Railway is the Highest in Europe", description: "The Jungfraubahn (Jungfrau Railway) reaches 3,454 meters (11,333 feet) above sea level. It's the highest railway in Europe and takes you to 'Top of Europe'!" },
+  { id: "lf3", section: "facts", icon: "🧀", title: "Switzerland Makes 450,000 Tonnes of Cheese Per Year", description: "The most famous Swiss cheese is Emmental (with big holes!), but there are over 450 varieties. Switzerland is the world's largest exporter of cheese." },
+  { id: "lf4", section: "facts", icon: "🍫", title: "Swiss Chocolate is World Famous", description: "Switzerland produces about 200,000 tonnes of chocolate per year. The chocolate is so good because of high-quality cocoa, milk, and careful craftsmanship!" },
+  { id: "lf5", section: "facts", icon: "🏦", title: "Switzerland has Four National Languages", description: "German (63%), French (23%), Italian (8%), and Romansh (0.5%). The language depends on which region you're visiting!" },
+  { id: "lf6", section: "facts", icon: "⏰", title: "Swiss Punctuality is Famous Worldwide", description: "Trains in Switzerland arrive on time 94% of the time! Swiss people are known for being very punctual in everything they do." },
+  { id: "lf7", section: "facts", icon: "💰", title: "Switzerland is NOT in the EU", description: "Switzerland is independent and uses the Swiss Franc (CHF) instead of the Euro. They are famous for banking and precision manufacturing." },
+  { id: "lf8", section: "facts", icon: "🐄", title: "There are More Sheep Than People", description: "Switzerland has about 8.7 million people but over 500,000 cows and many more sheep! Many farmers use traditional methods in the Alps." },
+
+  // 🗣️ Learn Words
+  { id: "lw1", section: "language", icon: "👋", title: "Hello & Goodbye", phrases: [
+    { word: "Hallo", translation: "Hello", pronunciation: "HAH-lo" },
+    { word: "Auf Wiedersehen", translation: "Goodbye", pronunciation: "OWF VEE-der-zay-en" },
+    { word: "Guten Morgen", translation: "Good morning", pronunciation: "GOO-ten MOR-gen" },
+    { word: "Gute Nacht", translation: "Good night", pronunciation: "GOO-teh NAHKT" },
+  ]},
+  { id: "lw2", section: "language", icon: "🙏", title: "Please & Thank You", phrases: [
+    { word: "Bitte", translation: "Please", pronunciation: "BIT-teh" },
+    { word: "Danke", translation: "Thank you", pronunciation: "DAHN-keh" },
+    { word: "Vielen Dank", translation: "Thank you very much", pronunciation: "FEE-len DANK" },
+    { word: "Gerne", translation: "You're welcome", pronunciation: "GER-neh" },
+  ]},
+  { id: "lw3", section: "language", icon: "🍔", title: "Food & Dining", phrases: [
+    { word: "Ich hätte gerne...", translation: "I would like...", pronunciation: "Ikh HET-teh GER-neh" },
+    { word: "Wasser", translation: "Water", pronunciation: "VASS-er" },
+    { word: "Käse", translation: "Cheese", pronunciation: "KAY-zeh" },
+    { word: "Schokolade", translation: "Chocolate", pronunciation: "Sho-ko-LAH-deh" },
+  ]},
+  { id: "lw4", section: "language", icon: "🗺️", title: "Getting Around", phrases: [
+    { word: "Wo ist...?", translation: "Where is...?", pronunciation: "Vo ist" },
+    { word: "Bahnhof", translation: "Train station", pronunciation: "BAHN-hof" },
+    { word: "Rechts", translation: "Right", pronunciation: "REKT" },
+    { word: "Links", translation: "Left", pronunciation: "LINKS" },
+  ]},
+  { id: "lw5", section: "language", icon: "❓", title: "Helpful Phrases", phrases: [
+    { word: "Sprechen Sie Englisch?", translation: "Do you speak English?", pronunciation: "SHPREK-en zee ENG-lish" },
+    { word: "Ich verstehe nicht", translation: "I don't understand", pronunciation: "Ikh fer-SHTAY-eh niht" },
+    { word: "Wie viel kostet das?", translation: "How much does this cost?", pronunciation: "Vee FEEL KOS-tet dahs" },
+    { word: "Hilfe!", translation: "Help!", pronunciation: "HIL-feh" },
+  ]},
+
+  // 🎭 Culture & Traditions
+  { id: "lc1", section: "culture", icon: "🔔", title: "Alphorn & Mountain Culture", description: "The alphorn is a traditional Swiss instrument made of wood. It's used to call cattle in the mountains and is a symbol of Swiss Alpine culture." },
+  { id: "lc2", section: "culture", icon: "🏘️", title: "Alpine Villages & Chalets", description: "Traditional Swiss chalets have steep roofs to handle heavy snow, and painted flowers on wooden balconies. Many villages have stayed the same for hundreds of years!" },
+  { id: "lc3", section: "culture", icon: "🎪", title: "Yodeling Tradition", description: "Yodeling is a singing style where people rapidly change between low and high notes. It started in the Swiss Alps and is still performed at festivals!" },
+  { id: "lc4", section: "culture", icon: "🕯️", title: "Fondue & Raclette", description: "Fondue (melted cheese with bread) and raclette (scraped cheese) are traditional Swiss meals. They're perfect for cold mountain days and bring families together!" },
+  { id: "lc5", section: "culture", icon: "🏅", title: "Swiss Watchmaking", description: "Switzerland is famous for making precise watches. Swiss watchmakers have been perfecting their craft for over 300 years!" },
+
+  // ⛰️ Mountains & Landmarks
+  { id: "ll1", section: "landmarks", icon: "⛰️", title: "The Eiger (3,970m)", description: "One of the most famous mountains in the Alps. The north face is known as one of the most dangerous climbs in the world. You'll see it from Kleine Scheidegg!" },
+  { id: "ll2", section: "landmarks", icon: "⛰️", title: "The Matterhorn (4,478m)", description: "The most iconic mountain in Switzerland with a distinctive pyramid shape. It's visible from many places in the Valais region and is super recognizable!" },
+  { id: "ll3", section: "landmarks", icon: "🏔️", title: "The Jungfrau (4,158m)", description: "The 'Maiden of the Eiger.' The Jungfrau Railway takes you to the summit station at 3,454m. You can see across 40km on clear days!" },
+  { id: "ll4", section: "landmarks", icon: "💧", title: "Waterfalls of Lauterbrunnen", description: "There are 72 waterfalls in Lauterbrunnen Valley! The water comes from melting snow and glaciers high in the mountains. Staubbach Falls drops 300 meters!" },
+  { id: "ll5", section: "landmarks", icon: "💎", title: "Aletsch Glacier", description: "Europe's longest glacier at 23 kilometers (14 miles) long and over 900 meters (3,000 feet) thick! It's visible from Jungfraujoch and is slowly melting." },
+
+  // 🎉 Fun Facts for Kids
+  { id: "lf9", section: "fun", icon: "🐄", title: "Cows Wear Bells!", description: "Swiss cows in the Alps wear big brass bells called 'Kuhglocken' so farmers can find them in the mountains. You might hear them jingling on your hike!" },
+  { id: "lf10", section: "fun", icon: "🎪", title: "Cowherds Have Festivals", description: "In autumn, Swiss farmers bring cows down from the mountains in a festival called 'Almabtrieb' with decorated cows and celebrations!" },
+  { id: "lf11", section: "fun", icon: "🚞", title: "Rack Railways Climb Super Steep Mountains", description: "Some trains in Switzerland have a special rack (like a ladder) under the tracks that helps them climb very steep mountains. The Jungfraubahn uses this system!" },
+  { id: "lf12", section: "fun", icon: "🏔️", title: "Swiss Kids Do School Hikes", description: "In Switzerland, kids at school often do hiking trips. It's normal for 5 and 8-year-olds to hike in the mountains as part of school activities!" },
+  { id: "lf13", section: "fun", icon: "⚽", title: "Famous Swiss Chocolatiers Were Inventors", description: "Did you know? Melting chocolate was invented by accident! A chocolatier named Rodolphe Lindt invented the 'conche' machine that created smooth chocolate." },
+  { id: "lf14", section: "fun", icon: "🧀", title: "Cheese Can Have Holes Because of Bacteria", description: "The holes in Emmental cheese are made by gas bubbles from special bacteria. Bigger holes = older, tastier cheese!" },
+  { id: "lf15", section: "fun", icon: "🚂", title: "Switzerland's First Railroad (1847)", description: "The first Swiss railroad opened in 1847. Now Switzerland has 5,000km of tracks - the densest railway network in the world!" },
+  { id: "lf16", section: "fun", icon: "🏠", title: "Swiss Homes Have Shutters for a Reason", description: "Most Swiss houses have shutters to keep heat in during winter and heat out during summer. They're also beautiful decorations on the houses!" },
 ];
 
 const DEFAULT_BUDGET = {
@@ -1104,6 +1137,7 @@ export default function SwitzerlandTravelAppReal() {
   const [activeTab, setActiveTab] = useState("itinerary");
   const [budget, setBudget] = useState(DEFAULT_BUDGET);
   const [budgetCurrency, setBudgetCurrency] = useState("CHF");
+  const [learningSection, setLearningSection] = useState("facts");
   const [ready, setReady] = useState(false);
   const [query, setQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
@@ -1587,6 +1621,9 @@ export default function SwitzerlandTravelAppReal() {
           </Chip>
           <Chip active={activeTab === "map"} onClick={() => setActiveTab("map")} tone="sky">
             🗺️ Map
+          </Chip>
+          <Chip active={activeTab === "learning"} onClick={() => setActiveTab("learning")} tone="red">
+            📚 Learn
           </Chip>
         </div>
 
@@ -3070,6 +3107,78 @@ export default function SwitzerlandTravelAppReal() {
           );
         })()}
       </div>
+
+      {activeTab === "learning" && (
+        <Card style={{ padding: 20 }}>
+          <div style={{ display: "grid", gap: 16 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <span style={{ fontSize: 28 }}>📚</span>
+              <h2 style={{ margin: 0, fontSize: 22 }}>Pre-Trip Learning</h2>
+            </div>
+            <p style={{ marginTop: 0, color: "#64748b" }}>Learn about Switzerland before you arrive! Facts, language, culture, and fun trivia for the whole family.</p>
+
+            {/* Category filter chips */}
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              {LEARNING_SECTIONS.map(sec => (
+                <button
+                  key={sec.id}
+                  onClick={() => setLearningSection(sec.id)}
+                  style={{
+                    padding: "8px 14px",
+                    borderRadius: 999,
+                    border: learningSection === sec.id ? `2px solid ${sec.color}` : "1px solid #e2e8f0",
+                    background: learningSection === sec.id ? `${sec.color}15` : "white",
+                    color: learningSection === sec.id ? sec.color : "#64748b",
+                    fontWeight: learningSection === sec.id ? 700 : 500,
+                    cursor: "pointer",
+                    fontSize: 13,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 5,
+                  }}
+                >
+                  {sec.emoji} {sec.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Learning content */}
+            <div style={{ display: "grid", gap: 12 }}>
+              {DEFAULT_LEARNING_ITEMS.filter(item => item.section === learningSection).map(item => (
+                <Card key={item.id} style={{ padding: 16, background: "#f8fafc" }}>
+                  {item.section === "language" ? (
+                    // Language section with phrases
+                    <div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                        <span style={{ fontSize: 20 }}>{item.icon}</span>
+                        <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800 }}>{item.title}</h4>
+                      </div>
+                      <div style={{ display: "grid", gap: 10 }}>
+                        {item.phrases.map((p, idx) => (
+                          <div key={idx} style={{ borderLeft: "3px solid #2563eb", paddingLeft: 12, fontSize: 13 }}>
+                            <div style={{ fontWeight: 700, color: "#0f172a" }}>{p.word}</div>
+                            <div style={{ color: "#64748b", fontSize: 12 }}>English: {p.translation}</div>
+                            <div style={{ color: "#94a3b8", fontSize: 11, fontStyle: "italic" }}>Pronunciation: {p.pronunciation}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    // Facts and culture sections
+                    <div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
+                        <span style={{ fontSize: 20 }}>{item.icon}</span>
+                        <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800 }}>{item.title}</h4>
+                      </div>
+                      <p style={{ margin: 0, color: "#475569", fontSize: 13, lineHeight: 1.5 }}>{item.description}</p>
+                    </div>
+                  )}
+                </Card>
+              ))}
+            </div>
+          </div>
+        </Card>
+      )}
     </div>
   );
 }
