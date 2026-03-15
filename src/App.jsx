@@ -35,7 +35,22 @@ const STORAGE_KEYS = {
   packing: "swiss-trip-packing-v1",
   venues: "swiss-trip-venues-v1",
   quest: "swiss-trip-quest-v1",
+  pretrip: "swiss-trip-pretrip-v1",
+  parking: "swiss-trip-parking-v1",
 };
+
+const DEFAULT_PRETRIP_CHECKLIST = [
+  { id: "pt1", text: "Buy 2× Half Fare Cards at sbb.ch", done: false, link: "https://www.sbb.ch/en/tickets-offers/tickets/guests-abroad/international-visitors.html" },
+  { id: "pt2", text: "Download SBB app & add Half Fare Card details", done: false, link: "https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html" },
+  { id: "pt3", text: "Book Dublin Airport parking", done: false, link: "https://www.dublinairport.com/parking" },
+  { id: "pt4", text: "Online check-in for LX401 (SWISS) — opens 23hrs before", done: false, link: "https://www.swiss.com/ie/en/fly/my-booking/check-in-online" },
+  { id: "pt5", text: "Online check-in for EI0343 (Aer Lingus) — opens 30hrs before", done: false, link: "https://www.aerlingus.com/travel-information/check-in-information/online-check-in/" },
+  { id: "pt6", text: "Download offline Switzerland maps (Google Maps / Maps.me)", done: false, link: null },
+  { id: "pt7", text: "Check passport expiry for all 4 family members", done: false, link: null },
+  { id: "pt8", text: "Notify bank/card provider of travel dates", done: false, link: null },
+  { id: "pt9", text: "Pack Swiss Type J plug adapters (or universal)", done: false, link: null },
+  { id: "pt10", text: "Get travel insurance docs / EHIC cards", done: false, link: null },
+];
 
 const TRIP_INFO = {
   title: "Switzerland Family Holiday",
@@ -132,39 +147,39 @@ const DEFAULT_ITINERARY = [
     id: "d2",
     date: "Sun 23 Aug 2026",
     base: "Grindelwald",
-    title: "Grindelwald First",
-    location: "Grindelwald / First / Bort",
-    tags: ["adventure", "mountains", "cable car", "scenic", "hike"],
-    mapLocation: "Firstbahn, Grindelwald, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/00_3403_Grindelwald-First_(Schweiz).jpg",
+    title: "Mürren, Allmendhubel & Gimmelwald",
+    location: "Lauterbrunnen → Grütschalp → Mürren → Gimmelwald",
+    tags: ["village", "hike", "scenic", "family", "playground", "waterfall"],
+    mapLocation: "Mürren, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/M%C3%BCrren_-_2012.jpg/800px-M%C3%BCrren_-_2012.jpg",
     items: [
       {
         time: "AM",
-        title: "Grindelwald First gondola",
-        location: "Firstbahn → First",
-        notes: "Aim early to avoid queues.",
-        tags: ["mountains", "cable car"],
+        title: "Travel to Mürren",
+        location: "Grindelwald → Lauterbrunnen → Grütschalp → Mürren",
+        notes: "• Grindelwald → Zweilütschinen → Lauterbrunnen: BOB train, ~25 min\n• Lauterbrunnen → Grütschalp: cable car, ~5 min\n• Grütschalp → Mürren: mountain railway, ~20 min\n• Total: ~50 min | Go early for the clearest views across the valley\n• Mürren is car-free — no road access",
+        tags: ["train", "cable car", "travel"],
       },
       {
         time: "MID",
-        title: "First Cliff Walk + optional Bachalpsee",
-        location: "First",
-        notes: "Do the First Cliff Walk suspension walkway with dramatic drop views. If energy and kids allow, the Bachalpsee alpine lake is a further 3km return — beautiful but not essential. Pack layers and snacks.",
-        tags: ["hike", "scenic", "optional"],
+        title: "Mürren village + Allmendhubel",
+        location: "Mürren & Allmendhubel",
+        notes: "Stroll through Mürren’s cozy car-free streets — classic chalets, lush gardens, great tourist shops. Constant views of Eiger, Mönch & Jungfrau towering across the valley.\n\nTake the short funicular ride up to Allmendhubel:\n• Widely regarded as the best playground in the entire Jungfrau region — themed flower park, water features\n• One of the best picnic spots in the region with panoramic mountain views\n• Terrace café for lunch with the big three peaks right in front of you",
+        tags: ["village", "family", "playground", "scenic", "food"],
       },
       {
         time: "PM",
-        title: "Bort playground / optional Trottibike",
-        location: "Bort",
-        notes: "Stop at Bort on the way down. Playground time and optional Trottibike if suitable for the kids.",
-        tags: ["family", "fun"],
+        title: "Loop hike: Mürren → Gimmelwald",
+        location: "Mürren → Gimmelwald",
+        notes: "Hike down from Mürren to Gimmelwald (~3km, ~1 hour, mostly downhill). Considered the best hiking in the entire Jungfrau region:\n• Alpine meadows filled with cowbells and wildflowers\n• Mountain huts to stop and eat along the way\n• A waterfall you can walk behind\n\nGimmelwald is a tiny working farming village with some brilliant highlights:\n• 🛒 World’s first honesty shop\n• 🥛 Self-service farm fridges: fresh milk, cheese & eggs\n• 🐄 Farm animals all around the village\n• 🍺 One of Switzerland’s top-rated dark beers at the local bar\n\nOptional add-on: cable car from Stechelberg up to Schilthorn / Piz Gloria (James Bond revolving restaurant) — adds ~2hrs",
+        tags: ["hike", "scenic", "village", "family"],
       },
       {
         time: "EVE",
-        title: "Dinner in Grindelwald",
-        location: "Grindelwald",
-        notes: "Relaxed dinner in town. Suggested spots: Avocado Bar, Café 3692, Barry’s.",
-        tags: ["food", "coffee"],
+        title: "Return to Grindelwald",
+        location: "Gimmelwald → Stechelberg → Lauterbrunnen → Grindelwald",
+        notes: "• Gimmelwald → Stechelberg: cable car, ~5 min\n• Stechelberg → Lauterbrunnen: PostBus, ~15 min\n• Lauterbrunnen → Zweilütschinen → Grindelwald: BOB train, ~25 min\n• Total return: ~45 min",
+        tags: ["return", "train"],
       },
     ],
   },
@@ -172,39 +187,39 @@ const DEFAULT_ITINERARY = [
     id: "d3",
     date: "Mon 24 Aug 2026",
     base: "Grindelwald",
-    title: "Männlichen & Cow Playground",
-    location: "Männlichen",
-    tags: ["mountains", "viewpoint", "family", "fun", "scenic"],
-    mapLocation: "Männlichen, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
+    title: "Grindelwald First",
+    location: "Grindelwald / First / Bort",
+    tags: ["adventure", "mountains", "cable car", "scenic", "hike", "family"],
+    mapLocation: "Firstbahn, Grindelwald, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/5/5e/00_3403_Grindelwald-First_(Schweiz).jpg",
     items: [
       {
         time: "AM",
-        title: "Grindelwald Terminal gondola",
-        location: "Grindelwald Terminal → Männlichen",
-        notes: "• Walk from apartment → Grindelwald Terminal: ~10 min\n• Grindelwald Terminal → Männlichen gondola: ~19 min\n• Runs regularly — one of the world's longest gondolas\n• Book in advance at jungfrau.ch\n• Go early for the clearest mountain views",
-        tags: ["cable car", "mountains"],
+        title: "Grindelwald First gondola",
+        location: "Firstbahn → First",
+        notes: "Go early to beat the queues — the gondola gets busy by 10am. Book in advance at jungfrau.ch.\n\nTip: download the Swiss Topo app before this day — there are several parallel trails between First and Bachalpsee with the same views but far fewer crowds.",
+        tags: ["mountains", "cable car"],
       },
       {
         time: "MID",
-        title: "Cow Playground 🐄",
-        location: "Männlichen summit",
-        notes: "The famous Cow Playground is right beside the cable car station at the top. The kids will love the cow slide! Plenty of space to run around with incredible mountain views.",
-        tags: ["family", "fun"],
+        title: "First Cliff Walk + optional Bachalpsee",
+        location: "First",
+        notes: "Do the First Cliff Walk suspension walkway with dramatic sheer drop views. If energy and kids allow, the Bachalpsee alpine lake is a further 3km walk — beautiful morning reflection shots and a great picnic spot.\n\nTip: use Swiss Topo app to take a parallel alternate trail to Bachalpsee — same stunning views with far fewer tourists.",
+        tags: ["hike", "scenic", "optional"],
       },
       {
         time: "PM",
-        title: "Royal Walk to the crown viewpoint",
-        location: "Männlichen → Royal Walk crown",
-        notes: "Easy flat 20-minute walk along the ridge to the iconic crown viewpoint. Panoramic views of Eiger, Mönch, and Jungfrau all at once. One of the best viewpoints in the Bernese Oberland.",
-        tags: ["hike", "viewpoint", "scenic"],
+        title: "Trottibike down + Bort playground",
+        location: "First → Bort → Grindelwald",
+        notes: "The Trottibike (mountain scooter ride down) is highly recommended — rarely has a wait vs. the Flyer and Glider which regularly have 2–3 hour queues. Whizz down to Grindelwald in style — ride the brakes the entire way, these are fast!\n\nAlternatively, take the gondola down and stop at Bort for the playground.",
+        tags: ["family", "fun", "adventure"],
       },
       {
         time: "EVE",
-        title: "Return to Grindelwald",
-        location: "Männlichen → Grindelwald",
-        notes: "Gondola back down. Relaxed dinner in Grindelwald.",
-        tags: ["return", "food"],
+        title: "Dinner in Grindelwald",
+        location: "Grindelwald",
+        notes: "Favourite spots in the hills above Grindelwald and in the village:\n• Eiger Bean — local favourite, great views\n• Café 3692 — terrace with mountain backdrop\n• Stallbeizli Heubode — authentic farm restaurant\n• Barry's — popular with families",
+        tags: ["food", "coffee"],
       },
     ],
   },
@@ -253,72 +268,32 @@ const DEFAULT_ITINERARY = [
     id: "d5",
     date: "Wed 26 Aug 2026",
     base: "Grindelwald",
-    title: "Wengen & Kleine Scheidegg",
-    location: "Wengen → Kleine Scheidegg",
-    tags: ["village", "easy", "scenic", "relax", "hike"],
-    mapLocation: "Wengen, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/70/Wengen,_3823,_Switzerland_-_panoramio_-_Michal_Gorski.jpg",
+    title: "Männlichen + Lauterbrunnen Valley",
+    location: "Männlichen → Lauterbrunnen",
+    tags: ["mountains", "viewpoint", "waterfalls", "cycling", "family", "scenic"],
+    mapLocation: "Männlichen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
     items: [
       {
         time: "AM",
-        title: "Train to Wengen",
-        location: "Grindelwald → Lauterbrunnen → Wengen",
-        notes: "• Grindelwald → Zweilütschinen: ~10 min\n• Change: BOB train → Lauterbrunnen: ~15 min\n• Change: Wengernalpbahn (WAB) rack railway → Wengen: ~15 min\n• Total: ~40 min | Trains every 30 min\n• Wengen is car-free — no road access",
-        tags: ["train", "scenic"],
+        title: "Grindelwald Terminal → Männlichen",
+        location: "Grindelwald Terminal → Männlichen",
+        notes: "• Walk from apartment → Grindelwald Terminal: ~10 min\n• Grindelwald Terminal → Männlichen gondola: ~19 min — one of the world's longest gondolas\n• Book in advance at jungfrau.ch | Go early for the clearest mountain views",
+        tags: ["cable car", "mountains"],
       },
       {
         time: "MID",
-        title: "Explore Wengen + coffee",
-        location: "Wengen",
-        notes: "Enjoy the car-free village. Grab a coffee at Hotel Bellevue terrace — one of the best views in Switzerland with the Jungfrau directly behind you.",
-        tags: ["village", "coffee"],
+        title: "Männlichen summit + Cow Playground + Royal Walk",
+        location: "Männlichen",
+        notes: "Walk up the short but steep path to the summit for the best panoramic views of Eiger, Mönch & Jungfrau.\n\n🐄 Cow Playground — right beside the cable car station. Giant cow slide, wooden bowling lane, huge views — the kids' favourite.\n\nRoyal Walk: easy flat 20-min ridge walk to the iconic crown viewpoint — one of the best panoramas in the Bernese Oberland.\n\nBonus: follow the cow-themed trail downhill for a second playground at the bottom.",
+        tags: ["family", "viewpoint", "hike", "scenic", "playground"],
       },
       {
         time: "PM",
-        title: "Walk to Kleine Scheidegg + lunch",
-        location: "Wengen → Kleine Scheidegg",
-        notes: "Walk the Wengernalp trail from Wengen to Kleine Scheidegg (~5km, ~90 min, mostly flat with a gentle climb at the end). Unbeatable Eiger north face views the entire way — one of the great easy alpine walks. Lunch at the Restaurant Kleine Scheidegg or grab snacks on the terrace with the Eiger directly in front of you. Kids can play in the open meadows around the station.",
-        tags: ["hike", "scenic", "food", "family"],
-      },
-      {
-        time: "EVE",
-        title: "Rack railway back to Grindelwald",
-        location: "Kleine Scheidegg → Grindelwald",
-        notes: "• Kleine Scheidegg → Grindelwald Grund: Wengernalpbahn rack railway, ~35 min\n• No need to retrace steps — a satisfying loop\n• Relaxed evening back at the accommodation",
-        tags: ["return", "train", "scenic"],
-      },
-    ],
-  },
-  {
-    id: "d6",
-    date: "Thu 27 Aug 2026",
-    base: "Grindelwald",
-    title: "Lauterbrunnen Valley by Bike",
-    location: "Lauterbrunnen",
-    tags: ["waterfalls", "village", "easy", "scenic", "cycling", "family"],
-    mapLocation: "Lauterbrunnen, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lauterbrunnen_-_Switzerland.JPG",
-    items: [
-      {
-        time: "AM",
-        title: "Travel to Lauterbrunnen",
-        location: "Grindelwald → Lauterbrunnen",
-        notes: "• Grindelwald → Zweilütschinen: ~10 min\n• Change: BOB train → Lauterbrunnen: ~15 min\n• Total: ~25 min | Runs every 30 min\n• Bike hire near the station (e.g. Imboden Bike) — no booking, get there by ~9am",
-        tags: ["train", "travel"],
-      },
-      {
-        time: "MID",
-        title: "Staubbach Falls",
-        location: "Staubbach Falls, Lauterbrunnen",
-        notes: "Walk up to the base of the 300m Staubbach Falls — free entry. Gets you soaked if you go close! One of Europe's highest free-falling waterfalls.",
-        tags: ["waterfalls", "village"],
-      },
-      {
-        time: "PM",
-        title: "Hire bikes & cycle the valley",
-        location: "Lauterbrunnen → Stechelberg",
-        notes: "Hire bikes in Lauterbrunnen village (several hire shops near the station). The valley floor is completely flat — a perfect 9km family cycle to Stechelberg and back along the river, with 72 waterfalls in the valley walls around you. Optional stop at Trümmelbach Falls (10 glacial waterfalls inside the mountain — kids love it).",
-        tags: ["cycling", "family", "scenic"],
+        title: "Down to Lauterbrunnen + valley bike ride",
+        location: "Männlichen → Lauterbrunnen → Stechelberg",
+        notes: "Take the gondola down the Lauterbrunnen side of Männlichen to Wengen, then WAB train down to Lauterbrunnen (~25 min total).\n\nHire bikes in Lauterbrunnen village (Imboden Bike, near station). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Walk or cycle all the way to the back for the full experience.\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — completely rain-proof, CHF 14/adult).",
+        tags: ["cycling", "family", "scenic", "waterfalls"],
       },
       {
         time: "EVE",
@@ -330,42 +305,96 @@ const DEFAULT_ITINERARY = [
     ],
   },
   {
+    id: "d6",
+    date: "Thu 27 Aug 2026",
+    base: "Grindelwald",
+    title: "Lake Brienz & Giessbach Falls",
+    location: "Brienz / Giessbach / Lake Brienz",
+    tags: ["lake", "waterfall", "scenic", "relax", "family", "village"],
+    mapLocation: "Giessbach, Brienz, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg/600px-Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg",
+    items: [
+      {
+        time: "AM",
+        title: "Train to Brienz + boat to Giessbach",
+        location: "Grindelwald → Interlaken Ost → Brienz",
+        notes: "• Grindelwald → Interlaken Ost: BOB + BLS, ~55 min\n• Interlaken Ost → Brienz: scenic lake train, ~20 min\n• Brienz pier: hop on the lake boat to Giessbach (~15 min cruise on Lake Brienz)\n• Or take the nostalgic funicular up from the Giessbach boat pier directly to the hotel",
+        tags: ["train", "boat", "travel", "scenic"],
+      },
+      {
+        time: "MID",
+        title: "Giessbach Falls + Grand Hotel terrace",
+        location: "Giessbach, Lake Brienz",
+        notes: "The Giessbach Falls cascade down the mountainside into Lake Brienz — one of the most dramatic settings in the region.\n\n🌟 Best recommendation: take the short hike uphill to walk BEHIND the falls — a unique experience that friends and family always mention as a trip highlight.\n\nPedestrian bridge over the falls for great photos.\n\nGrand Hotel Giessbach: even without staying overnight, the panoramic restaurant terraces overlooking the falls and lake are fantastic for lunch. Classic Swiss decor inside is worth a look.\n\nFun fact: if you eat at the hotel, you can drink water piped directly from the waterfall.",
+        tags: ["waterfall", "scenic", "food", "family"],
+      },
+      {
+        time: "PM",
+        title: "Village of Brienz",
+        location: "Brienz",
+        notes: "Return by boat to Brienz and explore:\n• Beautiful lakefront promenade — great for a lazy afternoon stroll\n• Some of the most traditional Swiss architecture in the region\n• Swiss Wood Carving Museum (Holzschnitzerei) — hand-paint your own carved wooden cow 🐄\n• Outdoor museum of historic Swiss buildings and artisan crafts\n• Local brewery for a cold drink with a lakeside view\n• Optional: swim in the lake (clean and gorgeous in August)",
+        tags: ["village", "family", "relax", "scenic"],
+      },
+      {
+        time: "🌅 Optional Evening",
+        title: "Harder Kulm sunset — Interlaken",
+        location: "Interlaken",
+        notes: "One of the only mountain destinations open late in the evening — making the return through Interlaken Ost a perfect excuse to stop:\n• Funicular from just outside Interlaken Ost station, ~10 min ride\n• Watch the golden hour glow hit the Eiger, Mönch & Jungfrau\n• Reflections on both Lakes Thun and Brienz spread out below\n• Stay for dinner or just drinks at the summit restaurant\n• Last funicular down around 9–10pm in summer",
+        tags: ["viewpoint", "sunset", "optional", "scenic"],
+      },
+      {
+        time: "Option B",
+        title: "Interlaken town day (swap if preferred)",
+        location: "Interlaken",
+        notes: "If you'd prefer a gentler day closer to base:\n• Grindelwald → Interlaken Ost: ~55 min, every 30 min\n• Aare river walk, Höhematte park, ice cream on the Höheweg\n• Souvenir shopping — best selection in the region\n• Still combines perfectly with the Harder Kulm evening",
+        tags: ["relax", "family", "park", "optional"],
+      },
+    ],
+  },
+  {
     id: "d7",
     date: "Fri 28 Aug 2026",
     base: "Grindelwald",
-    title: "Mürren & Allmendhubel — or Interlaken",
-    location: "Mürren / Interlaken",
-    tags: ["village", "relax", "scenic", "family", "buffer"],
-    mapLocation: "Mürren, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Interlaken01.JPG",
+    title: "Wengen & Kleine Scheidegg",
+    location: "Wengen → Kleine Scheidegg",
+    tags: ["village", "easy", "scenic", "relax", "hike"],
+    mapLocation: "Wengen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/70/Wengen,_3823,_Switzerland_-_panoramio_-_Michal_Gorski.jpg",
     items: [
       {
         time: "💼 Suitcase Tip",
         title: "Store luggage at Grindelwald station",
         location: "Grindelwald Bahnhof",
-        notes: "Grindelwald station has staffed left-luggage (Gepäckaufbewahrung) and coin lockers.\n• Drop bags before 9am, collect same day\n• For Option A (Mürren): store at Grindelwald, collect on your return\n• For Option B (Interlaken): store at Interlaken Ost station instead — large, easy lockers",
+        notes: "Last full day — check out tomorrow morning. Drop bags at Grindelwald station before heading out:\n• Staffed left-luggage (Gepäckaufbewahrung) and coin lockers available\n• Drop before 9am, collect on your return this evening",
         tags: ["luggage", "practical", "travel"],
       },
       {
-        time: "Option A",
-        title: "Mürren + Allmendhubel Playground",
-        location: "Lauterbrunnen → Grütschalp → Mürren",
-        notes: "Getting there (~50 min total):\n• Grindelwald → Zweilütschinen → Lauterbrunnen: train, ~25 min\n• Lauterbrunnen → Grütschalp: cable car, ~5 min\n• Grütschalp → Mürren: little mountain railway, ~20 min\nMagical car-free cliff village. Visit the Allmendhubel Flower Park playground — water features and themed play with mountain views. Optional: cable car to Schilthorn (Piz Gloria, James Bond revolving restaurant).",
-        tags: ["village", "family", "cable car", "scenic"],
+        time: "AM",
+        title: "Train to Wengen",
+        location: "Grindelwald → Lauterbrunnen → Wengen",
+        notes: "• Grindelwald → Zweilütschinen: ~10 min\n• Change: BOB train → Lauterbrunnen: ~15 min\n• Change: Wengernalpbahn (WAB) rack railway → Wengen: ~15 min\n• Total: ~40 min | Trains every 30 min\n• Wengen is car-free — no road access",
+        tags: ["train", "scenic"],
       },
       {
-        time: "Option B",
-        title: "Interlaken town day",
-        location: "Grindelwald → Interlaken Ost",
-        notes: "• Grindelwald → Zweilütschinen → Interlaken Ost: ~55 min, every 30 min\nAare river walk, Höhematte park, ice cream, and souvenir shopping on the Höheweg. Large lockers at Interlaken Ost station if you have luggage.",
-        tags: ["relax", "family", "park", "scenic"],
+        time: "MID",
+        title: "Explore Wengen + coffee",
+        location: "Wengen",
+        notes: "Enjoy the car-free village perched above the Lauterbrunnen valley. Grab a coffee at Hotel Bellevue terrace — one of the finest views in Switzerland with the Jungfrau directly behind you.",
+        tags: ["village", "coffee"],
       },
       {
-        time: "Option C",
-        title: "Grindelwald Glacier Canyon + village",
-        location: "Grindelwald",
-        notes: "Explore the Glacier Canyon gorge walkways right near base. Then coffee, playgrounds, and souvenir shopping in the village. Great if you want a low-travel final day.",
-        tags: ["adventure", "family", "easy"],
+        time: "PM",
+        title: "Walk to Kleine Scheidegg + lunch",
+        location: "Wengen → Kleine Scheidegg",
+        notes: "Walk the Wengernalp trail from Wengen up to Kleine Scheidegg (~5km, ~90 min, mostly flat with a gentle climb). Unbeatable Eiger north face views the entire way — one of the great easy alpine walks.\n\nKleine Scheidegg is the dramatic mountain saddle at 2,061m sitting directly below the Eiger — it's the junction where the rack railways from Wengen and Grindelwald meet the Jungfraubahn heading up to Jungfraujoch (you passed through it on Day 4).\n\nLunch at Restaurant Kleine Scheidegg on the terrace with the Eiger wall in front of you. Kids can play in the open meadows around the station.",
+        tags: ["hike", "scenic", "food", "family"],
+      },
+      {
+        time: "EVE",
+        title: "Rack railway back to Grindelwald",
+        location: "Kleine Scheidegg → Grindelwald",
+        notes: "• Kleine Scheidegg → Grindelwald Grund: Wengernalpbahn rack railway, ~35 min\n• No need to retrace steps — a satisfying loop\n• Final evening dinner in Grindelwald — pack up and early night before checkout",
+        tags: ["return", "train", "scenic"],
       },
     ],
   },
@@ -1053,6 +1082,9 @@ export default function SwitzerlandTravelAppReal() {
   const [mapViewMode, setMapViewMode]         = useState("list");
   const [mapFullscreen, setMapFullscreen]     = useState(false);
   const [expandedPhotoId, setExpandedPhotoId] = useState(null);
+  const [pretripChecklist, setPretripChecklist] = useState(DEFAULT_PRETRIP_CHECKLIST);
+  const [pretripReady, setPretripReady]         = useState(false);
+  const [parking, setParking]                   = useState({ ref: "", url: "" });
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -1113,6 +1145,27 @@ export default function SwitzerlandTravelAppReal() {
     if (!questReady || typeof window === "undefined") return;
     window.localStorage.setItem(STORAGE_KEYS.quest, JSON.stringify({ items: questItems, kidNames }));
   }, [questItems, kidNames, questReady]);
+
+  useEffect(() => {
+    const saved = readLocalStorage(STORAGE_KEYS.pretrip, null);
+    if (saved) {
+      // Merge: preserve done state from storage, but keep any new default items
+      const savedMap = Object.fromEntries(saved.map((i) => [i.id, i]));
+      const merged = [
+        ...DEFAULT_PRETRIP_CHECKLIST.map((i) => savedMap[i.id] ? { ...i, done: savedMap[i.id].done } : i),
+        ...saved.filter((i) => !DEFAULT_PRETRIP_CHECKLIST.find((d) => d.id === i.id)),
+      ];
+      setPretripChecklist(merged);
+    }
+    setParking(readLocalStorage(STORAGE_KEYS.parking, { ref: "", url: "" }));
+    setPretripReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!pretripReady || typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEYS.pretrip, JSON.stringify(pretripChecklist));
+    window.localStorage.setItem(STORAGE_KEYS.parking, JSON.stringify(parking));
+  }, [pretripChecklist, parking, pretripReady]);
 
   useEffect(() => {
     if (activeTab !== "map" || mapViewMode !== "map") return;
@@ -1804,6 +1857,82 @@ export default function SwitzerlandTravelAppReal() {
                   <span style={{ fontSize: 16, flexShrink: 0 }}>⚠️</span>
                   <span>Order online at <strong>sbb.ch</strong> or the SBB app <em>before you fly</em> — not available for instant purchase on arrival at the airport.</span>
                 </div>
+              </div>
+            </Card>
+
+            {/* Dublin Airport Parking */}
+            <Card style={{ padding: 18 }}>
+              <SectionTitle icon={<Plane size={18} />} title="🚗 Dublin Airport Parking" />
+              <div style={{ display: "grid", gap: 12 }}>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <label style={{ fontSize: 11, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: 0.5 }}>Booking reference</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. DUB-2026-XXXXX"
+                    value={parking.ref}
+                    onChange={(e) => setParking((p) => ({ ...p, ref: e.target.value }))}
+                    style={{ border: "1.5px solid #e2e8f0", borderRadius: 8, padding: "8px 12px", fontSize: 14, fontWeight: 700, color: "#0f172a", outline: "none", fontFamily: "monospace" }}
+                  />
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  <label style={{ fontSize: 11, fontWeight: 700, color: "#64748b", textTransform: "uppercase", letterSpacing: 0.5 }}>Confirmation URL (for QR code)</label>
+                  <input
+                    type="url"
+                    placeholder="Paste your booking confirmation link here"
+                    value={parking.url}
+                    onChange={(e) => setParking((p) => ({ ...p, url: e.target.value }))}
+                    style={{ border: "1.5px solid #e2e8f0", borderRadius: 8, padding: "8px 12px", fontSize: 13, color: "#0f172a", outline: "none" }}
+                  />
+                </div>
+                {parking.url && (
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "14px 0 6px" }}>
+                    <img
+                      src={`https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(parking.url)}&size=180x180&margin=8`}
+                      alt="Parking QR code"
+                      style={{ width: 180, height: 180, borderRadius: 10, border: "2px solid #e2e8f0" }}
+                    />
+                    <div style={{ fontSize: 11, color: "#64748b", textAlign: "center" }}>Show this QR code at the car park barrier</div>
+                    {parking.ref && <div style={{ fontFamily: "monospace", fontWeight: 800, fontSize: 15, color: "#0f172a", background: "#f1f5f9", padding: "4px 12px", borderRadius: 6 }}>{parking.ref}</div>}
+                  </div>
+                )}
+                {!parking.url && (
+                  <div style={{ background: "#f8fafc", border: "1.5px dashed #cbd5e1", borderRadius: 10, padding: "16px", textAlign: "center", color: "#94a3b8", fontSize: 13 }}>
+                    📲 Paste your confirmation URL above to generate a QR code
+                  </div>
+                )}
+                <a href="https://www.dublinairport.com/parking" target="_blank" rel="noreferrer"
+                  style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, color: "#1d4ed8", textDecoration: "none", fontWeight: 600 }}>
+                  <ExternalLink size={12} /> Book at dublinairport.com
+                </a>
+              </div>
+            </Card>
+
+            {/* Pre-trip checklist */}
+            <Card style={{ padding: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+                <SectionTitle icon={<CheckSquare size={18} />} title="✅ Before you fly" />
+                <div style={{ fontSize: 12, color: "#64748b", fontWeight: 700 }}>
+                  {pretripChecklist.filter((i) => i.done).length}/{pretripChecklist.length} done
+                </div>
+              </div>
+              <div style={{ display: "grid", gap: 6 }}>
+                {pretripChecklist.map((item) => (
+                  <div key={item.id} style={{ display: "flex", gap: 10, alignItems: "center", padding: "8px 10px", borderRadius: 10,
+                    background: item.done ? "#f0fdf4" : "#f8fafc", border: `1.5px solid ${item.done ? "#86efac" : "#e2e8f0"}`,
+                    transition: "all 0.2s", cursor: "pointer" }}
+                    onClick={() => setPretripChecklist((prev) => prev.map((i) => i.id === item.id ? { ...i, done: !i.done } : i))}>
+                    <div style={{ width: 20, height: 20, borderRadius: 6, border: `2px solid ${item.done ? "#16a34a" : "#94a3b8"}`,
+                      background: item.done ? "#16a34a" : "white", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      {item.done && <span style={{ color: "white", fontSize: 12, fontWeight: 900 }}>✓</span>}
+                    </div>
+                    <span style={{ fontSize: 13, color: item.done ? "#15803d" : "#334155", textDecoration: item.done ? "line-through" : "none",
+                      textDecorationColor: "#86efac", flex: 1, fontWeight: item.done ? 500 : 600 }}>{item.text}</span>
+                    {item.link && !item.done && (
+                      <a href={item.link} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}
+                        style={{ color: "#3b82f6", flexShrink: 0 }}><ExternalLink size={13} /></a>
+                    )}
+                  </div>
+                ))}
               </div>
             </Card>
 
