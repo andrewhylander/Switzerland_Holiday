@@ -3103,9 +3103,8 @@ export default function SwitzerlandTravelAppReal() {
             </div>
           );
         })()}
-      </div>
 
-      {activeTab === "learning" && (
+        {activeTab === "learning" && (
         <div style={{ display: "grid", gap: 12 }}>
           {/* Header — gradient banner matching Map/Quest tabs */}
           <div style={{ background: "linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%)", borderRadius: 18, padding: "16px 18px", color: "white" }}>
@@ -3169,6 +3168,7 @@ export default function SwitzerlandTravelAppReal() {
           )}
         </div>
       )}
+      </div>
     </div>
   );
 }
