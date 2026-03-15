@@ -970,6 +970,7 @@ export default function SwitzerlandTravelAppReal() {
   const [mapUserCoords, setMapUserCoords]     = useState(null);
   const [mapViewMode, setMapViewMode]         = useState("list");
   const [mapFullscreen, setMapFullscreen]     = useState(false);
+  const [expandedPhotoId, setExpandedPhotoId] = useState(null);
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -2631,19 +2632,6 @@ export default function SwitzerlandTravelAppReal() {
                         position: "relative",
                       }}
                     >
-                      {/* Reference photo — photo spots only */}
-                      {place.refImage && (
-                        <div style={{ margin: "-14px -14px 4px -14px", borderRadius: "14px 14px 0 0", overflow: "hidden", height: 110 }}>
-                          <img
-                            src={place.refImage}
-                            alt={place.name}
-                            loading="lazy"
-                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                            onError={e => { e.target.style.display = "none"; e.target.parentElement.style.display = "none"; }}
-                          />
-                        </div>
-                      )}
-
                       {/* Category badge */}
                       <div style={{
                         position: "absolute", top: 10, right: 10,
@@ -2654,8 +2642,25 @@ export default function SwitzerlandTravelAppReal() {
                         {meta.emoji} {meta.label}
                       </div>
 
-                      {/* Main emoji */}
-                      <div style={{ fontSize: 36, marginBottom: 2 }}>{place.emoji}</div>
+                      {/* Main emoji — tappable to expand reference photo */}
+                      <div
+                        onClick={() => place.refImage && setExpandedPhotoId(expandedPhotoId === place.id ? null : place.id)}
+                        style={{ fontSize: 36, marginBottom: 2, cursor: place.refImage ? "pointer" : "default", userSelect: "none" }}
+                        title={place.refImage ? "Tap to see the shot" : undefined}
+                      >{place.emoji}{place.refImage ? <span style={{ fontSize: 11, verticalAlign: "middle", marginLeft: 4, color: meta.accent, fontWeight: 700 }}>{expandedPhotoId === place.id ? "▲" : "▼"}</span> : null}</div>
+
+                      {/* Expandable reference photo */}
+                      {place.refImage && expandedPhotoId === place.id && (
+                        <div style={{ margin: "0 -14px", overflow: "hidden", maxHeight: 160 }}>
+                          <img
+                            src={place.refImage}
+                            alt={place.name}
+                            loading="lazy"
+                            style={{ width: "100%", height: 160, objectFit: "cover", display: "block" }}
+                            onError={e => { e.target.parentElement.style.display = "none"; }}
+                          />
+                        </div>
+                      )}
 
                       {/* Name */}
                       <div style={{ fontWeight: 800, fontSize: 14, color: "#0f172a", paddingRight: 52, lineHeight: 1.3 }}>{place.name}</div>
