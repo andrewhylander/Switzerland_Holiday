@@ -3143,22 +3143,22 @@ export default function SwitzerlandTravelAppReal() {
             </div>
 
             {/* Learning content */}
-            <div style={{ display: "grid", gap: 12 }}>
+            <div style={{ display: "grid", gap: 10 }}>
               {DEFAULT_LEARNING_ITEMS.filter(item => item.section === learningSection).map(item => (
-                <Card key={item.id} style={{ padding: 16, background: "#f8fafc" }}>
+                <Card key={item.id} style={{ padding: 12, background: "#f8fafc" }}>
                   {item.section === "language" ? (
                     // Language section with phrases
                     <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-                        <span style={{ fontSize: 20 }}>{item.icon}</span>
-                        <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800 }}>{item.title}</h4>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
+                        <span style={{ fontSize: 18 }}>{item.icon}</span>
+                        <h4 style={{ margin: 0, fontSize: 14, fontWeight: 800 }}>{item.title}</h4>
                       </div>
-                      <div style={{ display: "grid", gap: 10 }}>
+                      <div style={{ display: "grid", gap: 8 }}>
                         {item.phrases.map((p, idx) => (
-                          <div key={idx} style={{ borderLeft: "3px solid #2563eb", paddingLeft: 12, fontSize: 13 }}>
+                          <div key={idx} style={{ borderLeft: "2px solid #2563eb", paddingLeft: 10, fontSize: 12 }}>
                             <div style={{ fontWeight: 700, color: "#0f172a" }}>{p.word}</div>
-                            <div style={{ color: "#64748b", fontSize: 12 }}>English: {p.translation}</div>
-                            <div style={{ color: "#94a3b8", fontSize: 11, fontStyle: "italic" }}>Pronunciation: {p.pronunciation}</div>
+                            <div style={{ color: "#64748b", fontSize: 11 }}>English: {p.translation}</div>
+                            <div style={{ color: "#94a3b8", fontSize: 10, fontStyle: "italic" }}>Pronunciation: {p.pronunciation}</div>
                           </div>
                         ))}
                       </div>
@@ -3166,11 +3166,11 @@ export default function SwitzerlandTravelAppReal() {
                   ) : (
                     // Facts and culture sections
                     <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                        <span style={{ fontSize: 20 }}>{item.icon}</span>
-                        <h4 style={{ margin: 0, fontSize: 15, fontWeight: 800 }}>{item.title}</h4>
+                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                        <span style={{ fontSize: 18 }}>{item.icon}</span>
+                        <h4 style={{ margin: 0, fontSize: 14, fontWeight: 800 }}>{item.title}</h4>
                       </div>
-                      <p style={{ margin: 0, color: "#475569", fontSize: 13, lineHeight: 1.5 }}>{item.description}</p>
+                      <p style={{ margin: 0, color: "#475569", fontSize: 12, lineHeight: 1.4 }}>{item.description}</p>
                     </div>
                   )}
                 </Card>
