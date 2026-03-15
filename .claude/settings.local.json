@@ -9,7 +9,11 @@
       "WebFetch(domain:www.airbnb.co.uk)",
       "WebFetch(domain:www.vacationhome.rent)",
       "WebFetch(domain:www.alohavillas.io)",
-      "WebFetch(domain:www.grindelwaldhome.ch)"
+      "WebFetch(domain:www.grindelwaldhome.ch)",
+      "WebFetch(domain:images.weserv.nl)",
+      "WebSearch",
+      "WebFetch(domain:api.wikimedia.org)",
+      "Bash(node -e \":*)"
     ]
   }
 }
