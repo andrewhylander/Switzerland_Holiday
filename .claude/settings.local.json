@@ -13,7 +13,9 @@
       "WebFetch(domain:images.weserv.nl)",
       "WebSearch",
       "WebFetch(domain:api.wikimedia.org)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(npm install:*)",
+      "Bash(node generate-icons.mjs)"
     ]
   }
 }

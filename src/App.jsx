@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useRegisterSW } from "virtual:pwa-register/react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import {
@@ -1526,6 +1527,8 @@ export default function SwitzerlandTravelAppReal() {
 
   const removeQuestItem = (id) => setQuestItems((prev) => prev.filter((q) => q.id !== id));
 
+  const { needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW();
+
   return (
     <div
       style={{
@@ -1537,6 +1540,33 @@ export default function SwitzerlandTravelAppReal() {
         padding: 16,
       }}
     >
+      {needRefresh && (
+        <div style={{
+          position: "fixed", bottom: 20, left: "50%", transform: "translateX(-50%)",
+          background: "#1e293b", color: "white", borderRadius: 14, padding: "12px 18px",
+          display: "flex", alignItems: "center", gap: 12, zIndex: 9999,
+          boxShadow: "0 8px 32px rgba(0,0,0,0.3)", fontSize: 14, fontWeight: 600,
+          whiteSpace: "nowrap",
+        }}>
+          🔄 App updated
+          <button
+            onClick={() => updateServiceWorker(true)}
+            style={{
+              background: "#c0152a", color: "white", border: "none",
+              borderRadius: 8, padding: "6px 14px", fontWeight: 700,
+              fontSize: 13, cursor: "pointer",
+            }}
+          >
+            Reload
+          </button>
+          <button
+            onClick={() => updateServiceWorker(false)}
+            style={{ background: "none", border: "none", color: "#94a3b8", cursor: "pointer", fontSize: 18, padding: 0 }}
+          >
+            ✕
+          </button>
+        </div>
+      )}
       <div style={{ maxWidth: 1120, margin: "0 auto", display: "grid", gap: 20 }}>
         {daysUntil > 0 ? (
           <div style={{ background: "linear-gradient(135deg, #c0152a 0%, #9b0f20 100%)", borderRadius: 22, padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", color: "white" }}>
