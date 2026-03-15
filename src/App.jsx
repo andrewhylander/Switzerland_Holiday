@@ -1049,15 +1049,22 @@ export default function SwitzerlandTravelAppReal() {
         popupAnchor: [0, -20],
       });
       const marker = L.marker([place.lat, place.lng], { icon });
+      const mapsSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name + ' ' + place.location + ' Switzerland')}`;
       marker.bindPopup(`
-        <div style="font-family:'Helvetica Neue',sans-serif;min-width:170px;padding:2px 0;">
+        <div style="font-family:'Helvetica Neue',sans-serif;min-width:180px;padding:2px 0;">
           <div style="font-weight:800;font-size:14px;margin-bottom:3px;">${place.emoji} ${place.name}</div>
           <div style="color:#6b7280;font-size:12px;margin-bottom:5px;">📍 ${place.location}</div>
           <div style="color:${accent};font-weight:700;font-size:12px;margin-bottom:8px;">🎯 ${place.mission}</div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}" target="_blank"
-            style="background:${accent};color:white;padding:5px 12px;border-radius:8px;text-decoration:none;font-weight:700;font-size:12px;display:inline-block;">
-            Directions →
-          </a>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}" target="_blank"
+              style="background:${accent};color:white;padding:5px 10px;border-radius:8px;text-decoration:none;font-weight:700;font-size:12px;display:inline-block;">
+              Directions →
+            </a>
+            <a href="${mapsSearchUrl}" target="_blank"
+              style="background:#f1f5f9;color:#374151;padding:5px 10px;border-radius:8px;text-decoration:none;font-weight:700;font-size:12px;display:inline-block;border:1px solid #e2e8f0;">
+              🗺️ View on Maps
+            </a>
+          </div>
         </div>
       `);
       marker.addTo(map);
@@ -2646,20 +2653,35 @@ export default function SwitzerlandTravelAppReal() {
                       {/* Notes */}
                       <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.4, flexGrow: 1 }}>{place.notes}</div>
 
-                      {/* Directions button */}
-                      <a
-                        href={`https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          marginTop: 4, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 5,
-                          background: meta.accent, color: "white",
-                          borderRadius: 10, padding: "8px 12px",
-                          textDecoration: "none", fontWeight: 700, fontSize: 12,
-                        }}
-                      >
-                        <MapPin size={12} /> Directions
-                      </a>
+                      {/* Buttons */}
+                      <div style={{ display: "flex", gap: 6, marginTop: 4 }}>
+                        <a
+                          href={`https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 5,
+                            background: meta.accent, color: "white",
+                            borderRadius: 10, padding: "8px 10px",
+                            textDecoration: "none", fontWeight: 700, fontSize: 11,
+                          }}
+                        >
+                          <MapPin size={11} /> Directions
+                        </a>
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name + ' ' + place.location + ' Switzerland')}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          style={{
+                            flex: 1, display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 4,
+                            background: "#f1f5f9", color: "#374151", border: "1.5px solid #e2e8f0",
+                            borderRadius: 10, padding: "8px 10px",
+                            textDecoration: "none", fontWeight: 700, fontSize: 11,
+                          }}
+                        >
+                          🗺️ Maps
+                        </a>
+                      </div>
                     </div>
                   );
                 })}
