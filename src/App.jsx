@@ -30,6 +30,13 @@ const CHF = new Intl.NumberFormat("de-CH", {
   currency: "CHF",
 });
 
+const GBP = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP",
+});
+
+const CHF_TO_GBP = 0.82; // Approximate conversion rate
+
 const STORAGE_KEYS = {
   budget: "swiss-trip-budget-v2",
   packing: "swiss-trip-packing-v1",
@@ -499,15 +506,17 @@ const DEFAULT_BUDGET = {
   currency: "CHF",
   income: [],
   expenses: [
+    { id: "e_section", category: "✅ KNOWN / FIXED COSTS", label: "→→→", amount: null, notes: "Definite expenses booked or confirmed" },
     { id: "e1", category: "Flights", label: "Dublin ↔ Zurich (2x adults + 2x kids)", amount: 0, notes: "Already paid" },
-    { id: "e2", category: "Accommodation", label: "GrindelwaldHome Alpenglück (6 nights)", amount: 900, notes: "~CHF 150/night | ~£74/night" },
-    { id: "e3", category: "Accommodation", label: "Holiday Inn Express Zurich (1 night)", amount: 140, notes: "~CHF 140 | ~£115" },
-    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x @ CHF 150)", amount: 300, notes: "Valid 30 days from 22 Aug | Covers all trains/gondolas | ~£246" },
-    { id: "e4b", category: "Transport", label: "Regional trains & buses", amount: 300, notes: "Top-ups beyond Half Fare (e.g. PostBus, station transfers) | ~£246" },
-    { id: "e4c", category: "Transport", label: "Gondolas & cable cars", amount: 700, notes: "First, Männlichen, Lake Brienz boat, Harder Kulm, etc. | ~£574" },
+    { id: "e2", category: "Accommodation", label: "GrindelwaldHome Alpenglück (6 nights)", amount: 900, notes: "~CHF 150/night | ~£74/night | CONFIRMED" },
+    { id: "e3", category: "Accommodation", label: "Holiday Inn Express Zurich (1 night)", amount: 140, notes: "~CHF 140 | ~£115 | CONFIRMED" },
+    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x @ CHF 150)", amount: 300, notes: "Valid 30 days from 22 Aug | Covers all trains/gondolas | ~£246 | BUY ONLINE ASAP" },
+    { id: "e_section2", category: "💭 ESTIMATED COSTS", label: "→→→", amount: null, notes: "Activity & dining estimates (flexible)" },
+    { id: "e4b", category: "Transport", label: "Regional trains & buses", amount: 300, notes: "Top-ups beyond Half Fare (PostBus, transfers) | ~£246" },
+    { id: "e4c", category: "Transport", label: "Gondolas & cable cars", amount: 700, notes: "First, Männlichen, Lake Brienz, Harder Kulm | ~£574" },
     { id: "e4d", category: "Transport", label: "Bike rental (few hours)", amount: 100, notes: "Lauterbrunnen valley day | ~£82" },
-    { id: "e5a", category: "Activities", label: "Jungfraujoch tickets (family)", amount: 600, notes: "~CHF 200/adult, ~CHF 100/child (4 people) | ~£492" },
-    { id: "e5b", category: "Activities", label: "Piz Gloria lunch + Bond museum (family)", amount: 150, notes: "Restaurant booking required | ~CHF 30–35/person + CHF 15–20/museum | ~£123" },
+    { id: "e5a", category: "Activities", label: "Jungfraujoch tickets (family)", amount: 600, notes: "~CHF 200/adult, ~CHF 100/child (4 people) | ~£492 | BOOK ONLINE" },
+    { id: "e5b", category: "Activities", label: "Piz Gloria lunch + Bond museum (family)", amount: 150, notes: "~CHF 30–35/person + CHF 15–20/museum | ~£123 | BOOK RESTAURANT ASAP" },
     { id: "e5c", category: "Activities", label: "Lake Brienz/Giessbach + Harder Kulm", amount: 180, notes: "Boat, funicular, sunset viewing | ~£148" },
     { id: "e5d", category: "Activities", label: "Misc activities (Pfingstegg, etc.)", amount: 100, notes: "Toboggans, playgrounds, optional attractions | ~£82" },
     { id: "e6", category: "Food & Drink", label: "Meals, coffee & snacks (9 days, 4 people)", amount: 3300, notes: "~CHF 370/day: breakfast ~CHF 60, lunch ~CHF 100, dinner ~CHF 160, snacks ~CHF 50 | ~£2,706" },
@@ -675,14 +684,16 @@ const DEFAULT_VENUES = [
   { id: "v28", name: "Central Hotel Wolter Restaurant",  type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.3, notes: "Classic Swiss restaurant near the train station. Famous for rösti, fondue and traditional alpine dishes. Great dessert menu. Reliable, central and reasonably priced. Dorfstrasse 93." },
   // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
+  { id: "v2b", name: "Eiger Bean",                       type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "coffee"],                    rating: 4.5, notes: "Specialty coffee shop in Grindelwald. Best coffee with direct Eiger views. Great stop before heading to the mountains." },
   { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
   { id: "v29", name: "C & M Café Bar Restaurant",        type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Popular café in the centre of Grindelwald. Beautiful cakes, pastries and excellent hot chocolate. Cosy alpine atmosphere. Perfect stop after exploring the village." },
   // Grindelwald — Mountain Restaurants
   { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
-  { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.5, notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views. Huge terrace with glacier views. Next to the Cliff Walk." },
-  { id: "v25", name: "Berghaus Männlichen",              type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.5, notes: "Right beside the Männlichen gondola station with one of the best terraces in the Jungfrau region. Views of Eiger, Mönch and Jungfrau. Great spot for lunch before the Royal Walk. Rösti, soup, kids' plates." },
-  { id: "v26", name: "Restaurant Kleine Scheidegg",      type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.6, notes: "Iconic mountain lunch stop with the Eiger north face right in front of you. Rösti and soup are the locals' choice. Unmissable photo backdrop — rack railway on one side, Eiger on the other." },
-  { id: "v30", name: "Bergrestaurant Pfingstegg",        type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.4, notes: "Mountain restaurant above Grindelwald beside the Pfingstegg alpine coaster. Fantastic valley views from the terrace. Great snack and lunch stop — worth combining with the toboggan run." },
+  { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald First", meals: ["lunch"],                                  rating: 4.5, notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views. Huge terrace with glacier views. Next to the Cliff Walk." },
+  { id: "v12b", name: "Bort Restaurant",                 type: "restaurant", location: "Bort",            meals: ["lunch"],                                  rating: 4.3, notes: "Great stop on the way down from First. Mountain views, playground for kids, family-friendly." },
+  { id: "v25", name: "Berghaus Männlichen",              type: "restaurant", location: "Männlichen",     meals: ["lunch"],                                  rating: 4.5, notes: "Right beside the Männlichen gondola station with one of the best terraces in the Jungfrau region. Views of Eiger, Mönch and Jungfrau. Great spot for lunch before the Royal Walk. Rösti, soup, kids' plates." },
+  { id: "v26", name: "Restaurant Kleine Scheidegg",      type: "restaurant", location: "Kleine Scheidegg", meals: ["lunch"],                                  rating: 4.6, notes: "Iconic mountain lunch stop with the Eiger north face right in front of you. Rösti and soup are the locals' choice. Unmissable photo backdrop — rack railway on one side, Eiger on the other." },
+  { id: "v30", name: "Bergrestaurant Pfingstegg",        type: "restaurant", location: "Pfingstegg",      meals: ["lunch"],                                  rating: 4.4, notes: "Mountain restaurant above Grindelwald beside the Pfingstegg alpine coaster. Fantastic valley views from the terrace. Great snack and lunch stop — worth combining with the toboggan run." },
   // Lauterbrunnen
   { id: "v4",  name: "Airtime Café",                     type: "cafe",       location: "Lauterbrunnen", meals: ["breakfast", "coffee", "lunch"],            notes: "Terrace overlooking Staubbach Falls. Famous for cinnamon rolls — perfect refuel after hiking." },
   { id: "v5",  name: "Hotel Oberland Restaurant",        type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        rating: 4.5, notes: "Well-known restaurant in Lauterbrunnen famous for Swiss fondue and its terrace overlooking the waterfall valley. Cosy chalet ambience, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner." },
@@ -692,10 +703,12 @@ const DEFAULT_VENUES = [
   { id: "v31", name: "Mountain Hostel Restaurant",       type: "cafe",       location: "Gimmelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Relaxed mountain café in the magical car-free village of Gimmelwald with breathtaking views across the Lauterbrunnen valley. Simple pizzas, snacks and drinks. Reach via cable car from Stechelberg." },
   // Wengen
   { id: "v6",  name: "Restaurant Eiger",                 type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Right outside Wengen train station. Rösti, raclette, tomato soup with gin. Highly rated." },
+  { id: "v6b", name: "Hotel Bellevue Terrace",           type: "cafe",       location: "Wengen",        meals: ["coffee", "lunch"],                        rating: 4.6, notes: "One of the finest terrace views in Switzerland. Direct Jungfrau views from the seating. Perfect for coffee or cake with the big peaks behind you." },
   { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
   { id: "v16", name: "Café Restaurant Waldschlucht",     type: "cafe",       location: "Wengen",        meals: ["breakfast", "coffee", "lunch"],            notes: "Warm and welcoming. Known for flavourful soups and cosy ambiance. Great after a hike." },
   // Interlaken
   { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.6, notes: "Iconic Interlaken patisserie & café since 1818. Famous for chocolate fondue with strawberries — arguably the best in the region. Mountain views from the terrace. A special treat for the kids." },
+  { id: "v7b", name: "Aare Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.4, notes: "Relaxed café beside the Aare river walk. Perfect stop for a quiet coffee or lunch away from the busy main street. Great for families." },
   { id: "v17", name: "Velo Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Trendy local favourite. Italian espresso, homemade granola with local yogurt, popular vegan options." },
   { id: "v18", name: "Bäckerei Steininger",              type: "bakery",     location: "Interlaken",    meals: ["breakfast", "coffee"],                    notes: "Fresh-baked daily. Excellent quiche and pastries. Short walk from central Interlaken." },
   { id: "v8",  name: "Restaurant Taverne",               type: "restaurant", location: "Interlaken",    meals: ["lunch", "dinner"],                        notes: "Authentic Swiss fondue and traditional cuisine in a classic Bernese Oberland setting." },
@@ -705,6 +718,8 @@ const DEFAULT_VENUES = [
   { id: "v10", name: "Zeughauskeller",                   type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner", "drinks"],              notes: "Historic beer hall in a 15th-century armoury on Bahnhofstrasse. Rösti, Wiener Schnitzel, giant beers." },
   { id: "v19", name: "Kronenhalle",                      type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner"],                        notes: "Legendary brasserie open since 1924. Walls hung with original Miró and Chagall. Signature Zürcher Geschnetzeltes." },
   { id: "v20", name: "Boréal Coffee",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee"],                    notes: "Specialty ethically-sourced coffee and pastries. Popular with locals — two Zurich locations." },
+  // Special Experiences
+  { id: "v33", name: "Piz Gloria Revolving Restaurant",  type: "restaurant", location: "Schilthorn",    meals: ["breakfast", "lunch", "dinner"],            rating: 4.5, notes: "🔫 James Bond filming location (007: On Her Majesty's Secret Service). Full 360° rotation every hour. Schilthorn revolving restaurant at 2,970m with views of 200+ peaks. Must book ahead in summer." },
 ];
 
 const MAP_PLACES = [
@@ -1088,6 +1103,7 @@ function playSound(name) {
 export default function SwitzerlandTravelAppReal() {
   const [activeTab, setActiveTab] = useState("itinerary");
   const [budget, setBudget] = useState(DEFAULT_BUDGET);
+  const [budgetCurrency, setBudgetCurrency] = useState("CHF");
   const [ready, setReady] = useState(false);
   const [query, setQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
@@ -1553,8 +1569,7 @@ export default function SwitzerlandTravelAppReal() {
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Chip active={activeTab === "itinerary"} onClick={() => setActiveTab("itinerary")}>Itinerary</Chip>
           <Chip active={activeTab === "travel"} onClick={() => setActiveTab("travel")} tone="warm">Flights & stay</Chip>
-          {/* Budget tab hidden — uncomment to restore: */}
-          {/* <Chip active={activeTab === "budget"} onClick={() => setActiveTab("budget")}>Budget</Chip> */}
+          <Chip active={activeTab === "budget"} onClick={() => setActiveTab("budget")} tone="orange">💰 Budget</Chip>
           <Chip active={activeTab === "packing"} onClick={() => setActiveTab("packing")} tone="green">
             <Package size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: 4 }} />
             Packing
@@ -2003,6 +2018,38 @@ export default function SwitzerlandTravelAppReal() {
                     <h2 style={{ margin: 0, fontSize: 22 }}>Budget</h2>
                   </div>
                   <p style={{ marginTop: 8, color: "#64748b" }}>Track flights, accommodation, transport, food, and trip extras.</p>
+                  <div style={{ display: "flex", gap: 8, marginTop: 12 }}>
+                    <button
+                      onClick={() => setBudgetCurrency("CHF")}
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        border: budgetCurrency === "CHF" ? "2px solid #0284c7" : "1px solid #cbd5e1",
+                        background: budgetCurrency === "CHF" ? "#eff6ff" : "white",
+                        color: budgetCurrency === "CHF" ? "#0284c7" : "#64748b",
+                        fontWeight: budgetCurrency === "CHF" ? 700 : 500,
+                        cursor: "pointer",
+                        fontSize: 12,
+                      }}
+                    >
+                      CHF (CHF)
+                    </button>
+                    <button
+                      onClick={() => setBudgetCurrency("GBP")}
+                      style={{
+                        padding: "6px 12px",
+                        borderRadius: 8,
+                        border: budgetCurrency === "GBP" ? "2px solid #0284c7" : "1px solid #cbd5e1",
+                        background: budgetCurrency === "GBP" ? "#eff6ff" : "white",
+                        color: budgetCurrency === "GBP" ? "#0284c7" : "#64748b",
+                        fontWeight: budgetCurrency === "GBP" ? 700 : 500,
+                        cursor: "pointer",
+                        fontSize: 12,
+                      }}
+                    >
+                      GBP (£)
+                    </button>
+                  </div>
                 </div>
 
                 <div
@@ -2014,12 +2061,12 @@ export default function SwitzerlandTravelAppReal() {
                     background: "linear-gradient(180deg, #eff6ff, #ffffff)",
                   }}
                 >
-                  <div style={{ fontSize: 12, color: "#64748b" }}>Totals</div>
+                  <div style={{ fontSize: 12, color: "#64748b" }}>Totals ({budgetCurrency})</div>
                   <div style={{ display: "grid", gap: 8, marginTop: 10, fontSize: 14 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Income</span><span>{CHF.format(totals.income)}</span></div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Expenses</span><span>{CHF.format(totals.expenses)}</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Income</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.income) : GBP.format(totals.income * CHF_TO_GBP)}</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}><span>Expenses</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.expenses) : GBP.format(totals.expenses * CHF_TO_GBP)}</span></div>
                     <div style={{ height: 1, background: "#dbeafe", margin: "2px 0" }} />
-                    <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800 }}><span>Remaining</span><span>{CHF.format(totals.remaining)}</span></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", fontWeight: 800 }}><span>Remaining</span><span>{budgetCurrency === "CHF" ? CHF.format(totals.remaining) : GBP.format(totals.remaining * CHF_TO_GBP)}</span></div>
                   </div>
                 </div>
               </div>
@@ -2030,6 +2077,7 @@ export default function SwitzerlandTravelAppReal() {
                 onAdd={() => addBudgetLine("income")}
                 onRemove={(id) => removeBudgetLine("income", id)}
                 onChange={(id, patch) => updateBudgetLine("income", id, patch)}
+                currency={budgetCurrency}
               />
 
               <BudgetEditor
@@ -2038,6 +2086,7 @@ export default function SwitzerlandTravelAppReal() {
                 onAdd={() => addBudgetLine("expenses")}
                 onRemove={(id) => removeBudgetLine("expenses", id)}
                 onChange={(id, patch) => updateBudgetLine("expenses", id, patch)}
+                currency={budgetCurrency}
               />
             </div>
           </Card>
@@ -3083,7 +3132,7 @@ function DetailLine({ label, value }) {
   );
 }
 
-function BudgetEditor({ title, lines, onAdd, onRemove, onChange }) {
+function BudgetEditor({ title, lines, onAdd, onRemove, onChange, currency = "CHF" }) {
   const subtotal = useMemo(() => sumAmounts(lines), [lines]);
 
   return (
@@ -3091,7 +3140,7 @@ function BudgetEditor({ title, lines, onAdd, onRemove, onChange }) {
       <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
         <h3 style={{ margin: 0 }}>{title}</h3>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <SmallBadge color="blue">Subtotal: {CHF.format(subtotal)}</SmallBadge>
+          <SmallBadge color="blue">Subtotal: {currency === "CHF" ? CHF.format(subtotal) : GBP.format(subtotal * CHF_TO_GBP)}</SmallBadge>
           <button
             onClick={onAdd}
             style={{
@@ -3138,7 +3187,14 @@ function BudgetEditor({ title, lines, onAdd, onRemove, onChange }) {
                   />
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-                  <div style={{ fontSize: 13, color: "#64748b" }}>{line.category || "Uncategorised"}</div>
+                  <div>
+                    <div style={{ fontSize: 13, color: "#64748b" }}>{line.category || "Uncategorised"}</div>
+                    {line.amount !== null && line.amount !== undefined && line.amount !== "" && (
+                      <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 3 }}>
+                        {currency === "CHF" ? CHF.format(Number(line.amount) || 0) : GBP.format((Number(line.amount) || 0) * CHF_TO_GBP)}
+                      </div>
+                    )}
+                  </div>
                   <button
                     onClick={() => onRemove(line.id)}
                     style={{
