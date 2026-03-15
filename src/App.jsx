@@ -3109,14 +3109,14 @@ export default function SwitzerlandTravelAppReal() {
       </div>
 
       {activeTab === "learning" && (
-        <Card style={{ padding: 20 }}>
-          <div style={{ display: "grid", gap: 16 }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <span style={{ fontSize: 28 }}>📚</span>
-              <h2 style={{ margin: 0, fontSize: 22 }}>Pre-Trip Learning</h2>
+        <div style={{ display: "grid", gap: 14 }}>
+          {/* Header */}
+          <Card style={{ padding: "16px 18px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+              <span style={{ fontSize: 24 }}>📚</span>
+              <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800 }}>Pre-Trip Learning</h2>
             </div>
-            <p style={{ marginTop: 0, color: "#64748b" }}>Learn about Switzerland before you arrive! Facts, language, culture, and fun trivia for the whole family.</p>
-
+            <p style={{ margin: "4px 0 12px", color: "#64748b", fontSize: 13 }}>Learn about Switzerland before you arrive! Facts, language, culture, and fun trivia for the whole family.</p>
             {/* Category filter chips */}
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {LEARNING_SECTIONS.map(sec => (
@@ -3124,7 +3124,7 @@ export default function SwitzerlandTravelAppReal() {
                   key={sec.id}
                   onClick={() => setLearningSection(sec.id)}
                   style={{
-                    padding: "8px 14px",
+                    padding: "6px 12px",
                     borderRadius: 999,
                     border: learningSection === sec.id ? `2px solid ${sec.color}` : "1px solid #e2e8f0",
                     background: learningSection === sec.id ? `${sec.color}15` : "white",
@@ -3141,43 +3141,41 @@ export default function SwitzerlandTravelAppReal() {
                 </button>
               ))}
             </div>
+          </Card>
 
-            {/* Learning content */}
-            <div style={{ display: "grid", gap: 10 }}>
+          {/* Learning content cards */}
+          {learningSection === "language" ? (
+            // Language: single column (phrases need full width)
+            DEFAULT_LEARNING_ITEMS.filter(item => item.section === "language").map(item => (
+              <Card key={item.id} style={{ padding: 14 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                  <span style={{ fontSize: 20 }}>{item.icon}</span>
+                  <h4 style={{ margin: 0, fontSize: 14, fontWeight: 800 }}>{item.title}</h4>
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  {item.phrases.map((p, idx) => (
+                    <div key={idx} style={{ borderLeft: "2px solid #2563eb", paddingLeft: 10 }}>
+                      <div style={{ fontWeight: 700, color: "#0f172a", fontSize: 13 }}>{p.word}</div>
+                      <div style={{ color: "#64748b", fontSize: 12 }}>English: {p.translation}</div>
+                      <div style={{ color: "#94a3b8", fontSize: 11, fontStyle: "italic" }}>Pronunciation: {p.pronunciation}</div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            ))
+          ) : (
+            // Facts / culture / landmarks / fun — 2-column grid
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
               {DEFAULT_LEARNING_ITEMS.filter(item => item.section === learningSection).map(item => (
-                <Card key={item.id} style={{ padding: 12, background: "#f8fafc" }}>
-                  {item.section === "language" ? (
-                    // Language section with phrases
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 10 }}>
-                        <span style={{ fontSize: 18 }}>{item.icon}</span>
-                        <h4 style={{ margin: 0, fontSize: 14, fontWeight: 800 }}>{item.title}</h4>
-                      </div>
-                      <div style={{ display: "grid", gap: 8 }}>
-                        {item.phrases.map((p, idx) => (
-                          <div key={idx} style={{ borderLeft: "2px solid #2563eb", paddingLeft: 10, fontSize: 12 }}>
-                            <div style={{ fontWeight: 700, color: "#0f172a" }}>{p.word}</div>
-                            <div style={{ color: "#64748b", fontSize: 11 }}>English: {p.translation}</div>
-                            <div style={{ color: "#94a3b8", fontSize: 10, fontStyle: "italic" }}>Pronunciation: {p.pronunciation}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ) : (
-                    // Facts and culture sections
-                    <div>
-                      <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
-                        <span style={{ fontSize: 18 }}>{item.icon}</span>
-                        <h4 style={{ margin: 0, fontSize: 14, fontWeight: 800 }}>{item.title}</h4>
-                      </div>
-                      <p style={{ margin: 0, color: "#475569", fontSize: 12, lineHeight: 1.4 }}>{item.description}</p>
-                    </div>
-                  )}
+                <Card key={item.id} style={{ padding: 12 }}>
+                  <div style={{ fontSize: 22, marginBottom: 6 }}>{item.icon}</div>
+                  <div style={{ fontWeight: 800, fontSize: 13, color: "#0f172a", marginBottom: 4, lineHeight: 1.3 }}>{item.title}</div>
+                  <p style={{ margin: 0, color: "#475569", fontSize: 12, lineHeight: 1.4 }}>{item.description}</p>
                 </Card>
               ))}
             </div>
-          </div>
-        </Card>
+          )}
+        </div>
       )}
     </div>
   );
