@@ -270,7 +270,7 @@ const DEFAULT_ITINERARY = [
     base: "Grindelwald",
     title: "Männlichen + Lauterbrunnen Valley",
     location: "Männlichen → Lauterbrunnen",
-    tags: ["mountains", "viewpoint", "waterfalls", "cycling", "family", "scenic"],
+    tags: ["mountains", "viewpoint", "waterfall", "cycling", "family", "scenic"],
     mapLocation: "Männlichen, Switzerland",
     image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
     items: [
@@ -293,7 +293,7 @@ const DEFAULT_ITINERARY = [
         title: "Down to Lauterbrunnen + valley bike ride",
         location: "Männlichen → Lauterbrunnen → Stechelberg",
         notes: "Take the gondola down the Lauterbrunnen side of Männlichen to Wengen, then WAB train down to Lauterbrunnen (~25 min total).\n\nHire bikes in Lauterbrunnen village (Imboden Bike, near station). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Walk or cycle all the way to the back for the full experience.\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — completely rain-proof, CHF 14/adult).",
-        tags: ["cycling", "family", "scenic", "waterfalls"],
+        tags: ["cycling", "family", "scenic", "waterfall"],
       },
       {
         time: "EVE",
@@ -310,7 +310,7 @@ const DEFAULT_ITINERARY = [
     base: "Grindelwald",
     title: "Lake Brienz Steamer + Giessbach Falls + Harder Kulm Sunset",
     location: "Interlaken → Lake Brienz → Brienz → Harder Kulm",
-    tags: ["lake", "boat", "waterfalls", "sunset", "scenic", "family"],
+    tags: ["lake", "boat", "waterfall", "sunset", "scenic", "family"],
     mapLocation: "Interlaken, Switzerland",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Brienz_and_Lake_Brienz_from_Rothorn.jpg/1280px-Brienz_and_Lake_Brienz_from_Rothorn.jpg",
     items: [
@@ -355,7 +355,7 @@ const DEFAULT_ITINERARY = [
     id: "d7",
     date: "Fri 28 Aug 2026",
     base: "Grindelwald",
-    title: "Wengen & flexible options (Kleine Scheidegg / Bachalpsee / Trümmelbach Falls)",
+    title: "Last Full Day — Your Choice",
     location: "Wengen / Lauterbrunnen Valley",
     tags: ["village", "flexible", "hike", "scenic", "waterfall", "options"],
     mapLocation: "Wengen, Switzerland",
@@ -370,31 +370,10 @@ const DEFAULT_ITINERARY = [
       },
       {
         time: "🔀 CHOOSE YOUR DAY",
-        title: "Three different options — pick one or mix & match",
-        location: "Lauterbrunnen Valley",
-        notes: "🗺️ Since this is your last full day, pick whichever activity appeals most:\n\n**OPTION A: Wengen + Kleine Scheidegg loop walk**\n**OPTION B: Bachalpsee alpine lake hike (the 3km you skipped on D2)**\n**OPTION C: Trümmelbach Falls (10 waterfalls inside a mountain)**\n\nRead the detailed options below and choose your adventure!",
+        title: "Pick one — or mix & match",
+        location: "Wengen / Grindelwald First / Lauterbrunnen",
+        notes: "⛰️ WENGEN + KLEINE SCHEIDEGG\n🚂 Grindelwald → Lauterbrunnen → Wengen (~40 min). Explore car-free Wengen village, then walk the Wengernalp trail to Kleine Scheidegg (~5km, ~90 min, mostly flat) with Eiger north face views the whole way. Lunch at Restaurant Kleine Scheidegg. Rack railway back (~35 min).\n⏱️ 6–7 hours\n\n🪞 BACHALPSEE ALPINE LAKE\n🚠 Gondola up to Grindelwald First (~20 min). Hike down to Bachalpsee (~3km, ~1.5 hours) — perfect reflections of Wetterhorn & Schreckhorn. Picnic lunch, photo ops, swim if you want. Gondola back down.\n⏱️ 4–5 hours\n\n💧 TRÜMMELBACH FALLS\n10 glacial waterfalls inside a mountain — completely rain-proof and kids LOVE it. Grindelwald → Lauterbrunnen → PostBus to Stechelberg (~20 min). Walk the galleries with waterfalls roaring past (45–60 min, CHF 14/adult).\n⏱️ 4–5 hours",
         tags: ["choice", "flexible"],
-      },
-      {
-        time: "OPTION A ⛰️",
-        title: "Wengen + Kleine Scheidegg — scenic ridge walk",
-        location: "Wengen → Kleine Scheidegg",
-        notes: "🚂 AM: Grindelwald → Lauterbrunnen → Wengen (total ~40 min)\n☕ Mid-morning: Explore car-free Wengen village, coffee at Hotel Bellevue terrace (Jungfrau views)\n🥾 PM: Walk Wengernalp trail Wengen → Kleine Scheidegg (~5km, ~90 min, mostly flat). Eiger north face views the entire way.\n🍽️ Lunch at Restaurant Kleine Scheidegg, kids play in meadows\n🚂 EVE: Rack railway back to Grindelwald Grund (~35 min) — satisfying loop, no retracing\n⏱️ Total time: 6–7 hours",
-        tags: ["hike", "scenic", "option-a"],
-      },
-      {
-        time: "OPTION B 🪞",
-        title: "Bachalpsee — alpine lake reflection shots",
-        location: "Grindelwald First → Bachalpsee",
-        notes: "📸 The beautiful alpine lake you skipped on D2 — perfect reflections of Wetterhorn & Schreckhorn\n🚠 AM: Gondola up to Grindelwald First (~20 min)\n🥾 MID: Hike down to Bachalpsee (~3km, ~1.5 hours). Easier than climbing up — mostly downhill through meadows\n📸 Bachalpsee: picnic lunch, photo ops, swim if you want\n🚠 PM: Gondola back down to Grindelwald (~20 min)\n⏱️ Total time: 4–5 hours (shorter, more photo-focused)",
-        tags: ["lake", "photos", "hike", "option-b"],
-      },
-      {
-        time: "OPTION C 💧",
-        title: "Trümmelbach Falls — 10 waterfalls INSIDE a mountain",
-        location: "Lauterbrunnen → Stechelberg → Trümmelbach",
-        notes: "🌊 Unique experience: walk inside a mountain with 10 glacial waterfalls cascading around you\n✅ Perfect if weather is dodgy (completely rain-proof)\n✅ Kids LOVE this — you're literally walking through an underground waterfall\n🚌 AM: Grindelwald → Lauterbrunnen, then walk/PostBus to Stechelberg (~20 min)\n🚡 Funicular up to Trümmelbach station (~5 min)\n💧 MID: Walk the galleries inside the mountain with waterfalls roaring past (45–60 min). CHF 14/adult\n🥾 PM: Walk back down or take funicular, explore Stechelberg\n⏱️ Total time: 4–5 hours (shorter, unique, family-friendly)",
-        tags: ["waterfall", "unique", "family", "option-c"],
       },
       {
         time: "🍽️ EVE",
@@ -540,6 +519,38 @@ const DEFAULT_LEARNING_ITEMS = [
   { id: "lf14", section: "fun", icon: "🧀", title: "Cheese Can Have Holes Because of Bacteria", description: "The holes in Emmental cheese are made by gas bubbles from special bacteria. Bigger holes = older, tastier cheese!" },
   { id: "lf15", section: "fun", icon: "🚂", title: "Switzerland's First Railroad (1847)", description: "The first Swiss railroad opened in 1847. Now Switzerland has 5,000km of tracks - the densest railway network in the world!" },
   { id: "lf16", section: "fun", icon: "🏠", title: "Swiss Homes Have Shutters for a Reason", description: "Most Swiss houses have shutters to keep heat in during winter and heat out during summer. They're also beautiful decorations on the houses!" },
+];
+
+const TRANSPORT_TYPES = [
+  { id: "all",   label: "All Routes",  emoji: "🗺️" },
+  { id: "train", label: "Train",       emoji: "🚂" },
+  { id: "cable", label: "Cable Car",   emoji: "🚡" },
+  { id: "boat",  label: "Boat",        emoji: "⛵" },
+  { id: "bus",   label: "Bus",         emoji: "🚌" },
+];
+
+const DEFAULT_TRANSPORT_ROUTES = [
+  // 🚂 TRAINS
+  { id: "t1",  type: "train", emoji: "🚂", from: "Grindelwald",        to: "Interlaken Ost",       duration: "55 min",    frequency: "Every 30 min",    priceFull: "CHF 16.20", priceHalf: "CHF 8.10",  provider: "BLS",                notes: "Change at Zweilütschinen (~10 min). Half Fare Card valid.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Grindelwald&nach=Interlaken+Ost" },
+  { id: "t2",  type: "train", emoji: "🚂", from: "Grindelwald",        to: "Lauterbrunnen",        duration: "25 min",    frequency: "Every 30 min",    priceFull: "CHF 9.80",  priceHalf: "CHF 4.90",  provider: "BLS",                notes: "Change at Zweilütschinen (~10 min). Half Fare Card valid.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Grindelwald&nach=Lauterbrunnen" },
+  { id: "t3",  type: "train", emoji: "🚂", from: "Lauterbrunnen",      to: "Wengen",               duration: "15 min",    frequency: "Every 30 min",    priceFull: "CHF 6.80",  priceHalf: "CHF 3.40",  provider: "Jungfrau Railways",  notes: "WAB rack railway. Wengen is car-free — train only access.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=Wengen" },
+  { id: "t4",  type: "train", emoji: "🚂", from: "Wengen",             to: "Kleine Scheidegg",     duration: "30 min",    frequency: "Every 30 min",    priceFull: "CHF 14.60", priceHalf: "CHF 7.30",  provider: "Jungfrau Railways",  notes: "WAB rack railway with stunning Eiger north face views.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Wengen&nach=Kleine+Scheidegg" },
+  { id: "t5",  type: "train", emoji: "🚞", from: "Kleine Scheidegg",   to: "Jungfraujoch",         duration: "35 min",    frequency: "Every 30 min",    priceFull: "CHF 92.00", priceHalf: "CHF 46.00", provider: "Jungfrau Railways",  notes: "Book well in advance at jungfrau.ch. Tunnels through Eiger & Mönch.", sbbUrl: "https://www.jungfrau.ch/en-gb/jungfraujoch-top-of-europe/" },
+  { id: "t6",  type: "train", emoji: "🚂", from: "Grütschalp",         to: "Mürren",               duration: "25 min",    frequency: "Every 30 min",    priceFull: "CHF 8.40",  priceHalf: "CHF 4.20",  provider: "Jungfrau Railways",  notes: "Connects from Lauterbrunnen cable car. Charming little valley train.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=M%C3%BCrren" },
+  { id: "t7",  type: "train", emoji: "🚂", from: "Interlaken Ost",     to: "Brienz",               duration: "20 min",    frequency: "Every 60 min",    priceFull: "CHF 10.60", priceHalf: "CHF 5.30",  provider: "BLS",                notes: "Direct train along the south shore of Lake Brienz.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Interlaken+Ost&nach=Brienz" },
+  { id: "t8",  type: "train", emoji: "🚂", from: "Grindelwald",        to: "Zurich HB",            duration: "2h 40min",  frequency: "Every 60 min",    priceFull: "CHF 68.00", priceHalf: "CHF 34.00", provider: "SBB / BLS",          notes: "Via Interlaken Ost → Bern → Zurich. Allow extra time with luggage.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Grindelwald&nach=Z%C3%BCrich+HB" },
+  { id: "t9",  type: "train", emoji: "🚂", from: "Zurich HB",          to: "Zurich Airport",       duration: "10 min",    frequency: "Every 10 min",    priceFull: "CHF 6.90",  priceHalf: "CHF 3.45",  provider: "SBB",                notes: "Direct S-Bahn. Station is directly under Terminal 1.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Z%C3%BCrich+HB&nach=Flughafen+Z%C3%BCrich" },
+  // 🚡 CABLE CARS & GONDOLAS
+  { id: "t10", type: "cable", emoji: "🚡", from: "Grindelwald Terminal", to: "Männlichen",          duration: "19 min",    frequency: "Continuous",      priceFull: "CHF 34.00", priceHalf: "CHF 17.00", provider: "Jungfrau Railways",  notes: "World's longest 3S gondola. Book at jungfrau.ch.", sbbUrl: "https://www.jungfrau.ch/en-gb/maennlichen/" },
+  { id: "t11", type: "cable", emoji: "🚠", from: "Grindelwald Terminal", to: "First",               duration: "20 min",    frequency: "Continuous",      priceFull: "CHF 32.00", priceHalf: "CHF 16.00", provider: "Jungfrau Railways",  notes: "Firstbahn gondola. Cliff Walk, playground & Bachalpsee lake at top.", sbbUrl: "https://www.jungfrau.ch/en-gb/first/" },
+  { id: "t12", type: "cable", emoji: "🚠", from: "Lauterbrunnen",      to: "Grütschalp",           duration: "5 min",     frequency: "Every 30 min",    priceFull: "CHF 8.40",  priceHalf: "CHF 4.20",  provider: "Jungfrau Railways",  notes: "Cross the valley. Then take the train to Mürren. Half Fare valid.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=M%C3%BCrren" },
+  { id: "t13", type: "cable", emoji: "🚠", from: "Mürren",             to: "Schilthorn (Piz Gloria)", duration: "20 min", frequency: "Every 30 min",    priceFull: "CHF 64.00", priceHalf: "CHF 32.00", provider: "Schilthorn AG",      notes: "James Bond revolving restaurant at top. Book lunch in advance.", sbbUrl: "https://www.schilthorn.ch/en/travel-information/timetable-fares" },
+  { id: "t14", type: "cable", emoji: "🚡", from: "Interlaken West",    to: "Harder Kulm",          duration: "8 min",     frequency: "Every 30 min",    priceFull: "CHF 14.00", priceHalf: "CHF 7.00",  provider: "Jungfrau Railways",  notes: "Two Lakes Bridge viewpoint at top. Spectacular sunset spot.", sbbUrl: "https://www.jungfrau.ch/en-gb/harder-kulm/" },
+  // ⛵ BOATS
+  { id: "t15", type: "boat",  emoji: "⛵", from: "Interlaken Ost",     to: "Brienz (steamer)",     duration: "60 min",    frequency: "2–3× daily",      priceFull: "CHF 22.40", priceHalf: "CHF 11.20", provider: "BLS Steamer",        notes: "Historic paddle steamer on turquoise Lake Brienz. Sit on upper deck.", sbbUrl: "https://www.bls.ch/en/rail/offers/ships" },
+  { id: "t16", type: "boat",  emoji: "🚟", from: "Brienz (lakeside)",  to: "Giessbach Falls",      duration: "5 min",     frequency: "On demand",       priceFull: "CHF 5.00",  priceHalf: "CHF 5.00",  provider: "Grand Hotel Giessbach", notes: "World's oldest hotel funicular (1879). Runs to Giessbach Falls.", sbbUrl: "https://www.giessbach.ch/en/funicular" },
+  // 🚌 BUS
+  { id: "t17", type: "bus",   emoji: "🚌", from: "Lauterbrunnen",      to: "Stechelberg",          duration: "20 min",    frequency: "Every 30 min",    priceFull: "CHF 4.60",  priceHalf: "CHF 2.30",  provider: "PostBus",            notes: "Flat valley road past all the waterfalls. Stop at Trümmelbach.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=Stechelberg" },
 ];
 
 const DEFAULT_BUDGET = {
@@ -995,7 +1006,7 @@ function TextInput(props) {
 function getTagColor(tag) {
   const value = String(tag || "").toLowerCase();
   if (["bucket list", "warning", "review", "checkout", "hotel", "airport"].includes(value)) return "rose";
-  if (["mountains", "hike", "scenic", "viewpoint", "waterfalls", "lake"].includes(value)) return "green";
+  if (["mountains", "hike", "scenic", "viewpoint", "waterfall", "lake"].includes(value)) return "green";
   if (["food", "coffee", "family", "relax", "easy"].includes(value)) return "amber";
   return "blue";
 }
@@ -1185,6 +1196,7 @@ export default function SwitzerlandTravelAppReal() {
   const [pretripChecklist, setPretripChecklist] = useState(DEFAULT_PRETRIP_CHECKLIST);
   const [pretripReady, setPretripReady]         = useState(false);
   const [parking, setParking]                   = useState({ ref: "", url: "" });
+  const [transportFilter, setTransportFilter]   = useState("all");
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -1631,6 +1643,9 @@ export default function SwitzerlandTravelAppReal() {
           </Chip>
           <Chip active={activeTab === "learning"} onClick={() => setActiveTab("learning")} tone="red">
             📚 Learn
+          </Chip>
+          <Chip active={activeTab === "transport"} onClick={() => setActiveTab("transport")} tone="sky">
+            🚂 Transport
           </Chip>
         </div>
 
@@ -3057,9 +3072,6 @@ export default function SwitzerlandTravelAppReal() {
                         </div>
                       )}
 
-                      {/* Mission */}
-                      <div style={{ fontSize: 12, color: meta.accent, fontWeight: 700 }}>🎯 {place.mission}</div>
-
                       {/* Notes */}
                       <div style={{ fontSize: 12, color: "#475569", lineHeight: 1.4, flexGrow: 1 }}>{place.notes}</div>
 
@@ -3168,6 +3180,99 @@ export default function SwitzerlandTravelAppReal() {
           )}
         </div>
       )}
+
+        {activeTab === "transport" && (() => {
+          const filtered = transportFilter === "all"
+            ? DEFAULT_TRANSPORT_ROUTES
+            : DEFAULT_TRANSPORT_ROUTES.filter(r => r.type === transportFilter);
+          return (
+            <div style={{ display: "grid", gap: 14 }}>
+              {/* Header */}
+              <div style={{ background: "linear-gradient(135deg, #0891b2 0%, #0e7490 100%)", borderRadius: 18, padding: "16px 18px", color: "white" }}>
+                <div style={{ fontWeight: 900, fontSize: 20, marginBottom: 6 }}>🚂 Transport Guide</div>
+                <div style={{ fontSize: 13, opacity: 0.88, marginBottom: 12 }}>Key routes, times & prices · Half Fare Cards save ~50% on everything</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {TRANSPORT_TYPES.map(tt => (
+                    <button
+                      key={tt.id}
+                      onClick={() => setTransportFilter(tt.id)}
+                      style={{
+                        padding: "6px 12px", borderRadius: 999, border: "none", cursor: "pointer",
+                        background: transportFilter === tt.id ? "white" : "rgba(255,255,255,0.2)",
+                        color: transportFilter === tt.id ? "#0e7490" : "white",
+                        fontWeight: transportFilter === tt.id ? 700 : 500, fontSize: 13,
+                        display: "inline-flex", alignItems: "center", gap: 5,
+                      }}
+                    >
+                      {tt.emoji} {tt.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Route cards */}
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(340px, 1fr))", gap: 10 }}>
+                {filtered.map(route => (
+                  <Card key={route.id} style={{ padding: "12px 14px" }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", gap: 10 }}>
+                      <div style={{ fontSize: 26, flexShrink: 0, lineHeight: 1, marginTop: 2 }}>{route.emoji}</div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 2 }}>{route.from} → {route.to}</div>
+                        <div style={{ fontSize: 12, color: "#64748b", marginBottom: 6 }}>{route.duration} · {route.frequency}</div>
+                        <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: route.notes ? 5 : 0 }}>
+                          <SmallBadge color="slate">{route.priceFull}</SmallBadge>
+                          <SmallBadge color="green">½ {route.priceHalf}</SmallBadge>
+                          <SmallBadge color="amber">{route.provider}</SmallBadge>
+                        </div>
+                        {route.notes && <div style={{ fontSize: 11, color: "#94a3b8", lineHeight: 1.4 }}>{route.notes}</div>}
+                      </div>
+                      <a
+                        href={route.sbbUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          flexShrink: 0, background: "#e11d48", color: "white",
+                          borderRadius: 10, padding: "7px 11px", fontWeight: 700,
+                          fontSize: 12, textDecoration: "none", whiteSpace: "nowrap",
+                        }}
+                      >
+                        Timetable →
+                      </a>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Useful apps */}
+              <Card style={{ padding: "14px 16px" }}>
+                <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 10 }}>📱 Useful Apps & Links</div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  {[
+                    { href: "https://www.sbb.ch/en", label: "🇨🇭 SBB — Swiss Federal Railways (all national trains & timetables)" },
+                    { href: "https://www.bls.ch/en", label: "🚂 BLS — Regional trains, lake steamers & Grindelwald area" },
+                    { href: "https://www.jungfrau.ch/en-gb/", label: "🏔️ Jungfrau Railways — gondolas, cable cars & mountain trains" },
+                    { href: "https://www.postauto.ch/en", label: "🚌 PostBus Switzerland — valley & mountain buses" },
+                    { href: "https://www.sbb.ch/en/tickets-offers/tickets/travelcards/half-fare-travelcard.html", label: "🎟️ Buy Half Fare Card online (saves ~50% on all public transport)" },
+                  ].map(link => (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        display: "block", color: "#0891b2", fontWeight: 600, fontSize: 13,
+                        textDecoration: "none", padding: "8px 10px", borderRadius: 10,
+                        background: "#f0f9ff", border: "1px solid #bae6fd",
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          );
+        })()}
       </div>
     </div>
   );
