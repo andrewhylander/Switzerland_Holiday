@@ -696,6 +696,18 @@ const MAP_PLACES = [
   { id: "mp21", cat: "playground", emoji: "🛝", name: "Bort Alpine Playground",            location: "Grindelwald First",    lat: 46.6487, lng: 8.0471,  mission: "Play at a playground halfway up a mountain", notes: "Adventure playground on the Grindelwald First gondola line. Stop here on the way down." },
   { id: "mp22", cat: "playground", emoji: "🛝", name: "Winteregg Playground",              location: "Mürren trail",         lat: 46.5731, lng: 7.9012,  mission: "Picnic stop with a play area",               notes: "Scenic rest-stop playground on the Mürren trail. Great views." },
   { id: "mp23", cat: "playground", emoji: "🛝", name: "Grindelwald Village Playground",    location: "Grindelwald",          lat: 46.6242, lng: 8.0414,  mission: "Have a quick play in the village",           notes: "Easy local park right in Grindelwald town. Perfect for a quick break." },
+  // 📸 PHOTO SPOTS
+  { id: "mp64", cat: "photo", emoji: "📸", name: "Bachalpsee Reflection",          location: "Grindelwald First",    lat: 46.6724, lng: 8.0591,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Bachalpsee_mit_Schreckhorn_und_Finsteraarhorn.jpg/800px-Bachalpsee_mit_Schreckhorn_und_Finsteraarhorn.jpg",  mission: "Capture the perfect mountain reflection",            notes: "Arrive early morning for calm water — Wetterhorn & Schreckhorn reflect perfectly. Walk ~3km from First gondola. Best light before 10am." },
+  { id: "mp65", cat: "photo", emoji: "📸", name: "Männlichen Panorama Crown",      location: "Männlichen",           lat: 46.6234, lng: 8.0043,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg/800px-Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",  mission: "All 3 giants: Eiger, Mönch & Jungfrau in one frame", notes: "The crown viewpoint gives you the classic 3-summit panorama. Go wide angle. Best light in early morning or late afternoon golden hour." },
+  { id: "mp66", cat: "photo", emoji: "📸", name: "Kleine Scheidegg Platform",      location: "Kleine Scheidegg",     lat: 46.5854, lng: 7.9601,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Interlaken01.JPG/800px-Interlaken01.JPG",  mission: "Eiger north face with rack railway in foreground",   notes: "Stand on the platform side — the rack railway curves in front of the vertical Eiger face. One of the most iconic alpine compositions in Switzerland." },
+  { id: "mp67", cat: "photo", emoji: "📸", name: "Lauterbrunnen Valley Overlook",  location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9091,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Lauterbrunnen_-_Switzerland.JPG/800px-Lauterbrunnen_-_Switzerland.JPG",  mission: "Valley walls with 72 waterfalls pouring down",       notes: "Stand on the valley road and look up — sheer 300m cliffs with waterfalls cascading on both sides. Portrait orientation works best here." },
+  { id: "mp68", cat: "photo", emoji: "📸", name: "Iseltwald Pier",                 location: "Lake Brienz",          lat: 46.7142, lng: 7.9943,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Brienz_-_panoramio.jpg/800px-Brienz_-_panoramio.jpg",  mission: "The Netflix pier over turquoise Lake Brienz",        notes: "Famous from Squid Game. The wooden pier extends over the impossibly blue-green water. Go early to avoid queues — it's become very popular. Short walk from Iseltwald village." },
+  { id: "mp69", cat: "photo", emoji: "📸", name: "Sphinx Observatory",             location: "Jungfraujoch",         lat: 46.5473, lng: 7.9854,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Jungfraubahn_-_Top_of_Europe_-_3.454m_Jungfraujoch.JPG/800px-Jungfraubahn_-_Top_of_Europe_-_3.454m_Jungfraujoch.JPG",  mission: "Highest photo op in Europe — Aletsch Glacier below", notes: "Take the lift to the Sphinx platform at 3,571m. The Aletsch Glacier stretches 23km below you. Clear days only — check forecast the morning before." },
+  { id: "mp70", cat: "photo", emoji: "📸", name: "Mürren Cliff Terrace",           location: "Mürren",               lat: 46.5592, lng: 7.8928,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/M%C3%BCrren_-_2012.jpg/800px-M%C3%BCrren_-_2012.jpg",  mission: "Entire Lauterbrunnen valley spread below the cliff", notes: "Find the terrace on the Mürren cliff edge — the valley drops away 800m straight below. Get the village chalets in the foreground with the valley behind." },
+  { id: "mp71", cat: "photo", emoji: "📸", name: "Grindelwald Village Eiger Shot", location: "Grindelwald",          lat: 46.6237, lng: 8.0411,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Grindelwald_village_and_the_Eiger.jpg/800px-Grindelwald_village_and_the_Eiger.jpg",  mission: "Eiger rising above the alpine village rooftops",     notes: "Walk to the church area on the main street — the Eiger north face rises directly behind the classic village rooftops and Alpine chalets. Magic at dusk." },
+  { id: "mp72", cat: "photo", emoji: "📸", name: "First Cliff Walk Platform",      location: "Grindelwald First",    lat: 46.6587, lng: 8.0506,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Grindelwald_First_-_panoramio.jpg/800px-Grindelwald_First_-_panoramio.jpg",  mission: "Selfie on the suspended walkway with drop below",    notes: "The glass-floored section of the cliff walk is the money shot. Look down through the glass platform for a truly vertiginous perspective. Get someone to photograph you from the side." },
+  { id: "mp73", cat: "photo", emoji: "📸", name: "Giessbach Falls & Funicular",    location: "Brienz",               lat: 46.7178, lng: 7.9844,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg/600px-Giessbach_falls_and_hotel_2012-07-18_14-55-47.jpg",  mission: "Historic Belle Époque funicular with cascade behind", notes: "The little red funicular ascending alongside the tiered falls is a timeless shot. Take the BLS boat to Giessbach stop for the full approach experience." },
+  { id: "mp74", cat: "photo", emoji: "📸", name: "Staubbach Falls Path",           location: "Lauterbrunnen",        lat: 46.5937, lng: 7.9094,  refImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Staubbachfall.jpg/400px-Staubbachfall.jpg",  mission: "Looking straight up at the 300m free-falling wall",  notes: "Walk to the base path and tilt your camera straight up — the water appears to fall from the sky. In bright sun you'll catch a rainbow in the mist at the bottom." },
 ];
 
 function haversineDist(lat1, lon1, lat2, lon2) {
@@ -871,6 +883,7 @@ const QUEST_SECTIONS = [
   { id: "mountain",  label: "🏔️ Mountain Adventures",    color: "#c0152a", bg: "#fff1f2", border: "#fca5a5" },
   { id: "nature",    label: "🌿 Nature Spotting",         color: "#15803d", bg: "#f0fdf4", border: "#86efac" },
   { id: "village",   label: "🎪 Village Fun",             color: "#7c3aed", bg: "#f5f3ff", border: "#c4b5fd" },
+  { id: "photo",     label: "📸 Photo Missions",          color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4" },
 ];
 
 const DEFAULT_QUEST_ITEMS = [
@@ -910,6 +923,12 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                checked: { k1: false, k2: false }, section: "village" },
   { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",   checked: { k1: false, k2: false }, section: "village" },
   { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!", checked: { k1: false, k2: false }, section: "village" },
+  // 📸 Photo Missions
+  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",    checked: { k1: false, k2: false }, section: "photo" },
+  { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",     checked: { k1: false, k2: false }, section: "photo" },
+  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",   checked: { k1: false, k2: false }, section: "photo" },
+  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",   checked: { k1: false, k2: false }, section: "photo" },
+  { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",  checked: { k1: false, k2: false }, section: "photo" },
 ];
 
 export default function SwitzerlandTravelAppReal() {
@@ -1020,7 +1039,7 @@ export default function SwitzerlandTravelAppReal() {
     const CAT_ACCENT = {
       stay: "#c2410c", cafe: "#b45309", adventure: "#c0152a",
       waterfall: "#0284c7", playground: "#7c3aed", station: "#475569",
-      restaurant: "#16a34a", rainy: "#0891b2",
+      restaurant: "#16a34a", rainy: "#0891b2", photo: "#db2777",
     };
 
     if (!leafletInstanceRef.current) {
@@ -2473,6 +2492,7 @@ export default function SwitzerlandTravelAppReal() {
             waterfall:  { label: "Waterfalls", emoji: "💦",  accent: "#0284c7", bg: "#f0f9ff",  border: "#7dd3fc" },
             playground: { label: "Playgrounds",emoji: "🛝",  accent: "#7c3aed", bg: "#f5f3ff",  border: "#c4b5fd" },
             station:    { label: "Stations",   emoji: "🚉",  accent: "#475569", bg: "#f8fafc",  border: "#cbd5e1" },
+            photo:      { label: "Photo Spots",emoji: "📸",  accent: "#db2777", bg: "#fdf2f8",  border: "#f9a8d4" },
           };
 
           const filtered = MAP_PLACES
@@ -2611,6 +2631,19 @@ export default function SwitzerlandTravelAppReal() {
                         position: "relative",
                       }}
                     >
+                      {/* Reference photo — photo spots only */}
+                      {place.refImage && (
+                        <div style={{ margin: "-14px -14px 4px -14px", borderRadius: "14px 14px 0 0", overflow: "hidden", height: 110 }}>
+                          <img
+                            src={place.refImage}
+                            alt={place.name}
+                            loading="lazy"
+                            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                            onError={e => { e.target.style.display = "none"; e.target.parentElement.style.display = "none"; }}
+                          />
+                        </div>
+                      )}
+
                       {/* Category badge */}
                       <div style={{
                         position: "absolute", top: 10, right: 10,
