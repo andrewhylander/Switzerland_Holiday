@@ -1768,6 +1768,46 @@ export default function SwitzerlandTravelAppReal() {
             </Card>
 
             <Card style={{ padding: 18, gridColumn: "1 / -1" }}>
+              <SectionTitle icon={<Train size={18} />} title="🎫 Half Fare Card — Save 50% on every Swiss journey" />
+              <div style={{ display: "grid", gap: 14 }}>
+                {/* Stat pills */}
+                <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  {[
+                    { label: "Total cost", value: "CHF 300", sub: "2 × CHF 150 per adult", bg: "#f0f9ff", border: "#7dd3fc", col: "#0369a1" },
+                    { label: "Discount", value: "50% off", sub: "All trains, gondolas & cable cars", bg: "#f0fdf4", border: "#86efac", col: "#15803d" },
+                    { label: "Validity", value: "30 days", sub: "Start on or just before 22 Aug", bg: "#fffbeb", border: "#fcd34d", col: "#b45309" },
+                  ].map(({ label, value, sub, bg, border, col }) => (
+                    <div key={label} style={{ flex: 1, minWidth: 130, background: bg, border: `1.5px solid ${border}`, borderRadius: 12, padding: "10px 14px" }}>
+                      <div style={{ fontSize: 10, color: col, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 2 }}>{label}</div>
+                      <div style={{ fontSize: 20, fontWeight: 900, color: "#0f172a", lineHeight: 1.1 }}>{value}</div>
+                      <div style={{ fontSize: 11, color: "#64748b", marginTop: 2 }}>{sub}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* Steps */}
+                <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: 0.5 }}>How it works</div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  {[
+                    ["1", "🛒", "Buy 2× Half Fare Cards online at sbb.ch before you travel — delivered as PDFs"],
+                    ["2", "📱", "Download the SBB app and add your Half Fare Card details"],
+                    ["3", "🚆", "Search any route in the app — it automatically applies your 50% discount at checkout"],
+                    ["4", "📲", "Show the ticket on your phone to the conductor. That's it!"],
+                  ].map(([n, icon, text]) => (
+                    <div key={n} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                      <div style={{ background: "#c0152a", color: "white", borderRadius: "50%", width: 22, height: 22, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 800, flexShrink: 0, marginTop: 1 }}>{n}</div>
+                      <div style={{ fontSize: 13, color: "#334155" }}><span style={{ marginRight: 4 }}>{icon}</span>{text}</div>
+                    </div>
+                  ))}
+                </div>
+                {/* Warning */}
+                <div style={{ background: "#fef2f2", border: "1.5px solid #fca5a5", borderRadius: 10, padding: "10px 14px", fontSize: 12, color: "#991b1b", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                  <span style={{ fontSize: 16, flexShrink: 0 }}>⚠️</span>
+                  <span>Order online at <strong>sbb.ch</strong> or the SBB app <em>before you fly</em> — not available for instant purchase on arrival at the airport.</span>
+                </div>
+              </div>
+            </Card>
+
+            <Card style={{ padding: 18, gridColumn: "1 / -1" }}>
               <SectionTitle icon={<Train size={18} />} title="Trip notes" />
               <div style={{ display: "grid", gap: 10 }}>
                 {TRIP_INFO.notes.map((note) => (
