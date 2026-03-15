@@ -315,32 +315,46 @@ const DEFAULT_ITINERARY = [
     id: "d6",
     date: "Thu 27 Aug 2026",
     base: "Grindelwald",
-    title: "Lauterbrunnen Valley by Bike",
-    location: "Lauterbrunnen",
-    tags: ["waterfalls", "village", "easy", "scenic", "cycling", "family"],
-    mapLocation: "Lauterbrunnen, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/4/44/Lauterbrunnen_-_Switzerland.JPG",
+    title: "Lake Brienz Steamer + Giessbach Falls + Harder Kulm Sunset",
+    location: "Interlaken → Lake Brienz → Brienz → Harder Kulm",
+    tags: ["lake", "boat", "waterfalls", "sunset", "scenic", "family"],
+    mapLocation: "Interlaken, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Brienz_and_Lake_Brienz_from_Rothorn.jpg/1280px-Brienz_and_Lake_Brienz_from_Rothorn.jpg",
     items: [
       {
         time: "AM",
-        title: "Travel to Lauterbrunnen",
-        location: "Grindelwald → Lauterbrunnen",
-        notes: "Train from Grindelwald → Zweilütschinen (~10 min), then change to BOB train → Lauterbrunnen (~15 min). Total ~25 min, runs every 30 min. Bike hire shops near the station (Swiss Bike Hire, Imboden Bike) — no booking needed but get there early (~9am).",
+        title: "Train to Interlaken Ost",
+        location: "Grindelwald → Interlaken Ost",
+        notes: "🚂 Grindelwald → Zweilütschinen → Interlaken Ost: ~35 min, runs every 30 min.\n\n✅ Half Fare Cards valid on all BLS trains and lake steamers — buy tickets at the desk or platform machine.\n\n💡 Grab a coffee and pastry at the station café before boarding the steamer.",
         tags: ["train", "travel"],
       },
       {
+        time: "MID AM",
+        title: "BLS Lake Steamer across Lake Brienz",
+        location: "Interlaken Ost → Brienz (lake steamer)",
+        notes: "⛵ Board the BLS paddle steamer at Interlaken Ost pier (~10 min walk from station, or short bus).\n\n🌊 Cruise across stunning turquoise-green Lake Brienz to Brienz (~1 hour). The lake is one of the clearest in Switzerland — glacier meltwater gives it its incredible colour.\n\n✅ Half Fare Cards valid. Check BLS timetable at bls.ch for departure times (roughly every 1–2 hours in summer).\n\nSit on the upper deck for the best views of the surrounding Alps.",
+        tags: ["boat", "lake", "scenic", "family"],
+      },
+      {
         time: "MID",
-        title: "Lauterbrunnen Valley bike ride",
-        location: "Lauterbrunnen → Stechelberg",
-        notes: "Hire bikes in Lauterbrunnen village (Imboden Bike, near station). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Walk or cycle all the way to the back for the full experience.\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — completely rain-proof, CHF 14/adult).",
-        tags: ["cycling", "family", "scenic", "waterfalls"],
+        title: "Giessbach Falls & historic funicular",
+        location: "Brienz → Giessbach",
+        notes: "🚟 From Brienz pier, take the short boat hop to Giessbach landing stage (or walk 20 min along the shore path).\n\n🚠 Ride the Giessbach funicular — the oldest still-operating hotel funicular in the world (built 1879!). Short but spectacular ride up through the forest.\n\n💦 Giessbach Falls: a series of 14 cascades tumbling 300m down into the lake. Walk the short trail to the best viewpoints — the kids will love standing right next to the falls.\n\n🍽️ Lunch at the Grand Hotel Giessbach terrace (affordable set menu, incredible views over Lake Brienz) — or pack sandwiches for the lakeside.",
+        tags: ["waterfall", "funicular", "history", "family", "scenic"],
+      },
+      {
+        time: "PM",
+        title: "Return to Interlaken",
+        location: "Brienz → Interlaken Ost",
+        notes: "🚂 Take the train back from Brienz to Interlaken Ost (~20 min) or catch the return steamer if timing works.\n\n☕ Afternoon stop in Interlaken: Balmers or Caffè Bar Schuh on Höheweg (main promenade) for a coffee & cake break. Short walk along the famous Höheweg promenade between the two lakes.",
+        tags: ["train", "travel", "food"],
       },
       {
         time: "EVE",
-        title: "Return bikes & head back to Grindelwald",
-        location: "Lauterbrunnen → Grindelwald",
-        notes: "Return bikes, grab ice cream at Airtime Café, then train back: Lauterbrunnen → Zweilütschinen → Grindelwald (~25 min).",
-        tags: ["train", "return", "food"],
+        title: "Harder Kulm — Two Lakes Sunset View",
+        location: "Interlaken West → Harder Kulm",
+        notes: "🚠 Harder Kulm funicular departs from Interlaken West (10 min walk or short bus from Interlaken Ost). Funicular ride ~8 min.\n\n🌅 Harder Kulm (1,322m) has the most famous view in Interlaken: the Two Lakes Bridge — a suspended walkway over the cliff with Lake Thun to the west and Lake Brienz to the east, the Alps behind, and Grindelwald's mountains ahead. It's spectacular at sunset.\n\n✅ Half Fare Cards valid. Last funicular down is around 9–10pm in August — check Jungfraubahn website.\n\n🚂 Return: Walk to Interlaken Ost and take the direct train back to Grindelwald (~35 min).",
+        tags: ["gondola", "sunset", "viewpoint", "scenic", "family"],
       },
     ],
   },
@@ -3159,12 +3173,12 @@ export default function SwitzerlandTravelAppReal() {
               </Card>
             ))
           ) : (
-            // Facts / culture / landmarks / fun — 2-column grid
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+            // Facts / culture / landmarks / fun — responsive grid (3 cols on desktop, 2 on tablet, 1 on mobile)
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
               {DEFAULT_LEARNING_ITEMS.filter(item => item.section === learningSection).map(item => (
-                <Card key={item.id} style={{ padding: 12 }}>
-                  <div style={{ fontSize: 22, marginBottom: 6 }}>{item.icon}</div>
-                  <div style={{ fontWeight: 800, fontSize: 13, color: "#0f172a", marginBottom: 4, lineHeight: 1.3 }}>{item.title}</div>
+                <Card key={item.id} style={{ padding: "10px 12px" }}>
+                  <div style={{ fontSize: 18, marginBottom: 4 }}>{item.icon}</div>
+                  <div style={{ fontWeight: 800, fontSize: 13, color: "#0f172a", marginBottom: 3, lineHeight: 1.3 }}>{item.title}</div>
                   <p style={{ margin: 0, color: "#475569", fontSize: 12, lineHeight: 1.4 }}>{item.description}</p>
                 </Card>
               ))}
