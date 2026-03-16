@@ -129,10 +129,17 @@ const DEFAULT_ITINERARY = [
     image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/5003_-_Grindelwald_-_View_from_Oberer_Moosgaden.JPG",
     items: [
       {
+        time: "8:45 AM",
+        title: "Leave Whiteabbey 🚗",
+        location: "Whiteabbey → Dublin Airport",
+        notes: "🚗 Depart by 8:45 AM to arrive Dublin Airport by 10:45–11:00 AM.\n\n• Route: M2 → M1 → M3 → Airport Tunnel (~1 hr 45 min on a clear run)\n• Saturday 22 Aug falls on the August Bank Holiday weekend — roads heading south can be busier than usual, allow the full 2 hours\n• Pre-book parking at dublinairport.com — Long Stay Car Park P6 is the most convenient for Terminal 1\n• Add ~15–20 min from the car park shuttle to terminal doors\n\n💡 Check in online the night before on the SWISS app and download boarding passes — means you go straight to bag drop and skip the check-in queue.",
+        tags: [],
+      },
+      {
         time: "11:00 AM",
         title: "Arrive Dublin Airport — Terminal 1",
         location: "Dublin Airport, Terminal 1",
-        notes: "✈️ LX401 departs 13:00 — aim to be at Terminal 1 by 11:00 AM (2 hours before).\n\n🚗 Allow travel time from home:\n• From Dublin city centre: ~30–40 min by taxi/Aircoach\n• From north Dublin: ~20–30 min\n• From south Dublin: ~45–60 min\n• Aircoach runs from city centre every 15 min — book in advance at aircoach.ie\n\n💡 Check in online the night before (SWISS app / swiss.com) to save time at the desk. Print or save boarding passes to your phone.",
+        notes: "✈️ LX401 departs 13:00 — aim to be at Terminal 1 by 11:00 AM (2 hours before departure).\n\n🧳 SWISS check-in desks are in Zone B/C — follow signs for SWISS or Star Alliance. If checked in online, head straight to bag drop.\n\n⏰ Bag drop closes 60 min before departure (12:00 noon) — don't cut it fine with kids!",
         tags: [],
       },
       {
@@ -467,7 +474,7 @@ const DEFAULT_ITINERARY = [
         time: "7:30 AM",
         title: "Check out & walk to terminal",
         location: "Holiday Inn Express → ZRH Terminal 1",
-        notes: "Check out by 7:30 AM.\n\n🚶 Walk to Zurich Airport Terminal 1: ~5–10 min on foot — there's a covered walkway directly from the hotel area. No bus or taxi needed.\n\n✅ Zurich Airport is very straightforward — well-signed, clean and efficient.",
+        notes: "Check out by 7:30 AM — pack bags the night before so there's no scrambling in the morning.\n\n🚶 Walk to Zurich Airport Terminal 1: ~5–10 min on foot — there's a covered walkway directly from the hotel area. No bus or taxi needed.\n\n✅ Zurich Airport is very straightforward — well-signed, clean and efficient.",
         tags: [],
       },
       {
@@ -481,7 +488,7 @@ const DEFAULT_ITINERARY = [
         time: "8:15 AM",
         title: "Security & passport control",
         location: "ZRH Terminal 1",
-        notes: "Allow 30–45 min for security + Swiss passport control (leaving Schengen area).\n\n⚠️ Schengen exit — have all passports ready. Kids need their own passports.\n\n💡 Use the Family lane if available — usually shorter with children.",
+        notes: "Allow 30–45 min for security + Swiss passport control (leaving Schengen area).\n\n⚠️ Schengen exit — have all passports ready. Kids need their own passports.\n\n🇮🇪 Irish passports: use the EU/EEA lane — much faster than the non-EU queue. Switzerland is Schengen but not EU, so the border officer may still stamp or check carefully — don't be surprised.\n\n💡 Use the Family lane for security if available — usually shorter with children.",
         tags: [],
       },
       {
@@ -1490,10 +1497,12 @@ export default function SwitzerlandTravelAppReal() {
       .catch(() => { setWeatherError("Could not load forecast. Check your connection."); setWeatherLoading(false); });
   }, [activeTab, weatherLocation]);
 
+  const FILTER_TAGS = ["boat","bucket list","cable car","cycling","hike","history","lake","mountains","playground","snow","sunset","train","viewpoint","village","waterfall"];
   const allTags = useMemo(() => {
     const dayTags = DEFAULT_ITINERARY.flatMap((d) => d.tags || []);
     const itemTags = DEFAULT_ITINERARY.flatMap((d) => d.items.flatMap((i) => i.tags || []));
-    return ["all", ...uniq([...dayTags, ...itemTags]).sort((a, b) => a.localeCompare(b))];
+    const found = uniq([...dayTags, ...itemTags]);
+    return ["all", ...FILTER_TAGS.filter((t) => found.includes(t))];
   }, []);
 
   const filteredItinerary = useMemo(() => {
