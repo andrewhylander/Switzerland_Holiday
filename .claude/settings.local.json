@@ -15,7 +15,8 @@
       "WebFetch(domain:api.wikimedia.org)",
       "Bash(node -e \":*)",
       "Bash(npm install:*)",
-      "Bash(node generate-icons.mjs)"
+      "Bash(node generate-icons.mjs)",
+      "Bash(npx vite:*)"
     ]
   }
 }

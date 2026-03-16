@@ -554,6 +554,48 @@ const DEFAULT_TRANSPORT_ROUTES = [
   { id: "t17", type: "bus",   emoji: "🚌", from: "Lauterbrunnen",      to: "Stechelberg",          duration: "20 min",    frequency: "Every 30 min",    priceFull: "CHF 4.60",  priceHalf: "CHF 2.30",  provider: "PostBus",            notes: "Flat valley road past all the waterfalls. Stop at Trümmelbach.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=Stechelberg" },
 ];
 
+// ─── MAP ROUTE POLYLINES ───────────────────────────────────────────────────
+// Colours: Red=train, Orange=rack railway, Blue=cable/gondola, Navy=boat, Green=funicular, Amber=bus
+// Dashed lines = aerial/cable, solid = ground transport
+const ROUTE_LINES = [
+  // 🚂 BLS Regular Trains — solid red
+  { id: "rl1",  label: "Grindelwald → Interlaken Ost",      color: "#e11d48", weight: 3.5, dashArray: null,
+    coords: [[46.6243, 8.0383], [46.6179, 7.9890], [46.6909, 7.8691]] },
+  { id: "rl2",  label: "Grindelwald → Lauterbrunnen",        color: "#e11d48", weight: 3.5, dashArray: null,
+    coords: [[46.6243, 8.0383], [46.6179, 7.9890], [46.5937, 7.9094]] },
+  { id: "rl7",  label: "Interlaken Ost → Brienz (train)",    color: "#e11d48", weight: 3.5, dashArray: null,
+    coords: [[46.6909, 7.8691], [46.7050, 7.9150], [46.7480, 7.9878]] },
+  // 🚞 Rack Railways — solid orange
+  { id: "rl3",  label: "Lauterbrunnen → Wengen",             color: "#ea580c", weight: 3.5, dashArray: null,
+    coords: [[46.5937, 7.9094], [46.6066, 7.9204]] },
+  { id: "rl4",  label: "Wengen → Kleine Scheidegg",          color: "#ea580c", weight: 3.5, dashArray: null,
+    coords: [[46.6066, 7.9204], [46.5854, 7.9603]] },
+  { id: "rl5",  label: "Kleine Scheidegg → Jungfraujoch",    color: "#ea580c", weight: 3.5, dashArray: null,
+    coords: [[46.5854, 7.9603], [46.5473, 7.9854]] },
+  { id: "rl9",  label: "Grütschalp → Mürren",                color: "#ea580c", weight: 3.5, dashArray: null,
+    coords: [[46.6031, 7.8850], [46.5592, 7.8928]] },
+  // 🚡 Cable Cars & Gondolas — dashed blue
+  { id: "rl6",  label: "Grindelwald → Männlichen (gondola)",  color: "#2563eb", weight: 3, dashArray: "8 5",
+    coords: [[46.6237, 8.0393], [46.6180, 7.9483]] },
+  { id: "rl11", label: "Grindelwald → First (gondola)",       color: "#2563eb", weight: 3, dashArray: "8 5",
+    coords: [[46.6237, 8.0393], [46.6589, 8.0542]] },
+  { id: "rl8",  label: "Lauterbrunnen → Grütschalp",          color: "#2563eb", weight: 3, dashArray: "8 5",
+    coords: [[46.5937, 7.9055], [46.6031, 7.8850]] },
+  { id: "rl10", label: "Mürren → Schilthorn",                 color: "#2563eb", weight: 3, dashArray: "8 5",
+    coords: [[46.5592, 7.8928], [46.5582, 7.8342]] },
+  { id: "rl12", label: "Interlaken → Harder Kulm",            color: "#2563eb", weight: 3, dashArray: "8 5",
+    coords: [[46.6882, 7.8726], [46.6981, 7.8594]] },
+  // ⛵ Boat — solid navy (follows lake surface)
+  { id: "rl13", label: "Lake Brienz Steamer",                 color: "#1e3a8a", weight: 3.5, dashArray: null,
+    coords: [[46.6875, 7.8730], [46.7020, 7.9000], [46.7180, 7.9300], [46.7340, 7.9580], [46.7480, 7.9878]] },
+  // 🚟 Funicular — dashed green
+  { id: "rl14", label: "Brienz → Giessbach Funicular",        color: "#16a34a", weight: 3, dashArray: "5 5",
+    coords: [[46.7475, 7.9876], [46.7178, 7.9844]] },
+  // 🚌 Bus — solid amber
+  { id: "rl15", label: "Lauterbrunnen → Stechelberg (bus)",   color: "#d97706", weight: 3.5, dashArray: null,
+    coords: [[46.5937, 7.9094], [46.5717, 7.9114], [46.5441, 7.8984]] },
+];
+
 const DEFAULT_BUDGET = {
   currency: "CHF",
   income: [],
@@ -1193,6 +1235,7 @@ export default function SwitzerlandTravelAppReal() {
   const [mapUserCoords, setMapUserCoords]     = useState(null);
   const [mapViewMode, setMapViewMode]         = useState("list");
   const [mapFullscreen, setMapFullscreen]     = useState(false);
+  const [mapShowRoutes, setMapShowRoutes]     = useState(false);
   const [expandedPhotoId, setExpandedPhotoId] = useState(null);
   const [pretripChecklist, setPretripChecklist] = useState(DEFAULT_PRETRIP_CHECKLIST);
   const [pretripReady, setPretripReady]         = useState(false);
@@ -1201,6 +1244,7 @@ export default function SwitzerlandTravelAppReal() {
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
+  const leafletRoutesRef                      = useRef([]);
 
   useEffect(() => {
     setBudget(readLocalStorage(STORAGE_KEYS.budget, DEFAULT_BUDGET));
@@ -1303,6 +1347,21 @@ export default function SwitzerlandTravelAppReal() {
     }
 
     const map = leafletInstanceRef.current;
+
+    // Clear & redraw route polylines
+    leafletRoutesRef.current.forEach((l) => l.remove());
+    leafletRoutesRef.current = [];
+    if (mapShowRoutes) {
+      ROUTE_LINES.forEach((route) => {
+        const opts = { color: route.color, weight: route.weight, opacity: 0.85 };
+        if (route.dashArray) opts.dashArray = route.dashArray;
+        const line = L.polyline(route.coords, opts);
+        line.bindTooltip(route.label, { sticky: true, className: "route-tooltip" });
+        line.addTo(map);
+        leafletRoutesRef.current.push(line);
+      });
+    }
+
     leafletMarkersRef.current.forEach((m) => m.remove());
     leafletMarkersRef.current = [];
 
@@ -1338,7 +1397,7 @@ export default function SwitzerlandTravelAppReal() {
       marker.addTo(map);
       leafletMarkersRef.current.push(marker);
     });
-  }, [activeTab, mapViewMode, mapCategory, mapFullscreen]);
+  }, [activeTab, mapViewMode, mapCategory, mapFullscreen, mapShowRoutes]);
 
   useEffect(() => {
     if (activeTab !== "weather") return;
@@ -2929,6 +2988,16 @@ export default function SwitzerlandTravelAppReal() {
                     </button>
                   ))}
                   {mapViewMode === "map" && (
+                    <button onClick={() => setMapShowRoutes((r) => !r)} style={{
+                      background: mapShowRoutes ? "white" : "rgba(255,255,255,0.2)",
+                      color: mapShowRoutes ? "#0369a1" : "white",
+                      border: "none", borderRadius: 10, padding: "7px 12px",
+                      fontWeight: 700, fontSize: 13, cursor: "pointer",
+                    }}>
+                      🚂 Routes
+                    </button>
+                  )}
+                  {mapViewMode === "map" && (
                     <button onClick={() => setMapFullscreen((f) => !f)} style={{
                       background: "rgba(255,255,255,0.2)", color: "white",
                       border: "none", borderRadius: 10, padding: "7px 12px",
@@ -3018,6 +3087,33 @@ export default function SwitzerlandTravelAppReal() {
                       : { height: 420, borderRadius: 16, overflow: "hidden", border: "1.5px solid #e2e8f0", zIndex: 0 }}
                   />
                 </div>
+              )}
+
+              {/* Route legend (map mode, routes on) */}
+              {mapViewMode === "map" && mapShowRoutes && (
+                <Card style={{ padding: "12px 14px" }}>
+                  <div style={{ fontWeight: 800, fontSize: 13, marginBottom: 8 }}>🗺️ Route Legend</div>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 16px" }}>
+                    {[
+                      { color: "#e11d48", label: "Train (BLS/SBB)",         dash: false },
+                      { color: "#ea580c", label: "Rack Railway",             dash: false },
+                      { color: "#2563eb", label: "Cable car / Gondola",      dash: true  },
+                      { color: "#1e3a8a", label: "Lake Steamer",             dash: false },
+                      { color: "#16a34a", label: "Funicular",                dash: true  },
+                      { color: "#d97706", label: "Bus",                      dash: false },
+                    ].map(({ color, label, dash }) => (
+                      <div key={label} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12 }}>
+                        <svg width="28" height="8">
+                          <line x1="0" y1="4" x2="28" y2="4"
+                            stroke={color} strokeWidth="3"
+                            strokeDasharray={dash ? "6 4" : "none"} />
+                        </svg>
+                        <span style={{ color: "#374151" }}>{label}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 6 }}>Tap any route line on the map for its name</div>
+                </Card>
               )}
 
               {/* Place cards (list mode only) */}
