@@ -122,17 +122,45 @@ const DEFAULT_ITINERARY = [
     id: "d1",
     date: "Sat 22 Aug 2026",
     base: "Grindelwald",
-    title: "Arrive in Switzerland & travel to Grindelwald",
+    title: "Dublin → Zurich → Grindelwald",
     location: "Zurich → Interlaken Ost → Grindelwald",
     tags: ["train"],
     mapLocation: "Zurich Airport, Switzerland",
     image: "https://upload.wikimedia.org/wikipedia/commons/4/4f/5003_-_Grindelwald_-_View_from_Oberer_Moosgaden.JPG",
     items: [
       {
-        time: "PM",
-        title: "Arrive in Switzerland",
+        time: "11:00 AM",
+        title: "Arrive Dublin Airport — Terminal 1",
+        location: "Dublin Airport, Terminal 1",
+        notes: "✈️ LX401 departs 13:00 — aim to be at Terminal 1 by 11:00 AM (2 hours before).\n\n🚗 Allow travel time from home:\n• From Dublin city centre: ~30–40 min by taxi/Aircoach\n• From north Dublin: ~20–30 min\n• From south Dublin: ~45–60 min\n• Aircoach runs from city centre every 15 min — book in advance at aircoach.ie\n\n💡 Check in online the night before (SWISS app / swiss.com) to save time at the desk. Print or save boarding passes to your phone.",
+        tags: [],
+      },
+      {
+        time: "11:00–11:30 AM",
+        title: "SWISS check-in & bag drop",
+        location: "Dublin Airport T1 — Check-in Zone B/C",
+        notes: "🧳 SWISS (LX) check-in desks are in Terminal 1, Zone B/C — follow signs for SWISS or Star Alliance.\n\n📲 If checked in online, head straight to bag drop — much faster queue.\n\n⏰ Bag drop closes 60 min before departure (12:00) — don't cut it fine with kids!\n\n💡 One bag each is usually included with SWISS — check your fare type. Kids' car seats/buggies typically free.",
+        tags: [],
+      },
+      {
+        time: "11:30 AM",
+        title: "Security & departure gates",
+        location: "Dublin Airport T1 — Security",
+        notes: "🔐 Security at Dublin T1 can be slow on summer Saturdays — allow 30–45 min.\n\n⚠️ Tips for faster security with kids:\n• Laptops and liquids out of bags before you join the queue\n• Kids' snacks in a clear bag\n• Wear easy shoes (slip-ons ideal)\n• Use the Family lane if available\n\n✅ Airside: food court, Boots, WHSmith and duty-free all accessible once through.\n\n🍕 Grab lunch airside before boarding — there's a Spar, Subway, Eddie Rockets & more past security.",
+        tags: [],
+      },
+      {
+        time: "12:20 PM",
+        title: "Board LX401 — Dublin → Zurich",
+        location: "Dublin Airport T1 — Gate",
+        notes: "🚪 Boarding typically opens 40 min before departure. Check your boarding pass for the gate — usually Gates 100s in T1.\n\n✈️ LX401 · Dublin → Zurich (SWISS)\n🛫 Depart: 13:00\n🛬 Arrive Zurich ZRH: 16:15 (local time)\n⏱️ Flight time: 2h 15m\n\nRef: YMKW98\n\n💡 Switzerland is on Central European Time (UTC+2 in August) — 1 hour ahead of Ireland.",
+        tags: [],
+      },
+      {
+        time: "4:15 PM",
+        title: "Arrive Zurich — train to Grindelwald",
         location: "Zurich Airport",
-        notes: "Land at Zurich Airport at 16:15. Take the train from Zurich Airport (ZRH) to Bern (~1h 10min), then Bern → Interlaken Ost (~50 min). Alternatively direct IC to Interlaken Ost from Zurich HB (~2h). Total journey from airport ~2h 30min.",
+        notes: "Land at Zurich Airport at 16:15. Take the train from Zurich Airport (ZRH) to Bern (~1h 10min), then Bern → Interlaken Ost (~50 min). Alternatively direct IC to Interlaken Ost from Zurich HB (~2h). Total journey from airport ~2h 30min.\n\n🛒 STOP: Grab groceries at the Migros in Zurich Airport before boarding the train — open until midnight. Much easier than trying to shop when you arrive in Grindelwald at 8pm.",
         tags: [],
       },
       {
@@ -144,9 +172,9 @@ const DEFAULT_ITINERARY = [
       },
       {
         time: "Late Evening",
-        title: "Grocery stop / short village walk",
-        location: "Grindelwald",
-        notes: "⚠️ Arriving Saturday evening — Migros and Coop in Grindelwald close at 8pm, so you'll likely miss them.\n\n✅ BEST OPTION — Migros at Zurich Airport (open until midnight): you pass through the airport first — grab a bag of essentials (bread, milk, cheese, snacks, drinks) before boarding the train. Biggest selection and open late.\n\n🟡 BACKUP — Migros Interlaken (Centralstrasse, ~5 min walk from Interlaken Ost station): open until ~9pm on Saturdays. You change trains here so you have a 10–15 min window if timing works.\n\n🔴 Grindelwald village shops: Migros & Coop both close at 8pm. The Kiosk at the station may be open a little later for snacks only.\n\n💡 Even a small shop at the airport covers breakfast for tomorrow — don't arrive with nothing, as Sunday morning options in Grindelwald are limited until ~9am.",
+        title: "Arrive Grindelwald & check in",
+        location: "Grindelwald — GrindelwaldHome Alpenglück",
+        notes: "🏠 Arrive Grindelwald ~8:00–8:30 PM. Walk from Bahnhof to apartment (~8 min).\n\nHost: Myriam · Spillstattstrasse 28, 3818 Grindelwald\n\n💡 Short evening walk around the village if energy allows — the Eiger is right there! Early night to recover from travel.",
         tags: [],
       },
     ],
@@ -1097,48 +1125,65 @@ const QUEST_SECTIONS = [
 
 const DEFAULT_QUEST_ITEMS = [
   // 🍽️ Swiss Food Missions
-  { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",              checked: { k1: false, k2: false }, section: "food" },
-  { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                 checked: { k1: false, k2: false }, section: "food" },
-  { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",            checked: { k1: false, k2: false }, section: "food" },
-  { id: "q10", emoji: "🍰", text: "Eat cake with a mountain view",                          cheer: "Best view AND best cake! 🍰 Fantastisch!",        checked: { k1: false, k2: false }, section: "food" },
-  { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",             checked: { k1: false, k2: false }, section: "food" },
-  { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",     checked: { k1: false, k2: false }, section: "food" },
-  { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",       checked: { k1: false, k2: false }, section: "food" },
-  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food" },
-  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food" },
+  { id: "q1",  emoji: "🧀", text: "Try melted cheese fondue",                               cheer: "Käse! 🧀 Switzerland's superpower!",                   checked: { k1: false, k2: false }, section: "food",      days: ["d2","d5","d7","d8"] },
+  { id: "q2",  emoji: "🍫", text: "Dip fruit in chocolate fondue",                          cheer: "Swiss choc is the best choc! 🍫",                      checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d5","d7"] },
+  { id: "q7",  emoji: "☕", text: "Drink hot chocolate in a mountain café",                 cheer: "Warming up Swiss style! ☕ Wunderbar!",                 checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d4","d5","d6"] },
+  { id: "q10", emoji: "🍰", text: "Eat cake with a mountain view",                          cheer: "Best view AND best cake! 🍰 Fantastisch!",             checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d4","d5","d6"] },
+  { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",                  checked: { k1: false, k2: false }, section: "food",      days: ["d2","d5","d7"] },
+  { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",          checked: { k1: false, k2: false }, section: "food",      days: ["d1","d2","d3"] },
+  { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",           checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d5","d7","d8"] },
+  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d5","d7"] },
+  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d4","d5","d6","d7"] },
   // 🚠 Epic Transport
-  { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",            checked: { k1: false, k2: false }, section: "transport" },
-  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",     checked: { k1: false, k2: false }, section: "transport", sound: "train" },
-  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                  checked: { k1: false, k2: false }, section: "transport" },
-  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",        checked: { k1: false, k2: false }, section: "transport" },
-  { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",              checked: { k1: false, k2: false }, section: "transport", sound: "moo" },
+  { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",                 checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6","d7"] },
+  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",          checked: { k1: false, k2: false }, section: "transport", days: ["d1","d4","d5","d6","d7","d8"], sound: "train" },
+  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                       checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d5","d6"] },
+  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",             checked: { k1: false, k2: false }, section: "transport", days: ["d5"] },
+  { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",                   checked: { k1: false, k2: false }, section: "transport", days: ["d3","d5"], sound: "moo" },
   // 🏔️ Mountain Adventures
-  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                    checked: { k1: false, k2: false }, section: "mountain", sound: "splash" },
-  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",         checked: { k1: false, k2: false }, section: "mountain", sound: "sparkle" },
-  { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",            checked: { k1: false, k2: false }, section: "mountain" },
-  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",       checked: { k1: false, k2: false }, section: "mountain", sound: "fanfare" },
-  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",            checked: { k1: false, k2: false }, section: "mountain", sound: "fanfare" },
-  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",    checked: { k1: false, k2: false }, section: "mountain", sound: "splash" },
+  { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                         checked: { k1: false, k2: false }, section: "mountain",  days: ["d5","d6","d7"], sound: "splash" },
+  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",              checked: { k1: false, k2: false }, section: "mountain",  days: ["d4"], sound: "sparkle" },
+  { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d3","d4","d5","d7"] },
+  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",            checked: { k1: false, k2: false }, section: "mountain",  days: ["d4"], sound: "fanfare" },
+  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d4"], sound: "fanfare" },
+  { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",         checked: { k1: false, k2: false }, section: "mountain",  days: ["d5"], sound: "splash" },
   // 🌿 Nature Spotting
-  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",             checked: { k1: false, k2: false }, section: "nature", sound: "moo" },
-  { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",   checked: { k1: false, k2: false }, section: "nature" },
-  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                checked: { k1: false, k2: false }, section: "nature", sound: "sparkle" },
-  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",        checked: { k1: false, k2: false }, section: "nature", sound: "sparkle" },
-  { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                  checked: { k1: false, k2: false }, section: "nature" },
-  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",    checked: { k1: false, k2: false }, section: "nature" },
-  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",    checked: { k1: false, k2: false }, section: "nature" },
+  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",                  checked: { k1: false, k2: false }, section: "nature",    days: ["d2","d3","d4","d5"], sound: "moo" },
+  { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",        checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d6","d7"] },
+  { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                     checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"], sound: "sparkle" },
+  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",             checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d5","d7"], sound: "sparkle" },
+  { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                       checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d5"] },
+  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d6","d7"] },
+  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d5","d7"] },
   // 🎪 Village Fun
-  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",           checked: { k1: false, k2: false }, section: "village", sound: "yodel" },
-  { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                checked: { k1: false, k2: false }, section: "village" },
-  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",   checked: { k1: false, k2: false }, section: "village", sound: "bell" },
-  { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!", checked: { k1: false, k2: false }, section: "village" },
+  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",                checked: { k1: false, k2: false }, section: "village",   days: ["d2","d7","d8"], sound: "yodel" },
+  { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                     checked: { k1: false, k2: false }, section: "village",   days: ["d1","d2","d3"] },
+  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",        checked: { k1: false, k2: false }, section: "village",   days: ["d2","d3","d5"], sound: "bell" },
+  { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!",     checked: { k1: false, k2: false }, section: "village",   days: ["d8","d9"] },
   // 📸 Photo Missions
-  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",    checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
-  { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",     checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
-  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",   checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
-  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",   checked: { k1: false, k2: false }, section: "photo", sound: "train" },
-  { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",  checked: { k1: false, k2: false }, section: "photo", sound: "camera" },
+  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",     checked: { k1: false, k2: false }, section: "photo",     days: ["d7"], sound: "camera" },
+  { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",      checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "camera" },
+  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d2","d7"], sound: "camera" },
+  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d4","d5","d7"], sound: "train" },
+  { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",   checked: { k1: false, k2: false }, section: "photo",     days: ["d6","d7"], sound: "camera" },
 ];
+
+// ─── TRIP DAY DATE MAP ────────────────────────────────────────────────────────
+const TRIP_DAY_DATES = {
+  "2026-08-22": "d1", "2026-08-23": "d2", "2026-08-24": "d3",
+  "2026-08-25": "d4", "2026-08-26": "d5", "2026-08-27": "d6",
+  "2026-08-28": "d7", "2026-08-29": "d8", "2026-08-30": "d9",
+};
+const TRIP_START = new Date("2026-08-22");
+const TRIP_END   = new Date("2026-08-30");
+function getTodayDayId() {
+  const today = new Date().toISOString().split("T")[0];
+  return TRIP_DAY_DATES[today] || null;
+}
+function getDaysUntilTrip() {
+  const now = new Date(); now.setHours(0,0,0,0);
+  return Math.ceil((TRIP_START - now) / 86400000);
+}
 
 function playSound(name) {
   if (name === "moo") {
@@ -1269,6 +1314,7 @@ export default function SwitzerlandTravelAppReal() {
   const [pretripReady, setPretripReady]         = useState(false);
   const [parking, setParking]                   = useState({ ref: "", url: "" });
   const [transportFilter, setTransportFilter]   = useState("all");
+  const [expandedMissions, setExpandedMissions] = useState(new Set());
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -1585,10 +1631,11 @@ export default function SwitzerlandTravelAppReal() {
 
   const removeVenue = (id) => setVenues((prev) => prev.filter((v) => v.id !== id));
 
-  const toggleQuestItem = (id) => {
+  const toggleQuestItem = (id, kidOverride) => {
+    const kid = kidOverride || activeKid;
     setQuestItems((prev) => {
       const item = prev.find((q) => q.id === id);
-      const wasChecked = item.checked[activeKid];
+      const wasChecked = item.checked[kid];
       if (!wasChecked) {
         setQuestPopId(id);
         setQuestPopMsg(item.cheer || "⭐ Wunderbar! 🇨🇭");
@@ -1596,7 +1643,7 @@ export default function SwitzerlandTravelAppReal() {
         if (item.sound) playSound(item.sound);
       }
       return prev.map((q) =>
-        q.id === id ? { ...q, checked: { ...q.checked, [activeKid]: !q.checked[activeKid] } } : q
+        q.id === id ? { ...q, checked: { ...q.checked, [kid]: !q.checked[kid] } } : q
       );
     });
   };
@@ -1876,6 +1923,15 @@ export default function SwitzerlandTravelAppReal() {
                                   />
                                 </div>
                               )}
+                              {/* Today badge on current day */}
+                              {(() => {
+                                const todId = getTodayDayId();
+                                return todId === day.id ? (
+                                  <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "#0891b2", color: "white", borderRadius: 999, padding: "4px 12px", fontSize: 12, fontWeight: 700, alignSelf: "flex-start" }}>
+                                    🌄 Today
+                                  </div>
+                                ) : null;
+                              })()}
                               {day.items.map((item, idx) => (
                                 <div
                                   key={`${day.id}_${idx}`}
@@ -1937,6 +1993,70 @@ export default function SwitzerlandTravelAppReal() {
                                   })()}
                                 </div>
                               ))}
+                              {/* Inline missions strip */}
+                              {(() => {
+                                const dayMissions = questItems.filter((q) => (q.days || []).includes(day.id));
+                                if (dayMissions.length === 0) return null;
+                                const doneCount = dayMissions.filter((q) => q.checked[activeKid]).length;
+                                return (
+                                  <div style={{ borderRadius: 14, border: "1.5px solid #c4b5fd", background: "linear-gradient(135deg, #f5f3ff, #ede9fe)", padding: "12px 14px" }}>
+                                    <button
+                                      onClick={() => setExpandedMissions((prev) => { const s = new Set(prev); s.has(day.id) ? s.delete(day.id) : s.add(day.id); return s; })}
+                                      style={{ width: "100%", background: "none", border: "none", padding: 0, cursor: "pointer", textAlign: "left" }}
+                                    >
+                                      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                                        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                                          <span style={{ fontSize: 11, color: "#7c3aed", transition: "transform 0.2s", display: "inline-block", transform: expandedMissions.has(day.id) ? "rotate(90deg)" : "rotate(0deg)" }}>▶</span>
+                                          <div style={{ fontSize: 12, fontWeight: 800, color: "#4c1d95" }}>🎯 Missions</div>
+                                        </div>
+                                        <div style={{ display: "flex", gap: 8, fontSize: 11, color: "#7c3aed", fontWeight: 700 }}>
+                                          {["k1","k2"].map((k,i) => {
+                                            const kd = dayMissions.filter(q => q.checked[k]).length;
+                                            return <span key={k}>{kidNames[i]}: {kd}/{dayMissions.length}</span>;
+                                          })}
+                                        </div>
+                                      </div>
+                                    </button>
+                                    {expandedMissions.has(day.id) && <div style={{ marginTop: 10 }}>
+                                    <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                                      {dayMissions.map((q) => {
+                                        const doneK1 = q.checked["k1"];
+                                        const doneK2 = q.checked["k2"];
+                                        const bothDone = doneK1 && doneK2;
+                                        return (
+                                          <div
+                                            key={q.id}
+                                            style={{
+                                              display: "flex", alignItems: "center", gap: 8,
+                                              background: bothDone ? "rgba(124,58,237,0.1)" : "white",
+                                              border: `1.5px solid ${bothDone ? "#a78bfa" : "#e2e8f0"}`,
+                                              borderRadius: 10, padding: "6px 10px",
+                                            }}
+                                          >
+                                            <span style={{ fontSize: 15, flexShrink: 0 }}>{q.emoji}</span>
+                                            <span style={{ flex: 1, fontSize: 12, fontWeight: 600, color: bothDone ? "#4c1d95" : "#374151", textDecoration: bothDone ? "line-through" : "none" }}>{q.text}</span>
+                                            {["k1","k2"].map((k,i) => {
+                                              const done = q.checked[k];
+                                              return (
+                                                <button key={k} onClick={() => toggleQuestItem(q.id, k)} style={{
+                                                  flexShrink: 0, borderRadius: 999, padding: "3px 9px",
+                                                  fontSize: 11, fontWeight: 800, cursor: "pointer",
+                                                  border: `1.5px solid ${done ? "#7c3aed" : "#c4b5fd"}`,
+                                                  background: done ? "#7c3aed" : "white",
+                                                  color: done ? "white" : "#7c3aed",
+                                                }}>
+                                                  {done ? "✓ " : ""}{kidNames[i]}
+                                                </button>
+                                              );
+                                            })}
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
+                                    </div>}
+                                  </div>
+                                );
+                              })()}
                             </div>
                           </motion.div>
                         )}
@@ -2762,8 +2882,92 @@ export default function SwitzerlandTravelAppReal() {
           const kidAllDone = kidDoneCount === questItems.length && questItems.length > 0;
           const starsFilled = Math.round((kidDoneCount / questItems.length) * 10) || 0;
 
+          const todayDayId = getTodayDayId();
+          const todayDay   = todayDayId ? DEFAULT_ITINERARY.find((d) => d.id === todayDayId) : null;
+          const daysUntil  = getDaysUntilTrip();
+          const tripOver   = new Date() > TRIP_END;
+          const todayMissions = todayDay
+            ? questItems.filter((q) => (q.days || []).includes(todayDayId))
+            : [];
+          const todayDone = todayMissions.filter((q) => q.checked[kidKey]).length;
+
           return (
             <div style={{ display: "grid", gap: 16 }}>
+
+              {/* ── TODAY'S MISSIONS HERO ── */}
+              {tripOver ? (
+                <div style={{ background: "linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%)", borderRadius: 20, padding: "20px 20px", color: "white", textAlign: "center" }}>
+                  <div style={{ fontSize: 36, marginBottom: 6 }}>🏆🇨🇭🏔️</div>
+                  <div style={{ fontWeight: 900, fontSize: 18, marginBottom: 4 }}>Adventure complete!</div>
+                  <div style={{ fontSize: 13, opacity: 0.85 }}>Hope Switzerland was incredible. {kidName} completed {kidDoneCount} of {questItems.length} missions!</div>
+                </div>
+              ) : todayDay ? (
+                <div style={{ background: "linear-gradient(135deg, #0891b2 0%, #0e7490 100%)", borderRadius: 20, padding: "18px 18px 16px", color: "white" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.75, letterSpacing: 1, textTransform: "uppercase", marginBottom: 4 }}>🌄 Today's Missions</div>
+                  <div style={{ fontWeight: 900, fontSize: 17, marginBottom: 2 }}>{todayDay.title}</div>
+                  <div style={{ fontSize: 12, opacity: 0.8, marginBottom: 12 }}>📍 {todayDay.location}</div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 7, marginBottom: 12 }}>
+                    {todayMissions.length === 0 ? (
+                      <div style={{ fontSize: 13, opacity: 0.75 }}>Travel day — enjoy the journey! 🚂</div>
+                    ) : todayMissions.map((q) => {
+                      const doneK1 = q.checked["k1"];
+                      const doneK2 = q.checked["k2"];
+                      const bothDone = doneK1 && doneK2;
+                      return (
+                        <div
+                          key={q.id}
+                          style={{
+                            display: "flex", alignItems: "center", gap: 8,
+                            background: bothDone ? "rgba(255,255,255,0.25)" : "rgba(255,255,255,0.12)",
+                            borderRadius: 12, padding: "8px 12px",
+                            opacity: bothDone ? 0.7 : 1,
+                          }}
+                        >
+                          <span style={{ fontSize: 18, flexShrink: 0 }}>{q.emoji}</span>
+                          <span style={{ flex: 1, fontSize: 12, fontWeight: 600, color: "white", textDecoration: bothDone ? "line-through" : "none" }}>{q.text}</span>
+                          {["k1","k2"].map((k, i) => {
+                            const done = q.checked[k];
+                            return (
+                              <button key={k} onClick={() => toggleQuestItem(q.id, k)} style={{
+                                flexShrink: 0, borderRadius: 999, padding: "3px 9px",
+                                fontSize: 11, fontWeight: 800, cursor: "pointer", border: "none",
+                                background: done ? "white" : "rgba(255,255,255,0.25)",
+                                color: done ? "#0e7490" : "white",
+                              }}>
+                                {done ? "✓" : ""} {kidNames[i]}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {todayMissions.length > 0 && (
+                    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                      {["k1","k2"].map((k, i) => {
+                        const kDone = todayMissions.filter(q => q.checked[k]).length;
+                        return (
+                          <div key={k} style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                            <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.85, width: 42, flexShrink: 0 }}>{kidNames[i]}</div>
+                            <div style={{ flex: 1, background: "rgba(255,255,255,0.2)", borderRadius: 999, height: 5, overflow: "hidden" }}>
+                              <div style={{ height: "100%", borderRadius: 999, background: "white", width: `${(kDone / todayMissions.length) * 100}%`, transition: "width 0.4s" }} />
+                            </div>
+                            <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.9, width: 32, textAlign: "right" }}>{kDone}/{todayMissions.length}</div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div style={{ background: "linear-gradient(135deg, #0891b2 0%, #0e7490 100%)", borderRadius: 20, padding: "20px 18px", color: "white" }}>
+                  <div style={{ fontSize: 11, fontWeight: 700, opacity: 0.75, letterSpacing: 1, textTransform: "uppercase", marginBottom: 6 }}>⏳ Trip Countdown</div>
+                  <div style={{ fontWeight: 900, fontSize: 28, marginBottom: 4 }}>{daysUntil} days to go</div>
+                  <div style={{ fontSize: 13, opacity: 0.85 }}>Until the adventure begins — 22 Aug 2026 🏔️</div>
+                  <div style={{ fontSize: 12, opacity: 0.7, marginTop: 8 }}>Come back on the day for your daily missions!</div>
+                </div>
+              )}
+
               {/* Kid switcher + progress */}
               <Card style={{ padding: 20, background: "linear-gradient(135deg, #f5f3ff, #ede9fe)", borderColor: "#c4b5fd" }}>
                 {/* Kid toggle */}
