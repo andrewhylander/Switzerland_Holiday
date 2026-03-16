@@ -146,7 +146,7 @@ const DEFAULT_ITINERARY = [
         time: "Late Evening",
         title: "Grocery stop / short village walk",
         location: "Grindelwald",
-        notes: "Migros Grindelwald (Dorfstrasse, open daily ~8am–8pm, closed Sun evenings) is the nearest supermarket — about 8 min walk from the apartment. Alternatively, Coop is also in the village centre. Stock up on breakfast items, snacks, and drinks for the first few days to save money on the mountains. Short stroll if energy allows, then early night.",
+        notes: "⚠️ Arriving Saturday evening — Migros and Coop in Grindelwald close at 8pm, so you'll likely miss them.\n\n✅ BEST OPTION — Migros at Zurich Airport (open until midnight): you pass through the airport first — grab a bag of essentials (bread, milk, cheese, snacks, drinks) before boarding the train. Biggest selection and open late.\n\n🟡 BACKUP — Migros Interlaken (Centralstrasse, ~5 min walk from Interlaken Ost station): open until ~9pm on Saturdays. You change trains here so you have a 10–15 min window if timing works.\n\n🔴 Grindelwald village shops: Migros & Coop both close at 8pm. The Kiosk at the station may be open a little later for snacks only.\n\n💡 Even a small shop at the airport covers breakfast for tomorrow — don't arrive with nothing, as Sunday morning options in Grindelwald are limited until ~9am.",
         tags: [],
       },
     ],
