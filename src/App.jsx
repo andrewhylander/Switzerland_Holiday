@@ -1715,7 +1715,7 @@ export default function SwitzerlandTravelAppReal() {
           <div style={{ background: "linear-gradient(135deg, #c0152a 0%, #9b0f20 100%)", borderRadius: 22, padding: "20px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", color: "white" }}>
             <div>
               <div style={{ fontSize: 13, opacity: 0.75, fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Departure</div>
-              <div style={{ fontSize: 13, opacity: 0.75, marginTop: 2 }}>22 Aug · Zurich via London</div>
+              <div style={{ fontSize: 13, opacity: 0.75, marginTop: 2 }}>22 Aug · LX401 Dublin → Zurich</div>
             </div>
             <div style={{ textAlign: "right" }}>
               <div style={{ fontSize: 42, fontWeight: 900, lineHeight: 1 }}>{daysUntil}</div>
@@ -2298,6 +2298,70 @@ export default function SwitzerlandTravelAppReal() {
                     <div style={{ fontSize: 14, color: "#334155" }}>{note}</div>
                   </div>
                 ))}
+              </div>
+            </Card>
+
+            {/* Emergency Contacts */}
+            <Card style={{ padding: 18, gridColumn: "1 / -1", borderLeft: "4px solid #dc2626" }}>
+              <SectionTitle icon={<span style={{ fontSize: 18 }}>🆘</span>} title="Emergency Contacts & Numbers" />
+              <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
+                {/* Swiss Emergency Numbers */}
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>🇨🇭 Swiss Emergency Numbers</div>
+                  <div style={{ display: "grid", gap: 6 }}>
+                    {[
+                      { num: "112", label: "European Emergency (universal)" },
+                      { num: "117", label: "Police (Polizei)" },
+                      { num: "118", label: "Fire Brigade (Feuerwehr)" },
+                      { num: "144", label: "Ambulance (Sanität)" },
+                      { num: "1414", label: "Swiss Air Rescue / Rega (mountain)" },
+                    ].map(({ num, label }) => (
+                      <a key={num} href={`tel:${num}`} style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none",
+                        padding: "7px 10px", borderRadius: 10, background: "#fff1f2", border: "1.5px solid #fecaca" }}>
+                        <span style={{ fontWeight: 900, fontSize: 15, color: "#dc2626", minWidth: 38 }}>{num}</span>
+                        <span style={{ fontSize: 13, color: "#374151", fontWeight: 600 }}>{label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+                {/* Local Contacts */}
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#1d4ed8", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>📍 Local Contacts</div>
+                  <div style={{ display: "grid", gap: 6 }}>
+                    {[
+                      { label: "Apartment host — Myriam", num: "", note: "Check confirmation email for number" },
+                      { label: "Spital Grindelwald (local clinic)", num: "+41 33 854 85 50", note: "Dorfstrasse 141, 3818 Grindelwald" },
+                      { label: "Spital Interlaken (main hospital)", num: "+41 33 826 26 26", note: "Weissenaustrasse 27, 3800 Interlaken" },
+                      { label: "ZRH Airport info", num: "+41 43 816 22 11", note: "Zurich Airport general enquiries" },
+                      { label: "🔴 Travel insurance hotline", num: "", note: "Add your policy number & emergency number before you travel" },
+                    ].map(({ label, num, note }) => (
+                      <div key={label} style={{ padding: "7px 10px", borderRadius: 10, background: "#eff6ff", border: "1.5px solid #bfdbfe" }}>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: "#1e3a8a" }}>{label}</div>
+                        {num && <a href={`tel:${num.replace(/\s/g,"")}`} style={{ fontSize: 12, color: "#1d4ed8", fontWeight: 600, textDecoration: "none" }}>{num}</a>}
+                        {note && <div style={{ fontSize: 11, color: "#64748b", marginTop: 1 }}>{note}</div>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                {/* Useful reminders */}
+                <div>
+                  <div style={{ fontSize: 12, fontWeight: 800, color: "#059669", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 8 }}>✅ Good to Know</div>
+                  <div style={{ display: "grid", gap: 6 }}>
+                    {[
+                      "EHIC cards cover emergency treatment in Switzerland — carry them at all times",
+                      "Swiss Air Rescue (Rega) helicopters operate in the Alps — dial 1414 for mountain emergencies",
+                      "Nearest A&E for serious emergencies is Spital Interlaken (~35 min from Grindelwald by train)",
+                      "Keep a photo of everyone's passport in your phone camera roll",
+                      "SWISS and Aer Lingus booking refs: YMKW98 · 2TLA5F",
+                    ].map((tip) => (
+                      <div key={tip} style={{ display: "flex", gap: 8, alignItems: "flex-start", padding: "6px 10px",
+                        borderRadius: 10, background: "#f0fdf4", border: "1.5px solid #bbf7d0" }}>
+                        <span style={{ color: "#059669", fontSize: 12, marginTop: 1, flexShrink: 0 }}>•</span>
+                        <span style={{ fontSize: 12, color: "#374151" }}>{tip}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </Card>
           </div>
