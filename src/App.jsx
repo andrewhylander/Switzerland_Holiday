@@ -48,7 +48,8 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_PRETRIP_CHECKLIST = [
-  { id: "pt1", text: "Buy 2× Half Fare Cards at sbb.ch", done: false, link: "https://www.sbb.ch/en/tickets-offers/tickets/guests-abroad/international-visitors.html" },
+  { id: "pt1", text: "Buy 2× Half Fare Cards on GetYourGuide app — use code THETRAVELINGSWISS5 for 5% off (£283.18 before discount). Add children during checkout to get FREE Swiss Family Cards", done: false, link: "https://www.getyourguide.com" },
+  { id: "pt1b", text: "Confirm Swiss Family Cards received for both kids — children under 16 travel FREE on all trains when accompanied by a parent with Half Fare Card", done: false, link: "https://www.sbb.ch/en/tickets-offers/tickets/guests-abroad/swiss-family-card.html" },
   { id: "pt2", text: "Download SBB app & add Half Fare Card details", done: false, link: "https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html" },
   { id: "pt3", text: "Book Dublin Airport parking", done: false, link: "https://www.dublinairport.com/parking" },
   { id: "pt4", text: "Online check-in for LX401 (SWISS) — opens 23hrs before", done: false, link: "https://www.swiss.com/ie/en/fly/my-booking/check-in-online" },
@@ -702,7 +703,7 @@ const DEFAULT_BUDGET = {
     { id: "e1", category: "Flights", label: "Dublin ↔ Zurich (2x adults + 2x kids)", amount: 0, notes: "Already paid" },
     { id: "e2", category: "Accommodation", label: "GrindelwaldHome Alpenglück (6 nights)", amount: 900, notes: "~CHF 150/night | ~£74/night | CONFIRMED" },
     { id: "e3", category: "Accommodation", label: "Holiday Inn Express Zurich (1 night)", amount: 140, notes: "~CHF 140 | ~£115 | CONFIRMED" },
-    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x @ CHF 150)", amount: 300, notes: "Valid 30 days from 22 Aug | Covers all trains/gondolas | ~£246 | BUY ONLINE ASAP" },
+    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x adults) + Family Cards (kids free)", amount: 300, notes: "£283.18 before 5% discount | Buy on GetYourGuide app, code: THETRAVELINGSWISS5 | Add children at checkout for free Family Cards | Kids under 16 travel FREE with parent" },
     { id: "e_section2", category: "💭 ESTIMATED COSTS", label: "→→→", amount: null, notes: "Activity & dining estimates (flexible)" },
     { id: "e4b", category: "Transport", label: "Regional trains & buses", amount: 300, notes: "Top-ups beyond Half Fare (PostBus, transfers) | ~£246" },
     { id: "e4c", category: "Transport", label: "Gondolas & cable cars", amount: 700, notes: "First, Männlichen, Lake Brienz, Harder Kulm | ~£574" },
@@ -2215,9 +2216,10 @@ export default function SwitzerlandTravelAppReal() {
                 {/* Stat pills */}
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   {[
-                    { label: "Total cost", value: "CHF 300", sub: "2 × CHF 150 per adult", bg: "#f0f9ff", border: "#7dd3fc", col: "#0369a1" },
+                    { label: "Total cost", value: "£283.18", sub: "2 adults · before discount", bg: "#f0f9ff", border: "#7dd3fc", col: "#0369a1" },
                     { label: "Discount", value: "50% off", sub: "All trains, gondolas & cable cars", bg: "#f0fdf4", border: "#86efac", col: "#15803d" },
                     { label: "Validity", value: "30 days", sub: "Start on or just before 22 Aug", bg: "#fffbeb", border: "#fcd34d", col: "#b45309" },
+                    { label: "Kids travel", value: "FREE 🎉", sub: "Under 16 with Swiss Family Card", bg: "#fdf4ff", border: "#e9d5ff", col: "#7e22ce" },
                   ].map(({ label, value, sub, bg, border, col }) => (
                     <div key={label} style={{ flex: 1, minWidth: 130, background: bg, border: `1.5px solid ${border}`, borderRadius: 12, padding: "10px 14px" }}>
                       <div style={{ fontSize: 10, color: col, fontWeight: 800, textTransform: "uppercase", letterSpacing: 0.6, marginBottom: 2 }}>{label}</div>
@@ -2230,7 +2232,7 @@ export default function SwitzerlandTravelAppReal() {
                 <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: 0.5 }}>How it works</div>
                 <div style={{ display: "grid", gap: 8 }}>
                   {[
-                    ["1", "🛒", "Buy 2× Half Fare Cards online at sbb.ch before you travel — delivered as PDFs"],
+                    ["1", "🛒", "Buy 2× Half Fare Cards on the GetYourGuide app (code THETRAVELINGSWISS5 for 5% off) — add your children during checkout to get free Swiss Family Cards"],
                     ["2", "📱", "Download the SBB app and add your Half Fare Card details"],
                     ["3", "🚆", "Search any route in the app — it automatically applies your 50% discount at checkout"],
                     ["4", "📲", "Show the ticket on your phone to the conductor. That's it!"],
@@ -2244,7 +2246,15 @@ export default function SwitzerlandTravelAppReal() {
                 {/* Warning */}
                 <div style={{ background: "#fef2f2", border: "1.5px solid #fca5a5", borderRadius: 10, padding: "10px 14px", fontSize: 12, color: "#991b1b", display: "flex", gap: 8, alignItems: "flex-start" }}>
                   <span style={{ fontSize: 16, flexShrink: 0 }}>⚠️</span>
-                  <span>Order online at <strong>sbb.ch</strong> or the SBB app <em>before you fly</em> — not available for instant purchase on arrival at the airport.</span>
+                  <span>Buy on the <strong>GetYourGuide app</strong> <em>before you fly</em> to use the discount code. Not available for instant purchase on arrival at the airport.</span>
+                </div>
+                {/* Family Card banner */}
+                <div style={{ background: "#fdf4ff", border: "1.5px solid #e9d5ff", borderRadius: 10, padding: "10px 14px", fontSize: 12, color: "#6b21a8", display: "flex", gap: 8, alignItems: "flex-start" }}>
+                  <span style={{ fontSize: 16, flexShrink: 0 }}>👨‍👩‍👧‍👦</span>
+                  <div>
+                    <strong>Swiss Family Card — kids under 16 travel FREE</strong><br />
+                    <span style={{ opacity: 0.9 }}>You get a free Family Card when buying your Half Fare Cards. <strong>Add your children during checkout</strong> on GetYourGuide — they'll be listed on the card. Kids must be accompanied by a parent to travel free.</span>
+                  </div>
                 </div>
               </div>
             </Card>
