@@ -1133,6 +1133,7 @@ function TextInput(props) {
       {...props}
       style={{
         width: "100%",
+        boxSizing: "border-box",
         border: "1px solid #cbd5e1",
         borderRadius: 16,
         padding: "12px 14px",
