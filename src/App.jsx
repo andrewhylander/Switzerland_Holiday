@@ -3737,6 +3737,39 @@ export default function SwitzerlandTravelAppReal() {
                   ))}
                 </div>
               </Card>
+
+              {/* Webcams & Weather */}
+              <Card style={{ padding: "14px 16px" }}>
+                <div style={{ fontWeight: 800, fontSize: 14, marginBottom: 4 }}>📷 Webcams & Mountain Weather</div>
+                <div style={{ fontSize: 12, color: "#64748b", marginBottom: 10, lineHeight: 1.5 }}>
+                  Check these <strong>first thing in the morning (~7am)</strong> — mountain weather is clearest early. If summits are in cloud by mid-morning they usually stay that way. Use these before committing to Jungfraujoch or any mountain day.
+                </div>
+                <div style={{ display: "grid", gap: 8 }}>
+                  {[
+                    { href: "https://www.jungfrau.ch/en-gb/live/webcams/", label: "❄️ Jungfraujoch webcam — check cloud cover at 3,454m before booking", tip: "If the Sphinx is in cloud, postpone. Swap with flex day." },
+                    { href: "https://grindelwald.swiss/en/service/webcams.html", label: "🏔️ Grindelwald webcams — First, Männlichen, Kleine Scheidegg, village", tip: "Best all-in-one view across your most-used mountains." },
+                    { href: "https://jungfrauregion.swiss/en/service/webcams.html", label: "🌄 Jungfrau Region webcams — 30+ cams including Schilthorn, Mürren, Lauterbrunnen", tip: "Use for Schilthorn/Mürren day and Lauterbrunnen valley." },
+                    { href: "https://www.schilthorn.ch/en/Info/Webcam", label: "🎬 Schilthorn webcam — check before Piz Gloria / Mürren day", tip: "Bond World views depend on clear weather. Check night before." },
+                    { href: "https://www.bergfex.com/sommer/jungfrau-region/webcams/", label: "🌦️ Bergfex — mountain forecasts + live cams for whole Jungfrau region", tip: "Best for 2-3 day forecasts to plan ahead." },
+                    { href: "https://www.swisspanorama.com/", label: "🔭 SwissPanorama — live 360° views from Jungfraujoch, Schilthorn & Männlichen", tip: "High-res panoramic cams — great for checking visibility." },
+                  ].map(link => (
+                    <div key={link.href} style={{ borderRadius: 10, background: "#f0fdf4", border: "1px solid #86efac", overflow: "hidden" }}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: "block", color: "#166534", fontWeight: 600, fontSize: 13,
+                          textDecoration: "none", padding: "8px 10px",
+                        }}
+                      >
+                        {link.label}
+                      </a>
+                      <div style={{ fontSize: 11, color: "#166534", opacity: 0.8, padding: "0 10px 8px", lineHeight: 1.4 }}>💡 {link.tip}</div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
             </div>
           );
         })()}
