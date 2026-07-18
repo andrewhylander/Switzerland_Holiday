@@ -20,7 +20,16 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:60922/)",
       "Bash(node_modules/vite/bin/vite.js --port 60923)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:60923/)",
-      "Bash(pkill -f \"vite.*60923\")"
+      "Bash(pkill -f \"vite.*60923\")",
+      "Bash(diff -u \"c:\\\\Users\\\\andre\\\\Documents\\\\Github\\\\Switzerland_Holiday\\\\src\\\\App.jsx\" \"c:\\\\Users\\\\andre\\\\Downloads\\\\App.jsx\" > \"C:\\\\Users\\\\andre\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-andre-Documents-Github-Switzerland-Holiday\\\\0405e9f7-c377-4af4-81e9-3f861efc4e44\\\\scratchpad\\\\app_diff.txt\" 2>&1; wc -l \"C:\\\\Users\\\\andre\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-andre-Documents-Github-Switzerland-Holiday\\\\0405e9f7-c377-4af4-81e9-3f861efc4e44\\\\scratchpad\\\\app_diff.txt\")",
+      "Read(//c/Users/andre/Downloads/**)",
+      "Bash(xxd \"c:\\\\Users\\\\andre\\\\Documents\\\\Github\\\\Switzerland_Holiday\\\\src\\\\App.jsx\")",
+      "Bash(xxd \"c:\\\\Users\\\\andre\\\\Downloads\\\\App.jsx\")",
+      "Bash(diff -u --strip-trailing-cr \"c:\\\\Users\\\\andre\\\\Documents\\\\Github\\\\Switzerland_Holiday\\\\src\\\\App.jsx\" \"c:\\\\Users\\\\andre\\\\Downloads\\\\App.jsx\" > \"C:\\\\Users\\\\andre\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-andre-Documents-Github-Switzerland-Holiday\\\\0405e9f7-c377-4af4-81e9-3f861efc4e44\\\\scratchpad\\\\app_diff2.txt\" 2>&1 *)",
+      "Bash(cd \"c:\\\\Users\\\\andre\\\\Documents\\\\Github\\\\Switzerland_Holiday\" && git diff --stat -- src/App.jsx && diff -u --strip-trailing-cr \"c:\\\\Users\\\\andre\\\\Downloads\\\\App.jsx\" src/App.jsx | wc -l)",
+      "Bash(rm srcApp.jsx)",
+      "Bash(awk '{sub\\(/\\\\r$/,\"\"\\); printf \"%s\\\\r\\\\n\", $0}' \"/c/Users/andre/Downloads/App.jsx\")",
+      "Bash(cd \"c:\\\\Users\\\\andre\\\\Documents\\\\Github\\\\Switzerland_Holiday\" && diff -u --strip-trailing-cr \"/c/Users/andre/Downloads/App.jsx\" src/App.jsx | wc -l)"
     ]
   }
 }

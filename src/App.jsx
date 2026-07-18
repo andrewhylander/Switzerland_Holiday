@@ -48,9 +48,10 @@ const STORAGE_KEYS = {
 };
 
 const DEFAULT_PRETRIP_CHECKLIST = [
-  { id: "pt1", text: "Buy 2× Half Fare Cards on GetYourGuide app — use code THETRAVELINGSWISS5 for 5% off (£283.18 before discount). Add children during checkout to get FREE Swiss Family Cards", done: false, link: "https://www.getyourguide.com" },
-  { id: "pt1b", text: "Confirm Swiss Family Cards received for both kids — children under 16 travel FREE on all trains when accompanied by a parent with Half Fare Card", done: false, link: "https://www.sbb.ch/en/tickets-offers/tickets/guests-abroad/swiss-family-card.html" },
-  { id: "pt2", text: "Download SBB app & add Half Fare Card details", done: false, link: "https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html" },
+  { id: "pt1", text: "✅ PURCHASED — 2× Half Fare Cards + 2× Family Cards via GetYourGuide app (£263.43 with code THETRAVELINGSWISS5). All 4 cards imported to Google Wallet. Free cancellation until 21 Aug.", done: true, link: "https://www.getyourguide.com" },
+  { id: "pt1b", text: "✅ Swiss Family Cards confirmed for Alfie & Chloe — children travel FREE on all trains, buses, boats & Jungfraujoch when accompanied by a parent", done: true, link: "https://www.sbb.ch/en/tickets-offers/tickets/guests-abroad/swiss-family-card.html" },
+  { id: "pt2", text: "Download SBB app — select 'Half Fare Travelcard' as discount type (no need to link card number). Show PDF/Google Wallet to conductor on train.", done: false, link: "https://www.sbb.ch/en/timetable/mobile-apps/sbb-mobile.html" },
+  { id: "pt2b", text: "Buy Airalo eSIM for Switzerland — Andrew & Ashleigh (Google Pixel 10). 3GB/30 day plan ~£8-10 each. Install before flying, activate on arrival. Use dual SIM: Airalo for data, Smarty for calls/texts.", done: false, link: "https://www.airalo.com" },
   { id: "pt3", text: "Book Dublin Airport parking", done: false, link: "https://www.dublinairport.com/parking" },
   { id: "pt4", text: "Online check-in for LX401 (SWISS) — opens 23hrs before", done: false, link: "https://www.swiss.com/ie/en/fly/my-booking/check-in-online" },
   { id: "pt5", text: "Online check-in for EI0343 (Aer Lingus) — opens 30hrs before", done: false, link: "https://www.aerlingus.com/travel-information/check-in-information/online-check-in/" },
@@ -350,7 +351,7 @@ const DEFAULT_ITINERARY = [
         time: "AM",
         title: "Eiger Express → Kleine Scheidegg → Jungfraujoch",
         location: "Grindelwald Terminal",
-        notes: "From Grindelwald Terminal, take the Eiger Express gondola to Eigergletscher (~15 min), then the Jungfraubahn rack railway to Jungfraujoch (~35 min). Total ~50 min each way. Book Jungfraujoch tickets well in advance — very popular. First trains from Grindelwald around 7:30am.\n\n✅ Half Fare Cards give 25% discount on Jungfraujoch tickets — buy at the station.",
+        notes: "From Grindelwald Terminal, take the Eiger Express gondola to Eigergletscher (~15 min), then the Jungfraubahn rack railway to Jungfraujoch (~35 min). Total ~50 min each way. First trains from Grindelwald around 7:30am.\n\n✅ Half Fare Cards give 50% discount on Jungfraujoch tickets (CHF 119.60/adult return, kids FREE with Family Card). Book via swissrailways.com with Flex Cancellation option — free cancel up to 24hrs before if weather is bad.\n\n🎟️ Seat reservation mandatory May–Oct (CHF 10/person, book at jungfrau.ch). Can reschedule up to 45 mins before journey.\n\n☁️ Weather dependent — check jungfrau.ch webcam the morning before. If clouded in, swap with flex day.",
         tags: ["bucket list", "cable car"],
       },
       {
@@ -635,7 +636,7 @@ const DEFAULT_TRANSPORT_ROUTES = [
   { id: "t2",  type: "train", emoji: "🚂", from: "Grindelwald",        to: "Lauterbrunnen",        duration: "25 min",    frequency: "Every 30 min",    priceFull: "CHF 9.80",  priceHalf: "CHF 4.90",  provider: "BLS",                notes: "Change at Zweilütschinen (~10 min). Half Fare Card valid.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Grindelwald&nach=Lauterbrunnen" },
   { id: "t3",  type: "train", emoji: "🚂", from: "Lauterbrunnen",      to: "Wengen",               duration: "15 min",    frequency: "Every 30 min",    priceFull: "CHF 6.80",  priceHalf: "CHF 3.40",  provider: "Jungfrau Railways",  notes: "WAB rack railway. Wengen is car-free — train only access.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=Wengen" },
   { id: "t4",  type: "train", emoji: "🚂", from: "Wengen",             to: "Kleine Scheidegg",     duration: "30 min",    frequency: "Every 30 min",    priceFull: "CHF 14.60", priceHalf: "CHF 7.30",  provider: "Jungfrau Railways",  notes: "WAB rack railway with stunning Eiger north face views.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Wengen&nach=Kleine+Scheidegg" },
-  { id: "t5",  type: "train", emoji: "🚞", from: "Kleine Scheidegg",   to: "Jungfraujoch",         duration: "35 min",    frequency: "Every 30 min",    priceFull: "CHF 92.00", priceHalf: "CHF 46.00", provider: "Jungfrau Railways",  notes: "Book well in advance at jungfrau.ch. Tunnels through Eiger & Mönch.", sbbUrl: "https://www.jungfrau.ch/en-gb/jungfraujoch-top-of-europe/" },
+  { id: "t5",  type: "train", emoji: "🚞", from: "Grindelwald",   to: "Jungfraujoch (return)",         duration: "~50 min each way",    frequency: "Every 30 min",    priceFull: "CHF 239.20", priceHalf: "CHF 119.60", provider: "Jungfrau Railways",  notes: "50% off with Half Fare Card. Kids FREE with Family Card. Book at swissrailways.com (Flex Cancellation). Seat reservation mandatory May-Oct (CHF 10/person at jungfrau.ch). Via Eiger Express gondola + Jungfraubahn cogwheel.", sbbUrl: "https://www.swissrailways.com/en/buy-jungfraujoch-ticket" },
   { id: "t6",  type: "train", emoji: "🚂", from: "Grütschalp",         to: "Mürren",               duration: "25 min",    frequency: "Every 30 min",    priceFull: "CHF 8.40",  priceHalf: "CHF 4.20",  provider: "Jungfrau Railways",  notes: "Connects from Lauterbrunnen cable car. Charming little valley train.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Lauterbrunnen&nach=M%C3%BCrren" },
   { id: "t7",  type: "train", emoji: "🚂", from: "Interlaken Ost",     to: "Brienz",               duration: "20 min",    frequency: "Every 60 min",    priceFull: "CHF 10.60", priceHalf: "CHF 5.30",  provider: "BLS",                notes: "Direct train along the south shore of Lake Brienz.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Interlaken+Ost&nach=Brienz" },
   { id: "t8",  type: "train", emoji: "🚂", from: "Grindelwald",        to: "Zurich HB",            duration: "2h 40min",  frequency: "Every 60 min",    priceFull: "CHF 68.00", priceHalf: "CHF 34.00", provider: "SBB / BLS",          notes: "Via Interlaken Ost → Bern → Zurich. Allow extra time with luggage.", sbbUrl: "https://www.sbb.ch/en/buying/pages/fahrplan/fahrplan.xhtml?von=Grindelwald&nach=Z%C3%BCrich+HB" },
@@ -703,19 +704,19 @@ const DEFAULT_BUDGET = {
     { id: "e1", category: "Flights", label: "Dublin ↔ Zurich (2x adults + 2x kids)", amount: 0, notes: "Already paid" },
     { id: "e2", category: "Accommodation", label: "GrindelwaldHome Alpenglück (6 nights)", amount: 900, notes: "~CHF 150/night | ~£74/night | CONFIRMED" },
     { id: "e3", category: "Accommodation", label: "Holiday Inn Express Zurich (1 night)", amount: 140, notes: "~CHF 140 | ~£115 | CONFIRMED" },
-    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x adults) + Family Cards (kids free)", amount: 300, notes: "£283.18 before 5% discount | Buy on GetYourGuide app, code: THETRAVELINGSWISS5 | Add children at checkout for free Family Cards | Kids under 16 travel FREE with parent" },
+    { id: "e4a", category: "Transport", label: "Half Fare Cards (2x adults) + Family Cards (kids free)", amount: 263, notes: "✅ PURCHASED £263.43 via GetYourGuide app (code THETRAVELINGSWISS5). Free cancellation until 21 Aug. All 4 cards in Google Wallet. Kids travel FREE with Family Card." },
     { id: "e_section2", category: "💭 ESTIMATED COSTS", label: "→→→", amount: null, notes: "Activity & dining estimates (flexible)" },
     { id: "e4b", category: "Transport", label: "Regional trains & buses", amount: 300, notes: "Top-ups beyond Half Fare (PostBus, transfers) | ~£246" },
     { id: "e4c", category: "Transport", label: "Gondolas & cable cars", amount: 700, notes: "First, Männlichen, Lake Brienz, Harder Kulm | ~£574" },
     { id: "e4d", category: "Transport", label: "Bike rental (few hours)", amount: 100, notes: "Lauterbrunnen valley day | ~£82" },
-    { id: "e5a", category: "Activities", label: "Jungfraujoch tickets (family)", amount: 600, notes: "~CHF 200/adult, ~CHF 100/child (4 people) | ~£492 | BOOK ONLINE" },
+    { id: "e5a", category: "Activities", label: "Jungfraujoch tickets (family)", amount: 280, notes: "CHF 119.60/adult × 2 = CHF 239.20 (50% off with Half Fare Card) + seat reservations CHF 10 × 4 = CHF 40 | Kids FREE with Family Card | Total ~CHF 279.20 (~£229) | Book via swissrailways.com with Flex Cancellation (free cancel 24hrs before) | Seat reservation mandatory May-Oct, book at jungfrau.ch" },
     { id: "e5b", category: "Activities", label: "Piz Gloria lunch + Bond museum (family)", amount: 150, notes: "~CHF 30–35/person + CHF 15–20/museum | ~£123 | BOOK RESTAURANT ASAP" },
     { id: "e5c", category: "Activities", label: "Lake Brienz/Giessbach + Harder Kulm", amount: 180, notes: "Boat, funicular, sunset viewing | ~£148" },
     { id: "e5d", category: "Activities", label: "Misc activities (Pfingstegg, etc.)", amount: 100, notes: "Toboggans, playgrounds, optional attractions | ~£82" },
     { id: "e6", category: "Food & Drink", label: "Meals, coffee & snacks (9 days, 4 people)", amount: 3300, notes: "~CHF 370/day: breakfast ~CHF 60, lunch ~CHF 100, dinner ~CHF 160, snacks ~CHF 50 | ~£2,706" },
     { id: "e7", category: "Misc", label: "Souvenirs, gifts & emergency buffer", amount: 500, notes: "Wood carvings, Swiss chocolate, sweets, emergency fund | ~£410" },
   ],
-  notes: "📋 PREP CHECKLIST (Do before you go):\n✅ Book Piz Gloria lunch at schilthorn.ch (Mon 24 Aug, 10:00/10:30am) — fills up weeks ahead\n✅ Book Jungfraujoch tickets at jungfrau.ch (Tue 25 Aug, early 7:30am departure)\n✅ Download SBB app + add Half Fare Card details (buy CHF 150 online, deliver as PDF)\n✅ Contact GrindelwaldHome Alpenglück re: luggage access & grocery pre-stock option\n✅ Arrange Dublin airport car parking (return parking QR code)\n✅ Check weather forecast 1 week before (plan D7 backup if needed)\n✅ Confirm flight booking refs: YMKW98 (outbound) / 2TLA5F (return)",
+  notes: "📋 PREP CHECKLIST (Do before you go):\n✅ DONE — Half Fare Cards + Family Cards purchased (£263.43) — all 4 in Google Wallet\n✅ Book Jungfraujoch tickets at swissrailways.com (Flex Cancellation option — free cancel 24hrs before if weather bad). Seat reservations separately at jungfrau.ch (CHF 10/person, mandatory May-Oct)\n✅ Download SBB app — select 'Half Fare Travelcard' discount. Show Google Wallet to conductor.\n✅ Buy Airalo eSIM for Switzerland — Andrew & Ashleigh (Pixel 10). 3GB/30 day ~£8-10 each. Install before flying, activate on arrival. Dual SIM: Airalo for data, Smarty for calls.\n✅ Book Piz Gloria lunch at schilthorn.ch (Mon 24 Aug, 10:00/10:30am) — fills up weeks ahead\n✅ Contact GrindelwaldHome Alpenglück re: luggage access & grocery pre-stock option\n✅ Arrange Dublin airport car parking (return parking QR code)\n✅ Check weather forecast 1 week before (plan D7 backup if needed)\n✅ Confirm flight booking refs: YMKW98 (outbound) / 2TLA5F (return)\n\n💰 TRAIN TICKET STRATEGY:\n• Buy ALL tickets point-to-point in SBB app with Half Fare Card (50% off)\n• Saver Day Passes NOT worth it for Aug 2026 dates (cheapest available is CHF 49-54, more than point-to-point)\n• Jungfraujoch: CHF 119.60/adult return (50% off), kids FREE. Book via swissrailways.com, weather dependent\n• Kids travel FREE everywhere with Family Card when accompanied by parent\n• Bring passport on trains — required with Half Fare Card",
 };
 
 const DEFAULT_PACKING_CATEGORIES = [
@@ -2217,7 +2218,7 @@ export default function SwitzerlandTravelAppReal() {
                 {/* Stat pills */}
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                   {[
-                    { label: "Total cost", value: "£283.18", sub: "2 adults · before discount", bg: "#f0f9ff", border: "#7dd3fc", col: "#0369a1" },
+                    { label: "Total cost", value: "£263.43", sub: "2 adults + 2 kids · PURCHASED ✅", bg: "#f0f9ff", border: "#7dd3fc", col: "#0369a1" },
                     { label: "Discount", value: "50% off", sub: "All trains, gondolas & cable cars", bg: "#f0fdf4", border: "#86efac", col: "#15803d" },
                     { label: "Validity", value: "30 days", sub: "Start on or just before 22 Aug", bg: "#fffbeb", border: "#fcd34d", col: "#b45309" },
                     { label: "Kids travel", value: "FREE 🎉", sub: "Under 16 with Swiss Family Card", bg: "#fdf4ff", border: "#e9d5ff", col: "#7e22ce" },
@@ -2233,8 +2234,8 @@ export default function SwitzerlandTravelAppReal() {
                 <div style={{ fontSize: 12, fontWeight: 700, color: "#475569", textTransform: "uppercase", letterSpacing: 0.5 }}>How it works</div>
                 <div style={{ display: "grid", gap: 8 }}>
                   {[
-                    ["1", "🛒", "Buy 2× Half Fare Cards on the GetYourGuide app (code THETRAVELINGSWISS5 for 5% off) — add your children during checkout to get free Swiss Family Cards"],
-                    ["2", "📱", "Download the SBB app and add your Half Fare Card details"],
+                    ["1", "✅", "DONE — 2× Half Fare Cards + 2× Family Cards purchased via GetYourGuide app (£263.43). All 4 cards imported to Google Wallet."],
+                    ["2", "📱", "Download the SBB app and select 'Half Fare Travelcard' as discount type. No need to link card — just show Google Wallet to conductor."],
                     ["3", "🚆", "Search any route in the app — it automatically applies your 50% discount at checkout"],
                     ["4", "📲", "Show the ticket on your phone to the conductor. That's it!"],
                   ].map(([n, icon, text]) => (
@@ -3718,7 +3719,7 @@ export default function SwitzerlandTravelAppReal() {
                     { href: "https://www.bls.ch/en", label: "🚂 BLS — Regional trains, lake steamers & Grindelwald area" },
                     { href: "https://www.jungfrau.ch/en-gb/", label: "🏔️ Jungfrau Railways — gondolas, cable cars & mountain trains" },
                     { href: "https://www.postauto.ch/en", label: "🚌 PostBus Switzerland — valley & mountain buses" },
-                    { href: "https://www.sbb.ch/en/tickets-offers/tickets/travelcards/half-fare-travelcard.html", label: "🎟️ Buy Half Fare Card online (saves ~50% on all public transport)" },
+                    { href: "https://www.swissrailways.com/en/buy-jungfraujoch-ticket", label: "🎟️ Book Jungfraujoch tickets (50% off with Half Fare Card, Flex Cancellation available)" },
                   ].map(link => (
                     <a
                       key={link.href}
