@@ -253,7 +253,7 @@ const DEFAULT_ITINERARY = [
     id: "d3",
     date: "Mon 24 Aug 2026",
     base: "Grindelwald",
-    title: "🎬 Schilthorn Breakfast + Mürren + Allmendhubel + Gimmelwald",
+    title: "🎬 Schilthorn → Birg → Mürren → Gimmelwald (start high, descend all day)",
     location: "Stechelberg → Schilthorn → Mürren → Gimmelwald",
     tags: ["mountains", "viewpoint", "cable car", "playground", "village", "history"],
     mapLocation: "Schilthorn, Switzerland",
@@ -263,7 +263,7 @@ const DEFAULT_ITINERARY = [
         time: "8:15 AM",
         title: "Travel to Schilthorn",
         location: "Grindelwald → Lauterbrunnen → Stechelberg",
-        notes: "🚂 Walk to Grindelwald station (~10 min) → BOB train to Lauterbrunnen (~25 min) → PostBus to Stechelberg (~15 min) → cable car via Gimmelwald → Mürren → Birg → Schilthorn (~30 min).\n\nArrive Schilthorn (Piz Gloria) ~9:30 AM.\n\n⚠️ Book breakfast at Piz Gloria in advance at schilthorn.ch — summer slots fill up weeks ahead. Ask for a window table in the revolving restaurant.",
+        notes: "🏔️ TODAY'S ROUTE: Start at the top (2,970m) and work your way DOWN all day. The only uphill is the short Allmendhubel funicular which returns you to the same spot. Everything else is downhill or cable car — very family-friendly!\n\nSchilthorn (2,970m) → Birg Thrill Walk (2,677m) → Mürren village (1,650m) → Allmendhubel (1,934m, funicular up & back) → Mürren → walk down to Gimmelwald (1,380m) → cable car to Stechelberg (867m) → bus & train home.\n\n🚂 Walk to Grindelwald station (~10 min) → BOB train to Lauterbrunnen (~25 min) → PostBus to Stechelberg (~15 min) → cable car via Gimmelwald → Mürren → Birg → Schilthorn (~30 min).\n\nArrive Schilthorn (Piz Gloria) ~9:30 AM.\n\n⚠️ Book breakfast at Piz Gloria in advance at schilthorn.ch — summer slots fill up weeks ahead. Ask for a window table in the revolving restaurant.",
         tags: ["train", "cable car"],
       },
       {
@@ -284,14 +284,14 @@ const DEFAULT_ITINERARY = [
         time: "11:45 AM",
         title: "Descend to Mürren — explore car-free village",
         location: "Birg → Mürren",
-        notes: "Cable car down to Mürren (~10 min from Birg). Mürren is one of Switzerland's highest and most scenic car-free villages — no roads, no cars, only mountain trains and footpaths.\n\n🏔️ Eiger, Mönch & Jungfrau fill the entire eastern horizon — one of the most dramatic mountain views in the Alps.\n\n🇨🇭 Walk Mürren's main street — Swiss flags, wooden chalets, flower boxes on every window. Take the UPPER road for fewer crowds.\n\n📸 Best viewpoints: 'the stump' (locals know it), train station terrace, and tennis court terrace.\n\n🍽️ Food options:\n• Café Liv — vanilla lemonade & toasties (great quick bite)\n• Stager Stübli — classic Swiss dishes, outdoor dining\n• Esther's Guesthouse — excellent ice cream\n• Mountain Hostel — homemade pizza\n• Intersport Café — mountain cappuccino\n\n🎒 Optional: Rent a LUDO TRAIL game backpack from the tourist office — 16 interactive game stations throughout the village. Perfect for keeping the kids exploring!\n\n🏊 Optional: Mürren Sportcenter has a swimming pool open in summer — great if it's a hot day and the kids need cooling off.",
+        notes: "Cable car down to Mürren (~10 min from Birg). Mürren is one of Switzerland's highest and most scenic car-free villages — no roads, no cars, only mountain trains and footpaths.\n\n🏔️ Eiger, Mönch & Jungfrau fill the entire eastern horizon — one of the most dramatic mountain views in the Alps.\n\n🇨🇭 Walk Mürren's main street — Swiss flags, wooden chalets, flower boxes on every window. Take the UPPER road for fewer crowds.\n\n📸 Best viewpoints: 'the stump' (locals know it), train station terrace, and tennis court terrace.\n\n🍽️ Food options:\n• Café Liv — vanilla lemonade & toasties (great quick bite)\n• Stager Stübli — classic Swiss dishes, outdoor dining\n• Esther's Guesthouse — excellent ice cream\n• Mountain Hostel — homemade pizza\n• Intersport Café — mountain cappuccino\n\n🎒 Optional: Rent a LUDO TRAIL game backpack from the tourist office — 16 interactive game stations throughout the village. Perfect for keeping the kids exploring!\n\n🌧️ RAINY DAY BACKUP: Mürren Sportcenter has a swimming pool open in summer — worth knowing if the weather turns.",
         tags: ["village", "viewpoint"],
       },
       {
         time: "12:30 PM",
         title: "🌸 Allmendhubel — flower playground & panorama",
         location: "Mürren → Allmendhubel (1,934m)",
-        notes: "🚟 Short funicular ride above Mürren (~5 min, ~CHF 8 return, Half Fare Cards valid).\n\n🌸 Allmendhubel Flower Park — wildflower meadows with wooden boardwalks, alpine botanical features, and cowbells ringing across the hillside. Best wildflower display in the Jungfrau region in August.\n\n🛝 Playground at the top — this is one of the BEST in the region! Zip line, water maze, marmot tunnels, climbing structures, slides, and open meadows for kids to run in with Eiger views behind them.\n\n🧺 Perfect picnic spot — grab supplies from Coop Terminal the morning before. Landjäger sausages, Zopf bread, mountain cheese (try Gruyère mild or Emmental for the kids) and Rivella.\n\n💡 One train stop from Mürren at Winteregg there's ANOTHER playground with a jumbo swing — worth a quick stop if the kids aren't ready to leave!",
+        notes: "🚟 Short funicular ride above Mürren (~5 min, ~CHF 8 return, Half Fare Cards valid).\n\n🌸 Allmendhubel Flower Park — wildflower meadows with wooden boardwalks, alpine botanical features, and cowbells ringing across the hillside. Best wildflower display in the Jungfrau region in August.\n\n🛝 Playground at the top — this is one of the BEST in the region! Zip line, water maze, marmot tunnels, climbing structures, slides, and open meadows for kids to run in with Eiger views behind them.\n\n🧺 Perfect picnic spot — grab supplies from Coop Terminal the morning before. Landjäger sausages, Zopf bread, mountain cheese (try Gruyère mild or Emmental for the kids) and Rivella.",
         tags: ["playground", "viewpoint", "mountains"],
       },
       {
@@ -305,7 +305,7 @@ const DEFAULT_ITINERARY = [
         time: "3:00 PM",
         title: "🏪 Gimmelwald — honesty shop, farm & Rugenbräu Dunkel",
         location: "Gimmelwald village",
-        notes: "🏪 World's first honesty shop — unlocked fridge and shelves of local produce. Pay what you think is fair, leave money in the box. Local cheese, eggs, dried meats, milk.\n\n🐄 Farm animals right in the village — cows, chickens, working Alpine farms that have operated for centuries.\n\n🛝 Gimmelwald playground — has a crazy fast slide the kids will love! Also great viewpoint benches above Gimmelwald overlooking the valley.\n\n🍺 Pension Gimmelwald — stop for a Schwarz Monk beer or Rugenbräu Dunkel. The bar is open to non-guests — hikers, locals, wooden benches, cowbell on the wall.\n\n💡 Kids can have a Rivella (Swiss soft drink) or ice cream from Esther's Guesthouse while you enjoy the beer.\n\n🛍️ Souvenir shopping: Exile on Main Street and Adleggen Sport in Mürren, or the honesty shop and farm fridges in Gimmelwald.",
+        notes: "🏪 World's first honesty shop — unlocked fridge and shelves of local produce. Pay what you think is fair, leave money in the box. Local cheese, eggs, dried meats, milk.\n\n🐄 Farm animals right in the village — cows, chickens, working Alpine farms that have operated for centuries.\n\n🛝 You'll pass a playground with a crazy fast slide on the way through — let the kids burn off energy while you take in the viewpoint benches above Gimmelwald overlooking the valley.\n\n🍺 Pension Gimmelwald — ask for a Schwarz Monk beer (local dark brew) or Rugenbräu Dunkel. The bar is open to non-guests — hikers, locals, wooden benches, cowbell on the wall.\n\n💡 Kids can have a Rivella (Swiss soft drink) while you enjoy the beer.\n\n🛍️ Souvenir shopping: Exile on Main Street and Adleggen Sport in Mürren, or the honesty shop and farm fridges in Gimmelwald.",
         tags: ["village", "history"],
       },
       {
@@ -927,6 +927,8 @@ const DEFAULT_VENUES = [
   { id: "v24", name: "Restaurant Grindelwaldblick",      type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Panoramic terrace with direct Eiger views. Traditional Swiss menu with seasonal specials. One of the best photo backdrops for a meal in the village. Book ahead for terrace tables." },
   { id: "v27", name: "Ristorante Pizzeria Da Salvi",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Friendly Italian restaurant in the heart of Grindelwald. Authentic wood-fired pizza, pasta and comfort dishes. Great family option on a tired evening — kids love the pizza. Dorfstrasse 189." },
   { id: "v28", name: "Central Hotel Wolter Restaurant",  type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.3, notes: "Classic Swiss restaurant near the train station. Famous for rösti, fondue and traditional alpine dishes. Great dessert menu. Reliable, central and reasonably priced. Dorfstrasse 93." },
+  { id: "v29", name: "Ischboden Hütte ⭐ Host Pick",    type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.9, notes: "Myriam's recommendation! Mountain hut with farm-to-table food from their own farm. Famous for homemade fruit pies, Spätzle, milkshakes, and a drink called 'Rote Nase'. Cosy interior + epic terrace with valley views. Alpvogelpark (bird park with owls) right next door — kids will love it. CHF 10–20pp. Bus 121 to end of line, then 30 min gentle walk uphill. Open Wed–Sun 10am–5pm only. Perfect for flex day or afternoon outing." },
+  { id: "v31", name: "Café 3692 ⭐ Host Pick",           type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "coffee"], rating: 4.8, notes: "Myriam's recommendation! #7 of 74 restaurants in Grindelwald. Named after the 3,692m Wetterhorn which you look directly at from the 180° panorama terrace. Run by Bruno (wood artist) and Myriam — the café doubles as a showroom for Bruno's handcrafted carpentry. Incredible homemade cakes (blueberry crumble, raspberry cheesecake), plus creative dinner menu. Terrassenweg 61, uphill walk from village or short bus. Open Fri–Sun ONLY (Fri/Sat 8:30am–11pm, Sun 8:30am–6pm). Book ahead!" },
   // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
   { id: "v2b", name: "Eiger Bean",                       type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "coffee"],                    rating: 4.5, notes: "Specialty coffee shop in Grindelwald. Best coffee with direct Eiger views. Great stop before heading to the mountains." },
@@ -1909,6 +1911,9 @@ export default function SwitzerlandTravelAppReal() {
           </Chip>
           <Chip active={activeTab === "transport"} onClick={() => setActiveTab("transport")} tone="sky">
             🚂 Transport
+          </Chip>
+          <Chip active={activeTab === "rainevening"} onClick={() => setActiveTab("rainevening")} tone="warm">
+            🌧️ Rain & Evenings
           </Chip>
         </div>
 
@@ -3825,12 +3830,83 @@ export default function SwitzerlandTravelAppReal() {
             </div>
           );
         })()}
-      </div>
-    </div>
-  );
-}
 
-function InfoPanel({ icon, title, body, lines = [], href, linkLabel }) {
+        {activeTab === "rainevening" && (
+          <div style={{ display: "grid", gap: 12 }}>
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🌧️ Rainy Day Activities</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                August in the Alps can bring rain — don't let it ruin your day. These all work in wet weather, ordered by distance from the Airbnb.
+              </div>
+              <div style={{ display: "grid", gap: 10 }}>
+                {[
+                  { emoji: "🏔️", name: "Glacier Gorge (Gletscherschlucht)", location: "30 min walk from Airbnb or Bus 122", time: "~2 hours", cost: "CHF 19/adult, CHF 10/child, under 6 free (CHF 2 off with Guest Card)", notes: "Your #1 rainy day pick. Sheltered 300m-deep canyon carved by glacier. Sensory walkway through low tunnels and exposed rock galleries. Spider web net over the gorge. Actually MORE atmospheric in rain — waterfalls are fuller and mist rises from the canyon. Open daily 9:30am–6pm, May–Nov." },
+                  { emoji: "🏊", name: "Sportzentrum Grindelwald — Indoor Pool", location: "Dorfstrasse 110, ~15 min walk", time: "2–3 hours", cost: "~CHF 10/adult, CHF 6/child (50% off with Grindelwald Guest Card!)", notes: "Indoor swimming pool with 70m water slide with flashing lights ('Black Hole'), 1m diving board, non-swimmers pool (10m), kids paddling pool. Water temperature 28°C. Also has a ropes course and café upstairs. Ask Myriam about the Guest Card — 50% off entry!" },
+                  { emoji: "🏛️", name: "Grindelwald Museum", location: "Grindelwald village", time: "~1 hour", cost: "~CHF 5", notes: "Small local history museum — village life, farming traditions, mountaineering history. Good for filling an hour on a wet morning." },
+                  { emoji: "☕", name: "Café & Chocolate Hopping", location: "Grindelwald village", time: "All morning", cost: "CHF 20–40", notes: "Wander the village cafés — hot chocolate, pastries, card games with the kids. Very Swiss. Try Ovomaltine hot chocolate for a local twist. Browse the souvenir shops." },
+                  { emoji: "🏊", name: "Mürren Sportcenter — Swimming Pool", location: "Mürren (1hr from Grindelwald)", time: "Half day", cost: "Entry fee applies", notes: "If you're already in Mürren and it starts raining, the Sportcenter has a swimming pool open in summer. Good backup if weather turns during your Mürren day." },
+                  { emoji: "🎳", name: "Funland Thun (Indoor Soft Play)", location: "Thun (~50 min train)", time: "Half day", cost: "~CHF 15/child", notes: "Indoor soft play — ball pit, tunnel slide, climbing ramp, 11m three-lane racing slide. Kids up to 11 years. WiFi and bistro for parents. Worth the train if it's a full-day washout." },
+                ].map((item, i) => (
+                  <div key={i} style={{ background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 12, padding: "12px 14px" }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 2 }}>{item.emoji} {item.name}</div>
+                    <div style={{ fontSize: 11, color: "#0369a1", marginBottom: 6 }}>📍 {item.location} · ⏱️ {item.time} · 💰 {item.cost}</div>
+                    <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.5 }}>{item.notes}</div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🌙 Evening Ideas</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                Most evenings you'll be knackered after a mountain day — don't over-plan. Here's a mix of low-key options.
+              </div>
+              <div style={{ display: "grid", gap: 10 }}>
+                <div style={{ background: "#fdf4ff", border: "1px solid #e9d5ff", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 6 }}>🏠 At the Airbnb</div>
+                  <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.7 }}>
+                    🍫 Movie night with Swiss chocolate — Ragusa, Toblerone and Lindt from Coop<br />
+                    🃏 Card games / board games — pack a few or buy a cheap deck at Coop<br />
+                    🧀 Cook a Swiss meal — Rösti, Cervelat sausages, melted cheese on bread. Älplermagronen (Swiss mac and cheese) is easy and kids love it<br />
+                    🍷 Wine from Coop — try Lavaux or Valais region whites and rosés (Switzerland's best wine regions)<br />
+                    🌟 Stargazing from the balcony — Grindelwald has low light pollution at 1,034m. August = good chance of shooting stars (Perseids)<br />
+                    📱 Plan tomorrow — check MeteoSwiss forecast and webcams over a glass of wine
+                  </div>
+                </div>
+
+                <div style={{ background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 6 }}>🚶 Out in the Village</div>
+                  <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.7 }}>
+                    🌅 Evening stroll to watch sunset over the Eiger — golden hour late August around 8pm<br />
+                    🍺 Local beer at a quiet bar — look for spots with more locals than tourists<br />
+                    🍦 Ice cream walk — most village shops open until 9pm in summer<br />
+                    🍕 Pizza takeaway and eat at the apartment — easy, kids happy, no fuss
+                  </div>
+                </div>
+
+                <div style={{ background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 6 }}>⭐ One Special Evening</div>
+                  <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.7 }}>
+                    🌄 <strong>Harder Kulm Sunset</strong> — on your Interlaken day, take the funicular up around 7pm. Watch sunset from the Two Lakes Bridge viewpoint overlooking Lake Thun and Lake Brienz with the full Eiger/Mönch/Jungfrau panorama. Last funicular down ~9:30pm. Save for a clear evening.
+                  </div>
+                </div>
+
+                <div style={{ background: "#f0f9ff", border: "1px solid #bae6fd", borderRadius: 12, padding: "12px 14px" }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 6 }}>🛒 Evening Shopping List (grab from Coop Day 2)</div>
+                  <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.7 }}>
+                    🍫 Swiss chocolate selection — Ragusa, Toblerone, Lindt<br />
+                    🧀 Fondue/raclette cheese — if Alpenglück has a fondue set, do it properly one evening!<br />
+                    🌭 Cervelat sausages — the Swiss BBQ staple<br />
+                    🍷 White wine from Lavaux or Valais — ask at the Coop counter<br />
+                    🥤 Rivella + fruit syrups for the kids<br />
+                    🍞 Fresh bread for evening sandwiches<br />
+                    🃏 Cheap card game or kids activity book
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        )}
   return (
     <div
       style={{
