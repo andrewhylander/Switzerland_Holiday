@@ -3907,6 +3907,12 @@ export default function SwitzerlandTravelAppReal() {
             </Card>
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+function InfoPanel({ icon, title, body, lines = [], href, linkLabel }) {
   return (
     <div
       style={{
