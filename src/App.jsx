@@ -237,7 +237,7 @@ const DEFAULT_ITINERARY = [
         time: "~3:30 PM",
         title: "Drop groceries + afternoon chill",
         location: "Grindelwald",
-        notes: "🚶 Walk groceries back to Alpenglück (~10 min from Terminal).\n\nAFTERNOON OPTIONS:\n\n🍦 Village wander, ice cream, and chill — you've earned it after a travel day!\n\n🧀 Hunt for farm fridges — self-service honesty fridges hidden around Grindelwald's side streets. Local cheese, eggs, jam, sausage, handmade crafts.\n\n🏔️ Glacier Gorge — 30 min walk from village. 300m rock faces, spider web net. CHF 19/adult, CHF 10/child, under 6 free. Great option if energy levels are up.\n\n💡 SAVE FOR LATER IN THE WEEK: Grindelwald First gondola + Cliff Walk (30 min, free, stunning views) and Bort Alpine Playground (mountain stream water play, 700m² playground, trampolines, zip line). Best done on a clear weekday — get off at Bort on the way back down. The Cliff Walk is the main reason to go to the top; skip First's adventure activities as Chloe is too small for Mountain Cart and Trottibike (125cm minimum).",
+        notes: "🚶 Walk groceries back to Alpenglück (~10 min from Terminal).\n\nAFTERNOON OPTIONS:\n\n🍦 Village wander, ice cream, and chill — you've earned it after a travel day!\n\n🧀 Hunt for farm fridges — self-service honesty fridges hidden around Grindelwald's side streets. Local cheese, eggs, jam, sausage, handmade crafts.\n\n🏔️ Glacier Gorge — 30 min walk from village. 300m rock faces, spider web net. CHF 19/adult, CHF 10/child, under 6 free. Great option if energy levels are up.\n\n💡 SAVE FOR LATER IN THE WEEK: Grindelwald First gondola + Cliff Walk (30 min, free, stunning views) and Bort Alpine Playground (mountain stream water play, 700m² playground, trampolines, zip line). Best done on a clear weekday — get off at Bort on the way back down. The Cliff Walk is the main reason to go to the top; skip First's adventure activities as Chloe is too small for Mountain Cart and Trottibike (125cm minimum).\n\n🎬 Film buffs: Grindelwald First appears in Star Wars: Revenge of the Sith (as Alderaan!) AND in the Bond helicopter chase from On Her Majesty's Secret Service.",
         tags: [],
       },
       {
@@ -271,7 +271,7 @@ const DEFAULT_ITINERARY = [
         time: "9:30 AM",
         title: "🎬 Piz Gloria — revolving breakfast (Bond World)",
         location: "Schilthorn — Piz Gloria (2,970m)",
-        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.ch/webcam",
+        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n🚽 Don't skip the toilets while you're up here — trust us, just go and see for yourself!\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.swiss/en/pizgloria/Livecam",
         tags: ["viewpoint", "history", "mountains"],
       },
       {
@@ -322,7 +322,7 @@ const DEFAULT_ITINERARY = [
     id: "d4",
     date: "Tue 25 Aug 2026",
     base: "Grindelwald",
-    title: "Männlichen + Lauterbrunnen Valley",
+    title: "Männlichen — Lieselotte Cow Trail + Lauterbrunnen Valley",
     location: "Männlichen → Lauterbrunnen",
     tags: ["mountains", "viewpoint", "waterfall", "cycling"],
     mapLocation: "Männlichen, Switzerland",
@@ -337,9 +337,9 @@ const DEFAULT_ITINERARY = [
       },
       {
         time: "MID",
-        title: "Männlichen summit + Cow Playground + Royal Walk",
+        title: "Männlichen: Royal Walk + Cow Playground + Lieselotte Trail",
         location: "Männlichen (2,343m)",
-        notes: "🏔️ Walk up the short but steep Royal Walk to the summit (~20 min) for the best panoramic views in the Jungfrau region. Views of: Eiger, Mönch & Jungfrau (the big three), Lauterbrunnen Valley, Mürren, Schilthorn, Interlaken, Lake Thun, Grindelwald First, and glaciers. Fill your memory card!\n\n🐄 Cow Playground — one of the best in the region! 8.5m high giant cow slide (slide out its rear end!), bowling alley, trampolines, climbing structures. Kids AND adults love it.\n\n🛝 Second playground at the bottom of the cow trail — follow the cow-themed path downhill after the main playground for a bonus stop. Two viewing terraces behind the playgrounds overlooking Lauterbrunnen Valley.\n\n🍽️ Männlichen Mountain Guest House — self-service and full-service restaurants. Seven different spots to eat inside and out. Can be windy and chilly at 2,343m so bring layers.\n\n👶 OPTIONAL KIDS TRAILS (instead of going down to Lauterbrunnen):\n\n🐄 Liseli & Lotti Kids Trail — 1.5hr gentle downhill from Männlichen to Holenstein (intermediate gondola stop). Blow an alphorn, ring cowbells, play with chickens, ride a zip line, climb a rock wall, sit on a cow! Connects to Kids Treetop Path at Holenstein. Then gondola down to Grindelwald Terminal.\n\n🏔️ Panorama Trail — 1hr 15min gentle downhill on wide gravel to Kleine Scheidegg. Sweeping Eiger/Mönch/Jungfrau views the entire way. Stop at Restaurant Grindelwaldblick — climb the fort stairs with the Swiss flag for fun photos. Small playground. From Kleine Scheidegg: train down to Grindelwald OR train to Wengen.",
+        notes: "🏔️ Royal Walk to the summit crown (~20-30 min each way, there-and-back). Starts at the 'King's Gate' with 7 themed info points along the way — fun facts about the Alps, glaciers and Alpine climbing presented royal-style, good for keeping kids engaged on the climb. At the crown: labelled viewing panels naming every peak — Eiger, Mönch & Jungfrau (the big three), Lauterbrunnen Valley, Mürren, Schilthorn, Interlaken, Lake Thun, Grindelwald First. Fill your memory card! Short enough to skip if energy is low — you're not missing a huge amount if you go straight to Lieselotte instead.\n\n🐄 Cow Playground (Sennenspielplatz) — one of the best in the region! 8.5m high giant cow slide (slide out its rear end!), bowling alley, trampolines, climbing structures, swings, seesaw. Kids AND adults love it.\n\n🍽️ Männlichen Mountain Guest House — self-service and full-service restaurants. Seven different spots to eat inside and out. Reserve ahead if sit-down in peak season. Can be windy and chilly at 2,343m so bring layers.\n\n⭐ HEADLINE ACTIVITY — LIESELOTTE TRAIL (Lieselotteweg): Themed downhill family adventure trail from Männlichen to Holenstein (intermediate gondola stop). Named after a real cow, Lieselotte, who travelled from Germany to the mountains. 3.5km, allow a full 2–2.5 hours at family pace — NOT suitable for strollers, wear sturdy shoes.\n\n🎯 13 adventure stations along the way: blow an alphorn, ring cowbells, play with chickens, ride a zip line, climb a replica Eiger North Face wall, sit on a cow, hunt for mountain crystals, and more. Pick up a trail map at the start — kids punch/stamp it at each station and get a small prize at the end!\n\n🧺 Two picnic/BBQ spots along the route — bring lunch from your Coop shop and eat partway down with the views.\n\n🌲 At Holenstein: connects to the Treetop Path (4 viewing platforms + a slide) if energy allows, otherwise straight onto the gondola back to Grindelwald Terminal.\n\n🏔️ ALTERNATIVE: Panorama Trail — 1hr 15min gentle downhill on wide gravel to Kleine Scheidegg instead of Holenstein. Sweeping Eiger/Mönch/Jungfrau views the entire way. Restaurant Grindelwaldblick with fort stairs + Swiss flag photo spot, small playground. From Kleine Scheidegg: train down to Grindelwald OR train to Wengen. Good option if you fancy a change from Lieselotte, but Lieselotte is the better pick for younger kids given the activity stations.",
         tags: ["viewpoint", "hike", "playground"],
       },
       {
@@ -380,7 +380,7 @@ const DEFAULT_ITINERARY = [
         time: "09:41",
         title: "Sphinx Observatory + Aletsch Glacier viewpoint",
         location: "Jungfraujoch (3,454m)",
-        notes: "Take the lift to the Sphinx Observation Deck (3,571m) — views to France and Germany on a clear day. The Aletsch Glacier stretches 23km below you — the longest glacier in the Alps.\n\n📸 Best photos from the Sphinx platform early morning before clouds build.\n\n❄️ It will be cold — 0°C to -5°C even in August. Wear warm layers, waterproof jacket & trousers, hat, gloves, sturdy waterproof shoes.",
+        notes: "Take the lift to the Sphinx Observation Deck (3,571m) — views to France and Germany on a clear day. The Aletsch Glacier stretches 23km below you — the longest glacier in the Alps.\n\n📸 Best photos from the Sphinx platform early morning before clouds build.\n\n❄️ It will be cold — 0°C to -5°C even in August. Wear warm layers, waterproof jacket & trousers, hat, gloves, sturdy waterproof shoes.\n\n🎬 Jungfraujoch is a filming location for Netflix's Crash Landing on You (their biggest-ever non-English series) and the Korean variety show Running Man — a big reason this spot is so popular with international visitors.",
         tags: ["bucket list", "viewpoint"],
       },
       {
@@ -455,7 +455,7 @@ const DEFAULT_ITINERARY = [
         time: "MID",
         title: "Explore Brienz + Giessbach Falls",
         location: "Brienz village → Giessbach",
-        notes: "Brienz is an adorable village at the end of the lake. Here's what to do:\n\n🏘️ Brunngasse — ranked the '2nd most beautiful street in the world' by Architectural Digest. Dark aged wood, white stone, flower boxes, cobblestones. Worth a 5-minute wander.\n\n⛪ Reformed Church — best view in town from the terrace. Lake, mountains, waterfalls all visible.\n\n🍕 Bino's Pizzeria — 900+ Google reviews, 4.7★. Pizzas ~CHF 20, surprise toppings. Open 11am–11pm (kitchen closed 3–5pm). Take pizza to the lakeside promenade for a picnic!\n\n🍦 Brienz Gelatti — gelato food truck on the promenade. Authentic Italian, CHF 4 for a small. Grab a blue chair and sit on the waterfront.\n\n🏊 OPTIONAL: Strandbad Brienz — swimming in the lake! CHF 5/adult, CHF 3/child 6-15. Water trampoline, paddleboards, kayak hire, 3 pools, playground, ping pong, hammocks. Perfect on a hot day.\n\n🦌 OPTIONAL: Wildpark Brienz — free mini zoo, 20 min walk above town. Opened 1896! CHF 1 to buy a box of animal food — kids will love feeding them.\n\n💦 Giessbach Falls: Take a short boat hop from Brienz pier to Giessbach landing. Ride the oldest hotel funicular in the world (built 1879). 14 cascades tumbling 400m down into the lake. Walk behind the waterfall! Lunch at Grand Hotel Giessbach terrace — stunning views, affordable set menu.",
+        notes: "Brienz is an adorable village at the end of the lake. Here's what to do:\n\n🏘️ Brunngasse — ranked the '2nd most beautiful street in the world' by Architectural Digest. Dark aged wood, white stone, flower boxes, cobblestones. Worth a 5-minute wander.\n\n⛪ Reformed Church — best view in town from the terrace. Lake, mountains, waterfalls all visible.\n\n🍕 Bino's Pizzeria — 900+ Google reviews, 4.7★. Pizzas ~CHF 20, surprise toppings. Open 11am–11pm (kitchen closed 3–5pm). Take pizza to the lakeside promenade for a picnic!\n\n🍦 Brienz Gelatti — gelato food truck on the promenade. Authentic Italian, CHF 4 for a small. Grab a blue chair and sit on the waterfront.\n\n🏊 OPTIONAL: Strandbad Brienz — swimming in the lake! CHF 5/adult, CHF 3/child 6-15. Water trampoline, paddleboards, kayak hire, 3 pools, playground, ping pong, hammocks. Perfect on a hot day.\n\n🦌 OPTIONAL: Wildpark Brienz — free mini zoo, 20 min walk above town. Opened 1896! CHF 1 to buy a box of animal food — kids will love feeding them.\n\n💦 Giessbach Falls: Take a short boat hop from Brienz pier to Giessbach landing. Ride the oldest hotel funicular in the world (built 1879). 14 cascades tumbling 400m down into the lake. Walk behind the waterfall! Lunch at Grand Hotel Giessbach terrace — stunning views, affordable set menu.\n\n🎖️ Grand Hotel Giessbach was a filming location for HBO's Band of Brothers — worth a mention while you're admiring the terrace.",
         tags: ["waterfall", "cable car", "history", "village"],
       },
       {
@@ -3811,10 +3811,10 @@ export default function SwitzerlandTravelAppReal() {
                 </div>
                 <div style={{ display: "grid", gap: 8 }}>
                   {[
-                    { href: "https://www.jungfrau.ch/en-gb/live/webcams/", label: "❄️ Jungfraujoch webcam — check cloud cover at 3,454m before booking", tip: "If the Sphinx is in cloud, postpone. Swap with flex day." },
+                    { href: "https://www.jungfrau.ch/en-gb/live/webcams/", label: "❄️ Jungfrau.ch webcams — Jungfraujoch, Männlichen AND Grindelwald First all on one page", tip: "One-stop check for 3 of your key mountain days before booking." },
                     { href: "https://grindelwald.swiss/en/service/webcams.html", label: "🏔️ Grindelwald webcams — First, Männlichen, Kleine Scheidegg, village", tip: "Best all-in-one view across your most-used mountains." },
                     { href: "https://jungfrauregion.swiss/en/service/webcams.html", label: "🌄 Jungfrau Region webcams — 30+ cams including Schilthorn, Mürren, Lauterbrunnen", tip: "Use for Schilthorn/Mürren day and Lauterbrunnen valley." },
-                    { href: "https://www.schilthorn.ch/en/Info/Webcam", label: "🎬 Schilthorn webcam — check before Piz Gloria / Mürren day", tip: "Bond World views depend on clear weather. Check night before." },
+                    { href: "https://schilthorn.swiss/en/pizgloria/Livecam", label: "🎬 Schilthorn webcam — check before Piz Gloria / Mürren day", tip: "Bond World views depend on clear weather. Check night before." },
                     { href: "https://www.bergfex.com/sommer/jungfrau-region/webcams/", label: "🌦️ Bergfex — mountain forecasts + live cams for whole Jungfrau region", tip: "Best for 2-3 day forecasts to plan ahead." },
                     { href: "https://www.swisspanorama.com/", label: "🔭 SwissPanorama — live 360° views from Jungfraujoch, Schilthorn & Männlichen", tip: "High-res panoramic cams — great for checking visibility." },
                     { href: "https://www.meteoswiss.admin.ch/", label: "🌤️ MeteoSwiss — official Swiss weather forecast with minute-by-minute rain/sunshine", tip: "Most accurate Swiss forecast. Check hourly breakdown before committing to mountain days." },
@@ -3936,6 +3936,31 @@ export default function SwitzerlandTravelAppReal() {
                     🃏 Cheap card game or kids activity book
                   </div>
                 </div>
+              </div>
+            </Card>
+
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🎬 Film & TV Locations</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                You're walking through more movie sets than you'd think! Fun game for the kids — "spot the film location" at each stop.
+              </div>
+              <div style={{ display: "grid", gap: 10 }}>
+                {[
+                  { emoji: "⚔️", name: "Star Wars: Revenge of the Sith (2005)", location: "Grindelwald First", notes: "The mountain ridges at Grindelwald First became Princess Leia's home planet Alderaan — digitally enhanced for the film. Look around and imagine it as a galaxy far, far away!" },
+                  { emoji: "🔫", name: "On Her Majesty's Secret Service (1969)", location: "Schilthorn / Piz Gloria + Grindelwald First", notes: "Bond's villain lair was filmed at Piz Gloria (now Bond World 007). Less known: the helicopter chase scenes used the ridgelines at Grindelwald First too — so First appears in TWO of your film spots." },
+                  { emoji: "🏔️", name: "Touching the Void (2003)", location: "Jungfrau region", notes: "BAFTA-winning true story of a climbing accident in the Peruvian Andes — but mostly filmed right here, with the Jungfrau region standing in for the Andes." },
+                  { emoji: "🇰🇷", name: "Crash Landing on You (Netflix)", location: "Jungfraujoch, Grindelwald First, Eiger Glacier, Kleine Scheidegg, Iseltwald, Giessbach, Lake Brienz", notes: "Netflix's biggest-ever non-English series — a South Korean heiress paraglides into North Korea. Huge chunks filmed across your ENTIRE itinerary. This is why so many Korean tourists visit these exact spots — you're walking the whole filming map!" },
+                  { emoji: "📺", name: "Running Man (Korean variety show)", location: "Jungfraujoch + Schilthorn", notes: "Massively popular across Asia — featured both of your big mountain days." },
+                  { emoji: "🦄", name: "Fantastic Beasts: The Crimes of Grindelwald", location: "Visible from Wengen", notes: "Villain Gellert Grindelwald's castle Nurmengard is visible from Wengen in the film. Yes — the character is literally named after your village!" },
+                  { emoji: "🎖️", name: "Band of Brothers (HBO)", location: "Interlaken, Unterseen, Lake Thun, Grand Hotel Giessbach", notes: "Same Grand Hotel Giessbach you'll visit on your Lake Brienz day — used as a filming location for this acclaimed WWII miniseries." },
+                  { emoji: "📖", name: "The Lord of the Rings (inspiration, not filmed here)", location: "Lauterbrunnen Valley", notes: "J.R.R. Tolkien visited the Jungfrau region and it's widely believed Lauterbrunnen Valley inspired Rivendell — the elven refuge in his books. Not filmed here, but a lovely bit of trivia for the valley." },
+                ].map((item, i) => (
+                  <div key={i} style={{ background: "#fdf4ff", border: "1px solid #e9d5ff", borderRadius: 12, padding: "12px 14px" }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 2 }}>{item.emoji} {item.name}</div>
+                    <div style={{ fontSize: 11, color: "#a21caf", marginBottom: 6 }}>📍 {item.location}</div>
+                    <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.5 }}>{item.notes}</div>
+                  </div>
+                ))}
               </div>
             </Card>
           </div>
