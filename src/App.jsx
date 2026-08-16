@@ -60,6 +60,7 @@ const DEFAULT_PRETRIP_CHECKLIST = [
   { id: "pt8", text: "Notify bank/card provider of travel dates", done: false, link: null },
   { id: "pt9", text: "Pack Swiss Type J plug adapters (or universal)", done: false, link: null },
   { id: "pt10", text: "Get travel insurance docs / EHIC cards", done: false, link: null },
+  { id: "pt11", text: "Ask Myriam about the Grindelwald Guest Card — unlocks free local buses, CHF 5 Sportzentrum pool entry, and discounts at some activities. Not confirmed whether it's automatic or needs requesting.", done: false, link: null },
 ];
 
 const TRIP_INFO = {
@@ -1244,13 +1245,13 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q13", emoji: "🍦", text: "Eat ice cream in a village",                             cheer: "Swiss village life is delicious! 🍦",                  checked: { k1: false, k2: false }, section: "food",      days: ["d2","d4","d7"] },
   { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",          checked: { k1: false, k2: false }, section: "food",      days: ["d1","d2","d3"] },
   { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",           checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d4","d7","d8"] },
-  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d4","d7"] },
-  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d4","d5","d6","d7"] },
+  { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food",      days: ["d4","d5","d7"] },
+  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d4","d5","d6","d7"] },
   { id: "q37", emoji: "🍺", text: "Try Rugenbräu Dunkel at Pension Gimmelwald",             cheer: "Prost! 🍺 The Jungfrau region's legendary dark beer since 1866!", checked: { k1: false, k2: false }, section: "food", days: ["d5"] },
   // 🚠 Epic Transport
   { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",                 checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6","d7"] },
-  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",          checked: { k1: false, k2: false }, section: "transport", days: ["d1","d4","d5","d6","d7","d8"], sound: "train" },
-  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                       checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d6"] },
+  { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",          checked: { k1: false, k2: false }, section: "transport", days: ["d1","d3","d4","d5","d6","d7","d8"], sound: "train" },
+  { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                       checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6"] },
   { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",             checked: { k1: false, k2: false }, section: "transport", days: ["d4"] },
   { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",                   checked: { k1: false, k2: false }, section: "transport", days: ["d4"], sound: "moo" },
   // 🏔️ Mountain Adventures
@@ -1261,23 +1262,23 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "fanfare" },
   { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",         checked: { k1: false, k2: false }, section: "mountain",  days: ["d4"], sound: "splash" },
   // 🌿 Nature Spotting
-  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",                  checked: { k1: false, k2: false }, section: "nature",    days: ["d2","d3","d4","d5"], sound: "moo" },
+  { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",                  checked: { k1: false, k2: false }, section: "nature",    days: ["d2","d4","d5"], sound: "moo" },
   { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",        checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"] },
   { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                     checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"], sound: "sparkle" },
-  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",             checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d7"], sound: "sparkle" },
+  { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",             checked: { k1: false, k2: false }, section: "nature",    days: ["d4","d5","d7"], sound: "sparkle" },
   { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                       checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d5"] },
   { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"] },
-  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d5","d7"] },
+  { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d4","d5","d7"] },
   // 🎪 Village Fun
   { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",                checked: { k1: false, k2: false }, section: "village",   days: ["d2","d7","d8"], sound: "yodel" },
   { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                     checked: { k1: false, k2: false }, section: "village",   days: ["d1","d2","d3"] },
-  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",        checked: { k1: false, k2: false }, section: "village",   days: ["d2","d3","d4"], sound: "bell" },
+  { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",        checked: { k1: false, k2: false }, section: "village",   days: ["d2","d4","d5"], sound: "bell" },
   { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!",     checked: { k1: false, k2: false }, section: "village",   days: ["d8","d9"] },
   // 📸 Photo Missions
   { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",     checked: { k1: false, k2: false }, section: "photo",     days: ["d7"], sound: "camera" },
   { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",      checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "camera" },
-  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d2","d7"], sound: "camera" },
-  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d4","d5","d7"], sound: "train" },
+  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d7"], sound: "camera" },
+  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5","d7"], sound: "train" },
   { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",   checked: { k1: false, k2: false }, section: "photo",     days: ["d6","d7"], sound: "camera" },
 ];
 
