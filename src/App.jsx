@@ -381,7 +381,7 @@ const DEFAULT_ITINERARY = [
         time: "9:30 AM",
         title: "🎬 Piz Gloria — revolving breakfast (Bond World)",
         location: "Schilthorn — Piz Gloria (2,970m)",
-        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n🚽 Don't skip the toilets while you're up here — trust us, just go and see for yourself!\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.swiss/en/pizgloria/Livecam",
+        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n🚽 Don't skip the toilets while you're up here — trust us, just go and see for yourself!\n\n🏗️ Schilthornbahn history: opened 1967 as the world's longest aerial cableway. Today the Stechelberg→Mürren section is the steepest cableway in the world. The whole system runs on hydroelectricity or solar-powered batteries that recharge as the cable car descends.\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.swiss/en/pizgloria/Livecam",
         tags: ["viewpoint", "history", "mountains"],
       },
       {
@@ -2879,6 +2879,37 @@ export default function SwitzerlandTravelAppReal() {
                 >
                   <MapPin size={12} /> {geoLocating ? "Locating…" : "Near me"}
                 </button>
+              </div>
+            </Card>
+
+            {/* Must-try Swiss foods & drinks */}
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🇨🇭 Must-Try Swiss Foods & Drinks</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                Your Swiss food bucket list — tick these off across the trip, at restaurants or grabbed from Coop/Migros.
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {[
+                  { emoji: "🫕", name: "Fondue", notes: "Dip baby potatoes into a pot of melted cheese. The cheese blend varies by region — sometimes flavoured with truffle, garlic, tomato, or even Champagne!" },
+                  { emoji: "🧀", name: "Raclette", notes: "A slice of cheese warmed under a broiler until bubbling, then poured over small potatoes. Often topped with paprika or black pepper." },
+                  { emoji: "🧀", name: "Swiss cheese (hyper-regional)", notes: "Not just the holey stuff! Visit a local Molkerei (cheese shop) or grocery counter and try what's local to the area. Favourites: Kaltbach Bergkäse, Tilsiter, or a spreadable fresh cheese with herbs." },
+                  { emoji: "🍞", name: "Käseschnitte", notes: "Basically raclette poured over a thick slice of bread instead of potatoes — sometimes topped with a soft-cooked egg." },
+                  { emoji: "🌭", name: "Dried sausage", notes: "Meat & cheese platters feature local dried sausage that tastes different valley to valley. You can buy this from most farm fridges too!" },
+                  { emoji: "🌭", name: "Wurst", notes: "Just like Germany, sausage is a staple here and on the menu everywhere, especially mountain restaurants." },
+                  { emoji: "🥔", name: "Rösti", notes: "A large hash brown patty, sometimes filled with diced onion and bacon. Often topped with a wurst and gravy — the Swiss national dish." },
+                  { emoji: "🍺", name: "Local beers", notes: "Appenzeller is one of the best breweries in the country. Rugenbräu (your local Bernese Oberland brewery) is also excellent, plus loads of small craft brewers." },
+                  { emoji: "🥤", name: "Rivella soda", notes: "The most popular soda in Switzerland — try it FIRST before you learn what it's made from (milk whey)!" },
+                  { emoji: "🍪", name: "Kambly cookies", notes: "Swiss brand with hundreds of cookie varieties. Sample for free at their factory shop in Trubschachen if you're ever passing." },
+                  { emoji: "🍫", name: "Swiss chocolate", notes: "Splurge at fancy shops like Läderach, or grab bars from the grocery store — Lindt, Cailler, Halba and Frey are all popular local brands." },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 10, padding: "8px 12px" }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 13, color: "#78350f" }}>{item.name}</div>
+                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </Card>
 
