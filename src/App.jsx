@@ -70,7 +70,7 @@ const TRIP_INFO = {
   address: "Spillstattstrasse 28, 3818 Grindelwald, Switzerland",
   host: "Myriam",
   notes: [
-    "Day 4 is the main bucket list day.",
+    "Day 3 (Jungfraujoch) is the main bucket list day.",
     "Day 7 is a flex / weather buffer day.",
     "Final night is booked near Zurich Airport at Holiday Inn Express Zurich Airport.",
   ],
@@ -254,114 +254,6 @@ const DEFAULT_ITINERARY = [
     id: "d3",
     date: "Mon 24 Aug 2026",
     base: "Grindelwald",
-    title: "🎬 Schilthorn → Birg → Mürren → Gimmelwald (start high, descend all day)",
-    location: "Stechelberg → Schilthorn → Mürren → Gimmelwald",
-    tags: ["mountains", "viewpoint", "cable car", "playground", "village", "history"],
-    mapLocation: "Schilthorn, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Piz_Gloria_Bond_World_007.jpg/1280px-Piz_Gloria_Bond_World_007.jpg",
-    items: [
-      {
-        time: "8:15 AM",
-        title: "Travel to Schilthorn",
-        location: "Grindelwald → Lauterbrunnen → Stechelberg",
-        notes: "🏔️ TODAY'S ROUTE: Start at the top (2,970m) and work your way DOWN all day. The only uphill is the short Allmendhubel funicular which returns you to the same spot. Everything else is downhill or cable car — very family-friendly!\n\nSchilthorn (2,970m) → Birg Thrill Walk (2,677m) → Mürren village (1,650m) → Allmendhubel (1,934m, funicular up & back) → Mürren → walk down to Gimmelwald (1,380m) → cable car to Stechelberg (867m) → bus & train home.\n\n🚂 Walk to Grindelwald station (~10 min) → BOB train to Lauterbrunnen (~25 min) → PostBus to Stechelberg (~15 min) → cable car via Gimmelwald → Mürren → Birg → Schilthorn (~30 min).\n\nArrive Schilthorn (Piz Gloria) ~9:30 AM.\n\n⚠️ Book breakfast at Piz Gloria in advance at schilthorn.ch — summer slots fill up weeks ahead. Ask for a window table in the revolving restaurant.",
-        tags: ["train", "cable car"],
-      },
-      {
-        time: "9:30 AM",
-        title: "🎬 Piz Gloria — revolving breakfast (Bond World)",
-        location: "Schilthorn — Piz Gloria (2,970m)",
-        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n🚽 Don't skip the toilets while you're up here — trust us, just go and see for yourself!\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.swiss/en/pizgloria/Livecam",
-        tags: ["viewpoint", "history", "mountains"],
-      },
-      {
-        time: "11:00 AM",
-        title: "⚡ Birg Thrill Walk (free!)",
-        location: "Birg station (2,677m) — between Schilthorn & Mürren",
-        notes: "Get off at Birg on the way down from Schilthorn — don't skip this! The Thrill Walk is FREE and built into the cliff face.\n\n🌉 Cross a tightrope, walk on a glass floor looking straight down the cliff, and crawl through an open-air tunnel perched on the side of the mountain.\n\n⏱️ Takes ~20 min. Kids will love the glass floor — adults may find it terrifying!\n\n💡 Also great viewpoint of the tiny Grauseeli lake below.",
-        tags: ["viewpoint", "adventure"],
-      },
-      {
-        time: "11:45 AM",
-        title: "Descend to Mürren — explore car-free village",
-        location: "Birg → Mürren",
-        notes: "Cable car down to Mürren (~10 min from Birg). Mürren is one of Switzerland's highest and most scenic car-free villages — no roads, no cars, only mountain trains and footpaths.\n\n🏔️ Eiger, Mönch & Jungfrau fill the entire eastern horizon — one of the most dramatic mountain views in the Alps.\n\n🇨🇭 Walk Mürren's main street — Swiss flags, wooden chalets, flower boxes on every window. Take the UPPER road for fewer crowds.\n\n📸 Best viewpoints: 'the stump' (locals know it), train station terrace, and tennis court terrace.\n\n🍽️ Food options:\n• Café Liv — must-try: cranberry toasty (Brie + cranberry jam, owner's childhood recipe), apple walnut cake with cream cheese frosting & caramel, vanilla lemonade (perfect summer drink). Handbuilt interior — counter is one oak tree split open!\n• Stager Stübli — classic Swiss dishes, outdoor dining\n• Esther's Guesthouse — excellent ice cream\n• Mountain Hostel — homemade pizza\n• Intersport Coffee Bar — Belinda's specialty coffee inside a sports shop. Must-try: mountain cappuccino. Baby chinos for kids. Also great for hiking tips — 'where coffee meets community'\n\n🎒 Optional: Rent a LUDO TRAIL game backpack from the tourist office — 16 interactive game stations throughout the village. Perfect for keeping the kids exploring!\n\n🌧️ RAINY DAY BACKUP: Mürren Sportcenter has a swimming pool open in summer — worth knowing if the weather turns.",
-        tags: ["village", "viewpoint"],
-      },
-      {
-        time: "12:30 PM",
-        title: "🌸 Allmendhubel — flower playground & panorama",
-        location: "Mürren → Allmendhubel (1,934m)",
-        notes: "🚟 Short funicular ride above Mürren (~5 min, ~CHF 8 return, Half Fare Cards valid).\n\n🌸 Allmendhubel Flower Park — wildflower meadows with wooden boardwalks, alpine botanical features, and cowbells ringing across the hillside. Best wildflower display in the Jungfrau region in August.\n\n🛝 Playground at the top — this is one of the BEST in the region! Zip line, water maze, marmot tunnels, climbing structures, slides, and open meadows for kids to run in with Eiger views behind them.\n\n🧺 Perfect picnic spot — grab supplies from Coop Terminal the morning before. Landjäger sausages, Zopf bread, mountain cheese (try Gruyère mild or Emmental for the kids) and Rivella.",
-        tags: ["playground", "viewpoint", "mountains"],
-      },
-      {
-        time: "2:00 PM",
-        title: "🥾 Hike down to Gimmelwald",
-        location: "Mürren → Gimmelwald",
-        notes: "45-minute walk down from Mürren through alpine meadows — cowbells, wildflowers, and jaw-dropping views of the Lauterbrunnen valley below.\n\n🌸 The path passes through flower-filled meadows — kids can spot marmots and cows up close. Easy gradient, no scrambling.\n\n🏘️ Arrive Gimmelwald — population ~130, one of Switzerland's smallest inhabited villages. Completely off the tourist trail. Wooden farmhouses, barn smells, actual farm life.",
-        tags: ["hike", "mountains"],
-      },
-      {
-        time: "3:00 PM",
-        title: "🏪 Gimmelwald — honesty shop, farm & Rugenbräu Dunkel",
-        location: "Gimmelwald village",
-        notes: "🏪 World's first honesty shop — unlocked fridge and shelves of local produce. Pay what you think is fair, leave money in the box. Local cheese, eggs, dried meats, milk.\n\n🐄 Farm animals right in the village — cows, chickens, working Alpine farms that have operated for centuries.\n\n🛝 You'll pass a playground with a crazy fast slide on the way through — let the kids burn off energy while you take in the viewpoint benches above Gimmelwald overlooking the valley.\n\n🍺 Pension Gimmelwald — ask for a Schwarz Monk beer (local dark brew) or Rugenbräu Dunkel. The bar is open to non-guests — hikers, locals, wooden benches, cowbell on the wall.\n\n💡 Kids can have a Rivella (Swiss soft drink) while you enjoy the beer.\n\n🛍️ Souvenir shopping: Exile on Main Street and Adleggen Sport in Mürren, or the honesty shop and farm fridges in Gimmelwald.",
-        tags: ["village", "history"],
-      },
-      {
-        time: "4:30 PM",
-        title: "Return to Grindelwald",
-        location: "Gimmelwald → Stechelberg → Lauterbrunnen → Grindelwald",
-        notes: "🚠 Cable car from Gimmelwald down to Stechelberg (~5 min)\n🚌 PostBus Stechelberg → Lauterbrunnen (~15 min)\n🚂 BOB train Lauterbrunnen → Grindelwald (~25 min)\n\nBack in Grindelwald by ~6:15 PM. Dinner in the village — it's been a full day!",
-        tags: ["train"],
-      },
-    ],
-  },
-  {
-    id: "d4",
-    date: "Tue 25 Aug 2026",
-    base: "Grindelwald",
-    title: "Männlichen — Lieselotte Cow Trail + Lauterbrunnen Valley",
-    location: "Männlichen → Lauterbrunnen",
-    tags: ["mountains", "viewpoint", "waterfall", "cycling"],
-    mapLocation: "Männlichen, Switzerland",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
-    items: [
-      {
-        time: "AM",
-        title: "Grindelwald Terminal → Männlichen",
-        location: "Grindelwald Terminal → Männlichen",
-        notes: "🚶 Walk from apartment → Grindelwald Terminal: ~10 min\n🚠 Grindelwald Terminal → Männlichen gondola: ~19 min — one of the world's longest gondolas at 6km\n\n📅 Book in advance at jungfrau.ch | Go early for the clearest mountain views\n\n💡 ALTERNATIVE ROUTE via Wengen: Train to Lauterbrunnen → WAB train to Wengen → cable car to Männlichen. Slightly longer BUT you can do the Royal Ride — ride ON TOP of the Wengen cable car in the open air for just CHF 5! 5-minute ride with wind in your hair. Kids will absolutely love this.\n\n🌙 AFTER 4PM DISCOUNT: If going up from Wengen after 4pm, cable car is half price — just CHF 13 with Half Fare Card! Last lift down ~5:30pm. Perfect for a sunset visit.\n\n🎶 CHECK EVENT CALENDAR:\n• Every Tuesday July/Aug — Evening BBQ on the mountain with sunset views! Meats, veggies, potatoes, salad.\n• Late August — Jazz Brunch with hours of live music + bottomless buffet. Check dates — may fall during your trip (22-30 Aug)!\n• Check mannlichen.ch for exact dates.",
-        tags: ["cable car", "mountains"],
-      },
-      {
-        time: "MID",
-        title: "Männlichen: Royal Walk + Cow Playground + Lieselotte Trail",
-        location: "Männlichen (2,343m)",
-        notes: "🏔️ Royal Walk to the summit crown (~20-30 min each way, there-and-back). Starts at the 'King's Gate' with 7 themed info points along the way — fun facts about the Alps, glaciers and Alpine climbing presented royal-style, good for keeping kids engaged on the climb. At the crown: labelled viewing panels naming every peak — Eiger, Mönch & Jungfrau (the big three), Lauterbrunnen Valley, Mürren, Schilthorn, Interlaken, Lake Thun, Grindelwald First. Fill your memory card! Short enough to skip if energy is low — you're not missing a huge amount if you go straight to Lieselotte instead.\n\n🐄 Cow Playground (Sennenspielplatz) — one of the best in the region! 8.5m high giant cow slide (slide out its rear end!), bowling alley, trampolines, climbing structures, swings, seesaw. Kids AND adults love it.\n\n🍽️ Männlichen Mountain Guest House — self-service and full-service restaurants. Seven different spots to eat inside and out. Reserve ahead if sit-down in peak season. Can be windy and chilly at 2,343m so bring layers.\n\n⭐ HEADLINE ACTIVITY — LIESELOTTE TRAIL (Lieselotteweg): Themed downhill family adventure trail from Männlichen to Holenstein (intermediate gondola stop). Named after a real cow, Lieselotte, who travelled from Germany to the mountains. 3.5km, allow a full 2–2.5 hours at family pace — NOT suitable for strollers, wear sturdy shoes.\n\n🎯 13 adventure stations along the way: blow an alphorn, ring cowbells, play with chickens, ride a zip line, climb a replica Eiger North Face wall, sit on a cow, hunt for mountain crystals, and more. Pick up a trail map at the start — kids punch/stamp it at each station and get a small prize at the end!\n\n🧺 Two picnic/BBQ spots along the route — bring lunch from your Coop shop and eat partway down with the views.\n\n🌲 At Holenstein: connects to the Treetop Path (4 viewing platforms + a slide) if energy allows, otherwise straight onto the gondola back to Grindelwald Terminal.\n\n🏔️ ALTERNATIVE: Panorama Trail — 1hr 15min gentle downhill on wide gravel to Kleine Scheidegg instead of Holenstein. Sweeping Eiger/Mönch/Jungfrau views the entire way. Restaurant Grindelwaldblick with fort stairs + Swiss flag photo spot, small playground. From Kleine Scheidegg: train down to Grindelwald OR train to Wengen. Good option if you fancy a change from Lieselotte, but Lieselotte is the better pick for younger kids given the activity stations.",
-        tags: ["viewpoint", "hike", "playground"],
-      },
-      {
-        time: "PM",
-        title: "Down to Lauterbrunnen + valley bike ride",
-        location: "Männlichen → Lauterbrunnen → Stechelberg",
-        notes: "Take the gondola down the Lauterbrunnen side of Männlichen to Wengen, then WAB train down to Lauterbrunnen (~25 min total).\n\n🚲 Hire bikes in Lauterbrunnen village from Imboden Bike (near station, discount with Lauterbrunnen guest card). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Cycle all the way to the back for the full experience.\n\n💧 Staubbach Falls — 300m waterfall visible from the village. Can walk behind it (May–Oct) but honestly the best view is from the bottom.\n\n🌭 Betty's Corn Dogs — unexpected gem in the village! Choose your filling (local sausage), covering (classic panko), and load up on sauces. Kids will love this.\n\n🧀 Farm fridges AND vending machines along the pedestrian path past Staubbach Falls — self-service honesty fridges with Swiss cheese, sausage, eggs, yogurt, butter, syrup, jam, and handmade crafts. Some are actual vending machines — pop in coins, enter a number. Look out for local caramel treats (taste like buttery sugar cookies) and fruit syrups (dilute with water — NOT a drink on its own!). Perfect picnic supplies!\n\n🥛 Milk vending machine — fresh from the cows in the field next to it! Pop in coins, fill a cup. Warning: it's probably unpasteurised, and it's so good you'll never want supermarket milk again.\n\n🎯 I Spy game for the kids — there's a Swiss flag hidden in a small cave high up on the cliff face on the Wengen side of the valley. Can you spot it from the village?\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — 20,000L/sec, completely rain-proof, CHF 14/adult, CHF 7/child). Children under 4 not allowed.\n\n🛝 Small playground in Lauterbrunnen village near the station — good for a break before the bike ride.",
-        tags: ["cycling", "waterfall"],
-      },
-      {
-        time: "EVE",
-        title: "Return bikes & head back to Grindelwald",
-        location: "Lauterbrunnen → Grindelwald",
-        notes: "Return bikes to Imboden. Before catching the train:\n\n☕ Airtime Café Bakery — great patio for people-watching. Famous for their brownies, plus smoothies, fresh juices, veggie pies, sandwiches. Try a Staubbach beer — hyper-local craft beer, so local you can't find info about it online!\n\n🚂 Lauterbrunnen → Zweilütschinen → Grindelwald: BOB train, ~25 min",
-        tags: ["train"],
-      },
-    ],
-  },
-  {
-    id: "d5",
-    date: "Wed 26 Aug 2026",
-    base: "Grindelwald",
     title: "Jungfraujoch (Top of Europe)",
     location: "Grindelwald Terminal / Jungfraujoch",
     tags: ["bucket list", "mountains", "viewpoint", "snow"],
@@ -424,6 +316,114 @@ const DEFAULT_ITINERARY = [
         location: "Grindelwald",
         notes: "Take it easy — it's been a big altitude day at 3,454m (about 3× higher than Ben Nevis). Kids may be tired from the altitude and all the snow play.\n\n🍕 Quiet dinner in Grindelwald village. Suggestion: order in or eat at the apartment if energy is low.",
         tags: ["dinner"],
+      },
+    ],
+  },
+  {
+    id: "d4",
+    date: "Tue 25 Aug 2026",
+    base: "Grindelwald",
+    title: "Männlichen — Lieselotte Cow Trail + Lauterbrunnen Valley",
+    location: "Männlichen → Lauterbrunnen",
+    tags: ["mountains", "viewpoint", "waterfall", "cycling"],
+    mapLocation: "Männlichen, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Jungfrau_panorama_from_Mannlichen_(10955538175).jpg",
+    items: [
+      {
+        time: "AM",
+        title: "Grindelwald Terminal → Männlichen",
+        location: "Grindelwald Terminal → Männlichen",
+        notes: "🚶 Walk from apartment → Grindelwald Terminal: ~10 min\n🚠 Grindelwald Terminal → Männlichen gondola: ~19 min — one of the world's longest gondolas at 6km\n\n📅 Book in advance at jungfrau.ch | Go early for the clearest mountain views\n\n💡 ALTERNATIVE ROUTE via Wengen: Train to Lauterbrunnen → WAB train to Wengen → cable car to Männlichen. Slightly longer BUT you can do the Royal Ride — ride ON TOP of the Wengen cable car in the open air for just CHF 5! 5-minute ride with wind in your hair. Kids will absolutely love this.\n\n🌙 AFTER 4PM DISCOUNT: If going up from Wengen after 4pm, cable car is half price — just CHF 13 with Half Fare Card! Last lift down ~5:30pm. Perfect for a sunset visit.\n\n🎶 CHECK EVENT CALENDAR:\n• Every Tuesday July/Aug — Evening BBQ on the mountain with sunset views! Meats, veggies, potatoes, salad.\n• Late August — Jazz Brunch with hours of live music + bottomless buffet. Check dates — may fall during your trip (22-30 Aug)!\n• Check mannlichen.ch for exact dates.",
+        tags: ["cable car", "mountains"],
+      },
+      {
+        time: "MID",
+        title: "Männlichen: Lieselotte Trail (priority) + Royal Walk + Cow Playground",
+        location: "Männlichen (2,343m)",
+        notes: "⭐ PRIORITY ACTIVITY — LIESELOTTE TRAIL (Lieselotteweg): Themed downhill family adventure trail from Männlichen to Holenstein. Named after Lieselotte, a famous cow on her first adventure in the Swiss mountains. Official info: maennlichen.ch/en/summer/experiences/lieselotte-trail.html\n\n📏 DISTANCE & TIME: 3.5km (~2.1 miles), allow a full 2–2.5 hours at family pace (kids will want to stop at every station!). Primarily downhill on gravel paths. NOT suitable for strollers/prams due to some rougher, steep sections — a child carrier backpack is recommended for toddlers. Wear sturdy shoes.\n\n🗺️ THE ADVENTURE MAP: Pick up a free activity map ('passport') at the Männlichen cable car station before you start.\n\n🎯 13 interactive stations along the way, including: blow a real alphorn, marmot tower, long jump challenge, ring cowbells, play with chickens, ride a zip line, climb a replica Eiger North Face wall, sit on a cow, hunt for mountain crystals, and more.\n\n🧩 THE PUZZLE & PRIZE: Each station has a special hole-puncher. Kids punch their map at every stop to collect letters that spell out a secret solution word.\n\n🎁 CLAIMING THE GIFT: Present the completed map at the Grindelwald Terminal ticket counter OR Vincenz Bakery in Wengen to claim a small prize.\n\n🧺 Two picnic/BBQ spots along the route — bring lunch from your Coop shop and eat partway down with the views.\n\n🏁 WHERE YOU END UP: Holenstein — the midway cable car station on the Grindelwald Terminal ↔ Männlichen gondola line.\n\n🌲 At Holenstein: Holzwurm Wood Playground + a Treetop Path with climbing structures — a nice reward for finishing the walk! Add ~20-30 min if energy allows.\n\n🚠 GETTING HOME FROM HOLENSTEIN: Hop on the gondola down to Grindelwald Terminal — ~8 min ride. Then it's a ~10 min walk back to Alpenglück. Total ~20 min door to door from Holenstein.\n\n🏔️ Before you start the trail — Royal Walk to the summit crown (~20-30 min each way, there-and-back). Starts at the 'King's Gate' with 7 themed info points along the way. At the crown: labelled viewing panels naming every peak — Eiger, Mönch & Jungfrau (the big three), Lauterbrunnen Valley, Mürren, Schilthorn, Interlaken, Lake Thun, Grindelwald First. Fill your memory card! Short enough to skip if energy is low — Lieselotte is the priority today.\n\n🐄 Cow Playground (Sennenspielplatz) — right by the top station if you want a play break before starting the trail. 8.5m high giant cow slide (slide out its rear end!), bowling alley, trampolines, climbing structures, swings, seesaw.\n\n🍽️ Männlichen Mountain Guest House — self-service and full-service restaurants at the top if you'd rather eat before heading down. Seven different spots to eat inside and out. Can be windy and chilly at 2,343m so bring layers.\n\n🏔️ ALTERNATIVE (if not doing Lieselotte): Panorama Trail — 1hr 15min gentle downhill on wide gravel to Kleine Scheidegg instead. Sweeping Eiger/Mönch/Jungfrau views the entire way. Restaurant Grindelwaldblick with fort stairs + Swiss flag photo spot, small playground. From Kleine Scheidegg: train down to Grindelwald (~35 min) OR train to Wengen.",
+        tags: ["viewpoint", "hike", "playground"],
+      },
+      {
+        time: "PM",
+        title: "Down to Lauterbrunnen + valley bike ride",
+        location: "Männlichen → Lauterbrunnen → Stechelberg",
+        notes: "Take the gondola down the Lauterbrunnen side of Männlichen to Wengen, then WAB train down to Lauterbrunnen (~25 min total).\n\n🚲 Hire bikes in Lauterbrunnen village from Imboden Bike (near station, discount with Lauterbrunnen guest card). Completely flat 9km cycle to Stechelberg and back with 72 waterfalls in the cliff walls around you.\n\n⚠️ Don't stop at Staubbach Falls and turn around — the most beautiful part of the valley is further in. Cycle all the way to the back for the full experience.\n\n💧 Staubbach Falls — 300m waterfall visible from the village. Can walk behind it (May–Oct) but honestly the best view is from the bottom.\n\n🌭 Betty's Corn Dogs — unexpected gem in the village! Choose your filling (local sausage), covering (classic panko), and load up on sauces. Kids will love this.\n\n🧀 Farm fridges AND vending machines along the pedestrian path past Staubbach Falls — self-service honesty fridges with Swiss cheese, sausage, eggs, yogurt, butter, syrup, jam, and handmade crafts. Some are actual vending machines — pop in coins, enter a number. Look out for local caramel treats (taste like buttery sugar cookies) and fruit syrups (dilute with water — NOT a drink on its own!). Perfect picnic supplies!\n\n🥛 Milk vending machine — fresh from the cows in the field next to it! Pop in coins, fill a cup. Warning: it's probably unpasteurised, and it's so good you'll never want supermarket milk again.\n\n🎯 I Spy game for the kids — there's a Swiss flag hidden in a small cave high up on the cliff face on the Wengen side of the valley. Can you spot it from the village?\n\nOptional: Trümmelbach Falls (10 glacial waterfalls inside the mountain — 20,000L/sec, completely rain-proof, CHF 14/adult, CHF 7/child). Children under 4 not allowed.\n\n🛝 Small playground in Lauterbrunnen village near the station — good for a break before the bike ride.",
+        tags: ["cycling", "waterfall"],
+      },
+      {
+        time: "EVE",
+        title: "Return bikes & head back to Grindelwald",
+        location: "Lauterbrunnen → Grindelwald",
+        notes: "Return bikes to Imboden. Before catching the train:\n\n☕ Airtime Café Bakery — great patio for people-watching. Famous for their brownies, plus smoothies, fresh juices, veggie pies, sandwiches. Try a Staubbach beer — hyper-local craft beer, so local you can't find info about it online!\n\n🚂 Lauterbrunnen → Zweilütschinen → Grindelwald: BOB train, ~25 min",
+        tags: ["train"],
+      },
+    ],
+  },
+  {
+    id: "d5",
+    date: "Wed 26 Aug 2026",
+    base: "Grindelwald",
+    title: "🎬 Schilthorn → Birg → Mürren → Gimmelwald (start high, descend all day)",
+    location: "Stechelberg → Schilthorn → Mürren → Gimmelwald",
+    tags: ["mountains", "viewpoint", "cable car", "playground", "village", "history"],
+    mapLocation: "Schilthorn, Switzerland",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Piz_Gloria_Bond_World_007.jpg/1280px-Piz_Gloria_Bond_World_007.jpg",
+    items: [
+      {
+        time: "8:15 AM",
+        title: "Travel to Schilthorn",
+        location: "Grindelwald → Lauterbrunnen → Stechelberg",
+        notes: "🏔️ TODAY'S ROUTE: Start at the top (2,970m) and work your way DOWN all day. The only uphill is the short Allmendhubel funicular which returns you to the same spot. Everything else is downhill or cable car — very family-friendly!\n\nSchilthorn (2,970m) → Birg Thrill Walk (2,677m) → Mürren village (1,650m) → Allmendhubel (1,934m, funicular up & back) → Mürren → walk down to Gimmelwald (1,380m) → cable car to Stechelberg (867m) → bus & train home.\n\n🚂 Walk to Grindelwald station (~10 min) → BOB train to Lauterbrunnen (~25 min) → PostBus to Stechelberg (~15 min) → cable car via Gimmelwald → Mürren → Birg → Schilthorn (~30 min).\n\nArrive Schilthorn (Piz Gloria) ~9:30 AM.\n\n⚠️ Book breakfast at Piz Gloria in advance at schilthorn.ch — summer slots fill up weeks ahead. Ask for a window table in the revolving restaurant.",
+        tags: ["train", "cable car"],
+      },
+      {
+        time: "9:30 AM",
+        title: "🎬 Piz Gloria — revolving breakfast (Bond World)",
+        location: "Schilthorn — Piz Gloria (2,970m)",
+        notes: "The revolving restaurant from James Bond's 'On Her Majesty's Secret Service' (1969). Full 360° rotation every ~45 min with views across 200 Alpine peaks — including the Matterhorn on a clear day.\n\n🍳 Full Swiss breakfast in the rotating room — unique experience the kids will never forget.\n\n🎬 Bond World 007 museum is included — photos in Bond costumes, film props, interactive exhibits.\n\n🚽 Don't skip the toilets while you're up here — trust us, just go and see for yourself!\n\n☁️ If cloud is low, views are limited — check the Schilthorn webcam the night before at schilthorn.swiss/en/pizgloria/Livecam",
+        tags: ["viewpoint", "history", "mountains"],
+      },
+      {
+        time: "11:00 AM",
+        title: "⚡ Birg Thrill Walk (free!)",
+        location: "Birg station (2,677m) — between Schilthorn & Mürren",
+        notes: "Get off at Birg on the way down from Schilthorn — don't skip this! The Thrill Walk is FREE and built into the cliff face.\n\n🌉 Cross a tightrope, walk on a glass floor looking straight down the cliff, and crawl through an open-air tunnel perched on the side of the mountain.\n\n⏱️ Takes ~20 min. Kids will love the glass floor — adults may find it terrifying!\n\n💡 Also great viewpoint of the tiny Grauseeli lake below.",
+        tags: ["viewpoint", "adventure"],
+      },
+      {
+        time: "11:45 AM",
+        title: "Descend to Mürren — explore car-free village",
+        location: "Birg → Mürren",
+        notes: "Cable car down to Mürren (~10 min from Birg). Mürren is one of Switzerland's highest and most scenic car-free villages — no roads, no cars, only mountain trains and footpaths.\n\n🏔️ Eiger, Mönch & Jungfrau fill the entire eastern horizon — one of the most dramatic mountain views in the Alps.\n\n🇨🇭 Walk Mürren's main street — Swiss flags, wooden chalets, flower boxes on every window. Take the UPPER road for fewer crowds.\n\n📸 Best viewpoints: 'the stump' (locals know it), train station terrace, and tennis court terrace.\n\n🍽️ Food options:\n• Café Liv — must-try: cranberry toasty (Brie + cranberry jam, owner's childhood recipe), apple walnut cake with cream cheese frosting & caramel, vanilla lemonade (perfect summer drink). Handbuilt interior — counter is one oak tree split open!\n• Stager Stübli — classic Swiss dishes, outdoor dining\n• Esther's Guesthouse — excellent ice cream\n• Mountain Hostel — homemade pizza\n• Intersport Coffee Bar — Belinda's specialty coffee inside a sports shop. Must-try: mountain cappuccino. Baby chinos for kids. Also great for hiking tips — 'where coffee meets community'\n\n🎒 Optional: Rent a LUDO TRAIL game backpack from the tourist office — 16 interactive game stations throughout the village. Perfect for keeping the kids exploring!\n\n🌧️ RAINY DAY BACKUP: Mürren Sportcenter has a swimming pool open in summer — worth knowing if the weather turns.",
+        tags: ["village", "viewpoint"],
+      },
+      {
+        time: "12:30 PM",
+        title: "🌸 Allmendhubel — flower playground & panorama",
+        location: "Mürren → Allmendhubel (1,934m)",
+        notes: "🚟 Short funicular ride above Mürren (~5 min, ~CHF 8 return, Half Fare Cards valid).\n\n🌸 Allmendhubel Flower Park — wildflower meadows with wooden boardwalks, alpine botanical features, and cowbells ringing across the hillside. Best wildflower display in the Jungfrau region in August.\n\n🛝 Playground at the top — this is one of the BEST in the region! Zip line, water maze, marmot tunnels, climbing structures, slides, and open meadows for kids to run in with Eiger views behind them.\n\n🧺 Perfect picnic spot — grab supplies from Coop Terminal the morning before. Landjäger sausages, Zopf bread, mountain cheese (try Gruyère mild or Emmental for the kids) and Rivella.",
+        tags: ["playground", "viewpoint", "mountains"],
+      },
+      {
+        time: "2:00 PM",
+        title: "🥾 Hike down to Gimmelwald",
+        location: "Mürren → Gimmelwald",
+        notes: "45-minute walk down from Mürren through alpine meadows — cowbells, wildflowers, and jaw-dropping views of the Lauterbrunnen valley below.\n\n🌸 The path passes through flower-filled meadows — kids can spot marmots and cows up close. Easy gradient, no scrambling.\n\n🏘️ Arrive Gimmelwald — population ~130, one of Switzerland's smallest inhabited villages. Completely off the tourist trail. Wooden farmhouses, barn smells, actual farm life.",
+        tags: ["hike", "mountains"],
+      },
+      {
+        time: "3:00 PM",
+        title: "🏪 Gimmelwald — honesty shop, farm & Rugenbräu Dunkel",
+        location: "Gimmelwald village",
+        notes: "🏪 World's first honesty shop — unlocked fridge and shelves of local produce. Pay what you think is fair, leave money in the box. Local cheese, eggs, dried meats, milk.\n\n🐄 Farm animals right in the village — cows, chickens, working Alpine farms that have operated for centuries.\n\n🛝 You'll pass a playground with a crazy fast slide on the way through — let the kids burn off energy while you take in the viewpoint benches above Gimmelwald overlooking the valley.\n\n🍺 Pension Gimmelwald — ask for a Schwarz Monk beer (local dark brew) or Rugenbräu Dunkel. The bar is open to non-guests — hikers, locals, wooden benches, cowbell on the wall.\n\n💡 Kids can have a Rivella (Swiss soft drink) while you enjoy the beer.\n\n🛍️ Souvenir shopping: Exile on Main Street and Adleggen Sport in Mürren, or the honesty shop and farm fridges in Gimmelwald.",
+        tags: ["village", "history"],
+      },
+      {
+        time: "4:30 PM",
+        title: "Return to Grindelwald",
+        location: "Gimmelwald → Stechelberg → Lauterbrunnen → Grindelwald",
+        notes: "🚠 Cable car from Gimmelwald down to Stechelberg (~5 min)\n🚌 PostBus Stechelberg → Lauterbrunnen (~15 min)\n🚂 BOB train Lauterbrunnen → Grindelwald (~25 min)\n\nBack in Grindelwald by ~6:15 PM. Dinner in the village — it's been a full day!",
+        tags: ["train"],
       },
     ],
   },
@@ -655,11 +655,16 @@ const DEFAULT_LEARNING_ITEMS = [
   { id: "lc5", section: "culture", icon: "🏅", title: "Swiss Watchmaking", description: "Switzerland is famous for making precise watches. Swiss watchmakers have been perfecting their craft for over 300 years!" },
 
   // ⛰️ Mountains & Landmarks
-  { id: "ll1", section: "landmarks", icon: "⛰️", title: "The Eiger (3,970m)", description: "One of the most famous mountains in the Alps. The north face is known as one of the most dangerous climbs in the world. You'll see it from Kleine Scheidegg!" },
+  { id: "ll1", section: "landmarks", icon: "⛰️", title: "The Eiger (3,970m)", description: "One of the most famous mountains in the Alps. The North Face is nearly vertical (1,800m) and historically nicknamed the 'Mordwand' (Murder Wall) — one of the most dangerous climbs in the world. You'll see it up close from Kleine Scheidegg and Grindelwald village." },
+  { id: "ll1b", section: "landmarks", icon: "⛰️", title: "The Mönch (4,107m)", description: "'The Monk' — sits between the Eiger and the Jungfrau. Local legend says the Mönch shields the Jungfrau (the Maiden) from the Eiger (the Ogre). A proper 4,000m peak, less dramatic in shape than its neighbours but just as tall." },
   { id: "ll2", section: "landmarks", icon: "⛰️", title: "The Matterhorn (4,478m)", description: "The most iconic mountain in Switzerland with a distinctive pyramid shape. It's visible from many places in the Valais region and is super recognizable!" },
-  { id: "ll3", section: "landmarks", icon: "🏔️", title: "The Jungfrau (4,158m)", description: "The 'Maiden of the Eiger.' The Jungfrau Railway takes you to the summit station at 3,454m. You can see across 40km on clear days!" },
+  { id: "ll3", section: "landmarks", icon: "🏔️", title: "The Jungfrau (4,158m)", description: "'The Maiden' — the highest of the Big Three and the one your Jungfraujoch train is named after. The summit station (3,454m) sits on the saddle between Mönch and Jungfrau, not the actual peak. You can see across 40km on clear days!" },
+  { id: "ll3b", section: "landmarks", icon: "🎭", title: "The Legend of the Big Three", description: "A fun story to tell the kids: the Eiger (the Ogre) tries to reach the Jungfrau (the Maiden), but the Mönch (the Monk) stands between them, protecting her. Look for all three lined up together from the Männlichen crown viewpoint!" },
+  { id: "ll3c", section: "landmarks", icon: "🏔️", title: "The Wetterhorn (3,692m)", description: "Looms right over Grindelwald village itself — this is the peak Café 3692 is named after (its exact height in metres!). You'll see it from the village every single day of your trip." },
+  { id: "ll3d", section: "landmarks", icon: "🏔️", title: "The Schreckhorn (4,078m)", description: "Visible from Bachalpsee and Grindelwald First — a proper 4,000m peak, less famous than the Big Three but equally dramatic, especially reflected in the lake." },
+  { id: "ll3e", section: "landmarks", icon: "🎬", title: "The Schilthorn (2,970m)", description: "Where your Piz Gloria breakfast is! 360° views of 200 peaks including the Matterhorn on a clear day. From here you look back across the valley at the Eiger/Mönch/Jungfrau trio from a completely different angle than Männlichen." },
   { id: "ll4", section: "landmarks", icon: "💧", title: "Waterfalls of Lauterbrunnen", description: "There are 72 waterfalls in Lauterbrunnen Valley! The water comes from melting snow and glaciers high in the mountains. Staubbach Falls drops 300 meters!" },
-  { id: "ll5", section: "landmarks", icon: "💎", title: "Aletsch Glacier", description: "Europe's longest glacier at 23 kilometers (14 miles) long and over 900 meters (3,000 feet) thick! It's visible from Jungfraujoch and is slowly melting." },
+  { id: "ll5", section: "landmarks", icon: "💎", title: "Aletsch Glacier", description: "Europe's longest glacier at 23 kilometers (14 miles) long and over 900 meters (3,000 feet) thick! It's fed by the ice fields around Mönch and Jungfrau, visible from Jungfraujoch, and is slowly melting." },
 
   // 🎉 Fun Facts for Kids
   { id: "lf9", section: "fun", icon: "🐄", title: "Cows Wear Bells!", description: "Swiss cows in the Alps wear big brass bells called 'Kuhglocken' so farmers can find them in the mountains. You might hear them jingling on your hike!" },
@@ -889,9 +894,9 @@ function groupHourlyByDay(hourly) {
 const DAY_FOOD_LOCATIONS = {
   d1: "Grindelwald",
   d2: "Grindelwald",
-  d3: "Lauterbrunnen",
+  d3: "Grindelwald",
   d4: "Grindelwald",
-  d5: "Wengen",
+  d5: "Lauterbrunnen",
   d6: "Interlaken",
   d7: "Grindelwald",
   d8: "Zurich",
@@ -934,7 +939,7 @@ const DEFAULT_VENUES = [
   { id: "v27", name: "Ristorante Pizzeria Da Salvi",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Friendly Italian restaurant in the heart of Grindelwald. Authentic wood-fired pizza, pasta and comfort dishes. Great family option on a tired evening — kids love the pizza. Dorfstrasse 189." },
   { id: "v28", name: "Central Hotel Wolter Restaurant",  type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.3, notes: "Classic Swiss restaurant near the train station. Famous for rösti, fondue and traditional alpine dishes. Great dessert menu. Reliable, central and reasonably priced. Dorfstrasse 93." },
   { id: "v29", name: "Ischboden Hütte ⭐ Host Pick",    type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.9, notes: "Myriam's recommendation! Mountain hut with farm-to-table food from their own farm. Famous for homemade fruit pies, Spätzle, milkshakes, and a drink called 'Rote Nase'. Cosy interior + epic terrace with valley views. Alpvogelpark (bird park with owls) right next door — kids will love it. CHF 10–20pp. Bus 121 to end of line, then 30 min gentle walk uphill. Open Wed–Sun 10am–5pm only. Perfect for flex day or afternoon outing." },
-  { id: "v31", name: "Café 3692 ⭐ Host Pick",           type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "coffee"], rating: 4.8, notes: "Myriam's recommendation! #7 of 74 restaurants in Grindelwald. Named after the 3,692m Wetterhorn which you look directly at from the 180° panorama terrace. Run by Bruno (wood artist) and Myriam — the café doubles as a showroom for Bruno's handcrafted carpentry. Mining cart from the Jungfrau tunnel construction doubles as an outdoor BBQ on sunny days! Must-try: Käse Täschli (cheese toast), Rösti with salmon, incredible homemade cakes (blueberry crumble, raspberry cheesecake). Has a kids area inside. Terrassenweg 61, uphill walk from village or short bus. Open Fri–Sun ONLY (Fri/Sat 8:30am–11pm, Sun 8:30am–6pm). Book ahead!" },
+  { id: "v31", name: "Café 3692 ⭐ Host Pick",           type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "coffee"], rating: 4.8, notes: "Myriam's recommendation! #7 of 74 restaurants in Grindelwald. Named after the 3,692m Wetterhorn which you look directly at from the 180° panorama terrace. 💍 Sweet history: Bruno and Myriam used to run the Glecksteinhütte mountain hut together — Bruno proposed to Myriam on the actual summit of the Wetterhorn, which is why the café is named after its exact height! Bruno is a wood artist and built the whole interior himself — the café doubles as a showroom for his handcrafted carpentry. Mining cart from the Jungfrau tunnel construction doubles as an outdoor BBQ on sunny days! Must-try: Käse Täschli (cheese toast), Rösti with salmon, incredible homemade cakes (blueberry crumble, raspberry cheesecake). Has a kids area inside. Terrassenweg 61, uphill walk from village or short bus. Open Fri–Sun ONLY (Fri/Sat 8:30am–11pm, Sun 8:30am–6pm). Book ahead!" },
   // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
   { id: "v2b", name: "Eiger Bean ☕ Specialty Roaster",   type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "coffee"],                    rating: 4.5, notes: "Specialty coffee roaster in Grindelwald — Marco roasts beans in-house. Best coffee with direct Eiger views. Must-try: Mountain cappuccino, cold brew with Swiss tonic water, coffee bonbon (sweet espresso dessert with condensed milk — even non-coffee drinkers love this!). For kids: baby chinos. For non-coffee lovers: cascara (coffee cherry tea — caffeine without coffee taste). Only uses local Swiss cow's milk and oat milk. Light modern roasts, not your typical Swiss coffee." },
@@ -960,7 +965,7 @@ const DEFAULT_VENUES = [
   { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
   { id: "v16", name: "Café Restaurant Waldschlucht",     type: "cafe",       location: "Wengen",        meals: ["breakfast", "coffee", "lunch"],            notes: "Warm and welcoming. Known for flavourful soups and cosy ambiance. Great after a hike." },
   // Interlaken
-  { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.6, notes: "Iconic Interlaken patisserie & café since 1818. Famous for chocolate fondue with strawberries — arguably the best in the region. Mountain views from the terrace. A special treat for the kids." },
+  { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.6, notes: "Iconic Interlaken patisserie & café since 1818 — over 200 years old, older than the first ascent of the Eiger. Famous for chocolate fondue with strawberries — arguably the best in the region. Mountain views from the terrace. A special treat for the kids." },
   { id: "v7b", name: "Aare Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.4, notes: "Relaxed café beside the Aare river walk. Perfect stop for a quiet coffee or lunch away from the busy main street. Great for families." },
   { id: "v17", name: "Velo Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            notes: "Trendy local favourite. Italian espresso, homemade granola with local yogurt, popular vegan options." },
   { id: "v18", name: "Bäckerei Steininger",              type: "bakery",     location: "Interlaken",    meals: ["breakfast", "coffee"],                    notes: "Fresh-baked daily. Excellent quiche and pastries. Short walk from central Interlaken." },
@@ -970,12 +975,12 @@ const DEFAULT_VENUES = [
   { id: "v34", name: "Aarberg Hotel & Café ☕",          type: "cafe",       location: "Unterseen",     meals: ["breakfast", "lunch", "coffee"],            rating: 4.6, notes: "150-year-old building with riverside terrace and mountain views in Unterseen (5 min walk from Interlaken). Everything made from scratch. Must-try: eggs benedict, French toast, the brookie (brownie-cookie hybrid). For non-coffee drinkers: Apfelschorle (carbonated apple juice — very Swiss). Perfect Sunday brunch vibes. 11 staff from 10 nationalities. Paragliders land nearby and join you for coffee!" },
   { id: "v35", name: "Spatz 🍷 Evening Aperitivo",      type: "restaurant", location: "Unterseen",     meals: ["lunch", "dinner", "coffee"],               rating: 4.7, notes: "Italian-inspired café/bar right on the river in Unterseen. Owner Yan drives to Italy to source ingredients. Must-try: homemade focaccia with mortadella (baked fresh daily — incredible), meat & cheese aperitivo platter, small-production Swiss wines you can't get elsewhere. Perfect for a special evening aperitivo — focaccia, wine, river terrace at sunset. Also does great morning cappuccinos." },
   // Zurich
-  { id: "v9",  name: "Café Sprüngli",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee", "lunch"],            notes: "On Paradeplatz since 1836. World-famous for Luxemburgerli macarons and Swiss chocolate. Essential Zurich stop." },
-  { id: "v10", name: "Zeughauskeller",                   type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner", "drinks"],              notes: "Historic beer hall in a 15th-century armoury on Bahnhofstrasse. Rösti, Wiener Schnitzel, giant beers." },
-  { id: "v19", name: "Kronenhalle",                      type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner"],                        notes: "Legendary brasserie open since 1924. Walls hung with original Miró and Chagall. Signature Zürcher Geschnetzeltes." },
+  { id: "v9",  name: "Café Sprüngli",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee", "lunch"],            notes: "On Paradeplatz since 1836 — nearly 200 years on the same square, one of Zurich's most historic addresses. World-famous for Luxemburgerli macarons and Swiss chocolate. Essential Zurich stop." },
+  { id: "v10", name: "Zeughauskeller",                   type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner", "drinks"],              notes: "Historic beer hall inside a genuine 15th-century armoury on Bahnhofstrasse — you're drinking beer in a building that once stored weapons for the city. Rösti, Wiener Schnitzel, giant beers." },
+  { id: "v19", name: "Kronenhalle",                      type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner"],                        notes: "Legendary brasserie open since 1924. Walls hung with ORIGINAL artworks by Miró and Chagall — not prints, the real pieces, donated over the decades by artist regulars. Signature Zürcher Geschnetzeltes." },
   { id: "v20", name: "Boréal Coffee",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee"],                    notes: "Specialty ethically-sourced coffee and pastries. Popular with locals — two Zurich locations." },
   // Special Experiences
-  { id: "v33", name: "Piz Gloria Revolving Restaurant",  type: "restaurant", location: "Schilthorn",    meals: ["breakfast", "lunch", "dinner"],            rating: 4.5, notes: "🔫 James Bond filming location (007: On Her Majesty's Secret Service). Full 360° rotation every hour. Schilthorn revolving restaurant at 2,970m with views of 200+ peaks. Must book ahead in summer." },
+  { id: "v33", name: "Piz Gloria Revolving Restaurant",  type: "restaurant", location: "Schilthorn",    meals: ["breakfast", "lunch", "dinner"],            rating: 4.5, notes: "🔫 Built as the real filming location for James Bond's On Her Majesty's Secret Service (1969) — the revolving restaurant concept was genuinely novel for its time. Full 360° rotation every hour. Schilthorn revolving restaurant at 2,970m with views of 200+ peaks. Must book ahead in summer." },
 ];
 
 const MAP_PLACES = [
@@ -1241,7 +1246,7 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",           checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d4","d7","d8"] },
   { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d4","d7"] },
   { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d3","d4","d5","d6","d7"] },
-  { id: "q37", emoji: "🍺", text: "Try Rugenbräu Dunkel at Pension Gimmelwald",             cheer: "Prost! 🍺 The Jungfrau region's legendary dark beer since 1866!", checked: { k1: false, k2: false }, section: "food", days: ["d3"] },
+  { id: "q37", emoji: "🍺", text: "Try Rugenbräu Dunkel at Pension Gimmelwald",             cheer: "Prost! 🍺 The Jungfrau region's legendary dark beer since 1866!", checked: { k1: false, k2: false }, section: "food", days: ["d5"] },
   // 🚠 Epic Transport
   { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",                 checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6","d7"] },
   { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",          checked: { k1: false, k2: false }, section: "transport", days: ["d1","d4","d5","d6","d7","d8"], sound: "train" },
@@ -1250,10 +1255,10 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",                   checked: { k1: false, k2: false }, section: "transport", days: ["d4"], sound: "moo" },
   // 🏔️ Mountain Adventures
   { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                         checked: { k1: false, k2: false }, section: "mountain",  days: ["d4","d6","d7"], sound: "splash" },
-  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",              checked: { k1: false, k2: false }, section: "mountain",  days: ["d5"], sound: "sparkle" },
+  { id: "q6",  emoji: "❄️", text: "Touch snow even in summer",                             cheer: "Ice to meet you! ❄️ Ancient Swiss snow!",              checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "sparkle" },
   { id: "q8",  emoji: "🥾", text: "Walk a mountain trail",                                  cheer: "You're a mountain goat! 🐐 Sehr gut!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d3","d4","d5","d7"] },
-  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",            checked: { k1: false, k2: false }, section: "mountain",  days: ["d5"], sound: "fanfare" },
-  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d5"], sound: "fanfare" },
+  { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",            checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "fanfare" },
+  { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "fanfare" },
   { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",         checked: { k1: false, k2: false }, section: "mountain",  days: ["d4"], sound: "splash" },
   // 🌿 Nature Spotting
   { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",                  checked: { k1: false, k2: false }, section: "nature",    days: ["d2","d3","d4","d5"], sound: "moo" },
@@ -1383,7 +1388,7 @@ export default function SwitzerlandTravelAppReal() {
   const [ready, setReady] = useState(false);
   const [query, setQuery] = useState("");
   const [tagFilter, setTagFilter] = useState("all");
-  const [expandedDays, setExpandedDays] = useState(() => new Set(["d1", "d4", "d8"]));
+  const [expandedDays, setExpandedDays] = useState(() => new Set(["d1", "d3", "d8"]));
   const [packingItems, setPackingItems] = useState(DEFAULT_PACKING_ITEMS);
   const [packingReady, setPackingReady] = useState(false);
   const [expandedCategories, setExpandedCategories] = useState(
