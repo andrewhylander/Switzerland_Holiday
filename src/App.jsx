@@ -45,7 +45,10 @@ const STORAGE_KEYS = {
   quest: "swiss-trip-quest-v1",
   pretrip: "swiss-trip-pretrip-v1",
   parking: "swiss-trip-parking-v1",
+  itineraryOrder: "swiss-trip-itinerary-order-v1",
 };
+
+const MOVABLE_DAY_FIELDS = ["title", "location", "tags", "mapLocation", "image", "items", "highlight"];
 
 const DEFAULT_PRETRIP_CHECKLIST = [
   { id: "pt1", text: "✅ PURCHASED — 2× Half Fare Cards + 2× Family Cards via GetYourGuide app (£263.43 with code THETRAVELINGSWISS5). All 4 cards imported to Google Wallet. Free cancellation until 21 Aug.", done: true, link: "https://www.getyourguide.com" },
@@ -125,6 +128,7 @@ const DEFAULT_ITINERARY = [
     id: "d1",
     date: "Sat 22 Aug 2026",
     base: "Grindelwald",
+    locked: true, // travel day — fixed to flight times, can't be reordered
     title: "Dublin → Zurich → Grindelwald",
     location: "Zurich → Interlaken Ost → Grindelwald",
     tags: ["train"],
@@ -512,6 +516,7 @@ const DEFAULT_ITINERARY = [
     id: "d8",
     date: "Sat 29 Aug 2026",
     base: "Zurich Airport",
+    locked: true, // travel day — fixed checkout/transfer, can't be reordered
     title: "Checkout day: Free morning → afternoon travel to Zurich",
     location: "Grindelwald → Zurich Airport / Rümlang",
     tags: ["train"],
@@ -545,6 +550,7 @@ const DEFAULT_ITINERARY = [
     id: "d9",
     date: "Sun 30 Aug 2026",
     base: "Zurich Airport",
+    locked: true, // travel day — fixed to flight times, can't be reordered
     title: "Fly Home — EI0343 Zurich → Dublin 11:00 AM",
     location: "Zurich → Dublin",
     tags: [],
@@ -1429,6 +1435,8 @@ export default function SwitzerlandTravelAppReal() {
   const [parking, setParking]                   = useState({ ref: "", url: "" });
   const [transportFilter, setTransportFilter]   = useState("all");
   const [expandedMissions, setExpandedMissions] = useState(new Set());
+  const [itineraryOrder, setItineraryOrder]     = useState(() => DEFAULT_ITINERARY.map((d) => d.id));
+  const [itineraryReady, setItineraryReady]     = useState(false);
   const leafletContainerRef                   = useRef(null);
   const leafletInstanceRef                    = useRef(null);
   const leafletMarkersRef                     = useRef([]);
@@ -1511,6 +1519,20 @@ export default function SwitzerlandTravelAppReal() {
     window.localStorage.setItem(STORAGE_KEYS.pretrip, JSON.stringify(pretripChecklist));
     window.localStorage.setItem(STORAGE_KEYS.parking, JSON.stringify(parking));
   }, [pretripChecklist, parking, pretripReady]);
+
+  useEffect(() => {
+    const saved = readLocalStorage(STORAGE_KEYS.itineraryOrder, null);
+    const defaultIds = DEFAULT_ITINERARY.map((d) => d.id);
+    if (Array.isArray(saved) && saved.length === defaultIds.length && defaultIds.every((id) => saved.includes(id))) {
+      setItineraryOrder(saved);
+    }
+    setItineraryReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!itineraryReady || typeof window === "undefined") return;
+    window.localStorage.setItem(STORAGE_KEYS.itineraryOrder, JSON.stringify(itineraryOrder));
+  }, [itineraryOrder, itineraryReady]);
 
   useEffect(() => {
     if (activeTab !== "map" || mapViewMode !== "map") return;
@@ -1604,17 +1626,52 @@ export default function SwitzerlandTravelAppReal() {
       .catch(() => { setWeatherError("Could not load forecast. Check your connection."); setWeatherLoading(false); });
   }, [activeTab, weatherLocation]);
 
+  const contentById = useMemo(
+    () => Object.fromEntries(DEFAULT_ITINERARY.map((d) => [d.id, d])),
+    []
+  );
+
+  // The itinerary as actually displayed: each slot keeps its own id/date/base/locked
+  // (tied to real calendar dates, accommodation, flights) but can borrow another
+  // unlocked slot's activity content (title/location/tags/items/etc) when reordered.
+  const itinerary = useMemo(() => {
+    return DEFAULT_ITINERARY.map((slot, i) => {
+      const contentId = itineraryOrder[i] || slot.id;
+      const content = contentById[contentId] || slot;
+      const merged = { ...slot };
+      MOVABLE_DAY_FIELDS.forEach((f) => { merged[f] = content[f]; });
+      merged.swapped = contentId !== slot.id;
+      return merged;
+    });
+  }, [itineraryOrder, contentById]);
+
+  const isSlotLocked = (idx) => !!DEFAULT_ITINERARY[idx]?.locked;
+
+  const swapDaySlots = (i, j) => {
+    setItineraryOrder((prev) => {
+      const next = [...prev];
+      [next[i], next[j]] = [next[j], next[i]];
+      return next;
+    });
+  };
+
+  const resetItineraryOrder = () => {
+    setItineraryOrder(DEFAULT_ITINERARY.map((d) => d.id));
+  };
+
   const FILTER_TAGS = ["boat","bucket list","cable car","cycling","hike","history","lake","mountains","playground","snow","sunset","train","viewpoint","village","waterfall"];
   const allTags = useMemo(() => {
-    const dayTags = DEFAULT_ITINERARY.flatMap((d) => d.tags || []);
-    const itemTags = DEFAULT_ITINERARY.flatMap((d) => d.items.flatMap((i) => i.tags || []));
+    const dayTags = itinerary.flatMap((d) => d.tags || []);
+    const itemTags = itinerary.flatMap((d) => d.items.flatMap((i) => i.tags || []));
     const found = uniq([...dayTags, ...itemTags]);
     return ["all", ...FILTER_TAGS.filter((t) => found.includes(t))];
-  }, []);
+  }, [itinerary]);
+
+  const canReorder = itineraryReady && !query.trim() && tagFilter === "all";
 
   const filteredItinerary = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return DEFAULT_ITINERARY.filter((day) => {
+    return itinerary.filter((day) => {
       const hay = [
         day.date,
         day.base,
@@ -1633,7 +1690,7 @@ export default function SwitzerlandTravelAppReal() {
         day.items.some((item) => (item.tags || []).includes(tagFilter));
       return matchesQuery && matchesTag;
     });
-  }, [query, tagFilter]);
+  }, [itinerary, query, tagFilter]);
 
   const totals = useMemo(() => {
     const income = sumAmounts(budget.income);
@@ -1953,11 +2010,29 @@ export default function SwitzerlandTravelAppReal() {
                     </Chip>
                   ))}
                 </div>
+
+                {canReorder && (
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, fontSize: 12, color: "#64748b" }}>
+                    <span>↕️ Use the arrows to swap activities between days — travel/flight days stay fixed</span>
+                    {itineraryOrder.some((id, i) => id !== DEFAULT_ITINERARY[i].id) && (
+                      <button
+                        type="button"
+                        onClick={resetItineraryOrder}
+                        style={{ background: "transparent", border: "none", color: "#1d4ed8", fontWeight: 700, cursor: "pointer", fontSize: 12, whiteSpace: "nowrap" }}
+                      >
+                        Reset order
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
 
               <div style={{ display: "grid", gap: 12 }}>
-                {filteredItinerary.map((day) => {
+                {filteredItinerary.map((day, dayIdx) => {
                   const open = expandedDays.has(day.id);
+                  const locked = isSlotLocked(dayIdx);
+                  const canMoveUp = canReorder && !locked && dayIdx > 0 && !isSlotLocked(dayIdx - 1);
+                  const canMoveDown = canReorder && !locked && dayIdx < filteredItinerary.length - 1 && !isSlotLocked(dayIdx + 1);
                   return (
                     <Card
                       key={day.id}
@@ -1992,10 +2067,48 @@ export default function SwitzerlandTravelAppReal() {
                               <SmallBadge color="green">
                                 🏠 Base: {day.base}
                               </SmallBadge>
+                              {day.swapped && <SmallBadge color="amber">🔀 moved</SmallBadge>}
                             </div>
                             <div style={{ color: "#475569", fontSize: 14 }}>{day.location}</div>
                           </div>
                           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                            {canReorder && !locked && (
+                              <div
+                                onClick={(e) => e.stopPropagation()}
+                                style={{ display: "flex", flexDirection: "column", gap: 2 }}
+                              >
+                                <button
+                                  type="button"
+                                  disabled={!canMoveUp}
+                                  onClick={() => swapDaySlots(dayIdx, dayIdx - 1)}
+                                  title="Swap with the day before"
+                                  style={{
+                                    width: 26, height: 22, display: "flex", alignItems: "center", justifyContent: "center",
+                                    borderRadius: 6, border: "1px solid #dbeafe", padding: 0,
+                                    background: canMoveUp ? "#eff6ff" : "#f1f5f9",
+                                    color: canMoveUp ? "#1d4ed8" : "#cbd5e1",
+                                    cursor: canMoveUp ? "pointer" : "default",
+                                  }}
+                                >
+                                  <ChevronUp size={14} />
+                                </button>
+                                <button
+                                  type="button"
+                                  disabled={!canMoveDown}
+                                  onClick={() => swapDaySlots(dayIdx, dayIdx + 1)}
+                                  title="Swap with the day after"
+                                  style={{
+                                    width: 26, height: 22, display: "flex", alignItems: "center", justifyContent: "center",
+                                    borderRadius: 6, border: "1px solid #dbeafe", padding: 0,
+                                    background: canMoveDown ? "#eff6ff" : "#f1f5f9",
+                                    color: canMoveDown ? "#1d4ed8" : "#cbd5e1",
+                                    cursor: canMoveDown ? "pointer" : "default",
+                                  }}
+                                >
+                                  <ChevronDown size={14} />
+                                </button>
+                              </div>
+                            )}
                             <a
                               href={mapHref(day.mapLocation || day.location || day.base)}
                               target="_blank"
@@ -3106,7 +3219,7 @@ export default function SwitzerlandTravelAppReal() {
           const starsFilled = Math.round((kidDoneCount / questItems.length) * 10) || 0;
 
           const todayDayId = getTodayDayId();
-          const todayDay   = todayDayId ? DEFAULT_ITINERARY.find((d) => d.id === todayDayId) : null;
+          const todayDay   = todayDayId ? itinerary.find((d) => d.id === todayDayId) : null;
           const daysUntil  = getDaysUntilTrip();
           const tripOver   = new Date() > TRIP_END;
           const todayMissions = todayDay
