@@ -1276,13 +1276,13 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q23", emoji: "🥨", text: "Try a freshly baked Swiss pretzel or Gipfeli",          cheer: "Gipfeli power! 🥨 Swiss breakfast champion!",          checked: { k1: false, k2: false }, section: "food",      days: ["d1","d2","d3"] },
   { id: "q31", emoji: "🥔", text: "Try Swiss rösti",                                        cheer: "Rösti royalty! 🥔 The Swiss national dish!",           checked: { k1: false, k2: false }, section: "food",      days: ["d2","d3","d4","d7","d8"] },
   { id: "q29", emoji: "🫐", text: "Eat fresh alpine berries on a hike",                     cheer: "Nature's Swiss snack! 🫐 Picked fresh from the Alps!", checked: { k1: false, k2: false }, section: "food",      days: ["d4","d5","d7"] },
-  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d4","d5","d6","d7"] },
+  { id: "q28", emoji: "💧", text: "Fill a water bottle from a mountain fountain",            cheer: "Freshest water in the world! 💧 Swiss glacier spring!", checked: { k1: false, k2: false }, section: "food",      days: ["d4","d5","d6","d7"], sound: "splash" },
   { id: "q37", emoji: "🍺", text: "Try Schwarz Mönch beer at Pension Gimmelwald",           cheer: "Prost! 🍺 Rated the world's #1 dark lager on Untappd 2018–2020 — brewed right here in Gimmelwald since 2014!", checked: { k1: false, k2: false }, section: "food", days: ["d5"] },
   // 🚠 Epic Transport
   { id: "q3",  emoji: "🚠", text: "Ride a cable car up a mountain",                         cheer: "Up, up and away! 🚠 Alpine explorer!",                 checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6","d7"] },
   { id: "q9",  emoji: "🚆", text: "Ride a mountain train",                                  cheer: "Swiss trains are never late! 🚆 All aboard!",          checked: { k1: false, k2: false }, section: "transport", days: ["d1","d3","d4","d5","d6","d7","d8"], sound: "train" },
   { id: "q12", emoji: "🚡", text: "Ride in a gondola",                                      cheer: "Flying over the Alps! 🚡 Toll!",                       checked: { k1: false, k2: false }, section: "transport", days: ["d2","d3","d4","d5","d6"] },
-  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",             checked: { k1: false, k2: false }, section: "transport", days: ["d6"] },
+  { id: "q24", emoji: "🚴", text: "Cycle a bike in Switzerland",                            cheer: "Pedal power! 🚴 Swiss roads are amazing!",             checked: { k1: false, k2: false }, section: "transport", days: ["d6"], sound: "bell" },
   { id: "q25", emoji: "🛝", text: "Ride the cow slide at Männlichen",                       cheer: "Moooo! Best slide in the Alps! 🐄🛝",                   checked: { k1: false, k2: false }, section: "transport", days: ["d4"], sound: "moo" },
   // 🏔️ Mountain Adventures
   { id: "q5",  emoji: "💧", text: "Stand beside a giant waterfall",                         cheer: "You're soaking it all in! 💧",                         checked: { k1: false, k2: false }, section: "mountain",  days: ["d6","d7"], sound: "splash" },
@@ -1291,19 +1291,21 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q11", emoji: "🏔️", text: "Walk on a glacier",                                     cheer: "You walked on ancient ice! 🏔️ Legendary!",            checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "fanfare" },
   { id: "q15", emoji: "📸", text: "Take a selfie at the highest railway station in Europe", cheer: "Top of Europe! 📸 Höchste Eisenbahn!",                 checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "fanfare" },
   { id: "q18", emoji: "🏊", text: "Dip your feet in a glacial river",                       cheer: "Brrrr! 🥶 Pure glacier water — you're brave!",         checked: { k1: false, k2: false }, section: "mountain",  days: ["d6"], sound: "splash" },
+  { id: "q38", emoji: "📮", text: "Mail a postcard from the highest post box in Europe",    cheer: "Special delivery! 📮 Höchste Post — Top of Europe!",   checked: { k1: false, k2: false }, section: "mountain",  days: ["d3"], sound: "stamp" },
   // 🌿 Nature Spotting
   { id: "q4",  emoji: "🐄", text: "Spot a cow with a bell",                                 cheer: "Moooo! 🐄 That's a Swiss celebrity!",                  checked: { k1: false, k2: false }, section: "nature",    days: ["d2","d4","d5"], sound: "moo" },
   { id: "q14", emoji: "🌄", text: "Watch the mountains turn pink at sunset",                cheer: "Alpenglow — pure Swiss magic! 🌄 Wunderschön!",        checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"] },
   { id: "q17", emoji: "🌈", text: "Spot a rainbow in a waterfall's spray",                  cheer: "Swiss rainbows hit different! 🌈",                     checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"], sound: "sparkle" },
   { id: "q19", emoji: "🌸", text: "Spot an alpine flower",                                  cheer: "Edelweiss! 🌸 The flower of Switzerland!",             checked: { k1: false, k2: false }, section: "nature",    days: ["d4","d5","d7"], sound: "sparkle" },
   { id: "q20", emoji: "🔭", text: "Spot something through binoculars on a mountain",        cheer: "Eagle eyes! 🔭 Swiss explorer!",                       checked: { k1: false, k2: false }, section: "nature",    days: ["d3","d4","d5"] },
-  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"] },
+  { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"], sound: "sparkle" },
   { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d4","d5","d7"] },
   // 🎪 Village Fun
   { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",                checked: { k1: false, k2: false }, section: "village",   days: ["d2","d4","d7","d8"], sound: "yodel" },
   { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                     checked: { k1: false, k2: false }, section: "village",   days: ["d1","d2","d3"] },
   { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",        checked: { k1: false, k2: false }, section: "village",   days: ["d2","d4","d5"], sound: "bell" },
   { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!",     checked: { k1: false, k2: false }, section: "village",   days: ["d8","d9"] },
+  { id: "q39", emoji: "🏪", text: "Pay into an honesty box",                                cheer: "Trust and Käse! 🏪 The Swiss honour system in action!", checked: { k1: false, k2: false }, section: "village",   days: ["d5"], sound: "coin" },
   // 📸 Photo Missions
   { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",      checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "camera" },
   { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "train" },
@@ -1395,6 +1397,29 @@ function playSound(name) {
       const o = ctx.createOscillator(), g2 = ctx.createGain();
       o.frequency.value = 180; g2.gain.setValueAtTime(0.25, t + 0.02); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
       o.connect(g2); g2.connect(ctx.destination); o.start(t + 0.02); o.stop(t + 0.15);
+    } else if (name === "coin") {
+      // Bright ascending two-blip "cha-ching"
+      [1046, 1568].forEach((freq, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "triangle"; o.frequency.value = freq;
+        const s = t + i * 0.09;
+        g.gain.setValueAtTime(0.25, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.2);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.22);
+      });
+    } else if (name === "stamp") {
+      // Rubber-stamp thunk — low thud + tiny high click
+      const len = Math.floor(ctx.sampleRate * 0.06);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+      const src = ctx.createBufferSource(); src.buffer = buf;
+      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 300;
+      const g = ctx.createGain(); g.gain.value = 0.5;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.06);
+      const o = ctx.createOscillator(), g2 = ctx.createGain();
+      o.type = "sine"; o.frequency.value = 90;
+      g2.gain.setValueAtTime(0.3, t); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+      o.connect(g2); g2.connect(ctx.destination); o.start(t); o.stop(t + 0.2);
     } else if (name === "yodel") {
       // Pitch-sweeping yodel approximation
       const o = ctx.createOscillator(), g = ctx.createGain();
