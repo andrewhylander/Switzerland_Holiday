@@ -235,7 +235,7 @@ const DEFAULT_ITINERARY = [
         time: "~2:00 PM",
         title: "Cable car down + Coop grocery shop",
         location: "Pfingstegg → Grindelwald Terminal → Coop",
-        notes: "🚠 Cable car down from Pfingstegg (~5 min).\n🚶 Walk to Grindelwald Terminal (~15 min through village).\n\n🛒 Coop supermarket is RIGHT at Grindelwald Terminal — perfect for the big weekly shop. Open 8am–7pm daily including Sunday.\n\n🛒 SHOPPING LIST — Swiss specialties to try:\n• Zopf bread (buttered braided bread — very Swiss)\n• Landjäger sausage sticks (perfect for hiking picnics)\n• Bergkäse / Gruyère mild / Emmental (mountain cheeses — start kids on Emmental or mild Gruyère, similar to cheddar)\n• Birchermüesli (traditional Swiss breakfast cereal)\n• Rivella (Swiss soft drink — must try!)\n• Ovomaltine crunchy spread (like Nutella but Swiss)\n• Ragusa / Toblerone / Lindt chocolate (gifts + treats + taste test evening!)\n• Fruit syrups — raspberry, elderflower or Alpine herb (dilute with sparkling water — great for kids)\n• Cervelat sausages (Swiss BBQ staple)\n• Fondue/raclette cheese if Alpenglück has a fondue set\n• Wine — Lavaux or Valais whites/rosés\n• Fresh fruit cups + salads + sandwich wraps for picnic days\n\n💡 Don't buy bottled water — tap water in Switzerland is excellent and free!\n💡 Look for 'Action' signs = items on sale\n💡 🐞 Ladybug logo = Swiss product\n💡 Bring a bag or put stuff in your backpack — bags cost 5-10 cents\n\n⏱️ Allow 1–1.5 hours for first shop in an unfamiliar store with kids!",
+        notes: "🚠 Cable car down from Pfingstegg (~5 min).\n🚶 Walk to Grindelwald Terminal (~15 min through village).\n\n🛒 Coop supermarket is RIGHT at Grindelwald Terminal — perfect for the big weekly shop. Open 8am–7pm daily including Sunday.\n\n🛒 SHOPPING LIST — Swiss specialties to try:\n• Zopf bread (buttered braided bread — very Swiss)\n• Landjäger sausage sticks (perfect for hiking picnics)\n• Bergkäse / Gruyère mild / Emmental (mountain cheeses — start kids on Emmental or mild Gruyère, similar to cheddar)\n• Birchermüesli (traditional Swiss breakfast cereal)\n• Rivella (Swiss soft drink — must try!)\n• Ovomaltine crunchy spread (like Nutella but Swiss)\n• Ragusa / Toblerone / Lindt chocolate (gifts + treats + taste test evening!)\n• Fruit syrups — raspberry, elderflower or Alpine herb (dilute with sparkling water — great for kids)\n• Cervelat sausages (Swiss BBQ staple)\n• Zweifel crisps — paprika flavour is the local favourite\n• Nusstorte or meringues with double cream — bakery/dessert treats\n• Fondue/raclette cheese if Alpenglück has a fondue set\n• Wine — Lavaux or Valais whites/rosés\n• Fresh fruit cups + salads + sandwich wraps for picnic days\n\n💡 Don't buy bottled water — tap water in Switzerland is excellent and free!\n💡 Look for 'Action' signs = items on sale\n💡 🐞 Ladybug logo = Swiss product\n💡 Bring a bag or put stuff in your backpack — bags cost 5-10 cents\n\n⏱️ Allow 1–1.5 hours for first shop in an unfamiliar store with kids!",
         tags: [],
       },
       {
@@ -2995,6 +2995,35 @@ export default function SwitzerlandTravelAppReal() {
               </div>
             </Card>
 
+            {/* Grocery store crash course */}
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🛒 Grocery Store Crash Course</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                Eating out every meal adds up fast — a lot of travellers do breakfast at the apartment, one meal out, and one meal from a grocery takeaway counter. Here's how to shop like a local.
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {[
+                  { emoji: "🏪", name: "Coop vs Migros", notes: "Switzerland's two biggest chains — pronounced \"cope\" and \"mee-gro\", not \"co-op\"/\"mig-ross\"! Small branches sit right inside train stations; bigger full-size stores are usually a few blocks away or in the town centre." },
+                  { emoji: "💰", name: "Cheaper alternatives", notes: "Volg, Aldi, Denner and Spar all tend to be cheaper than Coop/Migros — worth popping into if you spot one nearby." },
+                  { emoji: "🕒", name: "Sunday closures", notes: "Most grocery stores are closed on Sundays — but the small branches inside train stations are usually open. (The Coop at Grindelwald Terminal is open daily including Sunday.)" },
+                  { emoji: "🍷", name: "Migros sells no alcohol", notes: "If you want wine or beer, you'll need Coop, Volg, Denner or Spar instead — Migros doesn't stock any alcohol at all." },
+                  { emoji: "⚖️", name: "Weigh your own produce", notes: "Loose fruit & veg isn't weighed at the till. Bag it, find the item's number on the shelf label, use the scale near the produce section, type in the number, and stick the printed sticker on the bag before checkout." },
+                  { emoji: "🥪", name: "Grab-and-go counter", notes: "Near the entrance you'll find fresh sandwiches, salads, and pots of pasta/lentil/couscous salad — plus sometimes a hot counter with pizza, chicken and cheese pies. An easy, cheap lunch without sitting down at a restaurant." },
+                  { emoji: "🍴", name: "Bring your own cutlery", notes: "Plastic/metal cutlery costs about 10 rappen at the till — buy one set on day one, rinse and reuse it all week (same trick as the 5–10c reusable bags)." },
+                  { emoji: "🏷️", name: "Reading the labels", notes: "🐞 Ladybug = Swiss-made product. \"Action\" = on sale/bundled deal. \"Bio\" = organic." },
+                  { emoji: "🥚", name: "Eggs & milk aren't always chilled", notes: "Unrefrigerated eggs and milk on the shelf are normal here — just give eggs a wash before using them." },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "8px 12px" }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 13, color: "#1e3a8a" }}>{item.name}</div>
+                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
             {/* Must-try Swiss foods & drinks */}
             <Card style={{ padding: "14px 16px" }}>
               <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🇨🇭 Must-Try Swiss Foods & Drinks</div>
@@ -3003,17 +3032,29 @@ export default function SwitzerlandTravelAppReal() {
               </div>
               <div style={{ display: "grid", gap: 8 }}>
                 {[
-                  { emoji: "🫕", name: "Fondue", notes: "Dip baby potatoes into a pot of melted cheese. The cheese blend varies by region — sometimes flavoured with truffle, garlic, tomato, or even Champagne!" },
+                  { emoji: "🫕", name: "Fondue moitié-moitié", notes: "Half Gruyère, half Vacherin (\"moitié-moitié\" = half-half) melted with white wine, dipped with cubed bread. Traditionally washed down with the same white wine or a black tea — NOT cold water/beer, it's said to curdle the cheese in your stomach!" },
                   { emoji: "🧀", name: "Raclette", notes: "A slice of cheese warmed under a broiler until bubbling, then poured over small potatoes. Often topped with paprika or black pepper." },
-                  { emoji: "🧀", name: "Swiss cheese (hyper-regional)", notes: "Not just the holey stuff! Visit a local Molkerei (cheese shop) or grocery counter and try what's local to the area. Favourites: Kaltbach Bergkäse, Tilsiter, or a spreadable fresh cheese with herbs." },
+                  { emoji: "🧀", name: "Swiss cheese — especially Gruyère", notes: "Not just the holey stuff! Visit a local Molkerei (cheese shop) or grocery counter and try what's local to the area. Gruyère is the classic to seek out, plus Kaltbach Bergkäse, Tilsiter, or a spreadable fresh cheese with herbs. Vacuum-sealed cheese from Coop/Migros also makes a great souvenir to bring home in checked luggage — check your destination's import rules first." },
                   { emoji: "🍞", name: "Käseschnitte", notes: "Basically raclette poured over a thick slice of bread instead of potatoes — sometimes topped with a soft-cooked egg." },
+                  { emoji: "🍝", name: "Älplermagronen", notes: "Alpine mac and cheese — macaroni baked with cheese and cream, topped with crispy fried onions, classically served with a side of applesauce. Sounds odd, tastes brilliant. Kids love it." },
+                  { emoji: "🥩", name: "Zürcher Geschnetzeltes", notes: "Zurich's signature dish — sliced veal (sometimes with mushrooms) in a creamy white wine sauce, served with rösti. Worth seeking out specifically if you're in Zurich on the last day/night." },
                   { emoji: "🌭", name: "Dried sausage", notes: "Meat & cheese platters feature local dried sausage that tastes different valley to valley. You can buy this from most farm fridges too!" },
                   { emoji: "🌭", name: "Wurst", notes: "Just like Germany, sausage is a staple here and on the menu everywhere, especially mountain restaurants." },
+                  { emoji: "🥓", name: "Cervelat", notes: "Switzerland's national sausage — a squat, mild beef-and-pork sausage, usually grilled or boiled. Cheap, easy to find in any Coop/Migros, and perfect for a picnic or BBQ night at the apartment." },
                   { emoji: "🥔", name: "Rösti", notes: "A large hash brown patty, sometimes filled with diced onion and bacon. Often topped with a wurst and gravy — the Swiss national dish." },
+                  { emoji: "🥔", name: "Zweifel crisps", notes: "Switzerland's favourite crisp brand — grab a bag from Coop/Migros for a hike or picnic. Paprika is the flagship flavour and a local favourite." },
                   { emoji: "🍺", name: "Local beers", notes: "Appenzeller is one of the best breweries in the country. Rugenbräu (your local Bernese Oberland brewery) is also excellent, plus loads of small craft brewers." },
+                  { emoji: "🍷", name: "Swiss wine", notes: "Switzerland keeps about 99% of its wine at home — it's barely exported, so a bottle is a genuine can't-get-it-elsewhere souvenir. Look for whites like Dezaley (a Lavaux appellation) and Petite Arvine (a Valais grape) at restaurants or the Coop wine aisle." },
                   { emoji: "🥤", name: "Rivella soda", notes: "The most popular soda in Switzerland — try it FIRST before you learn what it's made from (milk whey)!" },
+                  { emoji: "🌸", name: "Elderflower yogurt", notes: "Swiss yogurt aisles have unusual flavours worth hunting for — elderflower is a fan favourite and famously creamy. Around CHF 1 per single-serve pot at Coop/Migros." },
+                  { emoji: "☕", name: "Swiss coffee", notes: "Worth seeking out specialty roasters, not just the hotel filter coffee — Eiger Bean in Grindelwald roasts its own beans and does a nice cascara. Also try a Kaffee fertig (coffee with schnapps) mountain-café style." },
                   { emoji: "🍪", name: "Kambly cookies", notes: "Swiss brand with hundreds of cookie varieties. Sample for free at their factory shop in Trubschachen if you're ever passing." },
-                  { emoji: "🍫", name: "Swiss chocolate", notes: "Splurge at fancy shops like Läderach, or grab bars from the grocery store — Lindt, Cailler, Halba and Frey are all popular local brands." },
+                  { emoji: "🍪", name: "Läckerli", notes: "A dense, chewy gingerbread-style biscuit from Basel, spiced with honey, candied peel and kirsch. A different texture to Kambly and worth grabbing a pack of both to compare." },
+                  { emoji: "🥧", name: "Nusstorte", notes: "A dense, caramelised walnut tart in a shortcrust pastry shell — an Engadine classic found in most bakeries and cafés. Great with a coffee." },
+                  { emoji: "🍰", name: "Meringue with double cream", notes: "Crisp Swiss meringue piled with thick double cream (crème double) — a Gruyère-region speciality (Meringues de Bulle). Order it at any mountain café for dessert." },
+                  { emoji: "🍫", name: "Swiss chocolate", notes: "Splurge at fancy shops like Läderach or Sprüngli, or grab bars from the grocery store — Lindt, Cailler, Halba and Frey are all popular local brands. Ragusa (hazelnut chocolate) is a lesser-known favourite worth trying." },
+                  { emoji: "☕", name: "Hot chocolate powder", notes: "A great edible souvenir — Cailler and Ovomaltine both make rich drinking-chocolate powder, sold in tins at any Coop/Migros. Easy to pack, doesn't melt in luggage." },
+                  { emoji: "🥖", name: "Swiss bread", notes: "Worth trying a few regional varieties beyond the usual Zopf — bakeries (Bäckerei) sell dozens of shapes and grain mixes. Ask what's local to that valley." },
                 ].map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 10, padding: "8px 12px" }}>
                     <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
