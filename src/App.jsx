@@ -1340,50 +1340,76 @@ function playSound(name) {
     const ctx = new AC();
     const t = ctx.currentTime;
     if (name === "bell") {
-      // Cowbell — metallic two-tone square wave
-      [[420, 0.4, 0.8], [560, 0.2, 0.5]].forEach(([freq, vol, dur]) => {
+      // Cowbell — layered metallic tones + a second delayed clank for realism
+      const clank = (start, tones) => tones.forEach(([freq, vol, dur]) => {
         const o = ctx.createOscillator(), g = ctx.createGain();
         o.type = "square"; o.frequency.value = freq;
-        g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.001, t + dur);
-        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + dur);
+        g.gain.setValueAtTime(vol, start); g.gain.exponentialRampToValueAtTime(0.001, start + dur);
+        o.connect(g); g.connect(ctx.destination); o.start(start); o.stop(start + dur);
       });
+      clank(t, [[415, 0.35, 1.1], [523, 0.22, 0.9], [830, 0.12, 0.7]]);
+      clank(t + 0.24, [[430, 0.22, 0.6], [560, 0.14, 0.45]]);
     } else if (name === "train") {
-      // Two-tone train whistle
+      // Two-tone whistle with vibrato, plus a soft steam chuff underlay
       [880, 1174].forEach((freq) => {
         const o = ctx.createOscillator(), g = ctx.createGain();
         o.type = "sine"; o.frequency.value = freq;
-        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.2, t + 0.05);
-        g.gain.setValueAtTime(0.2, t + 0.3); g.gain.exponentialRampToValueAtTime(0.001, t + 0.6);
-        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.65);
+        const lfo = ctx.createOscillator(), lfoGain = ctx.createGain();
+        lfo.frequency.value = 5.5; lfoGain.gain.value = freq * 0.012;
+        lfo.connect(lfoGain); lfoGain.connect(o.frequency);
+        g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(0.22, t + 0.08);
+        g.gain.setValueAtTime(0.22, t + 0.75); g.gain.exponentialRampToValueAtTime(0.001, t + 1.3);
+        o.connect(g); g.connect(ctx.destination);
+        lfo.start(t); lfo.stop(t + 1.3); o.start(t); o.stop(t + 1.35);
       });
-    } else if (name === "fanfare") {
-      // 4-note ascending fanfare (C E G C)
-      [523, 659, 784, 1047].forEach((freq, i) => {
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = "square"; o.frequency.value = freq;
-        const s = t + i * 0.13;
-        g.gain.setValueAtTime(0.15, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.28);
-        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.3);
-      });
-    } else if (name === "sparkle") {
-      // Twinkling high sine notes
-      [1319, 1568, 1760, 2093, 2349].forEach((freq, i) => {
-        const o = ctx.createOscillator(), g = ctx.createGain();
-        o.type = "sine"; o.frequency.value = freq;
-        const s = t + i * 0.07;
-        g.gain.setValueAtTime(0.12, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.22);
-        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.25);
-      });
-    } else if (name === "splash") {
-      // Filtered white noise burst (water splash)
-      const len = Math.floor(ctx.sampleRate * 0.45);
+      const len = Math.floor(ctx.sampleRate * 0.3);
       const buf = ctx.createBuffer(1, len, ctx.sampleRate);
       const d = buf.getChannelData(0);
-      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.18));
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.08));
       const src = ctx.createBufferSource(); src.buffer = buf;
-      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 900;
-      const g = ctx.createGain(); g.gain.value = 0.5;
-      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.45);
+      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 500;
+      const g = ctx.createGain(); g.gain.value = 0.15;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.3);
+    } else if (name === "fanfare") {
+      // 5-note ascending run into a sustained triumphant chord
+      const notes = [523, 659, 784, 1047, 1319];
+      notes.forEach((freq, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "square"; o.frequency.value = freq;
+        const s = t + i * 0.12;
+        g.gain.setValueAtTime(0.16, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.22);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.26);
+      });
+      const chordStart = t + notes.length * 0.12;
+      [1047, 1319, 1568].forEach((freq) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "triangle"; o.frequency.value = freq;
+        g.gain.setValueAtTime(0.13, chordStart); g.gain.exponentialRampToValueAtTime(0.001, chordStart + 0.7);
+        o.connect(g); g.connect(ctx.destination); o.start(chordStart); o.stop(chordStart + 0.75);
+      });
+    } else if (name === "sparkle") {
+      // Twinkling high notes with a longer, softer shimmer decay
+      [1319, 1568, 1760, 2093, 2349, 2637].forEach((freq, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine"; o.frequency.value = freq;
+        const s = t + i * 0.08;
+        g.gain.setValueAtTime(0.13, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.35);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.4);
+      });
+    } else if (name === "splash") {
+      // Low "plop" thump followed by a longer filtered noise wash
+      const o = ctx.createOscillator(), g0 = ctx.createGain();
+      o.type = "sine"; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(80, t + 0.15);
+      g0.gain.setValueAtTime(0.3, t); g0.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+      o.connect(g0); g0.connect(ctx.destination); o.start(t); o.stop(t + 0.22);
+      const len = Math.floor(ctx.sampleRate * 0.75);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.28));
+      const src = ctx.createBufferSource(); src.buffer = buf;
+      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 1100;
+      const g = ctx.createGain(); g.gain.value = 0.45;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t + 0.03); src.stop(t + 0.8);
     } else if (name === "camera") {
       // Shutter click — high noise burst + low thunk
       const len = Math.floor(ctx.sampleRate * 0.07);
@@ -1398,39 +1424,53 @@ function playSound(name) {
       o.frequency.value = 180; g2.gain.setValueAtTime(0.25, t + 0.02); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.12);
       o.connect(g2); g2.connect(ctx.destination); o.start(t + 0.02); o.stop(t + 0.15);
     } else if (name === "coin") {
-      // Bright ascending two-blip "cha-ching"
-      [1046, 1568].forEach((freq, i) => {
+      // Bright ascending three-blip "cha-ching" with a shimmering top note
+      [1046, 1568, 2093].forEach((freq, i) => {
         const o = ctx.createOscillator(), g = ctx.createGain();
         o.type = "triangle"; o.frequency.value = freq;
-        const s = t + i * 0.09;
-        g.gain.setValueAtTime(0.25, s); g.gain.exponentialRampToValueAtTime(0.001, s + 0.2);
-        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + 0.22);
+        const s = t + i * 0.08;
+        const dur = i === 2 ? 0.4 : 0.18;
+        g.gain.setValueAtTime(0.22, s); g.gain.exponentialRampToValueAtTime(0.001, s + dur);
+        o.connect(g); g.connect(ctx.destination); o.start(s); o.stop(s + dur + 0.05);
       });
     } else if (name === "stamp") {
-      // Rubber-stamp thunk — low thud + tiny high click
-      const len = Math.floor(ctx.sampleRate * 0.06);
+      // Deeper rubber-stamp thunk + low thud tail + a soft paper-rustle afterward
+      const len = Math.floor(ctx.sampleRate * 0.08);
       const buf = ctx.createBuffer(1, len, ctx.sampleRate);
       const d = buf.getChannelData(0);
       for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
       const src = ctx.createBufferSource(); src.buffer = buf;
-      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 300;
-      const g = ctx.createGain(); g.gain.value = 0.5;
-      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.06);
+      const filt = ctx.createBiquadFilter(); filt.type = "lowpass"; filt.frequency.value = 280;
+      const g = ctx.createGain(); g.gain.value = 0.55;
+      src.connect(filt); filt.connect(g); g.connect(ctx.destination); src.start(t); src.stop(t + 0.08);
       const o = ctx.createOscillator(), g2 = ctx.createGain();
-      o.type = "sine"; o.frequency.value = 90;
-      g2.gain.setValueAtTime(0.3, t); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
-      o.connect(g2); g2.connect(ctx.destination); o.start(t); o.stop(t + 0.2);
+      o.type = "sine"; o.frequency.setValueAtTime(85, t); o.frequency.exponentialRampToValueAtTime(55, t + 0.3);
+      g2.gain.setValueAtTime(0.35, t); g2.gain.exponentialRampToValueAtTime(0.001, t + 0.35);
+      o.connect(g2); g2.connect(ctx.destination); o.start(t); o.stop(t + 0.38);
+      const len2 = Math.floor(ctx.sampleRate * 0.2);
+      const buf2 = ctx.createBuffer(1, len2, ctx.sampleRate);
+      const d2 = buf2.getChannelData(0);
+      for (let i = 0; i < len2; i++) d2[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.09));
+      const src2 = ctx.createBufferSource(); src2.buffer = buf2;
+      const filt2 = ctx.createBiquadFilter(); filt2.type = "highpass"; filt2.frequency.value = 1500;
+      const g3 = ctx.createGain(); g3.gain.value = 0.12;
+      src2.connect(filt2); filt2.connect(g3); g3.connect(ctx.destination); src2.start(t + 0.06); src2.stop(t + 0.26);
     } else if (name === "yodel") {
-      // Pitch-sweeping yodel approximation
-      const o = ctx.createOscillator(), g = ctx.createGain();
-      o.type = "sine";
-      o.frequency.setValueAtTime(300, t); o.frequency.exponentialRampToValueAtTime(620, t + 0.15);
-      o.frequency.exponentialRampToValueAtTime(250, t + 0.3); o.frequency.exponentialRampToValueAtTime(540, t + 0.45);
-      o.frequency.exponentialRampToValueAtTime(210, t + 0.62);
-      g.gain.setValueAtTime(0.3, t); g.gain.setValueAtTime(0.3, t + 0.58); g.gain.exponentialRampToValueAtTime(0.001, t + 0.7);
-      o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 0.72);
+      // Pitch-sweeping yodel with an octave-up shimmer voice, extended length
+      const mkVoice = (baseGain, offsetSemis) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.type = "sine";
+        const mul = Math.pow(2, offsetSemis / 12);
+        o.frequency.setValueAtTime(300 * mul, t); o.frequency.exponentialRampToValueAtTime(620 * mul, t + 0.16);
+        o.frequency.exponentialRampToValueAtTime(250 * mul, t + 0.34); o.frequency.exponentialRampToValueAtTime(560 * mul, t + 0.52);
+        o.frequency.exponentialRampToValueAtTime(230 * mul, t + 0.7); o.frequency.exponentialRampToValueAtTime(500 * mul, t + 0.88);
+        g.gain.setValueAtTime(baseGain, t); g.gain.setValueAtTime(baseGain, t + 0.82); g.gain.exponentialRampToValueAtTime(0.001, t + 1.0);
+        o.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t + 1.02);
+      };
+      mkVoice(0.28, 0);
+      mkVoice(0.12, 12);
     }
-    setTimeout(() => ctx.close(), 2000);
+    setTimeout(() => ctx.close(), 2500);
   } catch (_) {}
 }
 
