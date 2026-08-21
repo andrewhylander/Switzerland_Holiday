@@ -1276,15 +1276,13 @@ const DEFAULT_QUEST_ITEMS = [
   { id: "q22", emoji: "🌙", text: "See the stars from the Alps",                            cheer: "No light pollution up here! 🌙 Breathtaking!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d6","d7"] },
   { id: "q26", emoji: "🐾", text: "Spot a marmot or mountain goat",                         cheer: "Wild Swiss wildlife! 🐾 True alpine explorer!",         checked: { k1: false, k2: false }, section: "nature",    days: ["d4","d5","d7"] },
   // 🎪 Village Fun
-  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",                checked: { k1: false, k2: false }, section: "village",   days: ["d2","d7","d8"], sound: "yodel" },
+  { id: "q16", emoji: "🎵", text: "Hear a real alphorn being played",                       cheer: "Yodel-ay-ee-oo! 🎵 Music of the Alps!",                checked: { k1: false, k2: false }, section: "village",   days: ["d2","d4","d7","d8"], sound: "yodel" },
   { id: "q21", emoji: "🇨🇭", text: "Count how many Swiss flags you see in one day",        cheer: "Switzerland is flag-tastic! 🇨🇭",                     checked: { k1: false, k2: false }, section: "village",   days: ["d1","d2","d3"] },
   { id: "q27", emoji: "🔔", text: "Ring a cowbell at a playground",                         cheer: "Ding ding! 🔔 That's the sound of Switzerland!",        checked: { k1: false, k2: false }, section: "village",   days: ["d2","d4","d5"], sound: "bell" },
   { id: "q30", emoji: "🐕", text: "Spot a St. Bernard rescue dog statue",                   cheer: "Guardian of the Alps! 🐕 Switzerland's hero dog!",     checked: { k1: false, k2: false }, section: "village",   days: ["d8","d9"] },
   // 📸 Photo Missions
-  { id: "q32", emoji: "🪞", text: "Get a reflection shot in Bachalpsee lake",               cheer: "Mirror mirror on the Alps! 🪞 Frame of the year!",     checked: { k1: false, k2: false }, section: "photo",     days: ["d7"], sound: "camera" },
   { id: "q33", emoji: "🏔️", text: "Photograph all 3 giants in one shot",                    cheer: "Eiger, Mönch & Jungfrau — the holy trinity! 🏔️",      checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "camera" },
-  { id: "q34", emoji: "🤳", text: "Take a selfie on the First Cliff Walk",                   cheer: "Edge of the world selfie! 🤳 Absolutely fearless!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d7"], sound: "camera" },
-  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5","d7"], sound: "train" },
+  { id: "q35", emoji: "🚞", text: "Photograph the rack railway on the mountain",             cheer: "The world's most scenic train shot! 🚞 Legendary!",    checked: { k1: false, k2: false }, section: "photo",     days: ["d3","d4","d5"], sound: "train" },
   { id: "q36", emoji: "🌊", text: "Get a rainbow in a waterfall photo",                      cheer: "Rainbow catcher! 🌈 You nailed the perfect moment!",   checked: { k1: false, k2: false }, section: "photo",     days: ["d6","d7"], sound: "camera" },
 ];
 
@@ -1641,6 +1639,7 @@ export default function SwitzerlandTravelAppReal() {
       const merged = { ...slot };
       MOVABLE_DAY_FIELDS.forEach((f) => { merged[f] = content[f]; });
       merged.swapped = contentId !== slot.id;
+      merged.contentId = contentId;
       return merged;
     });
   }, [itineraryOrder, contentById]);
@@ -2227,7 +2226,7 @@ export default function SwitzerlandTravelAppReal() {
                               ))}
                               {/* Inline missions strip */}
                               {(() => {
-                                const dayMissions = questItems.filter((q) => (q.days || []).includes(day.id));
+                                const dayMissions = questItems.filter((q) => (q.days || []).includes(day.contentId));
                                 if (dayMissions.length === 0) return null;
                                 const doneCount = dayMissions.filter((q) => q.checked[activeKid]).length;
                                 return (
@@ -3264,7 +3263,7 @@ export default function SwitzerlandTravelAppReal() {
           const daysUntil  = getDaysUntilTrip();
           const tripOver   = new Date() > TRIP_END;
           const todayMissions = todayDay
-            ? questItems.filter((q) => (q.days || []).includes(todayDayId))
+            ? questItems.filter((q) => (q.days || []).includes(todayDay.contentId))
             : [];
           const todayDone = todayMissions.filter((q) => q.checked[kidKey]).length;
 
