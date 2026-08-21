@@ -479,7 +479,7 @@ const DEFAULT_ITINERARY = [
         time: "AM",
         title: "Train to Interlaken Ost",
         location: "Grindelwald → Interlaken Ost",
-        notes: "🚂 Grindelwald → Zweilütschinen → Interlaken Ost: ~35 min, runs every 30 min.\n\n✅ Half Fare Cards valid on all BLS trains and lake steamers — buy tickets at the desk or platform machine.\n\n💡 Grab a coffee and pastry at the station café before boarding the steamer.",
+        notes: "🚂 Grindelwald → Zweilütschinen → Interlaken Ost: ~35 min, runs every 30 min. Board from Platform 2 in Grindelwald.\n\n✅ Half Fare Cards valid on all BLS trains and lake steamers — buy tickets at the desk or platform machine.\n\n💡 Grab a coffee and pastry at the station café before boarding the steamer.",
         tags: ["train"],
       },
       {
@@ -954,7 +954,7 @@ const DEFAULT_VENUES = [
   { id: "v2b", name: "Eiger Bean ☕ Specialty Roaster",   type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "coffee"],                    rating: 4.5, notes: "Specialty coffee roaster in Grindelwald — Marco roasts beans in-house. Best coffee with direct Eiger views. Must-try: Mountain cappuccino, cold brew with Swiss tonic water, coffee bonbon (sweet espresso dessert with condensed milk — even non-coffee drinkers love this!). For kids: baby chinos. For non-coffee lovers: cascara (coffee cherry tea — caffeine without coffee taste). Only uses local Swiss cow's milk and oat milk. Light modern roasts, not your typical Swiss coffee." },
   { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
   { id: "v50", name: "Qraftwerk Confectionary",          type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Confectionery and bakery in Grindelwald village." },
-  { id: "v29", name: "C & M Café Bar Restaurant",        type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Popular café in the centre of Grindelwald. Beautiful cakes, pastries and excellent hot chocolate. Cosy alpine atmosphere. Perfect stop after exploring the village." },
+  { id: "v59", name: "C & M Café Bar Restaurant",        type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Popular café in the centre of Grindelwald. Beautiful cakes, pastries and excellent hot chocolate. Cosy alpine atmosphere. Perfect stop after exploring the village." },
   // Grindelwald — Mountain Restaurants
   { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
   { id: "v12", name: "Berggasthaus First",               type: "restaurant", location: "Grindelwald First", meals: ["lunch"],                                  rating: 4.5, notes: "Right at the First gondola summit. Rösti, fondue, bratwurst with sweeping Eiger and Wetterhorn views. Huge terrace with glacier views. Next to the Cliff Walk." },
@@ -979,7 +979,7 @@ const DEFAULT_VENUES = [
   { id: "v53", name: "Alti Metzg, Dorfladen und Bistro", type: "restaurant", location: "Mürren",        meals: ["lunch", "dinner"],                        notes: "Butcher, village shop and bistro combined — good for a casual lunch in Mürren." },
   { id: "v54", name: "Restaurant Stägerstübli",          type: "restaurant", location: "Mürren",        meals: ["lunch", "dinner"],                        notes: "Traditional Swiss restaurant in Mürren village — recommended: lamb with garlic mayo, pumpkin soup, spätzle. Popular in the evenings; reserve earlier in the day (e.g. while in the village at lunchtime) rather than walking in." },
   // Gimmelwald
-  { id: "v31", name: "Mountain Hostel Restaurant",       type: "cafe",       location: "Gimmelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Relaxed mountain café in the magical car-free village of Gimmelwald with breathtaking views across the Lauterbrunnen valley. Simple pizzas, snacks and drinks. Reach via cable car from Stechelberg." },
+  { id: "v60", name: "Mountain Hostel Restaurant",       type: "cafe",       location: "Gimmelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Relaxed mountain café in the magical car-free village of Gimmelwald with breathtaking views across the Lauterbrunnen valley. Simple pizzas, snacks and drinks. Reach via cable car from Stechelberg." },
   { id: "v55", name: "Esther's Guesthouse",              type: "cafe",       location: "Gimmelwald",    meals: ["coffee"],                                  notes: "Locally made ice cream — a Gimmelwald favourite." },
   // Wengen
   { id: "v6",  name: "Restaurant Eiger",                 type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Right outside Wengen train station. Rösti, raclette, tomato soup with gin. Highly rated." },
@@ -1011,7 +1011,7 @@ const DEFAULT_VENUES = [
   { id: "v19", name: "Kronenhalle",                      type: "restaurant", location: "Zurich",        meals: ["lunch", "dinner"],                        notes: "Legendary brasserie open since 1924. Walls hung with ORIGINAL artworks by Miró and Chagall — not prints, the real pieces, donated over the decades by artist regulars. Signature Zürcher Geschnetzeltes." },
   { id: "v20", name: "Boréal Coffee",                    type: "cafe",       location: "Zurich",        meals: ["breakfast", "coffee"],                    notes: "Specialty ethically-sourced coffee and pastries. Popular with locals — two Zurich locations." },
   // Special Experiences
-  { id: "v33", name: "Piz Gloria Revolving Restaurant",  type: "restaurant", location: "Schilthorn",    meals: ["breakfast", "lunch", "dinner"],            rating: 4.5, notes: "🔫 Built as the real filming location for James Bond's On Her Majesty's Secret Service (1969) — the revolving restaurant concept was genuinely novel for its time. Full 360° rotation every ~45 min. Schilthorn revolving restaurant at 2,970m with views of 200+ peaks. Book the 'Schilthorn Brunch' bottomless buffet in advance (free to reserve) — 38 CHF/adult, 23 CHF/kid (6–15); breakfast items until 11am, lunch items 11am–2pm." },
+  { id: "v61", name: "Piz Gloria Revolving Restaurant",  type: "restaurant", location: "Schilthorn",    meals: ["breakfast", "lunch", "dinner"],            rating: 4.5, notes: "🔫 Built as the real filming location for James Bond's On Her Majesty's Secret Service (1969) — the revolving restaurant concept was genuinely novel for its time. Full 360° rotation every ~45 min. Schilthorn revolving restaurant at 2,970m with views of 200+ peaks. Book the 'Schilthorn Brunch' bottomless buffet in advance (free to reserve) — 38 CHF/adult, 23 CHF/kid (6–15); breakfast items until 11am, lunch items 11am–2pm." },
 ];
 
 const MAP_PLACES = [
@@ -2073,8 +2073,11 @@ export default function SwitzerlandTravelAppReal() {
                           : "rgba(255,255,255,0.95)",
                       }}
                     >
-                      <button
+                      <div
+                        role="button"
+                        tabIndex={0}
                         onClick={() => toggleDay(day.id)}
+                        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleDay(day.id); } }}
                         style={{
                           width: "100%",
                           background: "transparent",
@@ -2161,7 +2164,7 @@ export default function SwitzerlandTravelAppReal() {
                             <div style={{ color: "#64748b" }}>{open ? <ChevronUp size={20} /> : <ChevronDown size={20} />}</div>
                           </div>
                         </div>
-                      </button>
+                      </div>
 
                       <AnimatePresence initial={false}>
                         {open && (
@@ -3023,78 +3026,6 @@ export default function SwitzerlandTravelAppReal() {
               </div>
             </Card>
 
-            {/* Grocery store crash course */}
-            <Card style={{ padding: "14px 16px" }}>
-              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🛒 Grocery Store Crash Course</div>
-              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
-                Eating out every meal adds up fast — a lot of travellers do breakfast at the apartment, one meal out, and one meal from a grocery takeaway counter. Here's how to shop like a local.
-              </div>
-              <div style={{ display: "grid", gap: 8 }}>
-                {[
-                  { emoji: "🏪", name: "Coop vs Migros", notes: "Switzerland's two biggest chains — pronounced \"cope\" and \"mee-gro\", not \"co-op\"/\"mig-ross\"! Small branches sit right inside train stations; bigger full-size stores are usually a few blocks away or in the town centre." },
-                  { emoji: "💰", name: "Cheaper alternatives", notes: "Volg, Aldi, Denner and Spar all tend to be cheaper than Coop/Migros — worth popping into if you spot one nearby." },
-                  { emoji: "🕒", name: "Sunday closures", notes: "Most grocery stores are closed on Sundays — but the small branches inside train stations are usually open. (The Coop at Grindelwald Terminal is open daily including Sunday.)" },
-                  { emoji: "🍷", name: "Migros sells no alcohol", notes: "If you want wine or beer, you'll need Coop, Volg, Denner or Spar instead — Migros doesn't stock any alcohol at all." },
-                  { emoji: "⚖️", name: "Weigh your own produce", notes: "Loose fruit & veg isn't weighed at the till. Bag it, find the item's number on the shelf label, use the scale near the produce section, type in the number, and stick the printed sticker on the bag before checkout." },
-                  { emoji: "🥪", name: "Grab-and-go counter", notes: "Near the entrance you'll find fresh sandwiches, salads, and pots of pasta/lentil/couscous salad — plus sometimes a hot counter with pizza, chicken and cheese pies. An easy, cheap lunch without sitting down at a restaurant." },
-                  { emoji: "🍴", name: "Bring your own cutlery", notes: "Plastic/metal cutlery costs about 10 rappen at the till — buy one set on day one, rinse and reuse it all week (same trick as the 5–10c reusable bags)." },
-                  { emoji: "🏷️", name: "Reading the labels", notes: "🐞 Ladybug = Swiss-made product. \"Action\" = on sale/bundled deal. \"Bio\" = organic." },
-                  { emoji: "🥚", name: "Eggs & milk aren't always chilled", notes: "Unrefrigerated eggs and milk on the shelf are normal here — just give eggs a wash before using them." },
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "8px 12px" }}>
-                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: 13, color: "#1e3a8a" }}>{item.name}</div>
-                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            {/* Must-try Swiss foods & drinks */}
-            <Card style={{ padding: "14px 16px" }}>
-              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🇨🇭 Must-Try Swiss Foods & Drinks</div>
-              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
-                Your Swiss food bucket list — tick these off across the trip, at restaurants or grabbed from Coop/Migros.
-              </div>
-              <div style={{ display: "grid", gap: 8 }}>
-                {[
-                  { emoji: "🫕", name: "Fondue moitié-moitié", notes: "Half Gruyère, half Vacherin (\"moitié-moitié\" = half-half) melted with white wine, dipped with cubed bread. Traditionally washed down with the same white wine or a black tea — NOT cold water/beer, it's said to curdle the cheese in your stomach!" },
-                  { emoji: "🧀", name: "Raclette", notes: "A slice of cheese warmed under a broiler until bubbling, then poured over small potatoes. Often topped with paprika or black pepper." },
-                  { emoji: "🧀", name: "Swiss cheese — especially Gruyère", notes: "Not just the holey stuff! Visit a local Molkerei (cheese shop) or grocery counter and try what's local to the area. Gruyère is the classic to seek out, plus Kaltbach Bergkäse, Tilsiter, or a spreadable fresh cheese with herbs. Vacuum-sealed cheese from Coop/Migros also makes a great souvenir to bring home in checked luggage — check your destination's import rules first." },
-                  { emoji: "🍞", name: "Käseschnitte", notes: "Basically raclette poured over a thick slice of bread instead of potatoes — sometimes topped with a soft-cooked egg." },
-                  { emoji: "🍝", name: "Älplermagronen", notes: "Alpine mac and cheese — macaroni baked with cheese and cream, topped with crispy fried onions, classically served with a side of applesauce. Sounds odd, tastes brilliant. Kids love it." },
-                  { emoji: "🥩", name: "Zürcher Geschnetzeltes", notes: "Zurich's signature dish — sliced veal (sometimes with mushrooms) in a creamy white wine sauce, served with rösti. Worth seeking out specifically if you're in Zurich on the last day/night." },
-                  { emoji: "🌭", name: "Dried sausage", notes: "Meat & cheese platters feature local dried sausage that tastes different valley to valley. You can buy this from most farm fridges too!" },
-                  { emoji: "🌭", name: "Wurst", notes: "Just like Germany, sausage is a staple here and on the menu everywhere, especially mountain restaurants." },
-                  { emoji: "🥓", name: "Cervelat", notes: "Switzerland's national sausage — a squat, mild beef-and-pork sausage, usually grilled or boiled. Cheap, easy to find in any Coop/Migros, and perfect for a picnic or BBQ night at the apartment." },
-                  { emoji: "🥔", name: "Rösti", notes: "A large hash brown patty, sometimes filled with diced onion and bacon. Often topped with a wurst and gravy — the Swiss national dish." },
-                  { emoji: "🥔", name: "Zweifel crisps", notes: "Switzerland's favourite crisp brand — grab a bag from Coop/Migros for a hike or picnic. Paprika is the flagship flavour and a local favourite." },
-                  { emoji: "🍺", name: "Local beers", notes: "Appenzeller is one of the best breweries in the country. Rugenbräu (your local Bernese Oberland brewery) is also excellent, plus loads of small craft brewers." },
-                  { emoji: "🍷", name: "Swiss wine", notes: "Switzerland keeps about 99% of its wine at home — it's barely exported, so a bottle is a genuine can't-get-it-elsewhere souvenir. Look for whites like Dezaley (a Lavaux appellation) and Petite Arvine (a Valais grape) at restaurants or the Coop wine aisle." },
-                  { emoji: "🥤", name: "Rivella soda", notes: "The most popular soda in Switzerland — try it FIRST before you learn what it's made from (milk whey)!" },
-                  { emoji: "🌸", name: "Elderflower yogurt", notes: "Swiss yogurt aisles have unusual flavours worth hunting for — elderflower is a fan favourite and famously creamy. Around CHF 1 per single-serve pot at Coop/Migros." },
-                  { emoji: "☕", name: "Swiss coffee", notes: "Worth seeking out specialty roasters, not just the hotel filter coffee — Eiger Bean in Grindelwald roasts its own beans and does a nice cascara. Also try a Kaffee fertig (coffee with schnapps) mountain-café style." },
-                  { emoji: "🍪", name: "Kambly cookies", notes: "Swiss brand with hundreds of cookie varieties. Sample for free at their factory shop in Trubschachen if you're ever passing." },
-                  { emoji: "🍪", name: "Läckerli", notes: "A dense, chewy gingerbread-style biscuit from Basel, spiced with honey, candied peel and kirsch. A different texture to Kambly and worth grabbing a pack of both to compare." },
-                  { emoji: "🥧", name: "Nusstorte", notes: "A dense, caramelised walnut tart in a shortcrust pastry shell — an Engadine classic found in most bakeries and cafés. Great with a coffee." },
-                  { emoji: "🍰", name: "Meringue with double cream", notes: "Crisp Swiss meringue piled with thick double cream (crème double) — a Gruyère-region speciality (Meringues de Bulle). Order it at any mountain café for dessert." },
-                  { emoji: "🍫", name: "Swiss chocolate", notes: "Splurge at fancy shops like Läderach or Sprüngli, or grab bars from the grocery store — Lindt, Cailler, Halba and Frey are all popular local brands. Ragusa (hazelnut chocolate) is a lesser-known favourite worth trying." },
-                  { emoji: "☕", name: "Hot chocolate powder", notes: "A great edible souvenir — Cailler and Ovomaltine both make rich drinking-chocolate powder, sold in tins at any Coop/Migros. Easy to pack, doesn't melt in luggage." },
-                  { emoji: "🥖", name: "Swiss bread", notes: "Worth trying a few regional varieties beyond the usual Zopf — bakeries (Bäckerei) sell dozens of shapes and grain mixes. Ask what's local to that valley." },
-                ].map((item, i) => (
-                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 10, padding: "8px 12px" }}>
-                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
-                    <div>
-                      <div style={{ fontWeight: 700, fontSize: 13, color: "#78350f" }}>{item.name}</div>
-                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
             {/* Meal type filter */}
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               <Chip active={mealFilter === null} onClick={() => setMealFilter(null)} tone="amber">All meals</Chip>
@@ -3276,6 +3207,78 @@ export default function SwitzerlandTravelAppReal() {
                 <ExternalLink size={13} /> Find more venues on Google Maps
               </a>
             </div>
+
+            {/* Grocery store crash course */}
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🛒 Grocery Store Crash Course</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                Eating out every meal adds up fast — a lot of travellers do breakfast at the apartment, one meal out, and one meal from a grocery takeaway counter. Here's how to shop like a local.
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {[
+                  { emoji: "🏪", name: "Coop vs Migros", notes: "Switzerland's two biggest chains — pronounced \"cope\" and \"mee-gro\", not \"co-op\"/\"mig-ross\"! Small branches sit right inside train stations; bigger full-size stores are usually a few blocks away or in the town centre." },
+                  { emoji: "💰", name: "Cheaper alternatives", notes: "Volg, Aldi, Denner and Spar all tend to be cheaper than Coop/Migros — worth popping into if you spot one nearby." },
+                  { emoji: "🕒", name: "Sunday closures", notes: "Most grocery stores are closed on Sundays — but the small branches inside train stations are usually open. (The Coop at Grindelwald Terminal is open daily including Sunday.)" },
+                  { emoji: "🍷", name: "Migros sells no alcohol", notes: "If you want wine or beer, you'll need Coop, Volg, Denner or Spar instead — Migros doesn't stock any alcohol at all." },
+                  { emoji: "⚖️", name: "Weigh your own produce", notes: "Loose fruit & veg isn't weighed at the till. Bag it, find the item's number on the shelf label, use the scale near the produce section, type in the number, and stick the printed sticker on the bag before checkout." },
+                  { emoji: "🥪", name: "Grab-and-go counter", notes: "Near the entrance you'll find fresh sandwiches, salads, and pots of pasta/lentil/couscous salad — plus sometimes a hot counter with pizza, chicken and cheese pies. An easy, cheap lunch without sitting down at a restaurant." },
+                  { emoji: "🍴", name: "Bring your own cutlery", notes: "Plastic/metal cutlery costs about 10 rappen at the till — buy one set on day one, rinse and reuse it all week (same trick as the 5–10c reusable bags)." },
+                  { emoji: "🏷️", name: "Reading the labels", notes: "🐞 Ladybug = Swiss-made product. \"Action\" = on sale/bundled deal. \"Bio\" = organic." },
+                  { emoji: "🥚", name: "Eggs & milk aren't always chilled", notes: "Unrefrigerated eggs and milk on the shelf are normal here — just give eggs a wash before using them." },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#eff6ff", border: "1px solid #bfdbfe", borderRadius: 10, padding: "8px 12px" }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 13, color: "#1e3a8a" }}>{item.name}</div>
+                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
+
+            {/* Must-try Swiss foods & drinks */}
+            <Card style={{ padding: "14px 16px" }}>
+              <div style={{ fontWeight: 800, fontSize: 16, marginBottom: 4 }}>🇨🇭 Must-Try Swiss Foods & Drinks</div>
+              <div style={{ fontSize: 12, color: "#64748b", marginBottom: 12, lineHeight: 1.5 }}>
+                Your Swiss food bucket list — tick these off across the trip, at restaurants or grabbed from Coop/Migros.
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                {[
+                  { emoji: "🫕", name: "Fondue moitié-moitié", notes: "Half Gruyère, half Vacherin (\"moitié-moitié\" = half-half) melted with white wine, dipped with cubed bread. Traditionally washed down with the same white wine or a black tea — NOT cold water/beer, it's said to curdle the cheese in your stomach!" },
+                  { emoji: "🧀", name: "Raclette", notes: "A slice of cheese warmed under a broiler until bubbling, then poured over small potatoes. Often topped with paprika or black pepper." },
+                  { emoji: "🧀", name: "Swiss cheese — especially Gruyère", notes: "Not just the holey stuff! Visit a local Molkerei (cheese shop) or grocery counter and try what's local to the area. Gruyère is the classic to seek out, plus Kaltbach Bergkäse, Tilsiter, or a spreadable fresh cheese with herbs. Vacuum-sealed cheese from Coop/Migros also makes a great souvenir to bring home in checked luggage — check your destination's import rules first." },
+                  { emoji: "🍞", name: "Käseschnitte", notes: "Basically raclette poured over a thick slice of bread instead of potatoes — sometimes topped with a soft-cooked egg." },
+                  { emoji: "🍝", name: "Älplermagronen", notes: "Alpine mac and cheese — macaroni baked with cheese and cream, topped with crispy fried onions, classically served with a side of applesauce. Sounds odd, tastes brilliant. Kids love it." },
+                  { emoji: "🥩", name: "Zürcher Geschnetzeltes", notes: "Zurich's signature dish — sliced veal (sometimes with mushrooms) in a creamy white wine sauce, served with rösti. Worth seeking out specifically if you're in Zurich on the last day/night." },
+                  { emoji: "🌭", name: "Dried sausage", notes: "Meat & cheese platters feature local dried sausage that tastes different valley to valley. You can buy this from most farm fridges too!" },
+                  { emoji: "🌭", name: "Wurst", notes: "Just like Germany, sausage is a staple here and on the menu everywhere, especially mountain restaurants." },
+                  { emoji: "🥓", name: "Cervelat", notes: "Switzerland's national sausage — a squat, mild beef-and-pork sausage, usually grilled or boiled. Cheap, easy to find in any Coop/Migros, and perfect for a picnic or BBQ night at the apartment." },
+                  { emoji: "🥔", name: "Rösti", notes: "A large hash brown patty, sometimes filled with diced onion and bacon. Often topped with a wurst and gravy — the Swiss national dish." },
+                  { emoji: "🥔", name: "Zweifel crisps", notes: "Switzerland's favourite crisp brand — grab a bag from Coop/Migros for a hike or picnic. Paprika is the flagship flavour and a local favourite." },
+                  { emoji: "🍺", name: "Local beers", notes: "Appenzeller is one of the best breweries in the country. Rugenbräu (your local Bernese Oberland brewery) is also excellent, plus loads of small craft brewers." },
+                  { emoji: "🍷", name: "Swiss wine", notes: "Switzerland keeps about 99% of its wine at home — it's barely exported, so a bottle is a genuine can't-get-it-elsewhere souvenir. Look for whites like Dezaley (a Lavaux appellation) and Petite Arvine (a Valais grape) at restaurants or the Coop wine aisle." },
+                  { emoji: "🥤", name: "Rivella soda", notes: "The most popular soda in Switzerland — try it FIRST before you learn what it's made from (milk whey)!" },
+                  { emoji: "🌸", name: "Elderflower yogurt", notes: "Swiss yogurt aisles have unusual flavours worth hunting for — elderflower is a fan favourite and famously creamy. Around CHF 1 per single-serve pot at Coop/Migros." },
+                  { emoji: "☕", name: "Swiss coffee", notes: "Worth seeking out specialty roasters, not just the hotel filter coffee — Eiger Bean in Grindelwald roasts its own beans and does a nice cascara. Also try a Kaffee fertig (coffee with schnapps) mountain-café style." },
+                  { emoji: "🍪", name: "Kambly cookies", notes: "Swiss brand with hundreds of cookie varieties. Sample for free at their factory shop in Trubschachen if you're ever passing." },
+                  { emoji: "🍪", name: "Läckerli", notes: "A dense, chewy gingerbread-style biscuit from Basel, spiced with honey, candied peel and kirsch. A different texture to Kambly and worth grabbing a pack of both to compare." },
+                  { emoji: "🥧", name: "Nusstorte", notes: "A dense, caramelised walnut tart in a shortcrust pastry shell — an Engadine classic found in most bakeries and cafés. Great with a coffee." },
+                  { emoji: "🍰", name: "Meringue with double cream", notes: "Crisp Swiss meringue piled with thick double cream (crème double) — a Gruyère-region speciality (Meringues de Bulle). Order it at any mountain café for dessert." },
+                  { emoji: "🍫", name: "Swiss chocolate", notes: "Splurge at fancy shops like Läderach or Sprüngli, or grab bars from the grocery store — Lindt, Cailler, Halba and Frey are all popular local brands. Ragusa (hazelnut chocolate) is a lesser-known favourite worth trying." },
+                  { emoji: "☕", name: "Hot chocolate powder", notes: "A great edible souvenir — Cailler and Ovomaltine both make rich drinking-chocolate powder, sold in tins at any Coop/Migros. Easy to pack, doesn't melt in luggage." },
+                  { emoji: "🥖", name: "Swiss bread", notes: "Worth trying a few regional varieties beyond the usual Zopf — bakeries (Bäckerei) sell dozens of shapes and grain mixes. Ask what's local to that valley." },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start", background: "#fffbeb", border: "1px solid #fcd34d", borderRadius: 10, padding: "8px 12px" }}>
+                    <span style={{ fontSize: 20, flexShrink: 0 }}>{item.emoji}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: 13, color: "#78350f" }}>{item.name}</div>
+                      <div style={{ fontSize: 12, color: "#334155", lineHeight: 1.4, marginTop: 2 }}>{item.notes}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Card>
 
           </div>
         )}
@@ -4093,7 +4096,7 @@ export default function SwitzerlandTravelAppReal() {
                   { emoji: "🐄", name: "Trauffer Wooden Cow Museum", location: "Brienz (~45 min from Grindelwald)", time: "1–2 hours", cost: "~CHF 10", notes: "See how the famous Swiss wooden cows are made. Interactive for kids. Brienz is also the centre of Swiss wood carving — browse the shops and watch carvers at work." },
                   { emoji: "🌊", name: "Giessbach Falls + Grand Hotel", location: "Lake Brienz (boat from Interlaken/Brienz)", time: "Half day", cost: "Boat ticket + free entry", notes: "14-cascade waterfall tumbling 500m down the mountainside. Reached by historic funicular (oldest in Switzerland). The Grand Hotel terrace is stunning even in rain. Combine with Lake Brienz boat ride." },
                   { emoji: "🍺", name: "Rugenbräu Brewery", location: "Interlaken (~30 min train)", time: "1–2 hours", cost: "~CHF 20–30pp", notes: "Local brewery in Matten bei Interlaken, brewing since 1866. The only brewery in the entire Bernese Oberland! Beer tasting — the Dunkel is excellent. But the real surprise: WHISKEY TASTING. Their signature whisky is aged 4 years in the cellar, then 7 years at the top of the Jungfrau in ice at 3,600m. Fiery, unique, unforgettable. Good paired with an Interlaken wander on a drizzly day." },
-                  { emoji: "🎶", name: "Schynige Platte & Wilderswil", location: "Wilderswil (~45 min from Grindelwald)", time: "Full day", cost: "Train fare via SBB app (Half Fare Card discount applies)", notes: "A gentler full-day alternative. Historic cogwheel railway (in service since 1893) climbs to alpine meadows at Schynige Platte, with a free live alphorn concert daily 11am–2pm and an Alpine Flower Garden (777 native species) — no need to do the full Oberberghorn hiking loop, just wander around the top. Back down in Wilderswil: a run of farm fridges and a stop at the family-run Rugenbräu brewery (see above) for tastings. A good full day if you want a change of pace from the bigger mountain days." },
+                  { emoji: "🎶", name: "Schynige Platte & Wilderswil", location: "Wilderswil (~45 min from Grindelwald)", time: "Full day", cost: "Train fare via SBB app (Half Fare Card discount applies)", notes: "A gentler full-day alternative. 🚂 Depart Grindelwald on the R61 train from Platform 2 at ~7:47am → arrive Wilderswil ~8:16am, then transfer to the CC 68 cogwheel train up to Schynige Platte.\n\nHistoric cogwheel railway (in service since 1893) climbs to alpine meadows at Schynige Platte, with a free live alphorn concert daily 11am–2pm and an Alpine Flower Garden (777 native species) — no need to do the full Oberberghorn hiking loop, just wander around the top. Back down in Wilderswil: a run of farm fridges and a stop at the family-run Rugenbräu brewery (see above) for tastings. A good full day if you want a change of pace from the bigger mountain days." },
                   { emoji: "🏊", name: "Mürren Sportcenter — Swimming Pool", location: "Mürren (1hr from Grindelwald)", time: "Half day", cost: "Entry fee applies", notes: "If already in Mürren when weather turns. Swimming pool open in summer. Good backup during your Mürren day." },
                   { emoji: "🎳", name: "Funland Thun (Indoor Soft Play)", location: "Thun (~50 min train)", time: "Half day", cost: "~CHF 15/child", notes: "Indoor soft play — ball pit, tunnel slide, climbing ramp, 11m racing slide. Kids up to 11 years. WiFi and bistro for parents. Worth the train for a full-day washout." },
                 ].map((item, i) => (
