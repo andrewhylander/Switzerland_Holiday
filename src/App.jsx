@@ -903,14 +903,14 @@ const DAY_FOOD_LOCATIONS = {
   d2: "Grindelwald",
   d3: "Grindelwald",
   d4: "Grindelwald",
-  d5: "Lauterbrunnen",
+  d5: "Mürren",
   d6: "Lauterbrunnen",
   d7: "Interlaken",
   d8: "Zurich",
   d9: "Zurich",
 };
 
-const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Gimmelwald", "Wengen", "Interlaken", "Zurich"];
+const FOOD_LOCATIONS = ["Grindelwald", "Lauterbrunnen", "Mürren", "Gimmelwald", "Wengen", "Interlaken", "Zurich"];
 
 const FOOD_LOCATION_COORDS = {
   Grindelwald:   { lat: 46.6242, lon: 8.0411 },
@@ -946,11 +946,14 @@ const DEFAULT_VENUES = [
   { id: "v27", name: "Ristorante Pizzeria Da Salvi",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.4, notes: "Friendly Italian restaurant in the heart of Grindelwald. Authentic wood-fired pizza, pasta and comfort dishes. Great family option on a tired evening — kids love the pizza. Dorfstrasse 189." },
   { id: "v28", name: "Central Hotel Wolter Restaurant",  type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        rating: 4.3, notes: "Classic Swiss restaurant near the train station. Famous for rösti, fondue and traditional alpine dishes. Great dessert menu. Reliable, central and reasonably priced. Dorfstrasse 93." },
   { id: "v29", name: "Ischboden Hütte ⭐ Host Pick",    type: "restaurant", location: "Grindelwald",    meals: ["lunch"],                                  rating: 4.9, notes: "Myriam's recommendation! Mountain hut with farm-to-table food from their own farm. Famous for homemade fruit pies, Spätzle, milkshakes, and a drink called 'Rote Nase'. Cosy interior + epic terrace with valley views. Alpvogelpark (bird park with owls) right next door — kids will love it. CHF 10–20pp. Bus 121 to end of line, then 30 min gentle walk uphill. Open Wed–Sun 10am–5pm only. Perfect for flex day or afternoon outing." },
+  { id: "v48", name: "Restaurant Alte Post",             type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Traditional Swiss restaurant in the village centre." },
+  { id: "v49", name: "Stallbeizli Heubode",              type: "restaurant", location: "Grindelwald",    meals: ["dinner"],                                  notes: "Authentic farm restaurant with views — one of the recommended dinner spots for the first evening in Grindelwald." },
   { id: "v31", name: "Café 3692 ⭐ Host Pick",           type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "lunch", "dinner", "coffee"], rating: 4.8, notes: "Myriam's recommendation! #7 of 74 restaurants in Grindelwald. Named after the 3,692m Wetterhorn which you look directly at from the 180° panorama terrace. 💍 Sweet history: Bruno and Myriam used to run the Glecksteinhütte mountain hut together — Bruno proposed to Myriam on the actual summit of the Wetterhorn, which is why the café is named after its exact height! Bruno is a wood artist and built the whole interior himself — the café doubles as a showroom for his handcrafted carpentry. Mining cart from the Jungfrau tunnel construction doubles as an outdoor BBQ on sunny days! Must-try: Käse Täschli (cheese toast), Rösti with salmon, incredible homemade cakes (blueberry crumble, raspberry cheesecake). Has a kids area inside. Terrassenweg 61, uphill walk from village or short bus. Open Fri–Sun ONLY (Fri/Sat 8:30am–11pm, Sun 8:30am–6pm). Book ahead!" },
   // Grindelwald — Cafés & Breakfast
   { id: "v2",  name: "Café Bar 3692",                    type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        notes: "Artistic interior made from local materials. Garden herbs and locally sourced ingredients. Glacier and mountain views." },
   { id: "v2b", name: "Eiger Bean ☕ Specialty Roaster",   type: "cafe",       location: "Grindelwald",    meals: ["breakfast", "coffee"],                    rating: 4.5, notes: "Specialty coffee roaster in Grindelwald — Marco roasts beans in-house. Best coffee with direct Eiger views. Must-try: Mountain cappuccino, cold brew with Swiss tonic water, coffee bonbon (sweet espresso dessert with condensed milk — even non-coffee drinkers love this!). For kids: baby chinos. For non-coffee lovers: cascara (coffee cherry tea — caffeine without coffee taste). Only uses local Swiss cow's milk and oat milk. Light modern roasts, not your typical Swiss coffee." },
   { id: "v3",  name: "Bäckerei Fuchs",                   type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Local bakery — perfect for fresh bread and pastries in the morning." },
+  { id: "v50", name: "Qraftwerk Confectionary",          type: "bakery",     location: "Grindelwald",    meals: ["breakfast", "coffee"],                    notes: "Confectionery and bakery in Grindelwald village." },
   { id: "v29", name: "C & M Café Bar Restaurant",        type: "cafe",       location: "Grindelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Popular café in the centre of Grindelwald. Beautiful cakes, pastries and excellent hot chocolate. Cosy alpine atmosphere. Perfect stop after exploring the village." },
   // Grindelwald — Mountain Restaurants
   { id: "v11", name: "Restaurant Onkel Tom's Hütte",     type: "restaurant", location: "Grindelwald",    meals: ["lunch", "dinner"],                        notes: "Classic mountain hut restaurant. Traditional Swiss cuisine, popular with locals and hikers on the valley floor." },
@@ -964,6 +967,17 @@ const DEFAULT_VENUES = [
   { id: "v5",  name: "Hotel Oberland Restaurant",        type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        rating: 4.5, notes: "Well-known restaurant in Lauterbrunnen famous for Swiss fondue and its terrace overlooking the waterfall valley. Cosy chalet ambience, Oberland Rösti, and rahmschnitzel. Reservations recommended for dinner." },
   { id: "v13", name: "Restaurant Steinbock",             type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Near the train station with a summer garden. 20 pizza varieties plus Swiss classics." },
   { id: "v14", name: "Restaurant Weidstübli",            type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Inside the campground near the falls. Very affordable, generous portions, excellent fondue." },
+  { id: "v42", name: "Hotel Silberhorn",                 type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Hotel restaurant named after the Silberhorn peak visible up the valley." },
+  { id: "v43", name: "Hotel Horner",                     type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "Village hotel restaurant, short walk from the train station." },
+  { id: "v44", name: "Cycling Coffee Shop",              type: "cafe",       location: "Lauterbrunnen", meals: ["coffee", "breakfast"],                    notes: "Cycling-themed coffee stop in Lauterbrunnen village." },
+  { id: "v45", name: "Flavours Cafe",                    type: "cafe",       location: "Lauterbrunnen", meals: ["breakfast", "coffee", "lunch"],           notes: "Café in Lauterbrunnen village." },
+  { id: "v46", name: "Betty's Corn Dogs",                type: "restaurant", location: "Lauterbrunnen", meals: ["lunch"],                                  notes: "Casual corn dog stand — a fun quick bite for the kids between valley activities." },
+  { id: "v47", name: "Hotel & Restaurant Stechelberg",   type: "restaurant", location: "Lauterbrunnen", meals: ["lunch", "dinner"],                        notes: "At the Stechelberg cable car base station — the gateway up to Gimmelwald and Mürren. Handy stop before or after the cable car." },
+  // Mürren
+  { id: "v51", name: "Café LIV",                         type: "cafe",       location: "Mürren",        meals: ["breakfast", "coffee", "lunch"],           notes: "Café in the car-free village of Mürren." },
+  { id: "v52", name: "InSport (Coffee Bar & Sport Store)", type: "cafe",     location: "Mürren",        meals: ["coffee"],                                 notes: "Coffee bar inside the Mürren sports shop — handy stop while browsing hiking gear." },
+  { id: "v53", name: "Alti Metzg, Dorfladen und Bistro", type: "restaurant", location: "Mürren",        meals: ["lunch", "dinner"],                        notes: "Butcher, village shop and bistro combined — good for a casual lunch in Mürren." },
+  { id: "v54", name: "Restaurant Stägerstübli",          type: "restaurant", location: "Mürren",        meals: ["lunch", "dinner"],                        notes: "Traditional Swiss restaurant in Mürren village." },
   // Gimmelwald
   { id: "v31", name: "Mountain Hostel Restaurant",       type: "cafe",       location: "Gimmelwald",    meals: ["coffee", "lunch"],                        rating: 4.6, notes: "Relaxed mountain café in the magical car-free village of Gimmelwald with breathtaking views across the Lauterbrunnen valley. Simple pizzas, snacks and drinks. Reach via cable car from Stechelberg." },
   // Wengen
@@ -971,6 +985,12 @@ const DEFAULT_VENUES = [
   { id: "v6b", name: "Hotel Bellevue Terrace",           type: "cafe",       location: "Wengen",        meals: ["coffee", "lunch"],                        rating: 4.6, notes: "One of the finest terrace views in Switzerland. Direct Jungfrau views from the seating. Perfect for coffee or cake with the big peaks behind you." },
   { id: "v15", name: "Hotel Bären Restaurant",           type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-run, 5 min downhill from station. Large terrace, great views, own vegetable garden." },
   { id: "v16", name: "Café Restaurant Waldschlucht",     type: "cafe",       location: "Wengen",        meals: ["breakfast", "coffee", "lunch"],            notes: "Warm and welcoming. Known for flavourful soups and cosy ambiance. Great after a hike." },
+  { id: "v36", name: "Hotel Restaurant Bernerhof",       type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Hotel restaurant in the village centre — Swiss menu, terrace seating." },
+  { id: "v37", name: "Mira's Steakhouse Residence",      type: "restaurant", location: "Wengen",        meals: ["dinner"],                                  notes: "Steakhouse in Wengen — good option for a dedicated meat-focused dinner." },
+  { id: "v38", name: "Bäckerei-Konditorei Vincenz AG",   type: "bakery",     location: "Wengen",        meals: ["breakfast", "coffee"],                    notes: "Village bakery/patisserie — also the alternate spot (besides Grindelwald Terminal) to hand in a completed Lieselotte Trail activity map for the kids' prize." },
+  { id: "v39", name: "ToGoKaffeehaus",                   type: "cafe",       location: "Wengen",        meals: ["coffee", "breakfast"],                    notes: "Grab-and-go coffee spot in Wengen — handy before catching the train up to Kleine Scheidegg." },
+  { id: "v40", name: "The Deck Restaurant",              type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Restaurant with outdoor deck seating in Wengen." },
+  { id: "v41", name: "Judy's Restaurant",                type: "restaurant", location: "Wengen",        meals: ["lunch", "dinner"],                        notes: "Family-friendly restaurant in the village." },
   // Interlaken
   { id: "v7",  name: "Grand Café Schuh",                 type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.6, notes: "Iconic Interlaken patisserie & café since 1818 — over 200 years old, older than the first ascent of the Eiger. Famous for chocolate fondue with strawberries — arguably the best in the region. Mountain views from the terrace. A special treat for the kids." },
   { id: "v7b", name: "Aare Café",                        type: "cafe",       location: "Interlaken",    meals: ["breakfast", "coffee", "lunch"],            rating: 4.4, notes: "Relaxed café beside the Aare river walk. Perfect stop for a quiet coffee or lunch away from the busy main street. Great for families." },
@@ -1462,13 +1482,18 @@ export default function SwitzerlandTravelAppReal() {
 
   useEffect(() => {
     const stored = readLocalStorage(STORAGE_KEYS.venues, DEFAULT_VENUES);
-    // Backfill meals array for any venue that's missing it (migration from old format)
+    // Backfill meals array for any venue that's missing it (migration from old format),
+    // and append any brand-new default venues the user hasn't seen yet.
     const migrated = stored.map((v) => {
       if (v.meals) return v;
       const def = DEFAULT_VENUES.find((d) => d.id === v.id);
       return { ...v, meals: def ? def.meals : [] };
     });
-    setVenues(migrated);
+    const withNewDefaults = [
+      ...migrated,
+      ...DEFAULT_VENUES.filter((d) => !stored.find((s) => s.id === d.id)),
+    ];
+    setVenues(withNewDefaults);
     setVenuesReady(true);
   }, []);
 
